@@ -5,6 +5,8 @@ using UITests.DataDriven;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 
 namespace UITests.TestCases
 {
@@ -13,23 +15,24 @@ namespace UITests.TestCases
     {
         private IWebDriver driver;
         ObjectRepository.Login l;
-        string url = "https://myaccount.eb-test.cloud/";
+        string url = "https://hairocraft.eb-test.cloud/";
 
         [SetUp]
         public void Initialize()
         {
-            driver = new ChromeDriver("D:\\Selenium\\Selenium\\bin\\Debug\\netcoreapp2.1");
+            //driver = new ChromeDriver("D:\\Selenium\\Selenium\\bin\\Debug\\netcoreapp2.1");
+            driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
             l = new ObjectRepository.Login(driver);
-            driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl(url);
+            driver.Manage().Window.Maximize();           
         }
 
         [TestCaseSource("LoginTestData")]
-        public void ExecuteTest(KeyValuePair<string, string> login)
+        public void ExecuteTest(dynamic testdata)
         {
-            l.UserName.SendKeys(login.Key);
+            driver.Navigate().GoToUrl(url);
+            l.UserName.SendKeys(testdata.user);
             Console.Write("username value is entered \n");
-            l.Password.SendKeys(login.Value);
+            l.Password.SendKeys(testdata.pass);
             Console.Write("password is entered");
             l.LoginButton.Click();
             Console.Write("\nlogin button is clicked");
@@ -55,9 +58,10 @@ namespace UITests.TestCases
             //driver.Close();
         }
 
-        private static Dictionary<string, string> LoginTestData()
+        private static IEnumerable<object[]> LoginTestData()
         {
-            return LoginTestValues();
+            var dict = LoginTestValues(@"E:\Expressbase.Core\UITests\TestData\LoginData.xml", "test1");
+            return new[] { new object[] { dict } };
         }
     }
 }

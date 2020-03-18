@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.OleDb;
 using System.Dynamic;
 using System.Linq;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace UITests.DataDriven
@@ -46,15 +47,42 @@ namespace UITests.DataDriven
 
     public class GetDataFromXml
     {
-        public static Dictionary<string, string> LoginTestValues()
+        public static Dictionary<string, string> LoginTestValues(string file_loc, string test_name)
         {
-            var doc = XDocument.Load(@"D:\Selenium\Selenium\TestData\login.xml");
-            Dictionary<string, string> login = new Dictionary<string, string>();
-            foreach (var credential in doc.Descendants("user"))
+            // string[] sitemaps = Directory.GetFiles(@"C:\Users\User\source\repos\EBSelenium\EBSelenium\TestData");
+
+            Dictionary<string, string> dict = new Dictionary<string, string>();
+            //foreach (string sitemap in sitemaps)
+            //{            
+            try
             {
-                login.Add(credential.Attribute("username").Value, credential.Attribute("password").Value);
+                XmlDocument xDoc = new XmlDocument();
+                xDoc.Load(file_loc);
+                var root = xDoc.FirstChild.NextSibling;
+
+                if (root.HasChildNodes)
+                {
+                    foreach (XmlNode childnode in root.ChildNodes)
+                    {
+                        if (childnode.Name == "test" && test_name == "test1" && childnode.Attributes["name"].Value.ToString() == test_name)
+                        {
+                            if (childnode.HasChildNodes)
+                            {
+                                foreach (XmlNode node in childnode)
+                                {
+                                    dict.Add(node.Name, node.InnerText);
+                                }
+                            }
+                        }
+                    }
+                }
             }
-            return login;
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception  : " + e.ToString());
+            }
+            return dict;
+            //}
         }
     }
 }
