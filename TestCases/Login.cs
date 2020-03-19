@@ -15,40 +15,56 @@ namespace UITests.TestCases
     {
         private IWebDriver driver;
         ObjectRepository.Login l;
-        string url = "https://hairocraft.eb-test.cloud/";
+        string url = "https://myaccount.eb-test.cloud/";
 
         [SetUp]
         public void Initialize()
         {
-            //driver = new ChromeDriver("D:\\Selenium\\Selenium\\bin\\Debug\\netcoreapp2.1");
             driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
             l = new ObjectRepository.Login(driver);
-            driver.Manage().Window.Maximize();           
+            driver.Manage().Window.Maximize();
+            driver.Navigate().GoToUrl(url);
         }
 
         [TestCaseSource("LoginTestData")]
-        public void ExecuteTest(dynamic testdata)
+        public void ExecuteTest(KeyValuePair<string, List<EbTestData>> testdata)
         {
-            driver.Navigate().GoToUrl(url);
-            l.UserName.SendKeys(testdata.user);
-            Console.Write("username value is entered \n");
-            l.Password.SendKeys(testdata.pass);
-            Console.Write("password is entered");
-            l.LoginButton.Click();
-            Console.Write("\nlogin button is clicked");
+            if (testdata.Key == "test1")
+            {
+                l.UserName.SendKeys(testdata.Value[0].Value);
+                Console.Write("username value is entered \n");
+                l.Password.SendKeys(testdata.Value[1].Value);
+                Console.Write("password is entered");
+                l.LoginButton.Click();
+                Console.Write("\nlogin button is clicked");
+            }
+            else if (testdata.Key == "test2")
+            {
+                l.UserName.SendKeys(testdata.Value[0].Value);
+                Console.Write("username value is entered \n");
+                l.Password.SendKeys(testdata.Value[1].Value);
+                Console.Write("password is entered");
+                l.LoginButton.Click();
+                Console.Write("\nlogin button is clicked");
+                l.SkipTour.Click();
+                l.NewSolutionButton.Click();
+                l.ApplicationName.SendKeys(testdata.Value[2].Value);
+                l.ApplicationDescription.SendKeys(testdata.Value[3].Value);
+                l.ApplicationIcon.SendKeys(testdata.Value[4].Value);
+            }
 
-            if (l.UNameCheckValidator.Text != null)
-            {
-                Console.WriteLine(l.UNameCheckValidator.Text);
-            }
-            else if (l.PasswordCheckValidator.Text != null)
-            {
-                Console.WriteLine(l.PasswordCheckValidator.Text);
-            }
-            else
-            {
-                Console.WriteLine("\nSUCCESS");
-            }
+            //if (l.UNameCheckValidator.Text != null)
+            //{
+            //    Console.WriteLine(l.UNameCheckValidator.Text);
+            //}
+            //else if (l.PasswordCheckValidator.Text != null)
+            //{
+            //    Console.WriteLine(l.PasswordCheckValidator.Text);
+            //}
+            //else
+            //{
+            //    Console.WriteLine("\nSUCCESS");
+            //}
 
         }
 
@@ -58,10 +74,9 @@ namespace UITests.TestCases
             //driver.Close();
         }
 
-        private static IEnumerable<object[]> LoginTestData()
+        private static Dictionary<string, List<EbTestData>> LoginTestData()
         {
-            var dict = LoginTestValues(@"E:\Expressbase.Core\UITests\TestData\LoginData.xml", "test1");
-            return new[] { new object[] { dict } };
+            return GetTestValues();
         }
     }
 }

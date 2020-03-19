@@ -1,26 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Login>
-
   <test name="test1">
-    <user type ="string"> josevin@expressbase.com</user>
-    <pass type ="string"> Qwerty@1</pass>
+    <username type ="String"> binivarghese@gmail.com</username>
+    <password type ="String"> 123123123</password>
   </test>
-  <test name="test2" desc="blah blah">
-    <name>Josevin</name>
-    <age type="int">25</age>
-    <error1>Age is not correct</error1>
+  <test name="test2" desc="Creating Application">
+    <username type ="String"> binivarghese@gmail.com</username>
+    <password type ="String"> 123123123</password>
+    <name type ="String">Test Application</name>
+    <description type ="String">This is a Test Application</description>
+    <icon type ="String">fa-home</icon>
   </test>
-  <test name="test3" desc="invoice">
-    <xid>INV0034</xid>
-    <age type="int">25</age>
-    <entrygrid1>
-      <row>
-        <item>4</item>
-        <qty>5</qty>
-        <amt>10</amt>
-      </row>
-    </entrygrid1>
-    <error1>Age is not correct</error1>
-  </test>
-
 </Login>

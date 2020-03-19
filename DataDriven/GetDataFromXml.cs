@@ -5,7 +5,6 @@ using System.Data;
 using System.Data.OleDb;
 using System.Dynamic;
 using System.Linq;
-using System.Xml;
 using System.Xml.Linq;
 
 namespace UITests.DataDriven
@@ -47,42 +46,25 @@ namespace UITests.DataDriven
 
     public class GetDataFromXml
     {
-        public static Dictionary<string, string> LoginTestValues(string file_loc, string test_name)
+        public static Dictionary<string, List<EbTestData>> GetTestValues()
         {
-            // string[] sitemaps = Directory.GetFiles(@"C:\Users\User\source\repos\EBSelenium\EBSelenium\TestData");
-
-            Dictionary<string, string> dict = new Dictionary<string, string>();
-            //foreach (string sitemap in sitemaps)
-            //{            
-            try
+            var doc = XDocument.Load(@"D:\ExpressBase\UITests\TestData\LoginData.xml");
+            Dictionary<string, List<EbTestData>> TestCases = new Dictionary<string, List<EbTestData>>();
+            foreach (var testcase in doc.Descendants("test"))
             {
-                XmlDocument xDoc = new XmlDocument();
-                xDoc.Load(file_loc);
-                var root = xDoc.FirstChild.NextSibling;
-
-                if (root.HasChildNodes)
+                string testname = testcase.Attribute("name").Value;
+                List<EbTestData> testdata = new List<EbTestData>();
+                foreach (var child in testcase.Elements())
                 {
-                    foreach (XmlNode childnode in root.ChildNodes)
-                    {
-                        if (childnode.Name == "test" && test_name == "test1" && childnode.Attributes["name"].Value.ToString() == test_name)
-                        {
-                            if (childnode.HasChildNodes)
-                            {
-                                foreach (XmlNode node in childnode)
-                                {
-                                    dict.Add(node.Name, node.InnerText);
-                                }
-                            }
-                        }
-                    }
+                    EbTestData td = new EbTestData();
+                    td.Name = child.Name.ToString();
+                    td.Type = (EbTestDataTypes)Enum.Parse(typeof(EbTestDataTypes), child.Attribute("type").Value);
+                    td.Value = child.Value;
+                    testdata.Add(td);
                 }
+                TestCases.Add(testname, testdata);
             }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception  : " + e.ToString());
-            }
-            return dict;
-            //}
+            return TestCases;
         }
     }
 }
