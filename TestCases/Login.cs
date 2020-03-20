@@ -46,6 +46,7 @@ namespace UITests.TestCases
                 Console.Write("password is entered");
                 l.LoginButton.Click();
                 Console.Write("\nlogin button is clicked");
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
                 l.SkipTour.Click();
                 l.NewSolutionButton.Click();
                 l.ApplicationName.SendKeys(testdata.Value[2].Value);
