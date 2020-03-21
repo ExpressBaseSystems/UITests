@@ -9,6 +9,7 @@ using System.Xml.Linq;
 
 namespace UITests.DataDriven
 {
+
     public enum EbTestDataTypes
     {
         String,
@@ -26,43 +27,53 @@ namespace UITests.DataDriven
         public dynamic Value { get; set; }
     }
 
-    public class EbTestDataCollection : DynamicObject
+    public class EbTestItem : DynamicObject
     {
-        private Dictionary<string, EbTestData> _dict = new Dictionary<string, EbTestData>();
+        public string Name { get; set; }
+
+        public List<EbTestData> testDatas { get; set; }
+
+        public EbTestItem()
+        {
+            testDatas = new List<EbTestData>();
+        }
 
         public override bool TryGetMember(GetMemberBinder binder, out object result)
         {
-            // Converting the property name to lowercase
-            // so that property names become case-insensitive.
-            string name = binder.Name.ToLower();
-
-            // If the property name is found in a dictionary,
-            // set the result parameter to the property value and return true.
-            // Otherwise, return false.
-            result = _dict[name].Value;
+            EbTestData item = testDatas.Find(e => e.Name == binder.Name);
+            if (item == null)
+            {
+                result = null;
+                //throw new Exception("Member Not Found : " + binder.Name);
+            }
+            else
+            {
+                result = item.Value;
+            }
             return true;
         }
     }
 
+
     public class GetDataFromXml
     {
-        public static Dictionary<string, List<EbTestData>> GetTestValues()
+        public static List<EbTestItem> GetTestValues()
         {
             var doc = XDocument.Load(@"D:\ExpressBase\UITests\TestData\LoginData.xml");
-            Dictionary<string, List<EbTestData>> TestCases = new Dictionary<string, List<EbTestData>>();
+            List<EbTestItem> TestCases = new List<EbTestItem>();
             foreach (var testcase in doc.Descendants("test"))
             {
                 string testname = testcase.Attribute("name").Value;
-                List<EbTestData> testdata = new List<EbTestData>();
+                EbTestItem testdata = new EbTestItem() { Name = testname };
                 foreach (var child in testcase.Elements())
                 {
                     EbTestData td = new EbTestData();
                     td.Name = child.Name.ToString();
                     td.Type = (EbTestDataTypes)Enum.Parse(typeof(EbTestDataTypes), child.Attribute("type").Value);
                     td.Value = child.Value;
-                    testdata.Add(td);
+                    testdata.testDatas.Add(td);
                 }
-                TestCases.Add(testname, testdata);
+                TestCases.Add(testdata);
             }
             return TestCases;
         }

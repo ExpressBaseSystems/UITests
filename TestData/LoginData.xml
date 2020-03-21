@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Login>
   <test name="test1">
-    <username type ="String"> binivarghese@gmail.com</username>
-    <password type ="String"> 123123123</password>
+    <username type ="String"> mca408@rajagiri.edu</username>
+    <password type ="String"> @nOOp@95</password>
   </test>
-  <test name="test2" desc="Creating Application">
-    <username type ="String"> binivarghese@gmail.com</username>
-    <password type ="String"> 123123123</password>
-    <name type ="String">Test Application</name>
-    <description type ="String">This is a Test Application</description>
-    <icon type ="String">fa-home</icon>
+  <test name="test2">
+    <username type ="String"> josevin@expressbase.com</username>
+    <password type ="String"> amminijosu</password>
   </test>
 </Login>

@@ -26,47 +26,16 @@ namespace UITests.TestCases
             driver.Navigate().GoToUrl(url);
         }
 
+
         [TestCaseSource("LoginTestData")]
-        public void ExecuteTest(KeyValuePair<string, List<EbTestData>> testdata)
+        public void ExecuteTest(dynamic testdata)
         {
-            if (testdata.Key == "test1")
-            {
-                l.UserName.SendKeys(testdata.Value[0].Value);
-                Console.Write("username value is entered \n");
-                l.Password.SendKeys(testdata.Value[1].Value);
-                Console.Write("password is entered");
-                l.LoginButton.Click();
-                Console.Write("\nlogin button is clicked");
-            }
-            else if (testdata.Key == "test2")
-            {
-                l.UserName.SendKeys(testdata.Value[0].Value);
-                Console.Write("username value is entered \n");
-                l.Password.SendKeys(testdata.Value[1].Value);
-                Console.Write("password is entered");
-                l.LoginButton.Click();
-                Console.Write("\nlogin button is clicked");
-                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-                l.SkipTour.Click();
-                l.NewSolutionButton.Click();
-                l.ApplicationName.SendKeys(testdata.Value[2].Value);
-                l.ApplicationDescription.SendKeys(testdata.Value[3].Value);
-                l.ApplicationIcon.SendKeys(testdata.Value[4].Value);
-            }
-
-            //if (l.UNameCheckValidator.Text != null)
-            //{
-            //    Console.WriteLine(l.UNameCheckValidator.Text);
-            //}
-            //else if (l.PasswordCheckValidator.Text != null)
-            //{
-            //    Console.WriteLine(l.PasswordCheckValidator.Text);
-            //}
-            //else
-            //{
-            //    Console.WriteLine("\nSUCCESS");
-            //}
-
+            l.UserName.SendKeys(testdata.username);
+            Console.Write("username value is entered \n");
+            l.Password.SendKeys(testdata.password);
+            Console.Write("password is entered");
+            l.LoginButton.Click();
+            Console.Write("\nlogin button is clicked");
         }
 
         [TearDown]
@@ -75,7 +44,8 @@ namespace UITests.TestCases
             //driver.Close();
         }
 
-        private static Dictionary<string, List<EbTestData>> LoginTestData()
+
+        private static List<EbTestItem> LoginTestData()
         {
             return GetTestValues();
         }
