@@ -66,7 +66,7 @@ namespace UITests.ObjectRepository
                 return this.driver.FindElement(By.Id("appName"));
             }
         }
-        
+
         public IWebElement ApplicationDescription
         {
             get

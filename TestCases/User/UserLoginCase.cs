@@ -10,11 +10,11 @@ using UITests.DataDriven;
 namespace UITests.TestCases
 {
     [TestFixture]
-    public class Login : GetTenentFromXml
+    public class UserLogin : GetUserLoginDataFromXml
     {
         private IWebDriver driver;
         ObjectRepository.Login l;
-        string url = "https://myaccount.eb-test.cloud/";
+        string url = "https://hairocraft.eb-test.cloud/";
 
         [SetUp]
         public void Initialize()
@@ -26,12 +26,12 @@ namespace UITests.TestCases
         }
 
 
-        [TestCaseSource("LoginTestData")]
-        public void ExecuteTest(dynamic testdatas)
+        [TestCaseSource("UserLoginData")]
+        public void ExecuteTest(dynamic Userdata)
         {
-            l.UserName.SendKeys(testdatas.username);
+            l.UserName.SendKeys(Userdata.username);
             Console.Write("username value is entered \n");
-            l.Password.SendKeys(testdatas.password);
+            l.Password.SendKeys(Userdata.password);
             Console.Write("password is entered");
             l.LoginButton.Click();
             Console.Write("\nlogin button is clicked");
@@ -44,9 +44,9 @@ namespace UITests.TestCases
         }
 
 
-        private static List<EbTenentItem> LoginTestData()
+        private static List<EbUserLoginItem> UserLoginData()
         {
-            return GetTenentValues();
+            return GetUserValues();
         }
     }
 }
