@@ -59,7 +59,7 @@ namespace UITests.DataDriven
     {
         public static List<EbTestItem> GetTestValues()
         {
-            var doc = XDocument.Load(@"D:\ExpressBase\UITests\TestData\LoginData.xml");
+            var doc = XDocument.Load(@"TestData\LoginData.xml");
             List<EbTestItem> TestCases = new List<EbTestItem>();
             foreach (var testcase in doc.Descendants("test"))
             {
