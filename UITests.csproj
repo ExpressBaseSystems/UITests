@@ -5,6 +5,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <ApplicationIcon />
     <StartupObject />
+    <Nullable>annotations</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,6 +21,12 @@
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="80.0.3987.10600" />
     <PackageReference Include="System.Data.OleDb" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DataDriven\User\" />
+    <Folder Include="TestCases\User\" />
+    <Folder Include="TestData\User\" />
   </ItemGroup>
 
 </Project>

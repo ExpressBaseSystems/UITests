@@ -55,11 +55,11 @@ namespace UITests.DataDriven
     }
 
 
-    public class SignUpLoginGet
+    public class GetDataFromXml
     {
         public static List<EbTestItem> GetTestValues()
         {
-            var doc = XDocument.Load(@"E:\Expressbase.core\UITests\TestData\LoginData.xml");
+            var doc = XDocument.Load(@"E:\Expressbase.core\UITests\TestData\Tenent\LoginData.xml");
             List<EbTestItem> TestCases = new List<EbTestItem>();
             foreach (var testcase in doc.Descendants("test"))
             {
