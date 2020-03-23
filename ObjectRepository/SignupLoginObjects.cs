@@ -2,11 +2,11 @@
 
 namespace UITests.ObjectRepository
 {
-    public class Login
+    public class SignupLoginObjects
     {
         private IWebDriver driver;
 
-        public Login(IWebDriver driver)
+        public SignupLoginObjects(IWebDriver driver)
         {
             this.driver = driver;
         }

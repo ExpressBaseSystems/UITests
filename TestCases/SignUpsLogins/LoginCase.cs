@@ -11,17 +11,17 @@ using System.Reflection;
 namespace UITests.TestCases
 {
     [TestFixture]
-    public class Login : GetDataFromXml
+    public class LoginCase : SignUpLoginGet
     {
         private IWebDriver driver;
-        ObjectRepository.Login l;
+        ObjectRepository.SignupLoginObjects l;
         string url = "https://myaccount.eb-test.cloud/";
 
         [SetUp]
         public void Initialize()
         {
             driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
-            l = new ObjectRepository.Login(driver);
+            l = new ObjectRepository.SignupLoginObjects(driver);
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl(url);
         }

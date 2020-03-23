@@ -31,16 +31,16 @@ namespace UITests.DataDriven
     {
         public string Name { get; set; }
 
-        public List<EbTestData> testDatas { get; set; }
+        public List<EbTestData> TestDatas { get; set; }
 
         public EbTestItem()
         {
-            testDatas = new List<EbTestData>();
+            TestDatas = new List<EbTestData>();
         }
 
         public override bool TryGetMember(GetMemberBinder binder, out object result)
         {
-            EbTestData item = testDatas.Find(e => e.Name == binder.Name);
+            EbTestData item = TestDatas.Find(e => e.Name == binder.Name);
             if (item == null)
             {
                 result = null;
@@ -55,11 +55,11 @@ namespace UITests.DataDriven
     }
 
 
-    public class GetDataFromXml
+    public class SignUpLoginGet
     {
         public static List<EbTestItem> GetTestValues()
         {
-            var doc = XDocument.Load(@"D:\ExpressBase\UITests\TestData\LoginData.xml");
+            var doc = XDocument.Load(@"E:\Expressbase.core\UITests\TestData\LoginData.xml");
             List<EbTestItem> TestCases = new List<EbTestItem>();
             foreach (var testcase in doc.Descendants("test"))
             {
@@ -71,7 +71,7 @@ namespace UITests.DataDriven
                     td.Name = child.Name.ToString();
                     td.Type = (EbTestDataTypes)Enum.Parse(typeof(EbTestDataTypes), child.Attribute("type").Value);
                     td.Value = child.Value;
-                    testdata.testDatas.Add(td);
+                    testdata.TestDatas.Add(td);
                 }
                 TestCases.Add(testdata);
             }
