@@ -10,7 +10,7 @@ using UITests.DataDriven;
 namespace UITests.TestCases
 {
     [TestFixture]
-    public class Login : GetTenentFromXml
+    public class Login : GetTenantFromXml
     {
         private IWebDriver driver;
         ObjectRepository.Login l;
@@ -44,9 +44,9 @@ namespace UITests.TestCases
         }
 
 
-        private static List<EbTenentItem> LoginTestData()
+        private static List<EbTenantItem> LoginTestData()
         {
-            return GetTenentValues();
+            return GetTenantValues();
         }
     }
 }

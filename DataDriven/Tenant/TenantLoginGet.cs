@@ -6,7 +6,7 @@ using System.Xml.Linq;
 namespace UITests.DataDriven
 {
 
-    public enum EbTenentDataTypes
+    public enum EbTenantDataTypes
     {
         String,
         Int,
@@ -16,27 +16,27 @@ namespace UITests.DataDriven
         Time
     }
 
-    public class EbTenentData
+    public class EbTenantData
     {
         public string Name { get; set; }
-        public EbTenentDataTypes Type { get; set; }
+        public EbTenantDataTypes Type { get; set; }
         public dynamic Value { get; set; }
     }
 
-    public class EbTenentItem : DynamicObject
+    public class EbTenantItem : DynamicObject
     {
         public string Name { get; set; }
 
-        public List<EbTenentData> TenentDatas { get; set; }
+        public List<EbTenantData> TenantDatas { get; set; }
 
-        public EbTenentItem()
+        public EbTenantItem()
         {
-            TenentDatas = new List<EbTenentData>();
+            TenantDatas = new List<EbTenantData>();
         }
 
         public override bool TryGetMember(GetMemberBinder binder, out object result)
         {
-            EbTenentData item = TenentDatas.Find(e => e.Name == binder.Name);
+            EbTenantData item = TenantDatas.Find(e => e.Name == binder.Name);
             if (item == null)
             {
                 result = null;
@@ -51,23 +51,23 @@ namespace UITests.DataDriven
     }
 
 
-    public class GetTenentFromXml
+    public class GetTenantFromXml
     {
-        public static List<EbTenentItem> GetTenentValues()
+        public static List<EbTenantItem> GetTenantValues()
         {
-            var doc = XDocument.Load(@"E:\Expressbase.core\UITests\TestData\Tenent\LoginData.xml");
-            List<EbTenentItem> TestCases = new List<EbTenentItem>();
+            var doc = XDocument.Load(@"E:\Expressbase.core\UITests\TestData\Tenant\LoginData.xml");
+            List<EbTenantItem> TestCases = new List<EbTenantItem>();
             foreach (var testcase in doc.Descendants("test"))
             {
                 string testname = testcase.Attribute("name").Value;
-                EbTenentItem testdata = new EbTenentItem() { Name = testname };
+                EbTenantItem testdata = new EbTenantItem() { Name = testname };
                 foreach (var child in testcase.Elements())
                 {
-                    EbTenentData td = new EbTenentData();
+                    EbTenantData td = new EbTenantData();
                     td.Name = child.Name.ToString();
-                    td.Type = (EbTenentDataTypes)Enum.Parse(typeof(EbTenentDataTypes), child.Attribute("type").Value);
+                    td.Type = (EbTenantDataTypes)Enum.Parse(typeof(EbTenantDataTypes), child.Attribute("type").Value);
                     td.Value = child.Value;
-                    testdata.TenentDatas.Add(td);
+                    testdata.TenantDatas.Add(td);
                 }
                 TestCases.Add(testdata);
             }
