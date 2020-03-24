@@ -35,7 +35,18 @@ namespace UITests.TestCases.Tenant
             l.Password.SendKeys(testdatas.password);
             Console.Write("password is entered");
             l.LoginButton.Click();
-            Console.Write("\nlogin button is clicked");
+            Console.Write("\nlogin button is clicked\n");
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            if (string.Compare(driver.Url, testdatas.url) != 1)
+            {
+                Console.Write("“Test passed for Tenant Login Corrent UserName & Password ”");
+            }
+            else
+            {
+                String ExpectedTitle = l.TestResult.GetCssValue("background-color");
+                Assert.AreEqual(testdatas.color, ExpectedTitle);
+                Console.Write("“Test passed for Tenant Login InCorrent UserName & Password ”");
+            }
         }
 
         [TearDown]

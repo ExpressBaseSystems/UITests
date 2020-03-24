@@ -8,6 +8,7 @@ using System.Reflection;
 using UITests.DataDriven;
 using UITests.DataDriven.User;
 
+
 namespace UITests.TestCases.User
 {
     [TestFixture]
@@ -36,6 +37,17 @@ namespace UITests.TestCases.User
             Console.Write("password is entered");
             l.LoginButton.Click();
             Console.Write("\nlogin button is clicked");
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            if (string.Compare(driver.Url, Userdata.url) != 1)
+            {
+                Console.Write("“Test passed for User Login Corrent UserName & Password ”");
+            }
+            else
+            {
+                String ExpectedTitle = l.TestResult.GetCssValue("background-color");
+                Assert.AreEqual(Userdata.color, ExpectedTitle);
+                Console.Write("“Test passed for User Login InCorrent UserName & Password ”");
+            }           
         }
 
         [TearDown]

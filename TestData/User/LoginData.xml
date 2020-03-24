@@ -3,9 +3,11 @@
   <test name="test1">
     <username type ="String"> josevin@expressbase.com</username>
     <password type ="String"> Qwerty@1</password>
+    <url type ="String">https://hairocraft.eb-test.cloud/</url>
   </test>
   <test name="test2">
     <username type ="String"> josevin@expressbase.com</username>
     <password type ="String"> amminijosu</password>
+    <color type ="String">rgba(255, 0, 0, 1)</color>
   </test>
 </Login>

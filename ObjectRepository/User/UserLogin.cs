@@ -50,6 +50,14 @@ namespace UITests.ObjectRepository.User
                 return this.driver.FindElement(By.XPath("//div[@validator='password']/div[2]"));
             }
         }
-        
+
+        public IWebElement TestResult
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("eb_messageBox_container"));
+            }
+        }
+
     }
 }
