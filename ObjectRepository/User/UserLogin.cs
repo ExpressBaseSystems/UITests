@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 
-namespace UITests.ObjectRepository
+namespace UITests.ObjectRepository.User
 {
     public class UserLogin
     {
@@ -50,45 +50,6 @@ namespace UITests.ObjectRepository
                 return this.driver.FindElement(By.XPath("//div[@validator='password']/div[2]"));
             }
         }
-
-        public IWebElement NewSolutionButton
-        {
-            get
-            {
-                return this.driver.FindElement(By.Id("eb-new-solution"));
-            }
-        }
-
-        public IWebElement ApplicationName
-        {
-            get
-            {
-                return this.driver.FindElement(By.Id("appName"));
-            }
-        }
-
-        public IWebElement ApplicationDescription
-        {
-            get
-            {
-                return this.driver.FindElement(By.Id("DescApp"));
-            }
-        }
-
-        public IWebElement ApplicationIcon
-        {
-            get
-            {
-                return this.driver.FindElement(By.Name("AppIcon"));
-            }
-        }
-
-        public IWebElement SkipTour
-        {
-            get
-            {
-                return this.driver.FindElement(By.ClassName("touFtr-skip"));
-            }
-        }
+        
     }
 }

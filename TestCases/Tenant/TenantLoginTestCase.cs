@@ -6,32 +6,33 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using UITests.DataDriven;
+using UITests.DataDriven.Tenant;
 
-namespace UITests.TestCases
+namespace UITests.TestCases.Tenant
 {
     [TestFixture]
-    public class UserLogin : GetUserLoginDataFromXml
+    public class TenantLoginTestCase : TenantLogin
     {
         private IWebDriver driver;
-        ObjectRepository.Login l;
-        string url = "https://hairocraft.eb-test.cloud/";
+        ObjectRepository.Tenant.TenantLogin l;
+        string url = "https://myaccount.eb-test.cloud/";
 
         [SetUp]
         public void Initialize()
         {
             driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
-            l = new ObjectRepository.Login(driver);
+            l = new ObjectRepository.Tenant.TenantLogin(driver);
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl(url);
         }
 
 
-        [TestCaseSource("UserLoginData")]
-        public void ExecuteTest(dynamic Userdata)
+        [TestCaseSource("LoginTestData")]
+        public void ExecuteTest(dynamic testdatas)
         {
-            l.UserName.SendKeys(Userdata.username);
+            l.UserName.SendKeys(testdatas.username);
             Console.Write("username value is entered \n");
-            l.Password.SendKeys(Userdata.password);
+            l.Password.SendKeys(testdatas.password);
             Console.Write("password is entered");
             l.LoginButton.Click();
             Console.Write("\nlogin button is clicked");
@@ -44,9 +45,9 @@ namespace UITests.TestCases
         }
 
 
-        private static List<EbUserLoginItem> UserLoginData()
+        private static List<EbTestItem> LoginTestData()
         {
-            return GetUserValues();
+            return GetValueFromXml();
         }
     }
 }
