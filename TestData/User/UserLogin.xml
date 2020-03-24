@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Login>
+  <test name="test1">
+    <username type ="String"> josevin@expressbase.com</username>
+    <password type ="String"> Qwerty@1</password>
+  </test>
+  <test name="test2">
+    <username type ="String"> josevin@expressbase.com</username>
+    <password type ="String"> amminijosu</password>
+  </test>
+</Login>

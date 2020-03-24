@@ -2,11 +2,11 @@
 
 namespace UITests.ObjectRepository
 {
-    public class Login
+    public class UserLogin
     {
         private IWebDriver driver;
 
-        public Login(IWebDriver driver)
+        public UserLogin(IWebDriver driver)
         {
             this.driver = driver;
         }
@@ -66,7 +66,7 @@ namespace UITests.ObjectRepository
                 return this.driver.FindElement(By.Id("appName"));
             }
         }
-        
+
         public IWebElement ApplicationDescription
         {
             get

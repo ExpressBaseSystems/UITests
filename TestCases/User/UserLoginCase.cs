@@ -1,21 +1,20 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using UITests.DataDriven;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using UITests.DataDriven;
 
 namespace UITests.TestCases
 {
     [TestFixture]
-    public class Login : GetDataFromXml
+    public class UserLogin : GetUserLoginDataFromXml
     {
         private IWebDriver driver;
         ObjectRepository.Login l;
-        string url = "https://myaccount.eb-test.cloud/";
+        string url = "https://hairocraft.eb-test.cloud/";
 
         [SetUp]
         public void Initialize()
@@ -27,12 +26,12 @@ namespace UITests.TestCases
         }
 
 
-        [TestCaseSource("LoginTestData")]
-        public void ExecuteTest(dynamic testdata)
+        [TestCaseSource("UserLoginData")]
+        public void ExecuteTest(dynamic Userdata)
         {
-            l.UserName.SendKeys(testdata.username);
+            l.UserName.SendKeys(Userdata.username);
             Console.Write("username value is entered \n");
-            l.Password.SendKeys(testdata.password);
+            l.Password.SendKeys(Userdata.password);
             Console.Write("password is entered");
             l.LoginButton.Click();
             Console.Write("\nlogin button is clicked");
@@ -45,9 +44,9 @@ namespace UITests.TestCases
         }
 
 
-        private static List<EbTestItem> LoginTestData()
+        private static List<EbUserLoginItem> UserLoginData()
         {
-            return GetTestValues();
+            return GetUserValues();
         }
     }
 }
