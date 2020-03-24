@@ -10,7 +10,7 @@ namespace UITests.DataDriven.User
         public static List<EbTestItem> GetValueFromXml()
         {
             List<EbTestItem> TestCases = new List<EbTestItem>();
-            string path = @"D:\ExpressBase\UITests\TestData\User\LoginData.xml";
+            string path = @"TestData\User\LoginData.xml";
             GetDataFromXML d = new GetDataFromXML();
             TestCases = GetDataFromFile(path);
             return TestCases;

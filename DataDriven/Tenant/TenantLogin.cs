@@ -9,7 +9,7 @@ namespace UITests.DataDriven.Tenant
         public static List<EbTestItem> GetValueFromXml()
         {
             List<EbTestItem> TestCases = new List<EbTestItem>();
-            string path = @"D:\ExpressBase\UITests\TestData\Tenant\LoginData.xml";
+            string path = @"TestData\Tenant\LoginData.xml";
             GetDataFromXML d = new GetDataFromXML();
             TestCases = GetDataFromFile(path);
             return TestCases;

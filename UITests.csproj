@@ -23,4 +23,13 @@
     <PackageReference Include="System.Data.OleDb" Version="4.7.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="TestData\Tenant\LoginData.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\User\LoginData.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
