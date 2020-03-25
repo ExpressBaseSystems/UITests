@@ -6,24 +6,62 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Text;
-using UITests.DataDriven.Tenant;
+using UITests.DataDriven;
+using UITests.ObjectRepository.Tenant;
 
 namespace UITests.TestCases.Tenant
 {
     [TestFixture]
-    public class TenantNewSolutionTestCase : TenantNewSolution
+    public class TenantNewSolutionTestCase 
     {
         private IWebDriver driver;
-        ObjectRepository.Tenant.TenantNewSolution l;
-        string url = "https://myaccount.eb-test.cloud/";
+        TenantLogin tl;
+        TenantNewSolution l;
+        BrowserOps browserOps = new BrowserOps();
 
         [SetUp]
         public void Initialize()
         {
-            driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
-            l = new ObjectRepository.Tenant.TenantNewSolution(driver);
-            driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl(url);
+            if(driver == null)
+            {
+                browserOps.Init_Browser();
+                driver = browserOps.getDriver;
+                tl = new TenantLogin(driver);
+                l = new TenantNewSolution(driver);
+            }
+        }
+
+        [TestCaseSource("Login"), Order(1)]
+        public void TenantLogin(dynamic data)
+        {
+            browserOps.Goto("https://myaccount.eb-test.cloud/");
+            tl.UserName.SendKeys(data.username);
+            tl.Password.SendKeys(data.password);
+            tl.LoginButton.Click();
+            browserOps.implicitWait(200);
+        }
+
+        [Test, Order(2)]
+        public void CreateNewSolution()
+        {
+            browserOps.implicitWait(200);
+            l.SkipLink.Click();
+            browserOps.implicitWait(200);
+            l.NewSolutionButton.Click();
+            browserOps.implicitWait(200);
+            l.MessagePopUpClose.Click();
+            Console.Write("New Solution Created");
+        }
+
+        [TearDown]
+        public void EndTest()
+        {
+            //driver.Close();
+        }
+
+        private static List<EbTestItem> Login()
+        {
+            return GetDataFromXML.GetDataFromFile(@"TestData\Tenant\TenantLoginData.xml");
         }
 
     }

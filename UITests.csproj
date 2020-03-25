@@ -30,6 +30,9 @@
     <None Update="TestData\Tenant\SignupData.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="TestData\Tenant\TenantLoginData.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="TestData\User\Locations.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

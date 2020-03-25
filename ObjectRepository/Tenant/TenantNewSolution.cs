@@ -14,6 +14,14 @@ namespace UITests.ObjectRepository.Tenant
             this.driver = driver;
         }
 
+        public IWebElement SkipLink
+        {
+            get
+            {
+                return this.driver.FindElement(By.ClassName("touFtr-skip"));
+            }
+        }
+
         public IWebElement NewSolutionButton
         {
             get
