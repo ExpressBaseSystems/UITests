@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SignUp>
+  <test name="test1">
+    <email type ="String">wahefig257@mplusmail.com</email>
+    <password type ="String">JMBP/H'n@SZ6Rz6Z</password>
+    <name type ="String">Anoopa Test</name>
+    <country type ="String">India</country>
+  </test>
+</SignUp> 

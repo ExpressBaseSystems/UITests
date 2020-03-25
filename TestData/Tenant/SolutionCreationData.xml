@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Solution>
+  <test name="test1">
+    <username type ="String">kokic66909@mrisemail.com</username>
+    <password type ="String">@nOOp@95</password>
+  </test>
+</Solution>
