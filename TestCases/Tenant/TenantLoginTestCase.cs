@@ -6,37 +6,37 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using UITests.DataDriven;
-using UITests.DataDriven.Tenant;
 
 namespace UITests.TestCases.Tenant
 {
     [TestFixture]
-    public class TenantLoginTestCase : TenantLogin
+    public class TenantLoginTestCase
     {
         private IWebDriver driver;
         ObjectRepository.Tenant.TenantLogin l;
+        BrowserOps browserOps = new BrowserOps();
         string url = "https://myaccount.eb-test.cloud/";
 
         [SetUp]
         public void Initialize()
         {
-            driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
-            l = new ObjectRepository.Tenant.TenantLogin(driver);
-            driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl(url);
+            browserOps.Init_Browser();
         }
-
-
+        
         [TestCaseSource("LoginTestData")]
         public void ExecuteTest(dynamic testdatas)
         {
+            driver = browserOps.getDriver;
+            l = new ObjectRepository.Tenant.TenantLogin(driver);
+            browserOps.Goto(url);
             l.UserName.SendKeys(testdatas.username);
             Console.Write("username value is entered \n");
             l.Password.SendKeys(testdatas.password);
             Console.Write("password is entered");
             l.LoginButton.Click();
             Console.Write("\nlogin button is clicked\n");
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            browserOps.implicitWait(10);
+
             if (string.Compare(driver.Url, testdatas.url) != 1)
             {
                 Console.Write("“Test passed for Tenant Login Corrent UserName & Password ”");
@@ -52,13 +52,12 @@ namespace UITests.TestCases.Tenant
         [TearDown]
         public void EndTest()
         {
-            //driver.Close();
+           // driver.Close();
         }
-
 
         private static List<EbTestItem> LoginTestData()
         {
-            return GetValueFromXml();
+            return GetDataFromXML.GetDataFromFile(@"TestData\Tenant\LoginData.xml");
         }
     }
 }

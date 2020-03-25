@@ -6,38 +6,36 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using UITests.DataDriven;
-using UITests.DataDriven.User;
-
 
 namespace UITests.TestCases.User
 {
     [TestFixture]
-    public class UserLoginTestCase : UserLogin
+    public class UserLoginTestCase
     {
         private IWebDriver driver;
         ObjectRepository.User.UserLogin l;
+        BrowserOps browserOps = new BrowserOps();
         string url = "https://hairocraft.eb-test.cloud/";
 
         [SetUp]
         public void Initialize()
         {
-            driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
-            l = new ObjectRepository.User.UserLogin(driver);
-            driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl(url);
+            browserOps.Init_Browser();
         }
-
 
         [TestCaseSource("UserLoginData")]
         public void ExecuteTest(dynamic Userdata)
         {
+            driver = browserOps.getDriver;
+            l = new ObjectRepository.User.UserLogin(driver);
+            browserOps.Goto(url);
             l.UserName.SendKeys(Userdata.username);
             Console.Write("username value is entered \n");
             l.Password.SendKeys(Userdata.password);
             Console.Write("password is entered");
             l.LoginButton.Click();
             Console.Write("\nlogin button is clicked");
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            browserOps.implicitWait(10);
             if (string.Compare(driver.Url, Userdata.url) != 1)
             {
                 Console.Write("“Test passed for User Login Corrent UserName & Password ”");
@@ -47,7 +45,7 @@ namespace UITests.TestCases.User
                 String ExpectedTitle = l.TestResult.GetCssValue("background-color");
                 Assert.AreEqual(Userdata.color, ExpectedTitle);
                 Console.Write("“Test passed for User Login InCorrent UserName & Password ”");
-            }           
+            }
         }
 
         [TearDown]
@@ -56,10 +54,9 @@ namespace UITests.TestCases.User
             //driver.Close();
         }
 
-
         private static List<EbTestItem> UserLoginData()
         {
-            return GetValueFromXml();
+            return GetDataFromXML.GetDataFromFile(@"TestData\User\LoginData.xml");
         }
     }
 }
