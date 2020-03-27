@@ -39,12 +39,9 @@
     <None Update="TestData\User\LoginData.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ObjectRepository\User\Security\" />
-    <Folder Include="TestCases\User\Security\" />
-    <Folder Include="TestData\User\Security\" />
+    <None Update="TestData\User\Security\AddNewUser.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
