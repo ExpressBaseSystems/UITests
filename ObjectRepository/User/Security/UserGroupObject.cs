@@ -130,5 +130,42 @@ namespace UITests.ObjectRepository.User.Security
                 return this.driver.FindElement(By.Id("btnSaveAll"));
             }
         }
+
+        public IWebElement SelectToEdit
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("/html/body/div/div[3]/div[2]/div/div[2]/div/div/section/div/div/div/div[2]/table/tbody/tr[1]/td[4]/i"));
+            }
+        }
+        public IWebElement EditTheFirstUser
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='divSelectedDisplayAdd_Users']/div[1]/div/div[3]/div/i"));
+            }
+        }
+        public IWebElement RemoveFirstUser
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='divSelectedDisplayAdd_Users']/div[1]/div/div[3]/div/ul/li[2]/a"));
+            }//*[@id="divSelectedDisplayAdd_Users"]/div[1]/div/div[3]/div/i
+        }
+        public IWebElement OkButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='eb_dlogBox_container']/div/div[3]/button[1]"));
+            }
+        }
+
+        public IWebElement RemoveIpConstrain
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='divSelectedDisplayNew_IP']/div/div/div[3]/i"));
+            }
+        }
     }
 }

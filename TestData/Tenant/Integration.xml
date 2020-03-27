@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<IntegrationObject>
+  <test name="test1">
+    <NickName type ="String"> Test DB</NickName>
+    <DBName type ="String">interns_november2018</DBName>
+    <Server type ="String">35.200.147.143</Server>
+    <Port type="String">5432</Port>
+    <TimeOut type="String">500</TimeOut>
+    <UserName type="String">interns_november2018_admin</UserName>
+    <Password type="String">ruwPcqyM</Password>
+  </test>
+</IntegrationObject>
