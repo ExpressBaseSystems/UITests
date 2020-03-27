@@ -39,6 +39,9 @@
     <None Update="TestData\User\LoginData.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="TestData\User\Security\Roles.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="TestData\User\Security\AddNewUser.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

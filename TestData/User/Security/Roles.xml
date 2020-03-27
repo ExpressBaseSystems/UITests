@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<Role>
+  <test name="test1">
+    <rolename type ="String"> Test Role3</rolename>
+    <description type ="String"> Role Testing</description>
+  </test>  
+</Role>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<UserGroupObject>
+  <test name="test1">
+    <Name type ="String"> Test UserG</Name>
+    <Description type ="String"> Just a Test Case</Description>
+    <UserName type ="String"> KSEB</UserName>
+    <Ip type="String"> 192.168.1.1</Ip>
+    <IpDescription type="String"> Accounts Team</IpDescription>
+  </test>
+</UserGroupObject>
