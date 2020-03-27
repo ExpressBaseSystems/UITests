@@ -75,34 +75,28 @@ namespace UITests.TestCases.User.Security
 
             role.TableVisualization.Displayed.Equals(true);
             role.TableVisualization.Click();
-
             role.TableVisualization1.Click();
             role.TableVisualization2.Click();
-
             browserOps.implicitWait(50);
+
             role.Users.Click();
-
-            driver.FindElement(By.Id("btnAddModalAdd_Users")).Click();
-
-            browserOps.implicitWait(50);
-            
-            driver.FindElement(By.Id("txtSearchAdd_Users")).Click();
-            driver.FindElement(By.Id("txtSearchAdd_Users")).SendKeys("Jos");
-
+            role.AddUsers.Click();
+            browserOps.implicitWait(50);            
+            role.SearchAddUsers.Click();
+            role.SearchAddUsers.SendKeys("Jos");
             browserOps.implicitWait(50);
             driver.SwitchTo().Window(driver.WindowHandles.Last());
-
-            driver.FindElement(By.XPath("//*[@id='divSearchResultsAdd_Users']/div[3]/div[1]/input")).Click();
-
-            driver.FindElement(By.XPath("//*[@id='divSearchResultsAdd_Users']/div[4]/div[1]/input")).Click();
-
-            driver.FindElement(By.Id("btnModalOkAdd_Users")).Click();
+            role.SearchResult1.Click();
+            role.SearchResult2.Click();
+            role.OkBtnAddUsers.Click();
 
             browserOps.implicitWait(50);
-            driver.FindElement(By.Id("btnSaveAll")).Click();
+            role.BtnSave.Click();
 
             browserOps.implicitWait(50);
-            driver.FindElement(By.XPath("//*[@id='eb_dlogBox_container']/div/div[3]/button")).Click();
+            role.DlogBoxOk.Click();
+            browserOps.implicitWait(20);
+            browserOps.Goto("https://hairocraft.eb-test.cloud/Security/CommonList?type=Roles");
         }
 
         private static List<EbTestItem> Roles()

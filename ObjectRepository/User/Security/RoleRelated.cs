@@ -157,6 +157,60 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
+        public IWebElement AddUsers
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("btnAddModalAdd_Users"));
+            }
+        }
 
+        public IWebElement SearchAddUsers
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("txtSearchAdd_Users"));
+            }
+        }
+
+        public IWebElement SearchResult1
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='divSearchResultsAdd_Users']/div[3]/div[1]/input"));
+            }
+        }
+
+        public IWebElement SearchResult2
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='divSearchResultsAdd_Users']/div[4]/div[1]/input"));
+            }
+        }
+
+        public IWebElement OkBtnAddUsers
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("btnModalOkAdd_Users"));
+            }
+        }
+
+        public IWebElement BtnSave
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("btnSaveAll"));
+            }
+        }
+
+        public IWebElement DlogBoxOk
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='eb_dlogBox_container']/div/div[3]/button"));
+            }
+        }
     }
 }
