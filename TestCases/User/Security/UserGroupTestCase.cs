@@ -4,9 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
+using System.Reflection;
 using UITests.DataDriven;
 using UITests.ObjectRepository.User;
 using UITests.ObjectRepository.User.Security;
+using OpenQA.Selenium.Support.UI;
 
 namespace UITests.TestCases.User.Security
 {
@@ -64,18 +67,51 @@ namespace UITests.TestCases.User.Security
             ug.SearchForUser.SendKeys(UserGroupObject.UserName);
             browserOps.implicitWait(100);
             ug.SelectUser.Click();
-            browserOps.implicitWait(50);
+            browserOps.implicitWait(100);
             ug.AddSelectedUser.Click();
 
             browserOps.implicitWait(100);
             ug.ConstrainTab.Click();
+            browserOps.implicitWait(100);
             ug.NewIP.Click();
+            browserOps.implicitWait(300);
+
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            IWebElement element = wait.Until(ExpectedConditions.ElementToBeClickable(ug.IpAddress));
+            //driver.SwitchTo().ActiveElement();
+
+            //ug.IpAddress.Click(); 
+            //ug.IpAddress.Clear();  
+            //ug.IpDescription.Clear();
             ug.IpAddress.SendKeys(UserGroupObject.Ip);
+            //ug.IpDescription.Click();
             ug.IpDescription.SendKeys(UserGroupObject.IpDescription);
+            browserOps.implicitWait(100);
             ug.SaveIp.Click();
+            browserOps.implicitWait(300);
+            ug.SaveUserGroup.Click();
+
+        }
+
+        [TestCaseSource("UserGroupObjects"), Order(3)]
+        public void EditUserGroup(dynamic UserGroupEdit)
+        {
+            driver.SwitchTo().Window(driver.WindowHandles[1]).Close();
+            driver.SwitchTo().Window(driver.WindowHandles.First());
+
+            ug.SelectToEdit.Click();
+            driver.SwitchTo().Window(driver.WindowHandles.Last());
+            ug.EditTheFirstUser.Click();
+            ug.RemoveFirstUser.Click();
+            ug.OkButton.Click();
+
+            browserOps.implicitWait(100);
+            ug.ConstrainTab.Click();
+            ug.RemoveIpConstrain.Click();
+            ug.OkButton.Click();
 
             ug.SaveUserGroup.Click();
-           
+            ug.OkButton.Click();
         }
 
         [TearDown]
