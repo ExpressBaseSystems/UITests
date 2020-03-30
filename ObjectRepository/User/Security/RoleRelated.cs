@@ -189,6 +189,14 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
+        public IWebElement SearchResult3
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='divSearchResultsAdd_Users']/div[1]/div[1]/input"));
+            }
+        }
+
         public IWebElement OkBtnAddUsers
         {
             get
@@ -210,6 +218,30 @@ namespace UITests.ObjectRepository.User.Security
             get
             {
                 return this.driver.FindElement(By.XPath("//*[@id='eb_dlogBox_container']/div/div[3]/button"));
+            }
+        }
+
+        public IWebElement SearchRolesList
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("txtSrchCmnList"));
+            }
+        }
+
+        public IWebElement SelectRole
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tblCommonList']/tbody/tr[24]/td[2]/div"));
+            }
+        }
+
+        public IWebElement TableVisualization3
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tblTableVisualization']/tbody/tr[8]/td[2]/input"));
             }
         }
     }

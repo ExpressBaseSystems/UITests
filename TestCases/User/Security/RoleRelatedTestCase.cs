@@ -1,9 +1,11 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using UITests.DataDriven;
 using UITests.ObjectRepository.User;
 using UITests.ObjectRepository.User.Security;
@@ -30,7 +32,7 @@ namespace UITests.TestCases.User.Security
             }
         }
 
-        [Test, Order(1)]
+        // [Test, Order(1)]
         public void UserLogin()
         {
             browserOps.Goto("https://hairocraft.eb-test.cloud/");
@@ -39,9 +41,10 @@ namespace UITests.TestCases.User.Security
             ul.LoginButton.Click();
         }
 
-        [TestCaseSource("Roles"), Order(2)]
+        [TestCaseSource("Roles")]
         public void CreateNewRole(dynamic r)
         {
+            UserLogin();
             browserOps.implicitWait(200);
             role.SecurityLink.Click();
             browserOps.implicitWait(5);
@@ -53,7 +56,9 @@ namespace UITests.TestCases.User.Security
 
             driver.SwitchTo().Window(driver.WindowHandles.Last());
 
-            role.RoleName.SendKeys(r.rolename);
+            role.RoleName.SendKeys(r.rolename + Guid.NewGuid().ToString().Substring(0, 8));
+            browserOps.implicitWait(50);
+
             role.RoleDescription.SendKeys(r.description);
             role.SelectApp.Click();
             role.SelectAppOption.Click();
@@ -77,24 +82,78 @@ namespace UITests.TestCases.User.Security
             role.TableVisualization.Click();
             role.TableVisualization1.Click();
             role.TableVisualization2.Click();
-            browserOps.implicitWait(50);
+            browserOps.implicitWait(100);
 
             role.Users.Click();
+            browserOps.implicitWait(100);
             role.AddUsers.Click();
-            browserOps.implicitWait(50);            
+            browserOps.implicitWait(50);
             role.SearchAddUsers.Click();
             role.SearchAddUsers.SendKeys("Jos");
             browserOps.implicitWait(50);
             driver.SwitchTo().Window(driver.WindowHandles.Last());
+            browserOps.implicitWait(50);
             role.SearchResult1.Click();
+            browserOps.implicitWait(50);
             role.SearchResult2.Click();
+            browserOps.implicitWait(50);
             role.OkBtnAddUsers.Click();
 
             browserOps.implicitWait(50);
             role.BtnSave.Click();
-
             browserOps.implicitWait(50);
             role.DlogBoxOk.Click();
+            Console.WriteLine("New Role Created....");
+            browserOps.implicitWait(20);
+            browserOps.Goto("https://hairocraft.eb-test.cloud/Security/CommonList?type=Roles");
+        }
+
+        [TestCaseSource("Roles")]
+        public void EditRole(dynamic er)
+        {
+            UserLogin();
+            browserOps.implicitWait(100);
+
+            role.SecurityLink.Click();
+            browserOps.implicitWait(5);
+            role.RoleLink.Click();
+            browserOps.implicitWait(10);
+
+            role.SelectRole.Click();
+            browserOps.implicitWait(50);
+            driver.SwitchTo().Window(driver.WindowHandles.Last());
+            role.RoleDescription.Clear();
+            role.RoleDescription.SendKeys(er.editdesc);
+
+            role.Permissions.Click();
+            browserOps.implicitWait(20);
+            role.TableVisualization.Click();
+            browserOps.implicitWait(20);
+            role.TableVisualization3.Click();
+            browserOps.implicitWait(100);
+            role.TableVisualization.Click();
+            browserOps.implicitWait(100);
+            role.Users.Click();
+            browserOps.implicitWait(100);
+            role.AddUsers.Click();
+            browserOps.implicitWait(50);
+            role.SearchAddUsers.Click();
+            role.SearchAddUsers.SendKeys("Jos");
+            browserOps.implicitWait(50);
+            driver.SwitchTo().Window(driver.WindowHandles.Last());
+
+            browserOps.implicitWait(50);
+            role.SearchResult1.Click();
+            browserOps.implicitWait(50);
+            role.SearchResult3.Click();
+
+            browserOps.implicitWait(50);
+            role.OkBtnAddUsers.Click();
+            browserOps.implicitWait(50);
+            role.BtnSave.Click();
+            browserOps.implicitWait(50);
+            role.DlogBoxOk.Click();
+            Console.WriteLine("Role Edited....");
             browserOps.implicitWait(20);
             browserOps.Goto("https://hairocraft.eb-test.cloud/Security/CommonList?type=Roles");
         }
