@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <ApplicationIcon />
     <StartupObject />
     <Nullable>annotations</Nullable>
@@ -24,27 +24,31 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="TestData\Tenant\LoginData.xml">
+    <None Update="TestCases\Tenant\TenantLogin.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="TestData\Tenant\SignupData.xml">
+    <None Update="TestCases\Tenant\TenantSignup.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="TestData\Tenant\TenantLoginData.xml">
+    <None Update="TestCases\Tenant\TenantNewSolution.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="TestData\User\Locations.xml">
+    <None Update="TestCases\User\AddLocations.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="TestData\User\LoginData.xml">
+    <None Update="TestCases\User\UserLogin.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="TestData\User\Security\Roles.xml">
+    <None Update="TestCases\User\Security\RoleRelated.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="TestData\User\Security\AddNewUser.xml">
+    <None Update="TestCases\User\Security\AddNewUser.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="TestData\User\Security\" />
   </ItemGroup>
 
 </Project>

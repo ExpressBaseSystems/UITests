@@ -63,7 +63,7 @@ namespace UITests.TestCases.User
 
         private static List<EbTestItem> Locations()
         {
-            return GetDataFromXML.GetDataFromFile(@"TestData\User\Locations.xml");
+            return GetDataFromXML.GetDataFromFile(@"TestCases\User\AddLocations.xml");
         }
     }
 }
