@@ -19,6 +19,7 @@ namespace UITests.TestCases.User.Security
         UserLogin ul;
         RoleRelated role;
         BrowserOps browserOps = new BrowserOps();
+        GetUniqueId id = new GetUniqueId();
 
         [SetUp]
         public void Initialize()
@@ -56,7 +57,7 @@ namespace UITests.TestCases.User.Security
 
             driver.SwitchTo().Window(driver.WindowHandles.Last());
 
-            role.RoleName.SendKeys(r.rolename + Guid.NewGuid().ToString().Substring(0, 8));
+            role.RoleName.SendKeys(r.rolename + id.GetId);
             browserOps.implicitWait(50);
 
             role.RoleDescription.SendKeys(r.description);
