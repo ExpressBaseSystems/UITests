@@ -45,11 +45,12 @@ namespace UITests.TestCases.User
         {                      
             browserOps.implicitWait(200);
             loc.LocationLink.Click();
-            browserOps.implicitWait(5);
+            browserOps.implicitWait(50);
             loc.NewLocation.Click();
-            browserOps.implicitWait(5);
+            browserOps.implicitWait(50);
             loc.LongName.SendKeys(loc_data.longname);
             loc.ShortName.SendKeys(loc_data.shortname);
+            browserOps.implicitWait(50);
             loc.CreateLocation.Click();
             Console.WriteLine("New Loc Added....");
             driver.Navigate().GoToUrl("https://hairocraft.eb-test.cloud/TenantUser/EbLocations");
@@ -63,7 +64,7 @@ namespace UITests.TestCases.User
 
         private static List<EbTestItem> Locations()
         {
-            return GetDataFromXML.GetDataFromFile(@"TestCases\User\AddLocations.xml");
+            return GetDataFromXML.GetDataFromFile(@"TestCases\User\AddLocationTestCase.xml");
         }
     }
 }
