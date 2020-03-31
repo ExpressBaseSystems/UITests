@@ -244,5 +244,13 @@ namespace UITests.ObjectRepository.User.Security
                 return this.driver.FindElement(By.XPath("//*[@id='tblTableVisualization']/tbody/tr[8]/td[2]/input"));
             }
         }
+
+        public IWebElement MsgBox
+        {
+            get
+            {
+                return this.driver.FindElement(By.ClassName("eb_messageBox_container"));
+            }
+        }
     }
 }

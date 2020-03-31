@@ -160,7 +160,7 @@ namespace UITests.TestCases.User.Security
 
         private static List<EbTestItem> Roles()
         {
-            return GetDataFromXML.GetDataFromFile(@"TestData\User\Security\Roles.xml");
+            return GetDataFromXML.GetDataFromFile(@"TestCases\User\Security\RoleRelatedTestCase.xml");
         }
 
         [TearDown]

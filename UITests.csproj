@@ -24,6 +24,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="TestCases\User\AddLocationTestCase.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\User\Security\RoleRelatedTestCase.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="TestData\Tenant\LoginData.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
