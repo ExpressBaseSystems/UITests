@@ -74,7 +74,7 @@ namespace UITests.TestCases.Tenant
 
         private static List<EbTestItem> SignUpTestData()
         {
-            return GetDataFromXML.GetDataFromFile(@"TestCases\Tenant\TenantSignup.xml");
+            return GetDataFromXML.GetDataFromFile(@"TestCases\Tenant\TenantSignupTestCase.xml");
         }
     }
 }
