@@ -24,33 +24,42 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="TestCases\Tenant\IntegrationTestCase.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Tenant\TenantLoginTestCase.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Tenant\TenantSignupTestCase.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Tenant\TenantNewSolutionTestCase.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="TestCases\User\AddLocationTestCase.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="TestCases\User\Security\RoleRelatedTestCase.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="TestData\Tenant\LoginData.xml">
+    <None Update="TestCases\User\Security\UserGroupTestCase.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="TestData\Tenant\SignupData.xml">
+    <None Update="TestCases\User\UserLoginTestCase.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="TestData\Tenant\TenantLoginData.xml">
+    <None Update="TestCases\User\Security\AddNewUserTestCase.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="TestData\User\Locations.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="TestData\User\LoginData.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="TestData\User\Security\Roles.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="TestData\User\Security\AddNewUser.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="TestCases\Tenant\TenantSignupTestCase.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="TestCases\User\UserLoginTestCase.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
 
 </Project>

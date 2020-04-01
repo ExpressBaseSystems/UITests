@@ -67,7 +67,7 @@ namespace UITests.TestCases.Tenant
         }
         private static List<EbTestItem> Integrations()
         {
-            return GetDataFromXML.GetDataFromFile(@"TestData\Tenant\Integration.xml");
+            return GetDataFromXML.GetDataFromFile(@"TestCases\Tenant\IntegrationTestCase.xml");
         }
     }
 }

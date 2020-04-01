@@ -150,7 +150,7 @@ namespace UITests.TestCases.User.Security
 
         private static List<EbTestItem> UserData()
         {
-            return GetDataFromXML.GetDataFromFile(@"TestData\User\Security\AddNewUser.xml");
+            return GetDataFromXML.GetDataFromFile(@"TestCases\User\Security\AddNewUser.xml");
         }
     }
 }
