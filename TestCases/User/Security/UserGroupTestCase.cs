@@ -122,7 +122,7 @@ namespace UITests.TestCases.User.Security
 
         private static List<EbTestItem> UserGroupObjects()
         {
-            return GetDataFromXML.GetDataFromFile(@"TestCases\User\Security\UserGroup.xml");
+            return GetDataFromXML.GetDataFromFile(@"TestCases\User\Security\UserGroupTestCase.xml");
         }
     }  
 }
