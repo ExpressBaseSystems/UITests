@@ -22,6 +22,14 @@ namespace UITests.ObjectRepository.User.Security.UserCreation
             }
         }
 
+        public IWebElement MaxUserLimitMsg
+        {
+            get
+            {
+                return this.driver.FindElement(By.ClassName("eb_messageBox_container"));
+            }
+        }
+
         public IWebElement FullName
         {
             get
@@ -67,6 +75,14 @@ namespace UITests.ObjectRepository.User.Security.UserCreation
             get
             {
                 return this.driver.FindElement(By.Id("btnCreateUser"));
+            }
+        }
+
+        public IWebElement SaveOkButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Name("Ok"));
             }
         }
     }
