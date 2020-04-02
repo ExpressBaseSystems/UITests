@@ -18,6 +18,7 @@ namespace UITests.TestCases.User
         UserLogin ul;
         Location loc;
         BrowserOps browserOps = new BrowserOps();
+        GetUniqueId id = new GetUniqueId();
 
         [SetUp]
         public void Initialize()
@@ -48,8 +49,8 @@ namespace UITests.TestCases.User
             browserOps.implicitWait(50);
             loc.NewLocation.Click();
             browserOps.implicitWait(50);
-            loc.LongName.SendKeys(loc_data.longname);
-            loc.ShortName.SendKeys(loc_data.shortname);
+            loc.LongName.SendKeys(loc_data.longname + id.GetId);
+            loc.ShortName.SendKeys(loc_data.shortname + id.GetId);
             browserOps.implicitWait(50);
             loc.CreateLocation.Click();
             Console.WriteLine("New Loc Added....");
