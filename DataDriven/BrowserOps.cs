@@ -3,6 +3,7 @@ using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 
@@ -20,6 +21,13 @@ namespace UITests.DataDriven
         public void Goto(string url)
         {
             driver.Url = url;
+        }
+
+        public void NewTab(string url)
+        {
+            String a = "window.open('"+url+"','_blank');";  // replace link with your desired link
+            ((IJavaScriptExecutor)driver).ExecuteScript(a);
+            driver.SwitchTo().Window(driver.WindowHandles.Last());
         }
 
         public void Close()

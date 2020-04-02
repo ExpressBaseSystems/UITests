@@ -18,14 +18,11 @@ namespace UITests.TestCases.User.Security
         GetTempMail tm;
         UserLogin ul;
         Users usr;
-        AddNewUser nu;
-        ChooseRoles r;
-        ChooseGroup g;
+        UserRelated nu;
         UserLogOut lo;
         BrowserOps browserOps = new BrowserOps();
         string username = null;
         string password = null;
-        Boolean islimitexceed = false;
 
         [SetUp]
         public void Initialize()
@@ -37,54 +34,48 @@ namespace UITests.TestCases.User.Security
                 tm = new GetTempMail(driver);
                 ul = new UserLogin(driver);
                 usr = new Users(driver);
-                nu = new AddNewUser(driver);
-                r = new ChooseRoles(driver);
-                g = new ChooseGroup(driver);
+                nu = new UserRelated(driver);
                 lo = new UserLogOut(driver);
             }
         }
-
-        [Test, Order(1)]
+        
         public void GetTempMailId()
         {
-            browserOps.Goto("https://www.fakemail.net/");
+            browserOps.Goto("https://tempail.com/en/");
             browserOps.implicitWait(200);
             tm.DeleteId.Click();
-            username = tm.GetEmailId.GetAttribute("innerHTML");
+            username = tm.GetEmailId.GetAttribute("value");
+            Console.WriteLine("EmailId : "+username);
             browserOps.implicitWait(200);
         }
-
-        [Test, Order(2)]
+        
         public void UserLogin()
         {
             browserOps.implicitWait(200);
-            browserOps.Goto("https://ebdbsmwonmu3ky20200326103301.eb-test.cloud/");
+            browserOps.NewTab("https://ebdbsmwonmu3ky20200326103301.eb-test.cloud/");
             ul.UserName.SendKeys("venel38383@wwrmails.com");
             ul.Password.SendKeys("@Qwerty123");
             ul.LoginButton.Click();
+            Console.WriteLine("Login Success");
         }
-
-        [Test, Order(3)]
-        public void User()
+        
+        [TestCaseSource("UserData")]
+        public void NewUserCreate(dynamic data)
         {
+            GetTempMailId();
+            UserLogin();
             browserOps.implicitWait(200);
             //usr.MenuButton.Click();
             usr.ChooseSecurity.Click();
+            Console.WriteLine("Security");
             usr.ChooseUsers.Click();
-        }
+            Console.WriteLine("Users");
 
-        [TestCaseSource("UserData"), Order(4)]
-        public void NewUserCreate(dynamic data)
-        {
             browserOps.implicitWait(200);
             string url = driver.Url;
             nu.CreateUserButton.Click();
             browserOps.implicitWait(200);
-            if (url == driver.Url)
-            {
-                islimitexceed = true;
-            }
-            else if (url != driver.Url)
+            if (url != driver.Url)
             {
                 string emailid_style = nu.EmailId.GetAttribute("style");
                 string passwordstyle = nu.Password.GetAttribute("style");
@@ -96,21 +87,21 @@ namespace UITests.TestCases.User.Security
                 password = data.password;
                 nu.ConfirmPassword.SendKeys(data.confirmpassword);
 
-                r.AddRoleTab.Click();
+                nu.AddRoleTab.Click();
                 browserOps.implicitWait(200);
-                r.AddRoleButton.Click();
+                nu.AddRoleButton.Click();
                 browserOps.implicitWait(200);
-                r.SolutionOwner.Click();
-                r.SolutionAdmin.Click();
-                r.RolesOkButton.Click();
+                nu.SolutionOwner.Click();
+                nu.SolutionAdmin.Click();
+                nu.RolesOkButton.Click();
                 browserOps.implicitWait(200);
 
-                g.AddGroupTab.Click();
+                nu.AddGroupTab.Click();
                 browserOps.implicitWait(200);
-                g.AddGroupButton.Click();
+                nu.AddGroupButton.Click();
                 browserOps.implicitWait(200);
-                g.TestUserGroup.Click();
-                g.ChooseGroupOkButton.Click();
+                nu.TestUserGroup.Click();
+                nu.ChooseGroupOkButton.Click();
                 browserOps.implicitWait(200);
 
                 //if (emailid_style == nu.EmailId.GetAttribute("style") && passwordstyle == nu.Password.GetAttribute("style") && confrimpasswordstyle == nu.ConfirmPassword.GetAttribute("style"))
@@ -120,14 +111,7 @@ namespace UITests.TestCases.User.Security
                 nu.SaveOkButton.Click();
                 Console.WriteLine("New User Created");
                 //}
-            }
-        }
 
-        [Test, Order(5)]
-        public void UserLogoutandLogin()
-        {
-            if (!islimitexceed)
-            {
                 browserOps.implicitWait(200);
                 lo.ProfileImageDropDown.Click();
                 browserOps.implicitWait(200);
@@ -142,6 +126,36 @@ namespace UITests.TestCases.User.Security
             }
         }
 
+        [TestCaseSource("UserData")]
+        public void EditUserData(dynamic data)
+        {
+            UserLogin();
+            browserOps.implicitWait(200);
+            //usr.MenuButton.Click();
+            usr.ChooseSecurity.Click();
+            Console.WriteLine("Security");
+            usr.ChooseUsers.Click();
+            Console.WriteLine("Users");
+
+            browserOps.implicitWait(200);
+            nu.VieworEditIcon.Click();
+            browserOps.implicitWait(200);
+            nu.FullName.SendKeys(data.fullname);
+            nu.NickName.SendKeys(data.nickname);
+            nu.ResetPasswordButton.Click();
+            browserOps.implicitWait(200);
+            nu.NewPassword.SendKeys(data.password);
+            nu.ConfirmNewPassword.SendKeys(data.password);
+            nu.ResetButton.Click();
+
+            browserOps.implicitWait(200);
+            nu.AddRoleTab.Click();
+            browserOps.implicitWait(200);
+            nu.EditRoleToggle.Click();
+            nu.ViewRole.Click();
+
+        }
+        
         [TearDown]
         public void EndTest()
         {

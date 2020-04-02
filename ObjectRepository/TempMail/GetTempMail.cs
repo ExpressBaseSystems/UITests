@@ -18,7 +18,7 @@ namespace UITests.ObjectRepository.TempMail
         {
             get
             {
-                return this.driver.FindElement(By.Id("email"));
+                return this.driver.FindElement(By.Id("eposta_adres"));
             }
         }
 
@@ -26,7 +26,7 @@ namespace UITests.ObjectRepository.TempMail
         {
             get
             {
-                return this.driver.FindElement(By.XPath("/html/body/div[2]/div[2]/div[1]/div[3]/a[1]"));
+                return this.driver.FindElement(By.ClassName("yoket-link"));
             }
         }
     }

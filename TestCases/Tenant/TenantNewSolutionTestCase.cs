@@ -44,8 +44,8 @@ namespace UITests.TestCases.Tenant
         [Test, Order(2)]
         public void CreateNewSolution()
         {
-            browserOps.implicitWait(200);
-            l.SkipLink.Click();
+            //browserOps.implicitWait(200);
+            //l.SkipLink.Click();
             browserOps.implicitWait(200);
             l.NewSolutionButton.Click();
             browserOps.implicitWait(200);
@@ -61,7 +61,7 @@ namespace UITests.TestCases.Tenant
 
         private static List<EbTestItem> Login()
         {
-            return GetDataFromXML.GetDataFromFile(@"TestCases\Tenant\TenantNewSolutionTestCase.xml.xml");
+            return GetDataFromXML.GetDataFromFile(@"TestCases\Tenant\TenantNewSolutionTestCase.xml");
         }
 
     }
