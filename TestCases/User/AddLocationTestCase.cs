@@ -21,7 +21,7 @@ namespace UITests.TestCases.User
         BrowserOps browserOps = new BrowserOps();
         GetUniqueId id = new GetUniqueId();
         WebDriverWait wait;
-
+        WebElementOps elementOps;
         [SetUp]
         public void Initialize()
         {
@@ -33,6 +33,7 @@ namespace UITests.TestCases.User
                 loc = new Location(driver);                
             }
             wait = browserOps.DriverWait();
+            elementOps = new WebElementOps(driver, wait);
         }
 
         public void UserLogin()
@@ -45,12 +46,11 @@ namespace UITests.TestCases.User
 
         [TestCaseSource("Locations")]
         public void AddLocation(dynamic loc_data)
-        {
-            
+        {            
             UserLogin();          
             
             browserOps.UrlToBe("https://hairocraft.eb-test.cloud/UserDashboard");           
-            browserOps.ExistsXpath("//*[@id='appList']/div/ul/li/ul/li[4]/a");
+            elementOps.ExistsXpath("//*[@id='appList']/div/ul/li/ul/li[4]/a");
 
             loc.LocationLink.Click();
             browserOps.UrlToBe("https://hairocraft.eb-test.cloud/TenantUser/EbLocations");
