@@ -22,7 +22,7 @@ namespace UITests.ObjectRepository.User
             }
         }
 
-        public IWebElement NewLocation
+        public IWebElement BtnNewLoc
         {
             get
             {
@@ -44,13 +44,21 @@ namespace UITests.ObjectRepository.User
             {
                 return this.driver.FindElement(By.Name("shortname"));
             }
-        }     
+        }   
         
-        public IWebElement CreateLocation
+        public IWebElement test
         {
             get
             {
-                return this.driver.FindElement(By.Id("createloc"));
+                return this.driver.FindElement(By.Name("Test"));
+            }
+        }
+        
+        public IWebElement BtnAddLoc
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='createloc']"));
             }
         }       
     }

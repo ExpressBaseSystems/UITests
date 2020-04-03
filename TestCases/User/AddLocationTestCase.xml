@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Location>
   <test name="test1">
-    <longname type ="String"> Test Loc4</longname>
-    <shortname type ="String"> TL4</shortname>
+    <longname type ="String"> Test Loc</longname>
+    <shortname type ="String"> TL</shortname>
+    <tst type ="String"> Test </tst>
   </test>  
 </Location>

@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,6 +13,7 @@ namespace UITests.DataDriven
     public class BrowserOps
     {
         IWebDriver driver;
+        WebDriverWait wait;
         public void Init_Browser()
         {
             driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
@@ -25,7 +27,7 @@ namespace UITests.DataDriven
 
         public void NewTab(string url)
         {
-            String a = "window.open('"+url+"','_blank');";  // replace link with your desired link
+            String a = "window.open('" + url + "','_blank');";  // replace link with your desired link
             ((IJavaScriptExecutor)driver).ExecuteScript(a);
             driver.SwitchTo().Window(driver.WindowHandles.Last());
         }
@@ -41,7 +43,29 @@ namespace UITests.DataDriven
             {
                 return driver;
             }
+        }              
+
+        public WebDriverWait DriverWait()
+        {
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(500));
+            return wait;
         }
+
+        public void UrlToBe(string url)
+        {
+            wait.Until(ExpectedConditions.UrlToBe(url));
+        }
+
+        public void ExistsXpath(string xpath)
+        {
+            wait.Until(ExpectedConditions.ElementExists(By.XPath(xpath)));
+        }
+
+        public void Refresh()
+        {
+            driver.Navigate().Refresh();
+        }
+
         public void implicitWait(int sec)
         {
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
