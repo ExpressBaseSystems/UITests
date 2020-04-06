@@ -27,5 +27,11 @@ namespace UITests.DataDriven
             wait.Until(ExpectedConditions.ElementExists(By.Id(id)));
         }
 
+        public void ChangeStyle(string Id, string attribute, string value)
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript("document.getElementById('"+Id+"').setAttribute('"+attribute+"', '"+value+"')");
+        }
+
     }
 }

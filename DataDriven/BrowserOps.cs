@@ -35,6 +35,7 @@ namespace UITests.DataDriven
             String a = "window.open('" + url + "','_blank');";  // replace link with your desired link
             ((IJavaScriptExecutor)driver).ExecuteScript(a);
             driver.SwitchTo().Window(driver.WindowHandles.Last());
+            driver.Navigate().GoToUrl(url);
         }
 
         public void Close()

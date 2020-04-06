@@ -218,7 +218,7 @@ namespace UITests.ObjectRepository.User.Security.UserCreation
         {
             get
             {
-                return this.driver.FindElement(By.ClassName("dropDownViewClass"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"divSelectedDisplayAdd_Roles\"]/div/div/div[3]/div/ul/li[1]/a"));
             }
         }
 
@@ -226,7 +226,55 @@ namespace UITests.ObjectRepository.User.Security.UserCreation
         {
             get
             {
-                return this.driver.FindElement(By.ClassName("dropDownRemoveClass"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"divSelectedDisplayAdd_Roles\"]/div/div/div[3]/div/ul/li[2]/a"));
+            }
+        }
+
+        public IWebElement RemoveRoleOkButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Name("OK"));
+            }
+        }
+
+        public IWebElement Message
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"eb_messageBox_container\"]/span"));
+            }
+        }
+
+        public IWebElement EditGrupToggle
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"divSelectedDisplayAdd_User_Group\"]/div/div/div[3]/div/i"));
+            }
+        }
+
+        public IWebElement ViewGrup
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"divSelectedDisplayAdd_User_Group\"]/div/div/div[3]/div/ul/li[1]/a"));
+            }
+        }
+
+        public IWebElement RemoveGrup
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"divSelectedDisplayAdd_User_Group\"]/div/div/div[3]/div/ul/li[2]/a"));
+            }
+        }
+
+        public IWebElement RemoveGrupOkButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Name("OK"));
             }
         }
     }
