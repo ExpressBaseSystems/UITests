@@ -71,6 +71,22 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
+        public IWebElement TabSet
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='ulTabOnMngRole']/li[1]/a"));
+            }
+        }
+
+        public IWebElement RolTyp
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='settings']/div[1]/div/div/label[2]"));
+            }
+        }
+
         public IWebElement TabPermsn
         {
             get

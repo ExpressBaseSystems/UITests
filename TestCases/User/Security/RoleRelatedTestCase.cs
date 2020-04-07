@@ -17,7 +17,7 @@ namespace UITests.TestCases.User.Security
     {
         public RoleRelated role;
         public string role_name;
-
+        string anon_role;
         public void UserLogin()
         {
             browserOps.Goto("https://hairocraft.eb-test.cloud/");
@@ -128,10 +128,8 @@ namespace UITests.TestCases.User.Security
 
             role.TabPermsn.Click();
             browserOps.implicitWait(20);
-            role.TVis.Click();
-            browserOps.implicitWait(20);
-            role.TVis3.Click();
-            browserOps.implicitWait(100);
+            role.TVis.Click();           
+            role.TVis3.Click();            
             role.TVis.Click();
 
             elementOps.ExistsXpath("//*[@id='ulTabOnMngRole']/li[3]/a");
@@ -219,6 +217,64 @@ namespace UITests.TestCases.User.Security
                 browserOps.implicitWait(20);
                 browserOps.SwitchTo();              
             }            
+        }
+
+        [TestCaseSource("Roles")]
+        public void Anonymous_Role(dynamic ar)
+        {
+            UserLogin();
+            role = new RoleRelated(driver);
+            browserOps.UrlToBe("https://hairocraft.eb-test.cloud/UserDashboard");
+
+            elementOps.ExistsXpath("//*[@id='appList']/div/ul/li/ul/li[3]");
+            role.SecurityLink.Click();
+            elementOps.ExistsXpath("//*[@id='ebm-security']/div[2]/ul/li[5]/a");
+            role.RoleLink.Click();
+
+            browserOps.UrlToBe("https://hairocraft.eb-test.cloud/Security/CommonList?type=Roles");
+            role.BtnNewRole.Click();
+
+            browserOps.SwitchTo();
+            browserOps.UrlToBe("https://hairocraft.eb-test.cloud/Security/ManageRoles");
+
+            elementOps.ExistsId("txtRoleName");
+            anon_role = ar.anonymsrole + id.GetId;
+            role.RoleName.SendKeys(anon_role);
+            role.RoleDesc.SendKeys(ar.description);
+            role.SlctApp.Click();
+            role.SlctAppOpt.Click();
+            browserOps.implicitWait(5);
+
+            elementOps.ExistsXpath("//*[@id='ulTabOnMngRole']/li[1]/a");
+            role.TabSet.Click();
+            elementOps.ExistsXpath("//*[@id='settings']/div[1]/div/div/label[2]");
+            role.RolTyp.Click();
+
+            role.TabPermsn.Click();
+            elementOps.ExistsId("aWebForm");
+            role.Webfrm.Click();
+            browserOps.implicitWait(5);
+            role.Frm1P1.Click();
+            role.Frm1P2.Click();
+            browserOps.implicitWait(5);
+            role.Webfrm.Click();
+            role.Webfrm.Displayed.Equals(false);
+            browserOps.implicitWait(100);
+            role.TVis.Displayed.Equals(true);
+            role.TVis.Click();
+            role.Tvis1.Click();
+            role.TVis3.Click();
+
+            elementOps.ExistsId("btnSaveAll");
+            role.BtnSave.Click();
+            elementOps.ExistsXpath("//*[@id='eb_dlogBox_container']/div/div[3]/button");
+            role.BtnDlgBoxOk.Click();
+            Console.WriteLine("New Anonymous Role Created....");
+
+            browserOps.SwitchTo();
+            browserOps.UrlToBe("https://hairocraft.eb-test.cloud/Security/CommonList?type=Roles");
+            driver.Navigate().Refresh();
+
         }
 
         private static List<EbTestItem> Roles()
