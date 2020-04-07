@@ -27,6 +27,11 @@ namespace UITests.DataDriven
             wait.Until(ExpectedConditions.ElementExists(By.Id(id)));
         }
 
+        public void ExistsLinkText(string text)
+        {
+            wait.Until(ExpectedConditions.ElementExists(By.LinkText(text)));
+        }
+
         public void ChangeStyle(string Id, string attribute, string value)
         {
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;

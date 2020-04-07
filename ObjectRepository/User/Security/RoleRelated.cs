@@ -13,6 +13,8 @@ namespace UITests.ObjectRepository.User.Security
             this.driver = driver;
         }
 
+        public string role_name { get; set; } = string.Empty;
+
         public IWebElement SecurityLink
         {
             get
@@ -29,7 +31,7 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
-        public IWebElement CreateNewRoleBtn
+        public IWebElement BtnNewRole
         {
             get
             {
@@ -45,7 +47,7 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
-        public IWebElement RoleDescription
+        public IWebElement RoleDesc
         {
             get
             {
@@ -53,7 +55,7 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
-        public IWebElement SelectApp
+        public IWebElement SlctApp
         {
             get
             {
@@ -61,7 +63,7 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
-        public IWebElement SelectAppOption
+        public IWebElement SlctAppOpt
         {
             get
             {
@@ -69,7 +71,7 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
-        public IWebElement Permissions
+        public IWebElement TabPermsn
         {
             get
             {
@@ -77,7 +79,7 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
-        public IWebElement Webform
+        public IWebElement Webfrm
         {
             get
             {
@@ -85,7 +87,7 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
-        public IWebElement WebForm1PNew
+        public IWebElement Frm1P1
         {
             get
             {
@@ -93,7 +95,7 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
-        public IWebElement WebForm1PView
+        public IWebElement Frm1P2
         {
             get
             {
@@ -101,7 +103,7 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
-        public IWebElement WebForm1PEdit
+        public IWebElement Frm1P3
         {
             get
             {
@@ -109,7 +111,7 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
-        public IWebElement WebForm2PNew
+        public IWebElement Frm2P1
         {
             get
             {
@@ -117,7 +119,7 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
-        public IWebElement WebForm2PView
+        public IWebElement Frm2P2
         {
             get
             {
@@ -125,7 +127,7 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
-        public IWebElement TableVisualization
+        public IWebElement TVis
         {
             get
             {
@@ -133,7 +135,7 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
-        public IWebElement TableVisualization1
+        public IWebElement Tvis1
         {
             get
             {
@@ -141,7 +143,7 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
-        public IWebElement TableVisualization2
+        public IWebElement TVis2
         {
             get
             {
@@ -149,7 +151,7 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
-        public IWebElement Users
+        public IWebElement TabUsrs
         {
             get
             {
@@ -157,7 +159,7 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
-        public IWebElement AddUsers
+        public IWebElement BtnAddUser
         {
             get
             {
@@ -165,7 +167,7 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
-        public IWebElement SearchAddUsers
+        public IWebElement SrchUser
         {
             get
             {
@@ -173,7 +175,7 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
-        public IWebElement SearchResult1
+        public IWebElement Usr1
         {
             get
             {
@@ -181,7 +183,7 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
-        public IWebElement SearchResult2
+        public IWebElement Usr2
         {
             get
             {
@@ -189,7 +191,7 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
-        public IWebElement SearchResult3
+        public IWebElement Usr3
         {
             get
             {
@@ -197,7 +199,7 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
-        public IWebElement OkBtnAddUsers
+        public IWebElement BtnOkAdd_Usrs
         {
             get
             {
@@ -213,7 +215,7 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
-        public IWebElement DlogBoxOk
+        public IWebElement BtnDlgBoxOk
         {
             get
             {
@@ -221,7 +223,7 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
-        public IWebElement SearchRolesList
+        public IWebElement SrchRole
         {
             get
             {
@@ -229,15 +231,15 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
-        public IWebElement SelectRole
+        public IWebElement SlctRole
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='tblCommonList']/tbody/tr[24]/td[2]/div"));
+                return this.driver.FindElement(By.XPath("//*[@id='tblCommonList']/tbody/tr/td[2]/div"));
             }
         }
 
-        public IWebElement TableVisualization3
+        public IWebElement TVis3
         {
             get
             {
