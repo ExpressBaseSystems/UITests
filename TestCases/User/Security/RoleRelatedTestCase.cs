@@ -71,6 +71,21 @@ namespace UITests.TestCases.User.Security
             role.Tvis1.Click();
             role.TVis2.Click();
 
+            elementOps.ExistsXpath("//*[@id='ulTabOnMngRole']/li[3]/a");
+            role.TabSubRols.Click();
+            elementOps.ExistsId("btnAddModalAdd_Roles");
+            role.BtnAddRols.Click();
+            elementOps.ExistsId("txtSearchAdd_Roles");
+            role.SrchRols.SendKeys("Test Role");
+            browserOps.implicitWait(50);
+            browserOps.SwitchTo();
+            elementOps.ExistsXpath("//*[@id='divSearchResultsAdd_Roles']/div[2]/div[1]/input");
+            role.Rol1.Click();
+            elementOps.ExistsXpath("//*[@id='divSearchResultsAdd_Roles']/div[4]/div[1]/input");
+            role.Rol2.Click();
+            elementOps.ExistsId("btnModalOkAdd_Roles");
+            role.BtnbOkAdd_Rols.Click();
+
             elementOps.ExistsXpath("//*[@id='ulTabOnMngRole']/li[4]");
             role.TabUsrs.Click();
             elementOps.ExistsId("btnAddModalAdd_Users");
@@ -84,7 +99,6 @@ namespace UITests.TestCases.User.Security
             role.Usr1.Click();
             elementOps.ExistsXpath("//*[@id='divSearchResultsAdd_Users']/div[4]/div[1]/input");
             role.Usr2.Click();
-
             elementOps.ExistsId("btnModalOkAdd_Users");
             role.BtnOkAdd_Usrs.Click();
 
@@ -120,6 +134,21 @@ namespace UITests.TestCases.User.Security
             browserOps.implicitWait(100);
             role.TVis.Click();
 
+            elementOps.ExistsXpath("//*[@id='ulTabOnMngRole']/li[3]/a");
+            role.TabSubRols.Click();
+            elementOps.ExistsId("btnAddModalAdd_Roles");
+            role.BtnAddRols.Click();
+            elementOps.ExistsId("txtSearchAdd_Roles");
+            role.SrchRols.SendKeys("Test Role");
+            browserOps.implicitWait(50);
+            browserOps.SwitchTo();
+            elementOps.ExistsXpath("//*[@id='divSearchResultsAdd_Roles']/div[2]/div[1]/input");
+            role.Rol1.Click();
+            elementOps.ExistsXpath("//*[@id='divSearchResultsAdd_Roles']/div[32]/div[1]/input");
+            role.Rol3.Click();
+            elementOps.ExistsId("btnModalOkAdd_Roles");
+            role.BtnbOkAdd_Rols.Click();
+
             elementOps.ExistsXpath("//*[@id='ulTabOnMngRole']/li[4]");
             role.TabUsrs.Click();
             elementOps.ExistsId("btnAddModalAdd_Users");
@@ -129,14 +158,13 @@ namespace UITests.TestCases.User.Security
             role.SrchUser.SendKeys("Jos");
             browserOps.implicitWait(50);
             browserOps.SwitchTo();
-
             elementOps.ExistsXpath("//*[@id='divSearchResultsAdd_Users']/div[3]/div[1]/input");
             role.Usr1.Click();
             elementOps.ExistsXpath("//*[@id='divSearchResultsAdd_Users']/div[1]/div[1]/input");
             role.Usr3.Click();
-
             elementOps.ExistsId("btnModalOkAdd_Users");
             role.BtnOkAdd_Usrs.Click();
+
             elementOps.ExistsId("btnSaveAll");
             role.BtnSave.Click();
             elementOps.ExistsXpath("//*[@id='eb_dlogBox_container']/div/div[3]/button");
@@ -161,7 +189,7 @@ namespace UITests.TestCases.User.Security
             browserOps.UrlToBe("https://hairocraft.eb-test.cloud/Security/ManageRoles");
 
             elementOps.ExistsId("txtRoleName");
-            //role_name = "test Role";
+           
             role.RoleName.SendKeys(role_name);
             role.RoleDesc.SendKeys(r.description);
 

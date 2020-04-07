@@ -159,6 +159,62 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
+        public IWebElement TabSubRols
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='ulTabOnMngRole']/li[3]/a"));
+            }
+        }
+
+        public IWebElement BtnAddRols
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("btnAddModalAdd_Roles"));
+            }
+        }
+
+        public IWebElement SrchRols
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("txtSearchAdd_Roles"));
+            }
+        }
+
+        public IWebElement Rol1
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='divSearchResultsAdd_Roles']/div[2]/div[1]/input"));
+            }
+        }
+
+        public IWebElement Rol2
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='divSearchResultsAdd_Roles']/div[4]/div[1]/input"));
+            }
+        }
+
+        public IWebElement Rol3
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='divSearchResultsAdd_Roles']/div[32]/div[1]/input"));
+            }
+        }
+
+        public IWebElement BtnbOkAdd_Rols
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("btnModalOkAdd_Roles"));
+            }
+        }
+
         public IWebElement BtnAddUser
         {
             get
