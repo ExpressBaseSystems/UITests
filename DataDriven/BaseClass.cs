@@ -29,15 +29,7 @@ namespace UITests.DataDriven
             }
             wait = browserOps.DriverWait();
             elementOps = new WebElementOps(driver, wait);
-        }
-
-        public void UserLogin()
-        {
-            browserOps.Goto("https://hairocraft.eb-test.cloud/");
-            ul.UserName.SendKeys("josevin@expressbase.com");
-            ul.Password.SendKeys("Qwerty@1");
-            ul.LoginButton.Click();
-        }
+        }        
 
         [TearDown]
         public void EndTest()

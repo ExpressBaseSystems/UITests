@@ -18,6 +18,14 @@ namespace UITests.TestCases.User.Security
         public RoleRelated role;
         public string role_name;
 
+        public void UserLogin()
+        {
+            browserOps.Goto("https://hairocraft.eb-test.cloud/");
+            ul.UserName.SendKeys("josevin@expressbase.com");
+            ul.Password.SendKeys("Qwerty@1");
+            ul.LoginButton.Click();
+        }
+
         [TestCaseSource("Roles"), Order(1)]
         public void CreateNewRole(dynamic r)
         {
@@ -138,6 +146,49 @@ namespace UITests.TestCases.User.Security
             browserOps.SwitchTo();
             driver.FindElement(By.Id("txtSrchCmnList")).Clear();
             driver.Navigate().Refresh();
+        }
+
+        [TestCaseSource("Roles"), Order(3)]
+        public void UniqNameCheck(dynamic r)
+        {
+            
+            role = new RoleRelated(driver);            
+
+            browserOps.UrlToBe("https://hairocraft.eb-test.cloud/Security/CommonList?type=Roles");
+            role.BtnNewRole.Click();
+
+            browserOps.SwitchTo();
+            browserOps.UrlToBe("https://hairocraft.eb-test.cloud/Security/ManageRoles");
+
+            elementOps.ExistsId("txtRoleName");
+            //role_name = "test Role";
+            role.RoleName.SendKeys(role_name);
+            role.RoleDesc.SendKeys(r.description);
+
+            string currentmsgblk = string.Empty;           
+            
+            elementOps.ExistsId("btnSaveAll");
+            role.BtnSave.Click();
+            
+            if (role.MsgBox.Displayed)
+            {
+                currentmsgblk = role.MsgBox.GetAttribute("style");
+            }
+            string msgblk = "display: block";
+
+            if (currentmsgblk.Contains(msgblk))
+            {
+                Console.WriteLine("Role Name is Already Exists ");
+               // driver.FindElement(By.XPath("//*[@id='close-msg']"));
+            }
+            else
+            {
+                Console.WriteLine("New Role Created With the Same Name....");
+            }
+            //elementOps.ExistsXpath("//*[@id='notificaionandprofile']/div[1]");
+            //driver.FindElement(By.XPath("//*[@id='notificaionandprofile']/div[1]")).Click();
+            //elementOps.ExistsXpath("//*[@id='notificaionandprofile']/div[1]/div/ul/li[4]/a");
+            //driver.FindElement(By.XPath("//*[@id='notificaionandprofile']/div[1]/div/ul/li[4]/a")).Click();
         }
 
         private static List<EbTestItem> Roles()
