@@ -178,17 +178,19 @@ namespace UITests.TestCases.User.Security
 
             if (currentmsgblk.Contains(msgblk))
             {
-                Console.WriteLine("Role Name is Already Exists ");
-               // driver.FindElement(By.XPath("//*[@id='close-msg']"));
+                Console.WriteLine("Role Name is Already Exists ");                
+                browserOps.Goto("https://hairocraft.eb-test.cloud/Security/CommonList?type=Roles");
             }
             else
             {
                 Console.WriteLine("New Role Created With the Same Name....");
-            }
-            //elementOps.ExistsXpath("//*[@id='notificaionandprofile']/div[1]");
-            //driver.FindElement(By.XPath("//*[@id='notificaionandprofile']/div[1]")).Click();
-            //elementOps.ExistsXpath("//*[@id='notificaionandprofile']/div[1]/div/ul/li[4]/a");
-            //driver.FindElement(By.XPath("//*[@id='notificaionandprofile']/div[1]/div/ul/li[4]/a")).Click();
+
+                elementOps.ExistsXpath("//*[@id='eb_dlogBox_container']/div/div[3]/button");
+                role.BtnDlgBoxOk.Click();
+            
+                browserOps.implicitWait(20);
+                browserOps.SwitchTo();              
+            }            
         }
 
         private static List<EbTestItem> Roles()
