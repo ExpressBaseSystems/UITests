@@ -57,9 +57,9 @@ namespace UITests.TestCases.User.Security
         public void UserLogin()
         {
             browserOps.implicitWait(50);
-            browserOps.Goto("https://ebdbfpdd7vsmq220200403120032.eb-test.cloud/");
+            browserOps.Goto("https://ebdbsmwonmu3ky20200326103301.eb-test.cloud/");
             browserOps.implicitWait(50);
-            ul.UserName.SendKeys("cagagic946@gotkmail.com");
+            ul.UserName.SendKeys("venel38383@wwrmails.com");
             ul.Password.SendKeys("@Qwerty123");
             ul.LoginButton.Click();
             Console.WriteLine("Login Success");
@@ -210,6 +210,53 @@ namespace UITests.TestCases.User.Security
             nu.SaveOkButton.Click();
             Console.WriteLine("User Edit Success");
 
+        }
+
+        [Test]
+        public void DeleteUser()
+        {
+            UserLogin();
+            browserOps.implicitWait(50);
+            //usr.MenuButton.Click();
+            usr.ChooseSecurity.Click();
+            Console.WriteLine("Security");
+            usr.ChooseUsers.Click();
+            Console.WriteLine("Users");
+
+            browserOps.implicitWait(50);
+            nu.VieworEditIcon.Click();
+            Console.WriteLine("View / Edit Clicked");
+            browserOps.implicitWait(50);
+            driver.SwitchTo().Window(driver.WindowHandles.Last());
+            nu.DeleteUserButton.Click();
+            Console.WriteLine("Delete Button Clicked");
+            browserOps.implicitWait(50);
+            nu.DeleteUserYesButton.Click();
+            Console.WriteLine("Delete Yes Button Clicked");
+            nu.DeleteUserOkButton.Click();
+            Console.WriteLine("Delete Ok Button Clicked");
+            driver.SwitchTo().Window(driver.WindowHandles.Last());
+            browserOps.Refresh();
+        }
+
+        [Test]
+        public void LoginActivity()
+        {
+            UserLogin();
+            browserOps.implicitWait(50);
+            //usr.MenuButton.Click();
+            usr.ChooseSecurity.Click();
+            Console.WriteLine("Security");
+            usr.ChooseUsers.Click();
+            Console.WriteLine("Users");
+
+            browserOps.implicitWait(50);
+            nu.VieworEditIcon.Click();
+            Console.WriteLine("View / Edit Clicked");
+            browserOps.implicitWait(50);
+            driver.SwitchTo().Window(driver.WindowHandles.Last());
+            nu.LoginActivityTab.Click();
+            Console.WriteLine("Login Activity Clicked");
         }
 
         private bool IsElementPresent()

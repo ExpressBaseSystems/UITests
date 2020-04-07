@@ -27,6 +27,16 @@ namespace UITests.DataDriven
             wait.Until(ExpectedConditions.ElementExists(By.Id(id)));
         }
 
+        public void ExistsClass(string classname)
+        {
+            wait.Until(ExpectedConditions.ElementExists(By.ClassName(classname)));
+        }
+
+        public void ExistsName(string name)
+        {
+            wait.Until(ExpectedConditions.ElementExists(By.ClassName(name)));
+        }
+
         public void ChangeStyle(string Id, string attribute, string value)
         {
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
