@@ -27,6 +27,11 @@ namespace UITests.DataDriven
             wait.Until(ExpectedConditions.ElementExists(By.Id(id)));
         }
 
+        public void ExistsLinkText(string text)
+        {
+            wait.Until(ExpectedConditions.ElementExists(By.LinkText(text)));
+        }
+
         public void ExistsClass(string classname)
         {
             wait.Until(ExpectedConditions.ElementExists(By.ClassName(classname)));
