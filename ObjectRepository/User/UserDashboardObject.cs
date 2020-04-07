@@ -26,7 +26,30 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='UserDashBoardSwitchList']/div[1]/button"));
+                return this.driver.FindElement(By.XPath("//*[@id='UserDashBoardSwitchList']/div[5]/button"));
+            }
+        }
+        
+        public IWebElement TableCoumnSort
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tb1tile1_wrapper']/div[3]/div[1]/div/table/thead/tr/th[3]"));
+            }
+        }
+        
+        public IWebElement TableTree
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tb1tile1']/tbody/tr[1]/td[2]/i"));
+            }
+        }
+        public IWebElement TableLink
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tb1tile1']/tbody/tr[2]/td[10]"));
             }
         }
     }

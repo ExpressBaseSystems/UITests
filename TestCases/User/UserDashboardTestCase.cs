@@ -41,7 +41,14 @@ namespace UITests.TestCases.User
         {
             browserOps.implicitWait(300);
             udb.SwitchDB.Click();
+            browserOps.implicitWait(100);
             udb.SelectFirstDB.Click();
+            browserOps.implicitWait(100);
+            udb.TableCoumnSort.Click();
+            browserOps.implicitWait(100);
+            udb.TableTree.Click();
+            browserOps.implicitWait(100);
+            udb.TableLink.Click();
         }
     }
 }
