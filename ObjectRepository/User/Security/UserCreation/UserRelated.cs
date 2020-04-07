@@ -277,5 +277,42 @@ namespace UITests.ObjectRepository.User.Security.UserCreation
                 return this.driver.FindElement(By.Name("OK"));
             }
         }
+
+        //------ Delete User
+
+        public IWebElement DeleteUserButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("btnDeleteUser"));
+            }
+        }
+
+        public IWebElement DeleteUserYesButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Name("Yes"));
+            }
+        }
+
+        public IWebElement DeleteUserOkButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Name("Ok"));
+            }
+        }
+
+        //-------- Login Activity
+
+        public IWebElement LoginActivityTab
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"layout_div\"]/div[2]/div/div/div/div[2]/div/ul/li[8]/a"));
+            }
+        }
+
     }
 }
