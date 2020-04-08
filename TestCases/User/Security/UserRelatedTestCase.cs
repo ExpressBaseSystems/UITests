@@ -369,12 +369,7 @@ namespace UITests.TestCases.User.Security
                 return false;
             }
         }
-
-        [TearDown]
-        public void EndTest()
-        {
-            //driver.Close();
-        }
+        
 
         private static List<EbTestItem> UserData()
         {

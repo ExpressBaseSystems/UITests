@@ -12,53 +12,35 @@ using UITests.ObjectRepository.Tenant;
 namespace UITests.TestCases.Tenant
 {
     [TestFixture]
-    public class TenantNewSolutionTestCase 
+    public class TenantNewSolutionTestCase : BaseClass
     {
-        private IWebDriver driver;
         TenantLogin tl;
         TenantNewSolution l;
-        BrowserOps browserOps = new BrowserOps();
-
-        [SetUp]
-        public void Initialize()
-        {
-            if(driver == null)
-            {
-                browserOps.Init_Browser();
-                driver = browserOps.getDriver;
-                tl = new TenantLogin(driver);
-                l = new TenantNewSolution(driver);
-            }
-        }
-
+        
         [TestCaseSource("Login"), Order(1)]
         public void TenantLogin(dynamic data)
         {
+            tl = new TenantLogin(driver);
             browserOps.Goto("https://myaccount.eb-test.cloud/");
             tl.UserName.SendKeys(data.username);
             tl.Password.SendKeys(data.password);
             tl.LoginButton.Click();
-            browserOps.implicitWait(200);
+            browserOps.implicitWait(50);
         }
 
         [Test, Order(2)]
         public void CreateNewSolution()
         {
+            l = new TenantNewSolution(driver);
             //browserOps.implicitWait(200);
             //l.SkipLink.Click();
-            browserOps.implicitWait(200);
+            browserOps.implicitWait(50);
             l.NewSolutionButton.Click();
-            browserOps.implicitWait(200);
+            browserOps.implicitWait(50);
             l.MessagePopUpClose.Click();
             Console.Write("New Solution Created");
         }
-
-        [TearDown]
-        public void EndTest()
-        {
-            //driver.Close();
-        }
-
+        
         private static List<EbTestItem> Login()
         {
             return GetDataFromXML.GetDataFromFile(@"TestCases\Tenant\TenantNewSolutionTestCase.xml");
