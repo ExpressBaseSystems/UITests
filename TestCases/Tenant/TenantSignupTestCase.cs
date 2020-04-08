@@ -8,28 +8,20 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using UITests.DataDriven;
+using UITests.ObjectRepository.Tenant;
 
 namespace UITests.TestCases.Tenant
 {
     [TestFixture]
-    public class TenantSignupTestCase
+    public class TenantSignupTestCase : BaseClass
     {
-        private IWebDriver driver;
-        ObjectRepository.Tenant.TenantSignUp l;
+        TenantSignUp l;
         string url = "https://myaccount.eb-test.cloud/";
-        BrowserOps browserOps = new BrowserOps();
-
-        [SetUp]
-        public void Initialize()
-        {
-            browserOps.Init_Browser();
-            driver = browserOps.getDriver;
-            l = new ObjectRepository.Tenant.TenantSignUp(driver);
-        }
-
+        
         [TestCaseSource("SignUpTestData")]
         public void ExecuteTest(dynamic testdatas)
         {
+            l = new TenantSignUp(driver);
             browserOps.Goto(url);
             l.SignUpButton.Click();
             browserOps.implicitWait(5);
@@ -65,13 +57,7 @@ namespace UITests.TestCases.Tenant
                     Console.WriteLine("SignUp Success");
             }
         }
-
-        [TearDown]
-        public void EndTest()
-        {
-            //driver.Close();
-        }
-
+        
         private static List<EbTestItem> SignUpTestData()
         {
             return GetDataFromXML.GetDataFromFile(@"TestCases\Tenant\TenantSignupTestCase.xml");

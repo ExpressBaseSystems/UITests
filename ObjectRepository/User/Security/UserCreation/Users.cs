@@ -37,5 +37,13 @@ namespace UITests.ObjectRepository.User.Security.UserCreation
                 return this.driver.FindElement(By.XPath("//*[@id=\"ebm-security\"]/div[2]/ul/li[1]/a"));
             }
         }
+
+        public IWebElement ChooseLoginActivity
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"ebm-security\"]/div[2]/ul/li[6]/a"));
+            }
+        }
     }
 }

@@ -48,7 +48,7 @@
     <None Update="TestCases\User\UserLoginTestCase.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\User\Security\AddNewUserTestCase.xml">
+    <None Update="TestCases\User\Security\UserRelatedTestCase.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

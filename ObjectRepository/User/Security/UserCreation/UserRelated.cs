@@ -314,5 +314,34 @@ namespace UITests.ObjectRepository.User.Security.UserCreation
             }
         }
 
+        //---Suspend User
+
+        public IWebElement SuspendUser
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"divStatus\"]/div[1]/label[3]/input"));
+            }
+        }
+
+        //---Terminate User
+
+        public IWebElement TerminateUser
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"divStatus\"]/div[1]/label[4]/input"));
+            }
+        }
+
+        //---Activate User
+
+        public IWebElement ActivateUser
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"divStatus\"]/div[1]/label[2]/input"));
+            }
+        }
     }
 }

@@ -13,71 +13,53 @@ using UITests.ObjectRepository.User.Security.UserCreation;
 namespace UITests.TestCases.User.Security
 {
     [TestFixture]
-    public class AddNewUserTestCase
+    public class UserRelatedTestCase : BaseClass
     {
-        IWebDriver driver;
         GetTempMail tm;
-        UserLogin ul;
+        UserLogin uln;
         Users usr;
         UserRelated nu;
         UserLogOut lo;
-        BrowserOps browserOps = new BrowserOps();
-        WebDriverWait wait;
-        WebElementOps elementOps;
         string username = null;
         string password = null;
-
-        [SetUp]
-        public void Initialize()
-        {
-            if (driver == null)
-            {
-                browserOps.Init_Browser();
-                driver = browserOps.getDriver;
-                tm = new GetTempMail(driver);
-                ul = new UserLogin(driver);
-                usr = new Users(driver);
-                nu = new UserRelated(driver);
-                lo = new UserLogOut(driver);
-            }
-            wait = browserOps.DriverWait();
-            elementOps = new WebElementOps(driver, wait);
-        }
         
         public void GetTempMailId()
         {
+            tm = new GetTempMail(driver);
             browserOps.Goto("https://tempail.com/en/");
             browserOps.implicitWait(50);
             tm.DeleteId.Click();
             username = tm.GetEmailId.GetAttribute("value");
-            Console.WriteLine("EmailId : "+username);
+            Console.WriteLine("EmailId : " + username);
             browserOps.implicitWait(50);
         }
-        
+
         public void UserLogin()
         {
-            browserOps.implicitWait(50);
+            uln = new UserLogin(driver);
             browserOps.Goto("https://ebdbsmwonmu3ky20200326103301.eb-test.cloud/");
-            browserOps.implicitWait(50);
-            ul.UserName.SendKeys("venel38383@wwrmails.com");
-            ul.Password.SendKeys("@Qwerty123");
-            ul.LoginButton.Click();
+            uln.UserName.SendKeys("venel38383@wwrmails.com");
+            uln.Password.SendKeys("@Qwerty123");
+            uln.LoginButton.Click();
             Console.WriteLine("Login Success");
         }
-        
+
         [TestCaseSource("UserData")]
         public void NewUserCreate(dynamic data)
         {
+            usr = new Users(driver);
+            nu = new UserRelated(driver);
+            lo = new UserLogOut(driver);
             GetTempMailId();
             UserLogin();
-            browserOps.implicitWait(50);
             //usr.MenuButton.Click();
+            elementOps.ExistsXpath("//*[@id=\"appList\"]/div/ul/li/ul/li[3]/a");
             usr.ChooseSecurity.Click();
             Console.WriteLine("Security");
             usr.ChooseUsers.Click();
             Console.WriteLine("Users");
 
-            browserOps.implicitWait(50);
+            elementOps.ExistsId("btnNewCmnList");
             string url = driver.Url;
             nu.CreateUserButton.Click();
             browserOps.implicitWait(200);
@@ -129,16 +111,18 @@ namespace UITests.TestCases.User.Security
                 browserOps.implicitWait(50);
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
 
-                browserOps.Goto("https://ebdbfpdd7vsmq220200403120032.eb-test.cloud/");
-                ul.UserName.SendKeys(username);
-                ul.Password.SendKeys(password);
-                ul.LoginButton.Click();
+                browserOps.Goto("https://ebdbsmwonmu3ky20200326103301.eb-test.cloud/");
+                uln.UserName.SendKeys(username);
+                uln.Password.SendKeys(password);
+                uln.LoginButton.Click();
             }
         }
 
         [TestCaseSource("UserData")]
         public void EditUserData(dynamic data)
         {
+            usr = new Users(driver);
+            nu = new UserRelated(driver);
             UserLogin();
             browserOps.implicitWait(50);
             //usr.MenuButton.Click();
@@ -148,10 +132,9 @@ namespace UITests.TestCases.User.Security
             Console.WriteLine("Users");
 
             browserOps.implicitWait(50);
+
             nu.VieworEditIcon.Click();
             browserOps.implicitWait(50);
-            //nu.FullName.SendKeys(data.fullname);
-            //nu.NickName.SendKeys(data.nickname);
             driver.SwitchTo().Window(driver.WindowHandles.Last());
             nu.ResetPasswordButton.Click();
             browserOps.implicitWait(50);
@@ -215,6 +198,8 @@ namespace UITests.TestCases.User.Security
         [Test]
         public void DeleteUser()
         {
+            usr = new Users(driver);
+            nu = new UserRelated(driver);
             UserLogin();
             browserOps.implicitWait(50);
             //usr.MenuButton.Click();
@@ -242,6 +227,8 @@ namespace UITests.TestCases.User.Security
         [Test]
         public void LoginActivity()
         {
+            usr = new Users(driver);
+            nu = new UserRelated(driver);
             UserLogin();
             browserOps.implicitWait(50);
             //usr.MenuButton.Click();
@@ -259,8 +246,119 @@ namespace UITests.TestCases.User.Security
             Console.WriteLine("Login Activity Clicked");
         }
 
+        [Test]
+        public void SuspendUser()
+        {
+            usr = new Users(driver);
+            nu = new UserRelated(driver);
+            lo = new UserLogOut(driver);
+            UserLogin();
+            browserOps.implicitWait(50);
+            //usr.MenuButton.Click();
+            usr.ChooseSecurity.Click();
+            Console.WriteLine("Security");
+            usr.ChooseUsers.Click();
+            Console.WriteLine("Users");
+
+            browserOps.implicitWait(50);
+            nu.VieworEditIcon.Click();
+            Console.WriteLine("View / Edit Clicked");
+            browserOps.implicitWait(50);
+            driver.SwitchTo().Window(driver.WindowHandles.Last());
+            string emailid = nu.EmailId.GetAttribute("value");
+            Console.WriteLine(emailid);
+            nu.SuspendUser.Click();
+            Console.WriteLine("Suspended User Clicked");
+            nu.SaveButton.Click();
+            browserOps.implicitWait(50);
+            nu.SaveOkButton.Click();
+            Console.WriteLine("User Save Success");
+
+            driver.SwitchTo().Window(driver.WindowHandles.Last());
+            lo.ProfileImageDropDown.Click();
+            browserOps.implicitWait(50);
+            lo.LogoutButton.Click();
+            browserOps.implicitWait(50);
+            driver.SwitchTo().Window(driver.WindowHandles.Last());
+
+            browserOps.Goto("https://ebdbsmwonmu3ky20200326103301.eb-test.cloud/");
+            string url = driver.Url;
+            uln.UserName.SendKeys(emailid);
+            uln.Password.SendKeys("@Qwerty123");
+            uln.LoginButton.Click();
+            driver.SwitchTo().Window(driver.WindowHandles.Last());
+            if (IsElementPresent())
+                Console.WriteLine(nu.Message.GetAttribute("innerHTML"));
+
+            UserLogin();
+            browserOps.implicitWait(50);
+            //usr.MenuButton.Click();
+            usr.ChooseSecurity.Click();
+            Console.WriteLine("Security");
+            usr.ChooseUsers.Click();
+            Console.WriteLine("Users");
+
+            browserOps.implicitWait(50);
+            nu.VieworEditIcon.Click();
+            Console.WriteLine("View / Edit Clicked");
+            browserOps.implicitWait(50);
+            driver.SwitchTo().Window(driver.WindowHandles.Last());
+            nu.ActivateUser.Click();
+            Console.WriteLine("Activate User Clicked");
+            nu.SaveButton.Click();
+            browserOps.implicitWait(50);
+            nu.SaveOkButton.Click();
+            Console.WriteLine("User Save Success");
+            browserOps.Refresh();
+        }
+
+        [Test]
+        public void TerminateUser()
+        {
+            usr = new Users(driver);
+            nu = new UserRelated(driver);
+            lo = new UserLogOut(driver);
+            UserLogin();
+            browserOps.implicitWait(50);
+            //usr.MenuButton.Click();
+            usr.ChooseSecurity.Click();
+            Console.WriteLine("Security");
+            usr.ChooseUsers.Click();
+            Console.WriteLine("Users");
+
+            browserOps.implicitWait(50);
+            nu.VieworEditIcon.Click();
+            Console.WriteLine("View / Edit Clicked");
+            browserOps.implicitWait(50);
+            driver.SwitchTo().Window(driver.WindowHandles.Last());
+            string emailid = nu.EmailId.GetAttribute("value");
+            Console.WriteLine(emailid);
+            nu.TerminateUser.Click();
+            Console.WriteLine("Terminate User Clicked");
+            nu.SaveButton.Click();
+            browserOps.implicitWait(50);
+            nu.SaveOkButton.Click();
+            Console.WriteLine("User Save Success");
+
+            driver.SwitchTo().Window(driver.WindowHandles.Last());
+            lo.ProfileImageDropDown.Click();
+            browserOps.implicitWait(50);
+            lo.LogoutButton.Click();
+            driver.SwitchTo().Window(driver.WindowHandles.Last());
+
+            browserOps.Goto("https://ebdbsmwonmu3ky20200326103301.eb-test.cloud/");
+            string url = driver.Url;
+            uln.UserName.SendKeys(emailid);
+            uln.Password.SendKeys("@Qwerty123");
+            uln.LoginButton.Click();
+            driver.SwitchTo().Window(driver.WindowHandles.Last());
+            if (driver.Url != url)
+                Console.WriteLine("Login Success");
+        }
+
         private bool IsElementPresent()
         {
+            nu = new UserRelated(driver);
             try
             {
                 bool f = nu.Message.Displayed;
@@ -271,16 +369,11 @@ namespace UITests.TestCases.User.Security
                 return false;
             }
         }
-
-        [TearDown]
-        public void EndTest()
-        {
-            //driver.Close();
-        }
+        
 
         private static List<EbTestItem> UserData()
         {
-            return GetDataFromXML.GetDataFromFile(@"TestCases\User\Security\AddNewUserTestCase.xml");
+            return GetDataFromXML.GetDataFromFile(@"TestCases\User\Security\UserRelatedTestCase.xml");
         }
     }
 }
