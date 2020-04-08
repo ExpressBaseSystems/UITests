@@ -128,8 +128,8 @@ namespace UITests.TestCases.User.Security
 
             role.TabPermsn.Click();
             browserOps.implicitWait(20);
-            role.TVis.Click();           
-            role.TVis3.Click();            
+            role.TVis.Click();
+            role.TVis3.Click();
             role.TVis.Click();
 
             elementOps.ExistsXpath("//*[@id='ulTabOnMngRole']/li[3]/a");
@@ -177,8 +177,8 @@ namespace UITests.TestCases.User.Security
         [TestCaseSource("Roles"), Order(3)]
         public void UniqNameCheck(dynamic r)
         {
-            
-            role = new RoleRelated(driver);            
+
+            role = new RoleRelated(driver);
 
             browserOps.UrlToBe("https://hairocraft.eb-test.cloud/Security/CommonList?type=Roles");
             role.BtnNewRole.Click();
@@ -187,15 +187,15 @@ namespace UITests.TestCases.User.Security
             browserOps.UrlToBe("https://hairocraft.eb-test.cloud/Security/ManageRoles");
 
             elementOps.ExistsId("txtRoleName");
-           
+
             role.RoleName.SendKeys(role_name);
             role.RoleDesc.SendKeys(r.description);
 
-            string currentmsgblk = string.Empty;           
-            
+            string currentmsgblk = string.Empty;
+
             elementOps.ExistsId("btnSaveAll");
             role.BtnSave.Click();
-            
+
             if (role.MsgBox.Displayed)
             {
                 currentmsgblk = role.MsgBox.GetAttribute("style");
@@ -204,7 +204,7 @@ namespace UITests.TestCases.User.Security
 
             if (currentmsgblk.Contains(msgblk))
             {
-                Console.WriteLine("Role Name is Already Exists ");                
+                Console.WriteLine("Role Name is Already Exists ");
                 browserOps.Goto("https://hairocraft.eb-test.cloud/Security/CommonList?type=Roles");
             }
             else
@@ -213,23 +213,22 @@ namespace UITests.TestCases.User.Security
 
                 elementOps.ExistsXpath("//*[@id='eb_dlogBox_container']/div/div[3]/button");
                 role.BtnDlgBoxOk.Click();
-            
+
                 browserOps.implicitWait(20);
-                browserOps.SwitchTo();              
-            }            
+                browserOps.SwitchTo();
+                browserOps.UrlToBe("https://hairocraft.eb-test.cloud/Security/CommonList?type=Roles");
+                driver.Navigate().Refresh();
+            }
         }
 
-        [TestCaseSource("Roles")]
+        [TestCaseSource("Roles"), Order(4)]
         public void Anonymous_Role(dynamic ar)
         {
-            UserLogin();
+            browserOps.SwitchTo();
             role = new RoleRelated(driver);
-            browserOps.UrlToBe("https://hairocraft.eb-test.cloud/UserDashboard");
 
-            elementOps.ExistsXpath("//*[@id='appList']/div/ul/li/ul/li[3]");
-            role.SecurityLink.Click();
-            elementOps.ExistsXpath("//*[@id='ebm-security']/div[2]/ul/li[5]/a");
-            role.RoleLink.Click();
+            browserOps.UrlToBe("https://hairocraft.eb-test.cloud/Security/CommonList?type=Roles");
+            driver.Navigate().Refresh();
 
             browserOps.UrlToBe("https://hairocraft.eb-test.cloud/Security/CommonList?type=Roles");
             role.BtnNewRole.Click();
@@ -263,6 +262,7 @@ namespace UITests.TestCases.User.Security
             role.TVis.Displayed.Equals(true);
             role.TVis.Click();
             role.Tvis1.Click();
+            role.TVis2.Click();
             role.TVis3.Click();
 
             elementOps.ExistsId("btnSaveAll");
@@ -274,7 +274,94 @@ namespace UITests.TestCases.User.Security
             browserOps.SwitchTo();
             browserOps.UrlToBe("https://hairocraft.eb-test.cloud/Security/CommonList?type=Roles");
             driver.Navigate().Refresh();
+        }
 
+        //  [TestCaseSource("Roles")]
+        public void Rol_LtdAces(dynamic rl)
+        {
+            UserLogin();
+            role = new RoleRelated(driver);
+            browserOps.UrlToBe("https://hairocraft.eb-test.cloud/UserDashboard");
+
+            elementOps.ExistsXpath("//*[@id='appList']/div/ul/li/ul/li[3]");
+            role.SecurityLink.Click();
+            elementOps.ExistsXpath("//*[@id='ebm-security']/div[2]/ul/li[5]/a");
+            role.RoleLink.Click();
+
+            browserOps.UrlToBe("https://hairocraft.eb-test.cloud/Security/CommonList?type=Roles");
+            role.BtnNewRole.Click();
+
+            browserOps.SwitchTo();
+            browserOps.UrlToBe("https://hairocraft.eb-test.cloud/Security/ManageRoles");
+
+            elementOps.ExistsId("txtRoleName");
+            role_name = rl.rolename + "ltd" + id.GetId;
+            role.RoleName.SendKeys(role_name);
+            role.RoleDesc.SendKeys(rl.description);
+            role.SlctApp.Click();
+            role.SlctAppOpt.Click();
+            browserOps.implicitWait(5);
+
+            elementOps.ExistsXpath("//*[@id='ulTabOnMngRole']/li[1]/a");
+            role.TabSet.Click();
+
+            elementOps.ExistsXpath("//*[@id='settings']/div[2]/div/div/label[2]");
+            role.RolLocs.Click();
+            role.Loc1.Click();
+            role.Loc2.Click();
+            //driver.FindElement(By.Id("divLocation")).Displayed.Equals(false);
+            // driver.FindElement(By.ClassName("locListHead-wraper")).Displayed.Equals(false);
+            role.RolLocs.Displayed.Equals(false);
+
+            elementOps.ExistsXpath("//*[@id='ulTabOnMngRole']/li[2]/a");
+            role.TabPermsn.Click();
+            elementOps.ExistsId("aWebForm");
+            role.Webfrm.Click();
+            browserOps.implicitWait(5);
+            role.Frm1P2.Click();
+            role.Frm2P1.Click();
+            role.Frm2P2.Click();
+            browserOps.implicitWait(5);
+            role.Webfrm.Click();
+            role.Webfrm.Displayed.Equals(false);
+            browserOps.implicitWait(100);
+
+            role.TVis.Displayed.Equals(true);
+            role.TVis.Click();
+            role.TVis2.Click();
+
+            elementOps.ExistsXpath("//*[@id='ulTabOnMngRole']/li[3]/a");
+            role.TabSubRols.Click();
+            elementOps.ExistsId("btnAddModalAdd_Roles");
+            role.BtnAddRols.Click();
+            elementOps.ExistsId("txtSearchAdd_Roles");
+            role.SrchRols.SendKeys("Test Role");
+            browserOps.implicitWait(50);
+            browserOps.SwitchTo();
+            elementOps.ExistsXpath("//*[@id='divSearchResultsAdd_Roles']/div[2]/div[1]/input");
+            role.Rol1.Click();
+            elementOps.ExistsId("btnModalOkAdd_Roles");
+            role.BtnbOkAdd_Rols.Click();
+
+            elementOps.ExistsXpath("//*[@id='ulTabOnMngRole']/li[4]");
+            role.TabUsrs.Click();
+            elementOps.ExistsId("btnAddModalAdd_Users");
+            role.BtnAddUser.Click();
+            elementOps.ExistsId("txtSearchAdd_Users");
+            role.SrchUser.Click();
+            role.SrchUser.SendKeys("Jos");
+            browserOps.implicitWait(50);
+            browserOps.SwitchTo();
+            elementOps.ExistsXpath("//*[@id='divSearchResultsAdd_Users']/div[4]/div[1]/input");
+            role.Usr2.Click();
+            elementOps.ExistsId("btnModalOkAdd_Users");
+            role.BtnOkAdd_Usrs.Click();
+
+            elementOps.ExistsId("btnSaveAll");
+            role.BtnSave.Click();
+            elementOps.ExistsXpath("//*[@id='eb_dlogBox_container']/div/div[3]/button");
+            role.BtnDlgBoxOk.Click();
+            Console.WriteLine("New Role With Limited Access is Created....");
         }
 
         private static List<EbTestItem> Roles()
