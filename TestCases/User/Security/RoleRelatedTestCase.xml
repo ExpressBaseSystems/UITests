@@ -4,6 +4,7 @@
     <rolename type ="String"> Test Role</rolename>
     <description type ="String"> Role Testing</description>
     <editdesc type ="String"> Role Test </editdesc>
-    <anonymsrole type ="String"> Test Anonyms Role</anonymsrole>    
+    <anonymsrole type ="String"> Test Anonyms Role</anonymsrole>
+    <ltdlocrole type ="String"> Test Ltd Role</ltdlocrole>
   </test>  
 </Role>

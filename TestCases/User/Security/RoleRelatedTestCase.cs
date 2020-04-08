@@ -18,6 +18,7 @@ namespace UITests.TestCases.User.Security
         public RoleRelated role;
         public string role_name;
         string anon_role;
+        public string urlrols = "https://hairocraft.eb-test.cloud/Security/CommonList?type=Roles";
         public void UserLogin()
         {
             browserOps.Goto("https://hairocraft.eb-test.cloud/");
@@ -38,7 +39,7 @@ namespace UITests.TestCases.User.Security
             elementOps.ExistsXpath("//*[@id='ebm-security']/div[2]/ul/li[5]/a");
             role.RoleLink.Click();
 
-            browserOps.UrlToBe("https://hairocraft.eb-test.cloud/Security/CommonList?type=Roles");
+            browserOps.UrlToBe(urlrols);
             role.BtnNewRole.Click();
 
             browserOps.SwitchTo();
@@ -115,7 +116,7 @@ namespace UITests.TestCases.User.Security
             browserOps.SwitchTo();
             role = new RoleRelated(driver);
 
-            browserOps.UrlToBe("https://hairocraft.eb-test.cloud/Security/CommonList?type=Roles");
+            browserOps.UrlToBe(urlrols);
             driver.Navigate().Refresh();
 
             elementOps.ExistsId("txtSrchCmnList");
@@ -180,7 +181,7 @@ namespace UITests.TestCases.User.Security
 
             role = new RoleRelated(driver);
 
-            browserOps.UrlToBe("https://hairocraft.eb-test.cloud/Security/CommonList?type=Roles");
+            browserOps.UrlToBe(urlrols);
             role.BtnNewRole.Click();
 
             browserOps.SwitchTo();
@@ -227,10 +228,10 @@ namespace UITests.TestCases.User.Security
             browserOps.SwitchTo();
             role = new RoleRelated(driver);
 
-            browserOps.UrlToBe("https://hairocraft.eb-test.cloud/Security/CommonList?type=Roles");
+            browserOps.UrlToBe(urlrols);
             driver.Navigate().Refresh();
 
-            browserOps.UrlToBe("https://hairocraft.eb-test.cloud/Security/CommonList?type=Roles");
+            browserOps.UrlToBe(urlrols);
             role.BtnNewRole.Click();
 
             browserOps.SwitchTo();
@@ -272,30 +273,27 @@ namespace UITests.TestCases.User.Security
             Console.WriteLine("New Anonymous Role Created....");
 
             browserOps.SwitchTo();
-            browserOps.UrlToBe("https://hairocraft.eb-test.cloud/Security/CommonList?type=Roles");
+            browserOps.UrlToBe(urlrols);
             driver.Navigate().Refresh();
         }
 
-        //  [TestCaseSource("Roles")]
+        [TestCaseSource("Roles"), Order(5)]
         public void Rol_LtdAces(dynamic rl)
         {
-            UserLogin();
+            browserOps.SwitchTo();
             role = new RoleRelated(driver);
-            browserOps.UrlToBe("https://hairocraft.eb-test.cloud/UserDashboard");
 
-            elementOps.ExistsXpath("//*[@id='appList']/div/ul/li/ul/li[3]");
-            role.SecurityLink.Click();
-            elementOps.ExistsXpath("//*[@id='ebm-security']/div[2]/ul/li[5]/a");
-            role.RoleLink.Click();
+            browserOps.UrlToBe(urlrols);
+            driver.Navigate().Refresh();
 
-            browserOps.UrlToBe("https://hairocraft.eb-test.cloud/Security/CommonList?type=Roles");
+            browserOps.UrlToBe(urlrols);
             role.BtnNewRole.Click();
 
             browserOps.SwitchTo();
             browserOps.UrlToBe("https://hairocraft.eb-test.cloud/Security/ManageRoles");
 
             elementOps.ExistsId("txtRoleName");
-            role_name = rl.rolename + "ltd" + id.GetId;
+            role_name = rl.ltdlocrole + id.GetId;
             role.RoleName.SendKeys(role_name);
             role.RoleDesc.SendKeys(rl.description);
             role.SlctApp.Click();
@@ -309,11 +307,11 @@ namespace UITests.TestCases.User.Security
             role.RolLocs.Click();
             role.Loc1.Click();
             role.Loc2.Click();
-            //driver.FindElement(By.Id("divLocation")).Displayed.Equals(false);
-            // driver.FindElement(By.ClassName("locListHead-wraper")).Displayed.Equals(false);
-            role.RolLocs.Displayed.Equals(false);
+            role.Loc3.Click();
 
-            elementOps.ExistsXpath("//*[@id='ulTabOnMngRole']/li[2]/a");
+            actions.MoveToElement(role.TabPermsn).Perform();
+            role.TabPermsn.Click();
+
             role.TabPermsn.Click();
             elementOps.ExistsId("aWebForm");
             role.Webfrm.Click();
@@ -362,6 +360,8 @@ namespace UITests.TestCases.User.Security
             elementOps.ExistsXpath("//*[@id='eb_dlogBox_container']/div/div[3]/button");
             role.BtnDlgBoxOk.Click();
             Console.WriteLine("New Role With Limited Access is Created....");
+            browserOps.UrlToBe(urlrols);
+            browserOps.Refresh();
         }
 
         private static List<EbTestItem> Roles()

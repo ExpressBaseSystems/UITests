@@ -102,11 +102,20 @@ namespace UITests.ObjectRepository.User.Security
                 return this.driver.FindElement(By.XPath("//*[text()='CJB - HOC Coimbatore']"));
             }
         }
+
         public IWebElement Loc2
         {
             get
             {
                 return this.driver.FindElement(By.XPath("//*[text()='COK - HOC Kochi']"));
+            }
+        }
+
+        public IWebElement Loc3
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[text()='TRV - HOC Trivandrum']"));
             }
         }
 
