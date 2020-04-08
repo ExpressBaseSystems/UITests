@@ -26,10 +26,12 @@ namespace UITests.TestCases.User
         public void SelectForm()
         {
             fo = new FormObject(driver);
+            string frmURL = "https://hairocraft.eb-test.cloud/WebForm/Index?refid=hairocraft_stagging-hairocraft_stagging-0-427-531-427-531";
 
-            browserOps.implicitWait(1000);
-            browserOps.Goto("https://hairocraft.eb-test.cloud/WebForm/Index?refid=hairocraft_stagging-hairocraft_stagging-0-427-531-427-531");
-            browserOps.implicitWait(1000);
+            browserOps.UrlToBe("https://hairocraft.eb-test.cloud/UserDashboard");
+            browserOps.Goto(frmURL);
+
+            browserOps.UrlToBe(frmURL);
 
             fo.DatePickerClick.Click();
 
