@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace UITests.DataDriven
         public GetUniqueId id = new GetUniqueId();
         public WebDriverWait wait;
         public WebElementOps elementOps;
+        public Actions actions;
 
         [SetUp]
         public void Initialize()
@@ -26,6 +28,7 @@ namespace UITests.DataDriven
                 browserOps.Init_Browser();
                 driver = browserOps.getDriver;
                 ul = new UserLogin(driver);
+                actions = new Actions(driver);
             }
             wait = browserOps.DriverWait();
             elementOps = new WebElementOps(driver, wait);
