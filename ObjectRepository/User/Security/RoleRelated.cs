@@ -87,6 +87,38 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
+        public IWebElement RolLocs
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='settings']/div[2]/div/div/label[2]"));
+            }
+        }
+
+        public IWebElement Loc1
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[text()='CJB - HOC Coimbatore']"));
+            }
+        }
+
+        public IWebElement Loc2
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[text()='COK - HOC Kochi']"));
+            }
+        }
+
+        public IWebElement Loc3
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[text()='TRV - HOC Trivandrum']"));
+            }
+        }
+
         public IWebElement TabPermsn
         {
             get
