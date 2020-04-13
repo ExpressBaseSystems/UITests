@@ -14,58 +14,109 @@ namespace UITests.ObjectRepository.User
             this.driver = driver;
         }
 
-        public IWebElement DatePickerClick
+        public IWebElement MenuApplication
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='Date1TglBtn']"));
+                return this.driver.FindElement(By.XPath("//*[@id='appList']/div/ul/li/ul/li[6]/a"));
+            }
+        }
+        public IWebElement MenuSelectFormMenu
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("/html/body/div/div[1]/div[2]/div/div[2]/div[2]/div[2]/div[1]"));
+            }
+        }public IWebElement MenuSelectForm
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("/html/body/div/div[1]/div[2]/div/div[2]/div[3]/div[2]/div[1]/a"));
+            }
+        }
+
+        public IWebElement TextBoxLowerCase
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("TextBox1"));
             }
 
         }
 
-        public IWebElement TextBox
+        public IWebElement TextBoxUpperCase
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='TextBox1']"));
+                return this.driver.FindElement(By.Id("TextBox2"));
             }
         }
         
-        public IWebElement SimpleSelect
+        public IWebElement TextBoxPassword
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='PowerSelect1Wraper']/div/button/div/div/div"));
+                return this.driver.FindElement(By.Id("TextBox3"));
             }
         }
-        public IWebElement SimpleSelectItemSelect
+        public IWebElement TextBoxEmail
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='WebForm_jq6bcupe']/div[5]/div/div/ul/li[3]/a"));
+                return this.driver.FindElement(By.Id("TextBox4"));
             }
         }
-        public IWebElement DatePickerCheckBox
+        public IWebElement TextBoxMultiLine
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='WebForm_jq6bcupe']/div[5]/div/div/ul/li[3]/a"));
-            }
-        }
-        
-        public IWebElement PowerSelectClicker
-        {
-            get
-            {
-                return this.driver.FindElement(By.XPath("//*[@id='name']"));
+                return this.driver.FindElement(By.Id("TextBox5"));
             }
         }
         
-        public IWebElement PowerSelectItemSelector
+        public IWebElement TextBoxMaxLength
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='PowerSelect1tbl']/tbody/tr[17]/td[1]/input"));
+                return this.driver.FindElement(By.Id("TextBox6"));
+            }
+        }
+        
+        public IWebElement TextboxAutosuggestion
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("TextBox7"));
+            }
+        }public IWebElement TextboxHidden
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("TextBox8"));
+            }
+        }public IWebElement TextboxReadOnly
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("TextBox9"));
+            }
+        }public IWebElement TextboxRequired
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("TextBox10"));
+            }
+        }public IWebElement TextboxUnique
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("TextBox11"));
+            }
+        }public IWebElement TextboxDoNotPersist
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("TextBox12"));
             }
         }
     }

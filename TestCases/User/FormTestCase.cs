@@ -16,9 +16,9 @@ namespace UITests.TestCases.User
         [Test, Order(1)]
         public void UserLogin()
         {
-            browserOps.Goto("https://hairocraft.eb-test.cloud/");
-            ul.UserName.SendKeys("hairocraft123@gmail.com");
-            ul.Password.SendKeys("12345678");
+            browserOps.Goto("https://uitesting.eb-test.cloud/");
+            ul.UserName.SendKeys("kurian@expressbase.com");
+            ul.Password.SendKeys("@Kurian123");
             ul.LoginButton.Click();
         }
 
@@ -28,20 +28,22 @@ namespace UITests.TestCases.User
             fo = new FormObject(driver);
 
             browserOps.implicitWait(1000);
-            browserOps.UrlToBe("https://hairocraft.eb-test.cloud/WebForm/Index?refid=hairocraft_stagging-hairocraft_stagging-0-427-531-427-531");
-            browserOps.implicitWait(1000);
+            //browserOps.UrlToBe("https://uitesting.eb-test.cloud/WebForm/Index?refid=hairocraft_stagging-ebdbjiwavi72zy20200413071346-0-13-13-1419-1594");
+            //browserOps.implicitWait(1000);
 
-            fo.DatePickerClick.Click();
+            fo.MenuApplication.Click();
+            browserOps.implicitWait(100);
+            fo.MenuSelectFormMenu.Click();
+            browserOps.implicitWait(100);
+            fo.MenuSelectForm.Click();
 
-            fo.TextBox.SendKeys("Hello");
-
-            fo.SimpleSelect.Click();
-            fo.SimpleSelectItemSelect.Click();
-
-            fo.DatePickerCheckBox.Click();
-
-            actions.DoubleClick(fo.PowerSelectClicker);
-            fo.PowerSelectItemSelector.Click();
+            fo.TextBoxLowerCase.SendKeys("LOWERCASE");
+            fo.TextBoxUpperCase.SendKeys("uppercase");
+            fo.TextBoxPassword.SendKeys("password");
+            fo.TextBoxEmail.SendKeys("kurian@expressbase.com");
+            fo.TextBoxMultiLine.SendKeys("EXPRESSbase is a Platform on the cloud to build & run business applications 10x faster. Get the best of both worlds – stability of Ready-Made software, and flexibility of Custom software.");
+            fo.TextBoxMaxLength.SendKeys("EXPRESSbase is a Platform on the cloud to build & run business applications 10x faster. Get the best of both worlds – stability of Ready-Made software, and flexibility of Custom software.");
+            fo.TextboxAutosuggestion.SendKeys("Test");
         }
     }
 }
