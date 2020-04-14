@@ -13,7 +13,7 @@ namespace UITests.DataDriven
     public class BaseClass
     {
         public IWebDriver driver;
-        public UserLogin ul;       
+        public UserLogin ul;
         public BrowserOps browserOps = new BrowserOps();
         public GetUniqueId id = new GetUniqueId();
         public WebDriverWait wait;
@@ -32,12 +32,20 @@ namespace UITests.DataDriven
             }
             wait = browserOps.DriverWait();
             elementOps = new WebElementOps(driver, wait);
-        }        
+        }
 
         [TearDown]
         public void EndTest()
         {
             //driver.Close();
+            var testCaseId = TestContext.CurrentContext.Test.Properties["TestCaseId"];
+            var tid = string.Empty;
+            foreach (var testId in testCaseId)
+            {
+                tid = testId.ToString();
+            }
+            if(tid != null)
+                Console.WriteLine("Testcase ID   : "+ tid);
         }
     }
 }
