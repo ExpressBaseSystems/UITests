@@ -27,14 +27,14 @@ namespace UITests.ObjectRepository.User
             {
                 return this.driver.FindElement(By.XPath("/html/body/div/div[1]/div[2]/div/div[2]/div[2]/div[2]/div[1]"));
             }
-        }public IWebElement MenuSelectForm
+        }
+        public IWebElement MenuSelectForm
         {
             get
             {
                 return this.driver.FindElement(By.XPath("/html/body/div/div[1]/div[2]/div/div[2]/div[3]/div[2]/div[1]/a"));
             }
         }
-
         public IWebElement TextBoxLowerCase
         {
             get
@@ -43,15 +43,13 @@ namespace UITests.ObjectRepository.User
             }
 
         }
-
         public IWebElement TextBoxUpperCase
         {
             get
             {
                 return this.driver.FindElement(By.Id("TextBox2"));
             }
-        }
-        
+        }        
         public IWebElement TextBoxPassword
         {
             get
@@ -72,51 +70,146 @@ namespace UITests.ObjectRepository.User
             {
                 return this.driver.FindElement(By.Id("TextBox5"));
             }
-        }
-        
+        }        
         public IWebElement TextBoxMaxLength
         {
             get
             {
                 return this.driver.FindElement(By.Id("TextBox6"));
             }
-        }
-        
+        }        
         public IWebElement TextboxAutosuggestion
         {
             get
             {
                 return this.driver.FindElement(By.Id("TextBox7"));
             }
-        }public IWebElement TextboxHidden
+        }
+        public IWebElement TextboxHidden
         {
             get
             {
                 return this.driver.FindElement(By.Id("TextBox8"));
             }
-        }public IWebElement TextboxReadOnly
+        }
+        public IWebElement TextboxReadOnly
         {
             get
             {
                 return this.driver.FindElement(By.Id("TextBox9"));
             }
-        }public IWebElement TextboxRequired
+        }
+        public IWebElement TextboxRequired
         {
             get
             {
                 return this.driver.FindElement(By.Id("TextBox10"));
             }
-        }public IWebElement TextboxUnique
+        }
+        public IWebElement TextboxUnique
         {
             get
             {
                 return this.driver.FindElement(By.Id("TextBox11"));
             }
-        }public IWebElement TextboxDoNotPersist
+        }
+        public IWebElement TextboxDoNotPersist
         {
             get
             {
                 return this.driver.FindElement(By.Id("TextBox12"));
+            }
+        }
+        public IWebElement NumericBox
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("Numeric1"));
+            }
+        }
+        public IWebElement NumericBoxCurrency
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("Numeric2"));
+            }
+        }
+        public IWebElement NumericBoxPhone
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("Numeric3"));
+            }
+        }
+       
+        public IWebElement NumericBoxReadOnly
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("Numeric5"));
+            }
+        }
+        public IWebElement NumericBoxRequired
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("Numeric6"));
+            }
+        }
+        public IWebElement NumericBoxMax
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("Numeric7"));
+            }
+        }
+        public IWebElement NumericBoxMin
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("Numeric8"));
+            }
+        }
+        public IWebElement NumericBoxUnique
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("Numeric9"));
+            }
+        }
+        public IWebElement NumericBoxDecimal
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("Numeric10"));
+            }
+        }
+        public IWebElement NumericBoxNegative
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("Numeric11"));
+            }
+        }
+        public IWebElement NumericBoxDonotpersist
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("Numeric12"));
+            }
+        }        
+        public IWebElement NumericBoxHelpText
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("Numeric13"));
+            }
+        }
+        public IWebElement NumericBoxTooltip
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("Numeric14"));
             }
         }
     }

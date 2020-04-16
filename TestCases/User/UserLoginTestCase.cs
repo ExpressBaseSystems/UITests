@@ -42,8 +42,8 @@ namespace UITests.TestCases.User
             }
             else
             {
-                String ExpectedTitle = l.TestResult.GetCssValue("background-color");
-                Assert.AreEqual(Userdata.color, ExpectedTitle);
+                String ExpectedColor = l.TestResult.GetCssValue("background-color");
+                Assert.AreEqual(Userdata.color, ExpectedColor);
                 Console.Write("“Test passed for User Login InCorrent UserName & Password ”");
             }
         }
