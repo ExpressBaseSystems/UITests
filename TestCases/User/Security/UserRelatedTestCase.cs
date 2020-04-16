@@ -37,13 +37,14 @@ namespace UITests.TestCases.User.Security
         public void UserLogin()
         {
             uln = new UserLogin(driver);
-            browserOps.Goto("https://ebdbsmwonmu3ky20200326103301.eb-test.cloud/");
-            uln.UserName.SendKeys("venel38383@wwrmails.com");
-            uln.Password.SendKeys("@Qwerty123");
+            browserOps.Goto("https://uitesting.eb-test.cloud/");
+            uln.UserName.SendKeys("anoopa.baby@expressbase.com");
+            uln.Password.SendKeys("Qwerty@123");
             uln.LoginButton.Click();
             Console.WriteLine("Login Success");
         }
 
+        [Property("TestCaseId", "Security_NewUserCreate_001")]
         [TestCaseSource("UserData")]
         public void NewUserCreate(dynamic data)
         {
@@ -118,6 +119,7 @@ namespace UITests.TestCases.User.Security
             }
         }
 
+        [Property("TestCaseId", "Security_EditUserData_002")]
         [TestCaseSource("UserData")]
         public void EditUserData(dynamic data)
         {
@@ -195,6 +197,7 @@ namespace UITests.TestCases.User.Security
 
         }
 
+        [Property("TestCaseId", "Security_DeleteUser_003")]
         [Test]
         public void DeleteUser()
         {
@@ -224,6 +227,7 @@ namespace UITests.TestCases.User.Security
             browserOps.Refresh();
         }
 
+        [Property("TestCaseId", "Security_LoginActivity_004")]
         [Test]
         public void LoginActivity()
         {
@@ -246,6 +250,7 @@ namespace UITests.TestCases.User.Security
             Console.WriteLine("Login Activity Clicked");
         }
 
+        [Property("TestCaseId", "Security_SuspendUser_005")]
         [Test]
         public void SuspendUser()
         {
@@ -312,6 +317,7 @@ namespace UITests.TestCases.User.Security
             browserOps.Refresh();
         }
 
+        [Property("TestCaseId", "Security_TerminateUser_006")]
         [Test]
         public void TerminateUser()
         {

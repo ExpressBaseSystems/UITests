@@ -17,9 +17,10 @@ namespace UITests.TestCases.Tenant
     {
         TenantSignUp l;
         string url = "https://myaccount.eb-test.cloud/";
-        
+
+        [Property("TestCaseId", "TenantSignUp_TenantLogin_001")]
         [TestCaseSource("SignUpTestData")]
-        public void ExecuteTest(dynamic testdatas)
+        public void SignUp(dynamic testdatas)
         {
             l = new TenantSignUp(driver);
             browserOps.Goto(url);

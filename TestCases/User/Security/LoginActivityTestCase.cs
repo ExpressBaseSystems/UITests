@@ -16,13 +16,14 @@ namespace UITests.TestCases.User.Security
         public void UserLogin()
         {
             uln = new UserLogin(driver);
-            browserOps.Goto("https://ebdbsmwonmu3ky20200326103301.eb-test.cloud/");
-            uln.UserName.SendKeys("venel38383@wwrmails.com");
-            uln.Password.SendKeys("@Qwerty123");
+            browserOps.Goto("https://uitesting.eb-test.cloud/");
+            uln.UserName.SendKeys("anoopa.baby@expressbase.com");
+            uln.Password.SendKeys("Qwerty@123");
             uln.LoginButton.Click();
             Console.WriteLine("Login Success");
         }
 
+        [Property("TestCaseId", "LoginActivity_CheckLoginActivity_001")]
         [Test]
         public void CheckLoginActivity()
         {

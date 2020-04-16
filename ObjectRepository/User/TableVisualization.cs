@@ -18,7 +18,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"appList\"]/div/ul/li/ul/li[6]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"appList\"]/div/ul/li/ul/li[7]/a"));
             }
         }
 
@@ -77,6 +77,70 @@ namespace UITests.ObjectRepository.User
             get
             {
                 return this.driver.FindElement(By.XPath("//*[@id=\"objname\"]/span"));
+            }
+        }
+
+        //----------------- Sorting
+
+        public IWebElement SortNameField
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[1]/th[4]"));
+            }
+        }
+
+        //--------------- Searching
+
+        public IWebElement SearchBoxNameField
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("dvContainer_1586780535084_0_0_name_hdr_txt1"));
+            }
+        }
+
+        public IWebElement SearchTagRow
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("filterdisplayrowtd_dvContainer_1586780535084_0_0"));
+            }
+        }
+
+        //-----------Row Grouping
+
+        public IWebElement RowGroupingSelect
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("rowgroupDD_dvContainer_1586780535084_0_0"));
+            }
+        }
+
+        public IWebElement RowGroupingAdditionalRow
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[2]"));
+            }
+        }
+
+        //------------ToolTip
+
+        public IWebElement RowEntryName
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[4]/td[4]/span"));
+            }
+        }
+
+        public IWebElement RowEntryNameDiv
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[4]/td[4]"));
             }
         }
     }
