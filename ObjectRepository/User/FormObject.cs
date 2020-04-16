@@ -18,7 +18,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='appList']/div/ul/li/ul/li[6]/a"));
+                return this.driver.FindElement(By.XPath("/html/body/div/div[1]/div[2]/div/div[2]/div[1]/div/div/ul/li/ul/li[7]/a"));
             }
         }
         public IWebElement MenuSelectFormMenu
