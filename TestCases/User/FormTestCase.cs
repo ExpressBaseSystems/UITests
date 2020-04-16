@@ -87,23 +87,23 @@ namespace UITests.TestCases.User
         [Test, Order(3)]
         public void NumericTextBox()
         {
-            fo.NumericBox.SendKeys("qwerty123");
+            fo.NumericBox.SendKeys("645465465123");
             Assert.AreEqual("numeric_plain", fo.NumericBox.GetAttribute("name"));
             Console.Write("“Test passed for User - side - NumericBox - Plain”");
 
-            fo.NumericBoxCurrency.SendKeys("qwerty123");
+            fo.NumericBoxCurrency.SendKeys("123");
             Assert.AreEqual("numeric_currency", fo.NumericBoxCurrency.GetAttribute("name"));
             Console.Write("“Test passed for User - side - NumericBox - Plain”");
 
-            fo.NumericBoxPhone.SendKeys("qwerty7012153871");
+            fo.NumericBoxPhone.SendKeys("7012153871");
             Assert.AreEqual("numeric_phone", fo.NumericBox.GetAttribute("name"));
             Console.Write("“Test passed for User - side - NumericBox - Plain”");
 
-            fo.NumericBoxUnique.SendKeys("qwerty123");
+            fo.NumericBoxUnique.SendKeys("123");
             Assert.AreEqual("numeric_unique", fo.NumericBoxUnique.GetAttribute("name"));
             Console.Write("“Test passed for User - side - NumericBox - Plain”");
 
-            fo.NumericBoxReadOnly.SendKeys("qwerty123");
+            fo.NumericBoxReadOnly.SendKeys("123");
             Assert.AreEqual("disabled", fo.NumericBoxReadOnly.GetAttribute("disabled"));
             Console.Write("“Test passed for User - side - NumericBox - Plain”");
 
@@ -115,11 +115,11 @@ namespace UITests.TestCases.User
             Assert.AreEqual("5", fo.NumericBoxMax.GetAttribute("max"));
             Console.Write("“Test passed for User - side - NumericBox - Plain”");
 
-            fo.NumericBoxMin.SendKeys("qwerty123");
+            fo.NumericBoxMin.SendKeys("123456");
             Assert.AreEqual("5", fo.NumericBoxMin.GetAttribute("min"));
             Console.Write("“Test passed for User - side - NumericBox - Plain”");
 
-            fo.NumericBoxTooltip.SendKeys("qwerty123");
+            fo.NumericBoxTooltip.SendKeys("123456");
             Assert.AreEqual("tooltip705956", fo.NumericBoxTooltip.GetAttribute("aria-describedby"));
             Console.Write("“Test passed for User - side - NumericBox - Plain”");
 
@@ -127,20 +127,22 @@ namespace UITests.TestCases.User
             Assert.AreEqual("numeric_neg", fo.NumericBoxNegative.GetAttribute("name"));
             Console.Write("“Test passed for User - side - NumericBox - Plain”");
 
-            fo.NumericBoxDonotpersist.SendKeys("qwerty123.5555");
+            fo.NumericBoxDonotpersist.SendKeys("123.5555");
             Assert.AreEqual("numeric_persist", fo.NumericBoxDonotpersist.GetAttribute("name"));
             Console.Write("“Test passed for User - side - NumericBox - Plain”");
 
-            fo.NumericBoxHelpText.SendKeys("qwerty123.5555");
+            fo.NumericBoxHelpText.SendKeys("123.5555");
             Assert.AreEqual("numeric_help", fo.NumericBoxHelpText.GetAttribute("name"));
             Console.Write("“Test passed for User - side - NumericBox - Plain”");
+        }
 
-
-
-
-
-
-
+        [Test, Order(4)]
+        public void dateTimePicker()
+        {
+            fo.Date.Click();
+            fo.SelectDate.Click();
+            //Assert.AreEqual("numeric_help", fo.NumericBoxHelpText.GetAttribute("name"));
+            //Console.Write("“Test passed for User - side - NumericBox - Plain”");
         }
     }
 }

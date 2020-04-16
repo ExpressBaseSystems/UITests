@@ -120,6 +120,9 @@ namespace UITests.ObjectRepository.User
                 return this.driver.FindElement(By.Id("TextBox12"));
             }
         }
+
+
+
         public IWebElement NumericBox
         {
             get
@@ -140,8 +143,7 @@ namespace UITests.ObjectRepository.User
             {
                 return this.driver.FindElement(By.Id("Numeric3"));
             }
-        }
-       
+        }       
         public IWebElement NumericBoxReadOnly
         {
             get
@@ -210,6 +212,91 @@ namespace UITests.ObjectRepository.User
             get
             {
                 return this.driver.FindElement(By.Id("Numeric14"));
+            }
+        }
+        
+        public IWebElement SelectDate
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("/html/body/div[5]/div[1]/div[2]/table/tbody/tr[1]/td[1]/div"));
+            }
+        } 
+        public IWebElement Date
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("date1"));
+            }
+        }
+        public IWebElement Time
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("date2"));
+            }
+        }
+        public IWebElement DateTime
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("date3"));
+            }
+        }
+        public IWebElement DateTimeHidden
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("date4"));
+            }
+        }
+        public IWebElement DateTimeReadOnly
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("date5"));
+            }
+        }
+        public IWebElement DateTimeRequired
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("date6"));
+            }
+        }
+        public IWebElement DateTimeautocomplete
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("date7"));
+            }
+        }
+        public IWebElement DateTimenullable
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("date8"));
+            }
+        }
+        public IWebElement DateTimePlaceholder
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("date9"));
+            }
+        }
+        public IWebElement DateTimeHelptext
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("date10"));
+            }
+        }
+        public IWebElement DateTimeToolTip
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("date11"));
             }
         }
     }
