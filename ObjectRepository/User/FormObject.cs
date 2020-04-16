@@ -219,84 +219,84 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("/html/body/div[5]/div[1]/div[2]/table/tbody/tr[1]/td[1]/div"));
+                return this.driver.FindElement(By.XPath("/html/body/div[5]/div[1]/div[2]/table/tbody/tr[1]/td[5]"));
             }
         } 
         public IWebElement Date
         {
             get
             {
-                return this.driver.FindElement(By.Id("date1"));
+                return this.driver.FindElement(By.Id("Date1"));
             }
         }
         public IWebElement Time
         {
             get
             {
-                return this.driver.FindElement(By.Id("date2"));
+                return this.driver.FindElement(By.Id("Date2"));
             }
         }
         public IWebElement DateTime
         {
             get
             {
-                return this.driver.FindElement(By.Id("date3"));
+                return this.driver.FindElement(By.Id("Date3"));
             }
         }
         public IWebElement DateTimeHidden
         {
             get
             {
-                return this.driver.FindElement(By.Id("date4"));
+                return this.driver.FindElement(By.Id("Date4"));
             }
         }
         public IWebElement DateTimeReadOnly
         {
             get
             {
-                return this.driver.FindElement(By.Id("date5"));
+                return this.driver.FindElement(By.Id("Date5"));
             }
         }
         public IWebElement DateTimeRequired
         {
             get
             {
-                return this.driver.FindElement(By.Id("date6"));
+                return this.driver.FindElement(By.Id("Date6"));
             }
         }
         public IWebElement DateTimeautocomplete
         {
             get
             {
-                return this.driver.FindElement(By.Id("date7"));
+                return this.driver.FindElement(By.Id("Date7"));
             }
         }
         public IWebElement DateTimenullable
         {
             get
             {
-                return this.driver.FindElement(By.Id("date8"));
+                return this.driver.FindElement(By.Id("Date8"));
             }
         }
         public IWebElement DateTimePlaceholder
         {
             get
             {
-                return this.driver.FindElement(By.Id("date9"));
+                return this.driver.FindElement(By.Id("Date9"));
             }
         }
         public IWebElement DateTimeHelptext
         {
             get
             {
-                return this.driver.FindElement(By.Id("date10"));
+                return this.driver.FindElement(By.Id("Date10"));
             }
         }
         public IWebElement DateTimeToolTip
         {
             get
             {
-                return this.driver.FindElement(By.Id("date11"));
+                return this.driver.FindElement(By.Id("Date11"));
             }
         }
     }
