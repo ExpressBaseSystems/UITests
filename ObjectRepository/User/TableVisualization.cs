@@ -30,11 +30,19 @@ namespace UITests.ObjectRepository.User
             }
         }
 
-        public IWebElement SelectTableVisualization
+        public IWebElement SelectTableVisualizationUsers
         {
             get
             {
                 return this.driver.FindElement(By.XPath("//*[@id=\"ebm-objectcontainer\"]/div[2]/div"));
+            }
+        }
+
+        public IWebElement SelectTableVisualizationAccountTree
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"ebm-objectcontainer\"]/div[2]/div[2]"));
             }
         }
 
@@ -90,6 +98,22 @@ namespace UITests.ObjectRepository.User
             }
         }
 
+        public IWebElement SortIdField1
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[3]/td[3]/a"));
+            }
+        }
+
+        public IWebElement SortIdField2
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[4]/td[3]/a"));
+            }
+        }
+
         //--------------- Searching
 
         public IWebElement SearchBoxNameField
@@ -105,6 +129,14 @@ namespace UITests.ObjectRepository.User
             get
             {
                 return this.driver.FindElement(By.Id("filterdisplayrowtd_dvContainer_1586780535084_0_0"));
+            }
+        }
+
+        public IWebElement SearchTag
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div"));
             }
         }
 
@@ -141,6 +173,61 @@ namespace UITests.ObjectRepository.User
             get
             {
                 return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[4]/td[4]"));
+            }
+        }
+
+        //------------ Inline Table
+
+        public IWebElement InlineTableButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[3]/td[4]/a/i"));
+            }
+        }
+
+        //------ Search
+
+        public IWebElement SearchBar
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1553959320177_0_0_filter\"]/div/input"));
+            }
+        }
+
+        public IWebElement TVRowStyle
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1553959320177_0_0\"]/tbody/tr[3]"));
+            }
+        }
+        //--------- conditional formatting
+
+        public IWebElement ConditionalFormattingField
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[4]/td[8]"));
+            }
+        }
+
+        public IWebElement ConditionalFormattingDiv
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[5]/td[8]/div"));
+            }
+        }
+
+        //------aggregate
+
+        public IWebElement FooterAggregate
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[3]/div/table/tfoot/tr/th[8]/div"));
             }
         }
     }

@@ -17,7 +17,7 @@ namespace UITests.TestCases.Tenant
         TenantLogin tl;
         TenantNewSolution l;
 
-        [Property("TestCaseId", "TenantNewSolution_TenantLogin_001")]
+        [Property("TestCaseId", "TenantNewSolution_CreateNewSolution_001")]
         [TestCaseSource("Login"), Order(1)]
         public void TenantLogin(dynamic data)
         {
@@ -28,8 +28,7 @@ namespace UITests.TestCases.Tenant
             tl.LoginButton.Click();
             browserOps.implicitWait(50);
         }
-
-        [Property("TestCaseId", "TenantNewSolution_CreateNewSolution_002")]
+        
         [Test, Order(2)]
         public void CreateNewSolution()
         {
