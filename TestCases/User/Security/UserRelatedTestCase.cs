@@ -45,7 +45,7 @@ namespace UITests.TestCases.User.Security
         }
 
         [Property("TestCaseId", "Security_NewUserCreate_001")]
-        [TestCaseSource("UserData")]
+        [TestCaseSource("UserData"), Order(1)]
         public void NewUserCreate(dynamic data)
         {
             usr = new Users(driver);
@@ -117,17 +117,22 @@ namespace UITests.TestCases.User.Security
                 uln.Password.SendKeys(password);
                 uln.LoginButton.Click();
             }
+            else
+            {
+                Console.WriteLine(nu.Message.GetAttribute("innerHTML"));
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+            }
         }
 
         [Property("TestCaseId", "Security_EditUserData_002")]
-        [TestCaseSource("UserData")]
+        [TestCaseSource("UserData"), Order(2)]
         public void EditUserData(dynamic data)
         {
             usr = new Users(driver);
             nu = new UserRelated(driver);
-            UserLogin();
-            browserOps.implicitWait(50);
-            //usr.MenuButton.Click();
+            //UserLogin();
+            //browserOps.implicitWait(50);
+            usr.MenuButton.Click();
             usr.ChooseSecurity.Click();
             Console.WriteLine("Security");
             usr.ChooseUsers.Click();
@@ -198,7 +203,7 @@ namespace UITests.TestCases.User.Security
         }
 
         [Property("TestCaseId", "Security_DeleteUser_003")]
-        [Test]
+        [Test, Order(6)]
         public void DeleteUser()
         {
             usr = new Users(driver);
@@ -228,14 +233,15 @@ namespace UITests.TestCases.User.Security
         }
 
         [Property("TestCaseId", "Security_LoginActivity_004")]
-        [Test]
+        [Test, Order(3)]
         public void LoginActivity()
         {
             usr = new Users(driver);
             nu = new UserRelated(driver);
-            UserLogin();
-            browserOps.implicitWait(50);
-            //usr.MenuButton.Click();
+            //UserLogin();
+            //browserOps.implicitWait(50);
+            driver.SwitchTo().Window(driver.WindowHandles.Last());
+            usr.MenuButton.Click();
             usr.ChooseSecurity.Click();
             Console.WriteLine("Security");
             usr.ChooseUsers.Click();
@@ -251,15 +257,15 @@ namespace UITests.TestCases.User.Security
         }
 
         [Property("TestCaseId", "Security_SuspendUser_005")]
-        [Test]
+        [Test, Order(4)]
         public void SuspendUser()
         {
             usr = new Users(driver);
             nu = new UserRelated(driver);
             lo = new UserLogOut(driver);
-            UserLogin();
-            browserOps.implicitWait(50);
-            //usr.MenuButton.Click();
+            //UserLogin();
+            //browserOps.implicitWait(50);
+            usr.MenuButton.Click();
             usr.ChooseSecurity.Click();
             Console.WriteLine("Security");
             usr.ChooseUsers.Click();
@@ -314,19 +320,20 @@ namespace UITests.TestCases.User.Security
             browserOps.implicitWait(50);
             nu.SaveOkButton.Click();
             Console.WriteLine("User Save Success");
-            browserOps.Refresh();
+            //browserOps.Refresh();
         }
 
         [Property("TestCaseId", "Security_TerminateUser_006")]
-        [Test]
+        [Test, Order(5)]
         public void TerminateUser()
         {
             usr = new Users(driver);
             nu = new UserRelated(driver);
             lo = new UserLogOut(driver);
-            UserLogin();
-            browserOps.implicitWait(50);
-            //usr.MenuButton.Click();
+            driver.SwitchTo().Window(driver.WindowHandles.Last());
+            //UserLogin();
+            //browserOps.implicitWait(50);
+            usr.MenuButton.Click();
             usr.ChooseSecurity.Click();
             Console.WriteLine("Security");
             usr.ChooseUsers.Click();
@@ -358,8 +365,28 @@ namespace UITests.TestCases.User.Security
             uln.Password.SendKeys("@Qwerty123");
             uln.LoginButton.Click();
             driver.SwitchTo().Window(driver.WindowHandles.Last());
-            if (driver.Url != url)
-                Console.WriteLine("Login Success");
+            if (IsElementPresent())
+                Console.WriteLine(nu.Message.GetAttribute("innerHTML"));
+
+            UserLogin();
+            browserOps.implicitWait(50);
+            //usr.MenuButton.Click();
+            usr.ChooseSecurity.Click();
+            Console.WriteLine("Security");
+            usr.ChooseUsers.Click();
+            Console.WriteLine("Users");
+
+            browserOps.implicitWait(50);
+            nu.VieworEditIcon.Click();
+            Console.WriteLine("View / Edit Clicked");
+            browserOps.implicitWait(50);
+            driver.SwitchTo().Window(driver.WindowHandles.Last());
+            nu.ActivateUser.Click();
+            Console.WriteLine("Activate User Clicked");
+            nu.SaveButton.Click();
+            browserOps.implicitWait(50);
+            nu.SaveOkButton.Click();
+            Console.WriteLine("User Save Success");
         }
 
         private bool IsElementPresent()
