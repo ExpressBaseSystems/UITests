@@ -46,6 +46,22 @@ namespace UITests.ObjectRepository.User
             }
         }
 
+        public IWebElement SelectTableVisualizationCourseList
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"ebm-objectcontainer\"]/div[2]/div[5]"));
+            }
+        }
+
+        public IWebElement EBLoader
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("eb_common_loader"));
+            }
+        }
+
         //-------------- Table Visulization
 
         public IWebElement NewFormButton
@@ -80,7 +96,7 @@ namespace UITests.ObjectRepository.User
             }
         }
 
-        public IWebElement EditMode
+        public IWebElement Mode
         {
             get
             {
@@ -110,7 +126,31 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[4]/td[3]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[7]/td[3]/a"));
+            }
+        }
+
+        public IWebElement SortNameField1
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[3]/td[4]/span"));
+            }
+        }
+
+        public IWebElement SortNameField2
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[7]/td[4]/span"));
+            }
+        }
+
+        public IWebElement SortFieldTD
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[3]/td[4]"));
             }
         }
 
@@ -228,6 +268,86 @@ namespace UITests.ObjectRepository.User
             get
             {
                 return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[3]/div/table/tfoot/tr/th[8]/div"));
+            }
+        }
+
+        //-------custom column
+
+        public IWebElement CustomColumnHeader
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[1]/th[9]"));
+            }
+        }
+
+        public IWebElement SalaryField
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[3]/td[8]"));
+            }
+        }
+
+        public IWebElement NetSalaryField
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[3]/td[9]"));
+            }
+        }
+
+        //----------approval column
+
+        public IWebElement ApprovalColumnHeading
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[1]/th[10]"));
+            }
+        }
+
+        //---------action column
+
+        public IWebElement ActionColumnHeading
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[1]/th[11]"));
+            }
+        }
+
+        public IWebElement ActionColumnEditLink
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[3]/td[11]/a"));
+            }
+        }
+
+        //--------auto generate
+
+        public IWebElement AutogenEntryFields
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[3]/a"));
+            }
+        }
+
+        public IWebElement AutogenRowGroupingSelect
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("rowgroupDD_dvnull_0_0"));
+            }
+        }
+
+        public IWebElement AutogenRowGroupingAdditionalRow
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0\"]/tbody/tr[2]"));
             }
         }
     }

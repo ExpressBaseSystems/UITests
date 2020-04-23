@@ -71,5 +71,15 @@ namespace UITests.DataDriven
         {
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
         }
+
+        public void ClickableWait(IWebElement we)
+        {
+            wait.Until(ExpectedConditions.ElementToBeClickable(we));
+        }
+
+        public object GetValueFromJS(IWebElement element)
+        {
+            return((IJavaScriptExecutor)driver).ExecuteScript("return arguments[0].innerHTML;", element);
+        }
     }
 }
