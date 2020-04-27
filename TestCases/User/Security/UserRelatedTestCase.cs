@@ -64,7 +64,7 @@ namespace UITests.TestCases.User.Security
             string url = driver.Url;
             nu.CreateUserButton.Click();
             browserOps.implicitWait(200);
-            if (!IsElementPresent())
+            if (!elementOps.IsWebElementPresent(nu.Message))
             {
                 Console.WriteLine("Inside New User Creation");
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
@@ -298,7 +298,7 @@ namespace UITests.TestCases.User.Security
             uln.Password.SendKeys("@Qwerty123");
             uln.LoginButton.Click();
             driver.SwitchTo().Window(driver.WindowHandles.Last());
-            if (IsElementPresent())
+            if (elementOps.IsWebElementPresent(nu.Message))
                 Console.WriteLine(nu.Message.GetAttribute("innerHTML"));
 
             UserLogin();
@@ -365,7 +365,7 @@ namespace UITests.TestCases.User.Security
             uln.Password.SendKeys("@Qwerty123");
             uln.LoginButton.Click();
             driver.SwitchTo().Window(driver.WindowHandles.Last());
-            if (IsElementPresent())
+            if (elementOps.IsWebElementPresent(nu.Message))
                 Console.WriteLine(nu.Message.GetAttribute("innerHTML"));
 
             UserLogin();
@@ -388,22 +388,7 @@ namespace UITests.TestCases.User.Security
             nu.SaveOkButton.Click();
             Console.WriteLine("User Save Success");
         }
-
-        private bool IsElementPresent()
-        {
-            nu = new UserRelated(driver);
-            try
-            {
-                bool f = nu.Message.Displayed;
-                return true;
-            }
-            catch (NoSuchElementException)
-            {
-                return false;
-            }
-        }
         
-
         private static List<EbTestItem> UserData()
         {
             return GetDataFromXML.GetDataFromFile(@"TestCases\User\Security\UserRelatedTestCase.xml");

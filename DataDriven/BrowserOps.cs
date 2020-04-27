@@ -76,10 +76,6 @@ namespace UITests.DataDriven
         {
             wait.Until(ExpectedConditions.ElementToBeClickable(we));
         }
-
-        public object GetValueFromJS(IWebElement element)
-        {
-            return((IJavaScriptExecutor)driver).ExecuteScript("return arguments[0].innerHTML;", element);
-        }
+        
     }
 }

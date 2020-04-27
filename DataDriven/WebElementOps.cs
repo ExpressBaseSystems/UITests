@@ -42,10 +42,28 @@ namespace UITests.DataDriven
             wait.Until(ExpectedConditions.ElementExists(By.ClassName(name)));
         }
 
+        public bool IsWebElementPresent(IWebElement webelement)
+        {
+            try
+            {
+                bool f = webelement.Displayed;
+                return true;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+        }
+
         public void ChangeStyle(string Id, string attribute, string value)
         {
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
             js.ExecuteScript("document.getElementById('"+Id+"').setAttribute('"+attribute+"', '"+value+"')");
+        }
+
+        public object GetValueFromJS(IWebElement element)
+        {
+            return ((IJavaScriptExecutor)driver).ExecuteScript("return arguments[0].innerHTML;", element);
         }
         
     }

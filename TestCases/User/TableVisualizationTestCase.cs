@@ -167,7 +167,7 @@ namespace UITests.TestCases.User
                 elementOps.ExistsId("dvContainer_1586780535084_0_0_name_hdr_txt1");
                 tv.SearchBoxNameField.SendKeys("Anoopa Baby" + Keys.Enter);
                 browserOps.implicitWait(100);
-                if (IsElementPresent(tv.SearchTag))
+                if (elementOps.IsWebElementPresent(tv.SearchTag))
                     Console.WriteLine("Success");
                 else
                     Console.WriteLine("Failure");
@@ -191,7 +191,7 @@ namespace UITests.TestCases.User
                 var selectElement = new SelectElement(tv.RowGroupingSelect);
                 selectElement.SelectByValue("SingleLevelRowGroup2");
                 browserOps.implicitWait(100);
-                Assert.AreEqual("True", IsElementPresent(tv.RowGroupingAdditionalRow).ToString());
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.RowGroupingAdditionalRow).ToString());
                 Console.WriteLine("Success");
             }
             catch (Exception e)
@@ -208,7 +208,7 @@ namespace UITests.TestCases.User
             ChooseTV();
             tv = new TableVisualization(driver);
             elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[4]/td[4]/span");
-            if (IsElementPresent(tv.RowEntryName))
+            if (elementOps.IsWebElementPresent(tv.RowEntryName))
                 Console.WriteLine("Success");
             else
                 Console.WriteLine("Failure");
@@ -226,7 +226,7 @@ namespace UITests.TestCases.User
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[3]/td[4]/a/i");
                 tv.InlineTableButton.Click();
                 browserOps.implicitWait(100);
-                Assert.AreEqual("True", IsElementPresent(tv.InlineTableAdditionalRow).ToString());
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.InlineTableAdditionalRow).ToString());
                 Console.WriteLine("Success");
             }
             catch (Exception e)
@@ -271,7 +271,7 @@ namespace UITests.TestCases.User
                 wait.Until(webDriver => (driver.PageSource.Contains("class=\"null tdheight dt-left sorting_asc\"")));
 
                 //Assert.AreEqual("conditionformat", tv.ConditionalFormattingDiv.GetAttribute("class"));
-                Assert.AreEqual("True", IsElementPresent(tv.ConditionalFormattingDiv).ToString());
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.ConditionalFormattingDiv).ToString());
                 Console.WriteLine("Success");
             }
             catch (Exception e)
@@ -290,7 +290,7 @@ namespace UITests.TestCases.User
                 ChooseTV();
                 tv = new TableVisualization(driver);
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[3]/div/table/tfoot/tr/th[8]/div");
-                if (IsElementPresent(tv.FooterAggregate))
+                if (elementOps.IsWebElementPresent(tv.FooterAggregate))
                     Console.WriteLine("Success");
                 else
                     Console.WriteLine("Faliure");
@@ -311,7 +311,7 @@ namespace UITests.TestCases.User
                 ChooseTV();
                 tv = new TableVisualization(driver);
                 browserOps.implicitWait(100);
-                if (IsElementPresent(tv.CustomColumnHeader))
+                if (elementOps.IsWebElementPresent(tv.CustomColumnHeader))
                 {
                     Console.WriteLine(tv.CustomColumnHeader.GetAttribute("innerHTML"));
                     string c = (int.Parse(tv.SalaryField.GetAttribute("innerHTML").Replace(",", "")) * 12).ToString();
@@ -338,7 +338,7 @@ namespace UITests.TestCases.User
                 ChooseTV();
                 tv = new TableVisualization(driver);
                 browserOps.implicitWait(100);
-                if (IsElementPresent(tv.ApprovalColumnHeading))
+                if (elementOps.IsWebElementPresent(tv.ApprovalColumnHeading))
                 {
                     Assert.AreEqual("Approval Column", tv.ApprovalColumnHeading.GetAttribute("innerHTML"));
                     Console.WriteLine("Success");
@@ -362,7 +362,7 @@ namespace UITests.TestCases.User
                 ChooseTV();
                 tv = new TableVisualization(driver);
                 browserOps.implicitWait(100);
-                if (IsElementPresent(tv.ActionColumnHeading))
+                if (elementOps.IsWebElementPresent(tv.ActionColumnHeading))
                 {
                     tv.ActionColumnEditLink.Click();
                     driver.SwitchTo().Window(driver.WindowHandles.Last());
@@ -391,7 +391,7 @@ namespace UITests.TestCases.User
             var selectElement = new SelectElement(tv.AutogenRowGroupingSelect);
             selectElement.SelectByValue("SingleLevelRowGroup4");
             browserOps.implicitWait(100);
-            Assert.AreEqual("True", IsElementPresent(tv.AutogenRowGroupingAdditionalRow).ToString());
+            Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.AutogenRowGroupingAdditionalRow).ToString());
             Console.WriteLine("Row Grouping Success");
             //------
             elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[3]/a");
@@ -404,19 +404,6 @@ namespace UITests.TestCases.User
             string txt = tv.Mode.GetAttribute("innerHTML");
             Assert.AreEqual(txt, "Edit Mode");
             Console.WriteLine("Success!!");
-        }
-
-        private bool IsElementPresent(IWebElement webelement)
-        {
-            try
-            {
-                bool f = webelement.Displayed;
-                return true;
-            }
-            catch (NoSuchElementException)
-            {
-                return false;
-            }
         }
     }
 }
