@@ -71,19 +71,24 @@ namespace UITests.TestCases.User
         [Test]
         public void AddNewForm()
         {
-            UserLogin();
-            ChooseTV();
-            tv = new TableVisualization(driver);
-            elementOps.ExistsId("NewFormButtondvContainer_1586780535084_0_0");
-            tv.NewFormButton.Click();
-            elementOps.ExistsXpath("//*[@id=\"NewFormdddvContainer_1586780535084_0_0\"]/div/ul/li/a");
-            string url = driver.Url;
-            tv.NewFormUserCreation.Click();
-            driver.SwitchTo().Window(driver.WindowHandles.Last());
-            if (driver.Url != url)
-                Console.WriteLine("Success!!");
-            else
-                Console.WriteLine("Faliure!!");
+            try
+            {
+                UserLogin();
+                ChooseTV();
+                tv = new TableVisualization(driver);
+                elementOps.ExistsId("NewFormButtondvContainer_1586780535084_0_0");
+                tv.NewFormButton.Click();
+                elementOps.ExistsXpath("//*[@id=\"NewFormdddvContainer_1586780535084_0_0\"]/div/ul/li/a");
+                string url = driver.Url;
+                tv.NewFormUserCreation.Click();
+                driver.SwitchTo().Window(driver.WindowHandles.Last());
+                Assert.AreNotEqual(url, driver.Url);
+                Console.WriteLine("New Form Success");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
         }
 
         [Property("TestCaseId", "TableVisualization_EditForm_002")]
@@ -125,7 +130,7 @@ namespace UITests.TestCases.User
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[3]/td[3]/a");
                 tv.SortNameField.Click();
                 wait.Until(webDriver => (driver.PageSource.Contains("class=\"null tdheight dt-left sorting_asc\"")));
-                
+
                 Console.WriteLine(tv.SortIdField1.GetAttribute("innerHTML"));
                 Console.WriteLine(tv.SortIdField2.GetAttribute("innerHTML"));
                 if ("USER0001" == tv.SortIdField1.GetAttribute("innerHTML") || "USER0004" == tv.SortIdField2.GetAttribute("innerHTML"))
@@ -139,8 +144,6 @@ namespace UITests.TestCases.User
                 Console.WriteLine(tv.SortIdField2.GetAttribute("innerHTML"));
                 if ("USER0004" == tv.SortIdField1.GetAttribute("innerHTML") || "USER0005" == tv.SortIdField2.GetAttribute("innerHTML"))
                     Console.WriteLine("Success!! Descending Order");
-
-
             }
             catch (Exception e)
             {
@@ -157,10 +160,13 @@ namespace UITests.TestCases.User
                 UserLogin();
                 ChooseTV();
                 tv = new TableVisualization(driver);
+                elementOps.ExistsId("dvContainer_1586780535084_0_0_name_hdr_sel");
+                tv.NameOperatorDropDownButton.Click();
+                browserOps.implicitWait(100);
+                tv.NameEqualToOperator.Click();
                 elementOps.ExistsId("dvContainer_1586780535084_0_0_name_hdr_txt1");
                 tv.SearchBoxNameField.SendKeys("Anoopa Baby" + Keys.Enter);
                 browserOps.implicitWait(100);
-                //Assert.AreEqual("padding: 2px !important; display: table-cell;", tv.SearchTagRow.GetAttribute("style"));
                 if (IsElementPresent(tv.SearchTag))
                     Console.WriteLine("Success");
                 else
@@ -219,7 +225,8 @@ namespace UITests.TestCases.User
                 tv = new TableVisualization(driver);
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[3]/td[4]/a/i");
                 tv.InlineTableButton.Click();
-                Assert.AreEqual("fa fa-caret-up", tv.InlineTableButton.GetAttribute("class"));
+                browserOps.implicitWait(100);
+                Assert.AreEqual("True", IsElementPresent(tv.InlineTableAdditionalRow).ToString());
                 Console.WriteLine("Success");
             }
             catch (Exception e)
@@ -258,10 +265,13 @@ namespace UITests.TestCases.User
                 UserLogin();
                 ChooseTV();
                 tv = new TableVisualization(driver);
-                elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[1]/th[4]");
+
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[3]/td[3]/a");
                 tv.SortNameField.Click();
-                browserOps.implicitWait(100);
-                Assert.AreEqual("conditionformat", tv.ConditionalFormattingDiv.GetAttribute("class"));
+                wait.Until(webDriver => (driver.PageSource.Contains("class=\"null tdheight dt-left sorting_asc\"")));
+
+                //Assert.AreEqual("conditionformat", tv.ConditionalFormattingDiv.GetAttribute("class"));
+                Assert.AreEqual("True", IsElementPresent(tv.ConditionalFormattingDiv).ToString());
                 Console.WriteLine("Success");
             }
             catch (Exception e)
@@ -379,7 +389,7 @@ namespace UITests.TestCases.User
             //--- row grouping
             elementOps.ExistsId("rowgroupDD_dvnull_0_0");
             var selectElement = new SelectElement(tv.AutogenRowGroupingSelect);
-            selectElement.SelectByValue("groupbycreatedby");
+            selectElement.SelectByValue("SingleLevelRowGroup4");
             browserOps.implicitWait(100);
             Assert.AreEqual("True", IsElementPresent(tv.AutogenRowGroupingAdditionalRow).ToString());
             Console.WriteLine("Row Grouping Success");
