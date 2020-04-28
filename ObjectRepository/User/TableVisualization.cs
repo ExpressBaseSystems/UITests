@@ -180,6 +180,22 @@ namespace UITests.ObjectRepository.User
             }
         }
 
+        public IWebElement NameOperatorDropDownButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("dvContainer_1586780535084_0_0_name_hdr_sel"));
+            }
+        }
+
+        public IWebElement NameEqualToOperator
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[3]/th[4]/div/div/ul/li[4]"));
+            }
+        }
+
         //-----------Row Grouping
 
         public IWebElement RowGroupingSelect
@@ -223,6 +239,14 @@ namespace UITests.ObjectRepository.User
             get
             {
                 return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[3]/td[4]/a/i"));
+            }
+        }
+
+        public IWebElement InlineTableAdditionalRow
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("containerrow2"));
             }
         }
 
