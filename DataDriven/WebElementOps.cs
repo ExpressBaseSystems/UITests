@@ -65,6 +65,11 @@ namespace UITests.DataDriven
         {
             return ((IJavaScriptExecutor)driver).ExecuteScript("return arguments[0].innerHTML;", element);
         }
-        
+
+        public object GetTableRowCountFromJS(string id)
+        {
+            return ((IJavaScriptExecutor)driver).ExecuteScript("return (document.getElementById('"+id+"').rows.length);");
+        }
+
     }
 }

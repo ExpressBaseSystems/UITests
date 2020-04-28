@@ -65,6 +65,12 @@ namespace UITests.TestCases.User
                 actions.MoveToElement(tv.SelectTableVisualizationCourseList).Perform();
                 tv.SelectTableVisualizationCourseList.Click();
             }
+            else if (c == 3)
+            {
+                elementOps.ExistsXpath("//*[@id=\"ebm-objectcontainer\"]/div[2]/div[6]");
+                actions.MoveToElement(tv.SelectTableVisualizationJamTopicList).Perform();
+                tv.SelectTableVisualizationJamTopicList.Click();
+            }
         }
 
         [Property("TestCaseId", "TableVisualization_AddNewForm_001")]
@@ -131,18 +137,18 @@ namespace UITests.TestCases.User
                 tv.SortNameField.Click();
                 wait.Until(webDriver => (driver.PageSource.Contains("class=\"null tdheight dt-left sorting_asc\"")));
 
-                Console.WriteLine(tv.SortIdField1.GetAttribute("innerHTML"));
-                Console.WriteLine(tv.SortIdField2.GetAttribute("innerHTML"));
-                if ("USER0001" == tv.SortIdField1.GetAttribute("innerHTML") || "USER0004" == tv.SortIdField2.GetAttribute("innerHTML"))
+                Console.WriteLine(tv.IdField1.GetAttribute("innerHTML"));
+                Console.WriteLine(tv.IdField2.GetAttribute("innerHTML"));
+                if ("USER0001" == tv.IdField1.GetAttribute("innerHTML") || "USER0004" == tv.IdField2.GetAttribute("innerHTML"))
                     Console.WriteLine("Success!! Ascending Order");
 
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[1]/th[4]");
                 tv.SortNameField.Click();
                 wait.Until(webDriver => (driver.PageSource.Contains("class=\"null tdheight dt-left sorting_desc\"")));
 
-                Console.WriteLine(tv.SortIdField1.GetAttribute("innerHTML"));
-                Console.WriteLine(tv.SortIdField2.GetAttribute("innerHTML"));
-                if ("USER0004" == tv.SortIdField1.GetAttribute("innerHTML") || "USER0005" == tv.SortIdField2.GetAttribute("innerHTML"))
+                Console.WriteLine(tv.IdField1.GetAttribute("innerHTML"));
+                Console.WriteLine(tv.IdField2.GetAttribute("innerHTML"));
+                if ("USER0004" == tv.IdField1.GetAttribute("innerHTML") || "USER0005" == tv.IdField2.GetAttribute("innerHTML"))
                     Console.WriteLine("Success!! Descending Order");
             }
             catch (Exception e)
@@ -404,6 +410,134 @@ namespace UITests.TestCases.User
             string txt = tv.Mode.GetAttribute("innerHTML");
             Assert.AreEqual(txt, "Edit Mode");
             Console.WriteLine("Success!!");
+        }
+
+        [Property("TestCaseId", "TableVisualization_FixedColumn_015")]
+        [Test]
+        public void FixedColumn()
+        {
+            try
+            {
+                int c = 3;
+                UserLogin();
+                ChooseTV(c);
+                elementOps.ExistsClass("DTFC_LeftWrapper");
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.FixedColumnClass).ToString());
+                Console.WriteLine("Success");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "TableVisualization_PaginationCheck_016")]
+        [Test]
+        public void PaginationCheck()
+        {
+            try
+            {
+                UserLogin();
+                ChooseTV();
+                tv = new TableVisualization(driver);
+                string id;
+                string table_info;
+                int value;
+                int last_value;
+
+                //----next
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0_next\"]/a");
+                id = tv.IdField1.GetAttribute("innerHTML");
+                tv.PaginationNextButton.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("class=\"paginate_button previous\"")));
+                Assert.AreNotEqual(id, tv.IdField1.GetAttribute("innerHTML"));
+                table_info = tv.PaginationTableInfo.GetAttribute("innerHTML");
+                value = int.Parse(table_info.Split('-', '/')[1].Trim());
+                last_value = int.Parse(table_info.Split('-', '/')[2].Trim());
+                if (value == last_value)
+                {
+                    Assert.AreEqual("paginate_button next disabled", tv.PaginationNextli.GetAttribute("class"));
+                    Console.WriteLine("Next Button Success");
+                }
+                else
+                {
+                    Assert.AreEqual("paginate_button next", tv.PaginationNextli.GetAttribute("class"));
+                    Console.WriteLine("Next Button Success");
+                }
+
+                //----prev
+
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0_previous\"]/a");
+                id = tv.IdField1.GetAttribute("innerHTML");
+                tv.PaginationPrevButton.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("class=\"paginate_button previous disabled\"")));
+                Assert.AreNotEqual(id, tv.IdField1.GetAttribute("innerHTML"));
+                table_info = tv.PaginationTableInfo.GetAttribute("innerHTML");
+                value = int.Parse(table_info.Split('-', '/')[0].Trim());
+                if (value == 1)
+                {
+                    Assert.AreEqual("paginate_button previous disabled", tv.PaginationPrevli.GetAttribute("class"));
+                    Console.WriteLine("Previous Button Success");
+                }
+                else
+                {
+                    Assert.AreEqual("paginate_button previous", tv.PaginationPrevli.GetAttribute("class"));
+                    Console.WriteLine("Previous Button Success");
+                }
+
+                //--------last
+
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0_last\"]/a");
+                id = tv.IdField1.GetAttribute("innerHTML");
+                tv.PaginationLastButton.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("class=\"paginate_button first\"")));
+                Assert.AreNotEqual(id, tv.IdField1.GetAttribute("innerHTML"));
+                table_info = tv.PaginationTableInfo.GetAttribute("innerHTML");
+                value = int.Parse(table_info.Split('-', '/')[1].Trim());
+                last_value = int.Parse(table_info.Split('-', '/')[2].Trim());
+                if (value == last_value)
+                {
+                    Assert.AreEqual("paginate_button last disabled", tv.PaginationLastli.GetAttribute("class"));
+                    Console.WriteLine("Last Button Success");
+                }
+                else
+                {
+                    Assert.AreEqual("paginate_button last", tv.PaginationLastli.GetAttribute("class"));
+                    Console.WriteLine("Last Button Success");
+                }
+
+                //---------first
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0_first\"]/a");
+                id = tv.IdField1.GetAttribute("innerHTML");
+                tv.PaginationFirstButton.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("class=\"paginate_button first disabled\"")));
+                Assert.AreNotEqual(id, tv.IdField1.GetAttribute("innerHTML"));
+                table_info = tv.PaginationTableInfo.GetAttribute("innerHTML");
+                value = int.Parse(table_info.Split('-', '/')[0].Trim());
+                if (value == 1)
+                {
+                    Assert.AreEqual("paginate_button first disabled", tv.PaginationFirstli.GetAttribute("class"));
+                    Console.WriteLine("First Button Success");
+                }
+                else
+                {
+                    Assert.AreEqual("paginate_button first", tv.PaginationFirstli.GetAttribute("class"));
+                    Console.WriteLine("First Button Success");
+                }
+
+                //-------
+
+                if(int.Parse(tv.PaginationSelectOption1.GetAttribute("innerHTML")) == 3)
+                {
+                    int val = int.Parse(elementOps.GetTableRowCountFromJS("dvContainer_1586780535084_0_0").ToString())-7;
+                    Assert.AreEqual(3, val);
+                    Console.WriteLine("Pagination Success");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
         }
     }
 }

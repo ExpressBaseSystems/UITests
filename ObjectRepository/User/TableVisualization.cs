@@ -34,7 +34,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"ebm-objectcontainer\"]/div[2]/div"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"ebm-objectcontainer\"]/div[2]/div[2]"));
             }
         }
 
@@ -42,7 +42,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"ebm-objectcontainer\"]/div[2]/div[2]"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"ebm-objectcontainer\"]/div[2]/div"));
             }
         }
 
@@ -51,6 +51,14 @@ namespace UITests.ObjectRepository.User
             get
             {
                 return this.driver.FindElement(By.XPath("//*[@id=\"ebm-objectcontainer\"]/div[2]/div[5]"));
+            }
+        }
+
+        public IWebElement SelectTableVisualizationJamTopicList
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"ebm-objectcontainer\"]/div[2]/div[6]"));
             }
         }
 
@@ -114,7 +122,7 @@ namespace UITests.ObjectRepository.User
             }
         }
 
-        public IWebElement SortIdField1
+        public IWebElement IdField1
         {
             get
             {
@@ -122,7 +130,7 @@ namespace UITests.ObjectRepository.User
             }
         }
 
-        public IWebElement SortIdField2
+        public IWebElement IdField2
         {
             get
             {
@@ -130,7 +138,7 @@ namespace UITests.ObjectRepository.User
             }
         }
 
-        public IWebElement SortNameField1
+        public IWebElement NameField1
         {
             get
             {
@@ -138,7 +146,7 @@ namespace UITests.ObjectRepository.User
             }
         }
 
-        public IWebElement SortNameField2
+        public IWebElement NameField2
         {
             get
             {
@@ -372,6 +380,98 @@ namespace UITests.ObjectRepository.User
             get
             {
                 return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0\"]/tbody/tr[2]"));
+            }
+        }
+
+        //--------fixed  column
+
+        public IWebElement FixedColumnClass
+        {
+            get
+            {
+                return this.driver.FindElement(By.ClassName("DTFC_LeftWrapper"));
+            }
+        }
+
+        //-----------pagination
+
+        public IWebElement PaginationFirstButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_first\"]/a"));
+            }
+        }
+
+        public IWebElement PaginationFirstli
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("dvContainer_1586780535084_0_0_first"));
+            }
+        }
+
+        public IWebElement PaginationPrevButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_previous\"]/a"));
+            }
+        }
+
+        public IWebElement PaginationPrevli
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("dvContainer_1586780535084_0_0_previous"));
+            }
+        }
+
+        public IWebElement PaginationNextButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_next\"]/a"));
+            }
+        }
+
+        public IWebElement PaginationNextli
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("dvContainer_1586780535084_0_0_next"));
+            }
+        }
+        
+        public IWebElement PaginationLastButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_last\"]/a"));
+            }
+        }
+
+        public IWebElement PaginationLastli
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("dvContainer_1586780535084_0_0_last"));
+            }
+        }
+
+        public IWebElement PaginationTableInfo
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("dvContainer_1586780535084_0_0_info"));
+            }
+        }
+
+        public IWebElement PaginationSelectOption1
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_length\"]/label/select/option[1]"));
             }
         }
     }
