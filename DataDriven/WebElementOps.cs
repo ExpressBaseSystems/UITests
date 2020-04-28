@@ -48,5 +48,11 @@ namespace UITests.DataDriven
             js.ExecuteScript("document.getElementById('"+Id+"').setAttribute('"+attribute+"', '"+value+"')");
         }
         
+        public void SetValue(string Id, string value)
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript("document.getElementById('"+Id+"').value = '"+value+"'");
+        }
+        
     }
 }
