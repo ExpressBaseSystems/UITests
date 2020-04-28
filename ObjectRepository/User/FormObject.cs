@@ -13,6 +13,13 @@ namespace UITests.ObjectRepository.User
         {
             this.driver = driver;
         }
+        public IWebElement SaveForm
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("webformsave"));
+            }
+        }
 
         public IWebElement MenuApplication
         {
@@ -35,6 +42,8 @@ namespace UITests.ObjectRepository.User
                 return this.driver.FindElement(By.XPath("/html/body/div/div[1]/div[2]/div/div[2]/div[3]/div[2]/div[1]/a"));
             }
         }
+
+
         public IWebElement TextBoxLowerCase
         {
             get
@@ -442,8 +451,7 @@ namespace UITests.ObjectRepository.User
             {
                 return this.driver.FindElement(By.Id("RadioGroup4_Rd0"));
             }
-        }
-        
+        }        
         public IWebElement RadioButtonGroupHorizontalRender
         {
             get
@@ -451,12 +459,87 @@ namespace UITests.ObjectRepository.User
                 return this.driver.FindElement(By.Id("RadioGroup5Wraper"));
             }
         }
-        
         public IWebElement RadioButtonGroupIcon
         {
             get
             {
                 return this.driver.FindElement(By.Id("RadioGroup5Wraper"));
+            }
+        }
+        
+        
+
+        public IWebElement LabelHidden
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_Label1"));
+            }
+        } 
+        public IWebElement LabelHelpText
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_Label2"));
+            }
+        } 
+        public IWebElement LabelHelpTextData
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='cont_Label2']/span[2]"));
+            }
+        } 
+        public IWebElement LabelToolTip
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_Label3"));
+            }
+        }
+        
+        
+
+        public IWebElement BoolenHidden
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_RadioButton2"));
+            }
+        }
+        public IWebElement BoolenString
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("RadioButton7"));
+            }
+        }
+        public IWebElement BoolenReadOnly
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("RadioButton3lbltxtb"));
+            }
+        }
+        public IWebElement BoolenInteger
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("RadioButton6"));
+            }
+        }
+        public IWebElement BoolenDoNotPersist
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("RadioButton5"));
+            }
+        }
+        public IWebElement BoolenRequired
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("RadioButton4"));
             }
         }
     }
