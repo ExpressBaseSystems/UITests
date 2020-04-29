@@ -14,6 +14,14 @@ namespace UITests.ObjectRepository.User
             this.driver = driver;
         }
 
+        public IWebElement Menu
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("quik_menu"));
+            }
+        }
+
         public IWebElement SelectApp
         {
             get
@@ -177,6 +185,14 @@ namespace UITests.ObjectRepository.User
             get
             {
                 return this.driver.FindElement(By.Id("filterdisplayrowtd_dvContainer_1586780535084_0_0"));
+            }
+        }
+
+        public IWebElement SearchTagClose
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div/i"));
             }
         }
 
@@ -395,11 +411,19 @@ namespace UITests.ObjectRepository.User
 
         //-----------pagination
 
+        public IWebElement PaginationFirstField
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[3]/a"));
+            }
+        }
+
         public IWebElement PaginationFirstButton
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_first\"]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0_first\"]/a"));
             }
         }
 
@@ -407,7 +431,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.Id("dvContainer_1586780535084_0_0_first"));
+                return this.driver.FindElement(By.Id("dvnull_0_0_first"));
             }
         }
 
@@ -415,7 +439,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_previous\"]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0_previous\"]/a"));
             }
         }
 
@@ -423,7 +447,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.Id("dvContainer_1586780535084_0_0_previous"));
+                return this.driver.FindElement(By.Id("dvnull_0_0_previous"));
             }
         }
 
@@ -431,7 +455,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_next\"]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0_next\"]/a"));
             }
         }
 
@@ -439,7 +463,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.Id("dvContainer_1586780535084_0_0_next"));
+                return this.driver.FindElement(By.Id("dvnull_0_0_next"));
             }
         }
         
@@ -447,7 +471,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_last\"]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0_last\"]/a"));
             }
         }
 
@@ -455,7 +479,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.Id("dvContainer_1586780535084_0_0_last"));
+                return this.driver.FindElement(By.Id("dvnull_0_0_last"));
             }
         }
 
@@ -463,7 +487,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.Id("dvContainer_1586780535084_0_0_info"));
+                return this.driver.FindElement(By.Id("dvnull_0_0_info"));
             }
         }
 
@@ -471,7 +495,37 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_length\"]/label/select/option[1]"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0_length\"]/label/select/option[1]"));
+            }
+        }
+
+        //-------row height
+
+        public IWebElement FieldTd
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[4]/td[5]"));
+            }
+        }
+
+        //-------appearence
+
+        public IWebElement AppearenceChkColumn
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0_wrapper\"]/div[3]/div[2]/div[1]/div/table/thead/tr[1]/th[2]"));
+            }
+        }
+
+        //Multiline feature
+
+        public IWebElement EMulitilineSpan
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0\"]/tbody/tr[1]/td[3]/span"));
             }
         }
     }
