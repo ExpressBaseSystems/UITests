@@ -12,6 +12,7 @@ namespace UITests.TestCases.User
     public class FormTestCase : BaseClass
     {
         FormObject fo;
+        GetUniqueId UID;
 
         [Test, Order(1)]
         public void UserLogin()
@@ -24,6 +25,7 @@ namespace UITests.TestCases.User
                 ul.LoginButton.Click();
 
                 fo = new FormObject(driver);
+                UID = new GetUniqueId();
 
                 browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashboard");
                 Console.WriteLine("Login Succesfull");
@@ -41,18 +43,6 @@ namespace UITests.TestCases.User
             }
         }
 
-        private bool IsElementPresent(IWebElement webelement)
-        {
-            try
-            {
-                bool f = webelement.Displayed;
-                return true;
-            }
-            catch (NoSuchElementException)
-            {
-                return false;
-            }
-        }
 
         [Property("TestCaseId", "Form_BasicControls_TextBox_001")]
         [Test, Order(2)]
@@ -80,8 +70,8 @@ namespace UITests.TestCases.User
                 fo.TextBoxMaxLength.SendKeys("EXPRESSbase");
                 Assert.AreEqual("4", fo.TextBoxMaxLength.GetAttribute("maxlength"), true.ToString(), "“Test passed for User - side - TextBox - MultiLine”");
                 
-                fo.TextboxAutosuggestion.SendKeys("Test");
-                Assert.AreEqual("ui-autocomplete-input", fo.TextboxAutosuggestion.GetAttribute("class"), true.ToString(), "“Test passed for User - side - TextBox - Auto Suggestion”");
+                fo.TextboxAutosuggestion.SendKeys("T");
+                Assert.AreEqual("True", (elementOps.IsWebElementPresent(fo.TextboxAutosuggestionItem)).ToString(), true.ToString(), "“Test passed for User - side - TextBox - Auto Suggestion”");
                 
                 //fo.TextboxReadOnly.SendKeys("Read");
                 Assert.AreEqual("true", fo.TextboxReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - TextBox - Read Only”");
@@ -91,7 +81,7 @@ namespace UITests.TestCases.User
                 //Assert.AreEqual("3", fo.TextboxRequired.GetAttribute("rows"));
                 //Console.Write("“Test passed for User - side - TextBox - MultiLine”");
 
-                fo.TextboxUnique.SendKeys("Test");
+                fo.TextboxUnique.SendKeys(UID.GetId);
                 //Assert.AreEqual("3", fo.TextBoxMultiLine.GetAttribute("rows"));
                 //Console.Write("“Test passed for User - side - TextBox - MultiLine”");
 
@@ -214,15 +204,16 @@ namespace UITests.TestCases.User
             {
                 Assert.AreEqual("true", fo.CheckBoxGroupHidden.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - Hidden”");
 
-                Assert.AreEqual("disabled", fo.CheckBoxGroupAllReadonly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - ReadOnly”");
+                Assert.AreEqual("true", fo.CheckBoxGroupReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - ReadOnly”");
 
                 Assert.AreEqual("checkboxgrouprequired", fo.CheckBoxGroupRequired.GetAttribute("name"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - Required”");
 
-                Assert.AreEqual("true", fo.CheckBoxGroupAllHidden.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - Required”");
+                fo.CheckBoxGroupRequiredSelect.Click();
+                //Assert.AreEqual("true", fo.CheckBoxGroupAllHidden.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - Required”");
 
-                Assert.AreEqual("disabled", fo.CheckBoxGroupAllReadonly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - Required”");
+                //Assert.AreEqual("disabled", fo.CheckBoxGroupAllReadonly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - Required”");
 
-                Assert.AreEqual("checkboxgrouprequired", fo.CheckBoxGroupAllDoNotPersist.GetAttribute("name"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - Required”");
+                //Assert.AreEqual("checkboxgrouprequired", fo.CheckBoxGroupAllDoNotPersist.GetAttribute("name"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - Required”");
             }
             catch (Exception e)
             {
@@ -263,10 +254,10 @@ namespace UITests.TestCases.User
                 Assert.AreEqual("true", fo.LabelHidden.GetAttribute("eb-hidden"));
                 Console.Write("“Test passed for User - side - Label - Hidden”");
 
-                Assert.AreEqual("True", IsElementPresent(fo.LabelHelpTextData).ToString());
+                Assert.AreEqual("True", (elementOps.IsWebElementPresent(fo.LabelHelpTextData)).ToString());
                 Console.Write("“Test passed for User - side - Label - HelpText”");
 
-                Assert.AreEqual("Tool Tip", fo.LabelToolTip.GetAttribute("data-original-title"));
+                //Assert.AreEqual("Tool Tip", fo.LabelToolTip.GetAttribute("data-original-title"));
                 Console.Write("“Test passed for User - side - RadioButton - Tool Tip”");
             }
             catch (Exception e)
@@ -278,7 +269,7 @@ namespace UITests.TestCases.User
         
         
         [Property("TestCaseId", "Form_BasicControls_Label_001")]
-        [Test, Order(8)]
+        [Test, Order(9)]
         public void Boolean()
         {
             try
@@ -306,12 +297,14 @@ namespace UITests.TestCases.User
         }
 
 
-        [Test, Order(8)]
+        [Test, Order(10)]
         public void SaveFoam()
         {
+
             fo.SaveForm.Click();
 
-            elementOps.ExistsXpath("//*[@id='objname']/span");
+            browserOps.implicitWait(2000);
+            //elementOps.ExistsXpath("//*[@id='objname']/span");
 
             Assert.AreEqual("View Mode", fo.GetMode.Text, true.ToString(), "Form Saved and is opened in View Mode");
 

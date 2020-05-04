@@ -102,6 +102,13 @@ namespace UITests.ObjectRepository.User
                 return this.driver.FindElement(By.Id("TextBox7"));
             }
         }
+        public IWebElement TextboxAutosuggestionItem
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='ui-id-2']"));
+            }
+        }
         public IWebElement TextboxHidden
         {
             get
@@ -399,6 +406,13 @@ namespace UITests.ObjectRepository.User
             get
             {
                 return this.driver.FindElement(By.Id("cont_CheckBoxGroup3"));
+            }
+        }
+        public IWebElement CheckBoxGroupRequiredSelect
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("CheckBoxGroup3_Rd0"));
             }
         }
         public IWebElement CheckBoxGroupDoNotPersist
