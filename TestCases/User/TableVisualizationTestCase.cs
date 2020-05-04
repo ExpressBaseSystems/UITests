@@ -44,7 +44,7 @@ namespace UITests.TestCases.User
             Console.WriteLine("SelectTableView");
             tv.SelectApp.Click();
             Console.WriteLine("SelectTableViewClicked");
-            elementOps.ExistsXpath("//*[@id=\"ebm-objtcontainer\"]/div[2]/div[2]");
+            elementOps.ExistsXpath("//*[@id=\"ebm-objtcontainer\"]/div[2]/div[3]");
             actions.MoveToElement(tv.SelectTableView).Perform();
             tv.SelectTableView.Click();
             Console.WriteLine("SelectTableView");
@@ -244,7 +244,7 @@ namespace UITests.TestCases.User
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[3]/td[3]/a");
                 tv.SortNameField.Click();
                 wait.Until(webDriver => (driver.PageSource.Contains("class=\"null tdheight dt-left sorting_asc\"")));
-                Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.ConditionalFormattingDiv).ToString(),"Success!!! Conditional Formatting", "Success!!! Conditional Formatting");
+                Assert.AreEqual("conditionformat", tv.ConditionalFormattingDiv.GetAttribute("class"),"Success!!! Conditional Formatting", "Success!!! Conditional Formatting");
                 browserOps.Refresh();
             }
             catch (Exception e)
