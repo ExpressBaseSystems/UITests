@@ -21,6 +21,14 @@ namespace UITests.ObjectRepository.User
             }
         }
 
+        public IWebElement GetMode
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("//*[@id='objname']/span"));
+            }
+        }
+
         public IWebElement MenuApplication
         {
             get
@@ -39,7 +47,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("/html/body/div/div[1]/div[2]/div/div[2]/div[3]/div[2]/div[1]/a"));
+                return this.driver.FindElement(By.XPath("/html/body/div/div[1]/div[2]/div/div[2]/div[3]/div[2]/div[2]/a"));
             }
         }
 
@@ -92,6 +100,13 @@ namespace UITests.ObjectRepository.User
             get
             {
                 return this.driver.FindElement(By.Id("TextBox7"));
+            }
+        }
+        public IWebElement TextboxAutosuggestionItem
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='ui-id-2']"));
             }
         }
         public IWebElement TextboxHidden
@@ -343,9 +358,9 @@ namespace UITests.ObjectRepository.User
         }
         public IWebElement BoolenSelectTrueTextSelect
         {
-            get//*[@id="WebForm_k8r8cuzt"]/div[6]/div/div/ul/li[1]/a/span
+            get
             {
-                return this.driver.FindElement(By.XPath("//*[@class='dropdown-menu open dd_of_BooleanSelect8']/div/div/ul/li[1]/a/span"));
+                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect8_dd']/div/div/ul/li[1]/a/span"));
             }
         }
         public IWebElement BoolenSelectFalseText
@@ -359,7 +374,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@class='dd_of_BooleanSelect9']/div/div/ul/li[1]/a/span"));
+                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect9_dd']/div/div/ul/li[2]/a/span"));
             }
         }
         public IWebElement BoolenSelectHelptext
@@ -391,6 +406,13 @@ namespace UITests.ObjectRepository.User
             get
             {
                 return this.driver.FindElement(By.Id("cont_CheckBoxGroup3"));
+            }
+        }
+        public IWebElement CheckBoxGroupRequiredSelect
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("CheckBoxGroup3_Rd0"));
             }
         }
         public IWebElement CheckBoxGroupDoNotPersist
