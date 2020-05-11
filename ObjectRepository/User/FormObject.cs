@@ -33,21 +33,21 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("/html/body/div/div[1]/div[2]/div/div[2]/div[1]/div/div/ul/li/ul/li[7]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id='appList']/div/ul/li/ul/li[7]/a"));
             }
         }
         public IWebElement MenuSelectFormMenu
         {
             get
             {
-                return this.driver.FindElement(By.XPath("/html/body/div/div[1]/div[2]/div/div[2]/div[2]/div[2]/div[1]"));
+                return this.driver.FindElement(By.XPath("//*[@id='ebm-objtcontainer']/div[2]/div[1]"));
             }
         }
         public IWebElement MenuSelectForm
         {
             get
             {
-                return this.driver.FindElement(By.XPath("/html/body/div/div[1]/div[2]/div/div[2]/div[3]/div[2]/div[2]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a"));
             }
         }
 
@@ -332,7 +332,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("cont_BooleanSelect1"));
+                return this.driver.FindElement(By.Id("cont_BooleanSelect1"));
             }
         }
         public IWebElement BoolenSelectToolTip
@@ -353,7 +353,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect8Wraper']/div/button"));
+                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect8_dd']/button"));
             }
         }
         public IWebElement BoolenSelectTrueTextSelect
@@ -367,7 +367,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect9Wraper']/div/button"));
+                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect9_dd']/button"));
             }
         }
         public IWebElement BoolenSelectFalseTextSelect
