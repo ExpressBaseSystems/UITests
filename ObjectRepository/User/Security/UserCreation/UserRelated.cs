@@ -168,7 +168,7 @@ namespace UITests.ObjectRepository.User.Security.UserCreation
         {
             get
             {
-                return this.driver.FindElement(By.ClassName("editviewclass"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"tblCommonList\"]/tbody/tr[6]/td[9]/i"));
             }
         }
 

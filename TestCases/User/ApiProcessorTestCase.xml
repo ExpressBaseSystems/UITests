@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<API>
+  <test name="test1">
+    <statuscode type="String">OK</statuscode>
+    <name type="String">Josevin Kodiyan</name>
+    <data type="String">10000.0</data>
+  </test>
+</API>
