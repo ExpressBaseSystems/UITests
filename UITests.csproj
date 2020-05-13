@@ -45,7 +45,13 @@
     <None Update="TestCases\User\ApiDataWriterTestCase.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="TestCases\User\ApiProcessorInsertTestCase.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="TestCases\User\ApiProcessorTestCase.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\User\ApiSQLFuncTestCase.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="TestCases\User\Security\RoleRelatedTestCase.xml">

@@ -355,11 +355,138 @@ namespace UITests.TestCases.User
                 Console.WriteLine("Faliure!!\n" + e.Message);
             }
         }
-        
+
+        [Property("TestCaseId", "TableVisualization_OperatorsCheck_017")]
+        [Test, Order(14)]
+        public void OperatorsCheck()
+        {
+            try
+            {
+                tv = new TableVisualization(driver);
+                //----------------------------------------------------String
+                //--------Starts With
+                elementOps.ExistsId("dvContainer_1586780535084_0_0_name_hdr_sel");
+                tv.NameOperatorDropDownButton.Click();
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[3]/th[4]/div/div/ul/li[1]");
+                tv.StartsWithOperator.Click();
+                elementOps.ExistsId("dvContainer_1586780535084_0_0_name_hdr_txt1");
+                tv.SearchBoxNameField.SendKeys("a" + Keys.Enter);
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div");
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.IdField1).ToString(), "Success", "Success");
+                browserOps.Refresh();
+
+                //------Ends With
+                elementOps.ExistsId("dvContainer_1586780535084_0_0_name_hdr_sel");
+                tv.NameOperatorDropDownButton.Click();
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[3]/th[4]/div/div/ul/li[1]");
+                tv.EndsWithOperator.Click();
+                elementOps.ExistsId("dvContainer_1586780535084_0_0_name_hdr_txt1");
+                tv.SearchBoxNameField.SendKeys("a" + Keys.Enter);
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div");
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.IdField1).ToString(), "Success", "Success");
+                browserOps.Refresh();
+
+                //-----Contains
+                elementOps.ExistsId("dvContainer_1586780535084_0_0_name_hdr_sel");
+                tv.NameOperatorDropDownButton.Click();
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[3]/th[4]/div/div/ul/li[1]");
+                tv.ContainsOperator.Click();
+                elementOps.ExistsId("dvContainer_1586780535084_0_0_name_hdr_txt1");
+                tv.SearchBoxNameField.SendKeys("o" + Keys.Enter);
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div");
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.IdField1).ToString(), "Success", "Success");
+                browserOps.Refresh();
+
+                //-----Equal
+                elementOps.ExistsId("dvContainer_1586780535084_0_0_name_hdr_sel");
+                tv.NameOperatorDropDownButton.Click();
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[3]/th[4]/div/div/ul/li[1]");
+                tv.NameEqualToOperator.Click();
+                elementOps.ExistsId("dvContainer_1586780535084_0_0_name_hdr_txt1");
+                tv.SearchBoxNameField.SendKeys("Anoopa Baby" + Keys.Enter);
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div");
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.IdField1).ToString(), "Success", "Success");
+                browserOps.Refresh();
+
+                //------------------------------------------------------------Date
+
+                //Equal
+                elementOps.ExistsId("dvContainer_1586780535084_0_0_dob_hdr_sel");
+                tv.DateChkButton.Click();
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[3]/th[5]/div/div/ul/li[6]");
+                tv.DateEqualToOperator.Click();
+                elementOps.ExistsId("dvContainer_1586780535084_0_0_dob_hdr_txt1");
+                tv.FrmDate.SendKeys("25-04-1995" + Keys.Enter);
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div");
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.IdField1).ToString(), "Success", "Success");
+                browserOps.Refresh();
+
+                //LessThan
+                elementOps.ExistsId("dvContainer_1586780535084_0_0_dob_hdr_sel");
+                tv.DateChkButton.Click();
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[3]/th[5]/div/div/ul/li[6]");
+                tv.DateLessThanOperator.Click();
+                elementOps.ExistsId("dvContainer_1586780535084_0_0_dob_hdr_txt1");
+                tv.FrmDate.SendKeys("25-04-1995" + Keys.Enter);
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div");
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.IdField1).ToString(), "Success", "Success");
+                browserOps.Refresh();
+
+                //Greater Than
+                elementOps.ExistsId("dvContainer_1586780535084_0_0_dob_hdr_sel");
+                tv.DateChkButton.Click();
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[3]/th[5]/div/div/ul/li[6]");
+                tv.DateGreaterThanOperator.Click();
+                elementOps.ExistsId("dvContainer_1586780535084_0_0_dob_hdr_txt1");
+                tv.FrmDate.SendKeys("25-04-1995" + Keys.Enter);
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div");
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.IdField1).ToString(), "Success", "Success");
+                browserOps.Refresh();
+
+                //LessThanOrEqual
+                elementOps.ExistsId("dvContainer_1586780535084_0_0_dob_hdr_sel");
+                tv.DateChkButton.Click();
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[3]/th[5]/div/div/ul/li[6]");
+                tv.DateLessThanorEqualOperator.Click();
+                elementOps.ExistsId("dvContainer_1586780535084_0_0_dob_hdr_txt1");
+                tv.FrmDate.SendKeys("25-04-1995" + Keys.Enter);
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div");
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.IdField1).ToString(), "Success", "Success");
+                browserOps.Refresh();
+
+                //GreaterThanOrEqual
+                elementOps.ExistsId("dvContainer_1586780535084_0_0_dob_hdr_sel");
+                tv.DateChkButton.Click();
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[3]/th[5]/div/div/ul/li[6]");
+                tv.DateGreaterThanorEqualOperator.Click();
+                elementOps.ExistsId("dvContainer_1586780535084_0_0_dob_hdr_txt1");
+                tv.FrmDate.SendKeys("25-04-1995" + Keys.Enter);
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div");
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.IdField1).ToString(), "Success", "Success");
+                browserOps.Refresh();
+                
+                //---Between
+                elementOps.ExistsId("dvContainer_1586780535084_0_0_dob_hdr_sel");
+                tv.DateChkButton.Click();
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[3]/th[5]/div/div/ul/li[6]");
+                tv.DateBetweenOpt.Click();
+                elementOps.ExistsId("dvContainer_1586780535084_0_0_dob_hdr_txt1");
+                tv.FrmDate.SendKeys("28-07-1994");
+                tv.ToDate.SendKeys("19-08-1994");
+                tv.DateSort.Click();
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.IdField1).ToString(), "Success", "Success");
+                browserOps.Refresh();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
         //-------------------------------------------------------------------------------------------------------------------------------
 
         [Property("TestCaseId", "TableVisualization_TreeSearch_008")]
-        [Test, Order(14)]
+        [Test, Order(15)]
         public void TreeSearch()
         {
             try
@@ -379,7 +506,7 @@ namespace UITests.TestCases.User
         //------------------------------------------------------------------------------------------------------------------------------------------------
 
         [Property("TestCaseId", "TableVisualization_AutoDeploy_014")]
-        [Test, Order(15)]
+        [Test, Order(16)]
         public void AutoDeploy()
         {
             browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-33-33-33-33");
@@ -405,7 +532,7 @@ namespace UITests.TestCases.User
         }
         
         [Property("TestCaseId", "TableVisualization_PaginationCheck_016")]
-        [Test, Order(16)]
+        [Test, Order(17)]
         public void PaginationCheck()
         {
             try
@@ -505,7 +632,7 @@ namespace UITests.TestCases.User
         //--------------------------------------------------------------------------------------------------------------------------------
 
         [Property("TestCaseId", "TableVisualization_FixedColumn_015")]
-        [Test, Order(17)]
+        [Test, Order(18)]
         public void FixedColumn()
         {
             try
@@ -521,7 +648,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_AppearenceCheck_018")]
-        [Test, Order(18)]
+        [Test, Order(19)]
         public void AppearenceCheck()
         {
             try
@@ -542,7 +669,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_ExtendedMulitline_019")]
-        [Test, Order(19)]
+        [Test, Order(20)]
         public void ExtendedMulitline()
         {
             try
