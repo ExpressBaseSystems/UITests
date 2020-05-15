@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Login>
   <test name="test1">
-    <username type ="String"> kokic66909@mrisemail.com</username>
-    <password type ="String"> @Qwerty123</password>
+    <username type ="String"> kurian@expressbase.com</username>
+    <password type ="String"> @Kurian123</password>
     <url type ="String">https://myaccount.eb-test.cloud/</url>
   </test>
   <test name="test2">

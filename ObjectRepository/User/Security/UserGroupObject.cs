@@ -36,6 +36,15 @@ namespace UITests.ObjectRepository.User.Security
             }
 
         }
+        
+        public IWebElement UserGroupSearch
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("txtSrchCmnList"));
+            }
+
+        }
         public IWebElement CreateUserGroup
         {
             get
@@ -135,7 +144,7 @@ namespace UITests.ObjectRepository.User.Security
         {
             get
             {
-                return this.driver.FindElement(By.XPath("/html/body/div/div[3]/div[2]/div/div[2]/div/div/section/div/div/div/div[2]/table/tbody/tr[1]/td[4]/i"));
+                return this.driver.FindElement(By.XPath("//*[@id='tblCommonList']/tbody/tr/td[4]/i"));
             }
         }
         public IWebElement EditTheFirstUser
