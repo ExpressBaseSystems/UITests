@@ -47,7 +47,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id='ebm-objectcontainer']/div[2]/div[1]/a"));
             }
         }
 
