@@ -42,7 +42,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"ebm-objectcontainer\"]/div[2]/div[2]"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"ebm-objectcontainer\"]/div[2]/div"));
             }
         }
 
@@ -50,7 +50,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"ebm-objectcontainer\"]/div[2]/div"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"ebm-objectcontainer\"]/div[2]/div[2]"));
             }
         }
 
@@ -204,6 +204,8 @@ namespace UITests.ObjectRepository.User
             }
         }
 
+        //---Operations
+
         public IWebElement NameOperatorDropDownButton
         {
             get
@@ -219,6 +221,71 @@ namespace UITests.ObjectRepository.User
                 return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[3]/th[4]/div/div/ul/li[4]"));
             }
         }
+
+        public IWebElement StartsWithOperator
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[3]/th[4]/div/div/ul/li[1]"));
+            }
+        }
+
+        public IWebElement EndsWithOperator
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[3]/th[4]/div/div/ul/li[2]"));
+            }
+        }
+
+        public IWebElement ContainsOperator
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[3]/th[4]/div/div/ul/li[3]"));
+            }
+        }
+
+        public IWebElement DateEqualToOperator
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[3]/th[5]/div/div/ul/li[1]"));
+            }
+        }
+
+        public IWebElement DateLessThanOperator
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[3]/th[5]/div/div/ul/li[2]"));
+            }
+        }
+
+        public IWebElement DateGreaterThanOperator
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[3]/th[5]/div/div/ul/li[3]"));
+            }
+        }
+
+        public IWebElement DateLessThanorEqualOperator
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[3]/th[5]/div/div/ul/li[4]"));
+            }
+        }
+
+        public IWebElement DateGreaterThanorEqualOperator
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[3]/th[5]/div/div/ul/li[5]"));
+            }
+        }
+        
 
         //-----------Row Grouping
 
@@ -526,6 +593,48 @@ namespace UITests.ObjectRepository.User
             get
             {
                 return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0\"]/tbody/tr[1]/td[3]/span"));
+            }
+        }
+
+        //Date Between Check
+
+        public IWebElement DateChkButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("dvContainer_1586780535084_0_0_dob_hdr_sel"));
+            }
+        }
+
+        public IWebElement DateBetweenOpt
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[3]/th[5]/div/div/ul/li[6]"));
+            }
+        }
+
+        public IWebElement FrmDate
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("dvContainer_1586780535084_0_0_dob_hdr_txt1"));
+            }
+        }
+
+        public IWebElement ToDate
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("dvContainer_1586780535084_0_0_dob_hdr_txt2"));
+            }
+        }
+
+        public IWebElement DateSort
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[1]/th[5]"));
             }
         }
     }

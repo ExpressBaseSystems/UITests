@@ -19,7 +19,7 @@ namespace UITests.ObjectRepository.User.Security
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='appList']/div/ul/li/ul/li[3]"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"appList\"]/div/ul/li/ul/li[3]/a"));
             }
         }
 
@@ -27,7 +27,7 @@ namespace UITests.ObjectRepository.User.Security
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='ebm-security']/div[2]/ul/li[5]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"ebm-security\"]/div[2]/ul/li[5]/a"));
             }
         }
 
@@ -67,7 +67,7 @@ namespace UITests.ObjectRepository.User.Security
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='selectApp']/option[34]"));
+                return this.driver.FindElement(By.XPath("//*[@id='selectApp']/option[3]"));
             }
         }
 
@@ -163,7 +163,7 @@ namespace UITests.ObjectRepository.User.Security
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='tblWebForm']/tbody/tr[2]/td[2]/input"));
+                return this.driver.FindElement(By.XPath("//*[@id='tblWebForm']/tbody/tr/td[5]/input"));
             }
         }
 
@@ -171,7 +171,7 @@ namespace UITests.ObjectRepository.User.Security
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='tblWebForm']/tbody/tr[2]/td[3]/input"));
+                return this.driver.FindElement(By.XPath("//*[@id='tblWebForm']/tbody/tr/td[6]/input"));
             }
         }
 
@@ -187,7 +187,7 @@ namespace UITests.ObjectRepository.User.Security
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='tblTableVisualization']/tbody/tr[5]/td[2]/input"));
+                return this.driver.FindElement(By.XPath("//*[@id='tblTableVisualization']/tbody/tr[3]/td[2]/input"));
             }
         }
 
@@ -195,7 +195,7 @@ namespace UITests.ObjectRepository.User.Security
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='tblTableVisualization']/tbody/tr[9]/td[2]/input"));
+                return this.driver.FindElement(By.XPath("//*[@id='tblTableVisualization']/tbody/tr[4]/td[2]/input"));
             }
         }
 
@@ -235,7 +235,7 @@ namespace UITests.ObjectRepository.User.Security
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='divSearchResultsAdd_Roles']/div[2]/div[1]/input"));
+                return this.driver.FindElement(By.XPath("//*[@id='divSearchResultsAdd_Roles']/div[1]/div[1]/input"));
             }
         }
 
@@ -243,7 +243,7 @@ namespace UITests.ObjectRepository.User.Security
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='divSearchResultsAdd_Roles']/div[4]/div[1]/input"));
+                return this.driver.FindElement(By.XPath("//*[@id='divSearchResultsAdd_Roles']/div[3]/div[1]/input"));
             }
         }
 
@@ -251,7 +251,7 @@ namespace UITests.ObjectRepository.User.Security
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='divSearchResultsAdd_Roles']/div[32]/div[1]/input"));
+                return this.driver.FindElement(By.XPath("//*[@id='divSearchResultsAdd_Roles']/div[6]/div[1]/input"));
             }
         }
 
@@ -283,7 +283,7 @@ namespace UITests.ObjectRepository.User.Security
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='divSearchResultsAdd_Users']/div[3]/div[1]/input"));
+                return this.driver.FindElement(By.XPath("//*[@id='divSearchResultsAdd_Users']/div[1]/div[1]/input"));
             }
         }
 
@@ -291,7 +291,7 @@ namespace UITests.ObjectRepository.User.Security
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='divSearchResultsAdd_Users']/div[4]/div[1]/input"));
+                return this.driver.FindElement(By.XPath("//*[@id='divSearchResultsAdd_Users']/div[2]/div[1]/input"));
             }
         }
 
@@ -347,7 +347,7 @@ namespace UITests.ObjectRepository.User.Security
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='tblTableVisualization']/tbody/tr[8]/td[2]/input"));
+                return this.driver.FindElement(By.XPath("//*[@id='tblTableVisualization']/tbody/tr[6]/td[2]/input"));
             }
         }
 

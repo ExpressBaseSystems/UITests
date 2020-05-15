@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?> 
 <Role>
   <test name="test1">
-    <rolename type ="String"> Test Role</rolename>
+    <rolename type ="String"> Test Role5</rolename>
     <description type ="String"> Role Testing</description>
     <editdesc type ="String"> Role Test </editdesc>
     <anonymsrole type ="String"> Test Anonyms Role</anonymsrole>

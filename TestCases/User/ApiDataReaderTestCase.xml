@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<API>
+  <test name="test1">
+    <statuscode type="String">OK</statuscode>
+    <data type="String">[{"tableName":"users","columns":[{"columnIndex":0,"columnName":"id","type":11,"tableName":null},{"columnIndex":1,"columnName":"user_id","type":16,"tableName":null},{"columnIndex":2,"columnName":"name","type":16,"tableName":null},{"columnIndex":3,"columnName":"emailid","type":16,"tableName":null},{"columnIndex":4,"columnName":"dob","type":5,"tableName":null},{"columnIndex":5,"columnName":"phno","type":7,"tableName":null},{"columnIndex":6,"columnName":"dept","type":16,"tableName":null},{"columnIndex":7,"columnName":"salary","type":7,"tableName":null},{"columnIndex":8,"columnName":"status","type":16,"tableName":null},{"columnIndex":9,"columnName":"remarks","type":16,"tableName":null}],"rows":[["1","USER0001","Anoopa Baby","anoopababy@gmail.com","1995-04-25T05:30:00+05:30","9400176451","production","15000","working","Employee"],["2","USER0002","Josevin Kodiyan","josevin@gmail.com","1994-08-14T05:30:00+05:30","9400000400","rd","10000","working","Employee"],["4","USER0004","Riya V","riya@gmail.com","1997-02-11T05:30:00+05:30","9400000013","hr","25000","working","Employee"],["5","USER0005","Anoopa Baby","anoopa@gmail.com","1995-04-25T05:30:00+05:30","9400000027","production","18000","working","Employee"],["3","USER0003","Mary","mary@gmail.com","1981-12-14T05:30:00+05:30","9400000075","marketing","5000","working","Emlpoyee"]]}]</data>
+  </test>
+</API>

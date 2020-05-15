@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<API>
+  <test name="test1">
+    <statuscode type="String">OK</statuscode>
+    <data type="String">"Success"</data>
+  </test>
+</API>
