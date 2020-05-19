@@ -4,6 +4,6 @@
     <name type="String">Master of Technology in Production Engineering</name>
     <desc type="String">Master of Technology in Production Engineering or M.Tech in Production Engineering is a 2 years full time postgraduate course which is divided into 4 semesters.</desc>
     <statuscode type="String">OK</statuscode>
-    <data type="String">1row inserted</data>
+    <data type="String">"1row inserted"</data>
   </test>
 </API>

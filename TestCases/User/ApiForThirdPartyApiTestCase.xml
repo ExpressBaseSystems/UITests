@@ -2,6 +2,6 @@
 <API>
   <test name="test1">
     <statuscode type="String">OK</statuscode>
-    <data type="String">"Execution success"</data>
+    <data type="String">"Success"</data>
   </test>
 </API>

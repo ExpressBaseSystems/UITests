@@ -78,8 +78,8 @@ namespace UITests.TestCases.User
                 string url = "https://uitesting.eb-test.cloud/api/api_getusrsdetails/1.0.0/json";
                 string datas = GetResponse(url, xmldata.statuscode);
                 dynamic jsondata = JObject.Parse(datas);
-                Console.WriteLine("Data : " + JsonConvert.SerializeObject(jsondata.result.tables));
-                Assert.AreEqual(xmldata.data, JsonConvert.SerializeObject(jsondata.result.tables));
+                Console.WriteLine("Data : " + JsonConvert.SerializeObject(jsondata.message.description));
+                Assert.AreEqual(xmldata.data, JsonConvert.SerializeObject(jsondata.message.description));
             }
             catch (Exception e)
             {
@@ -144,13 +144,51 @@ namespace UITests.TestCases.User
             }
         }
 
-        [Property("TestCaseId", "API_ApiForSQLFunction_002")]
+        [Property("TestCaseId", "API_ApiForSQLFunction_001")]
         [TestCaseSource("ApiForSQLFunction")]
         public void TestApiForSQLFunction(dynamic xmldata)
         {
             try
             {
                 string url = String.Format("https://uitesting.eb-test.cloud/api/api_getuserreccount/1.0.0/json");
+                string datas = GetResponse(url, xmldata.statuscode);
+                dynamic jsondata = JObject.Parse(datas);
+                Console.WriteLine("Data : " + JsonConvert.SerializeObject(jsondata.message.status));
+                Assert.AreEqual(xmldata.data, JsonConvert.SerializeObject(jsondata.message.status));
+                //httpClient.Dispose();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "API_ApiForApi_001")]
+        [TestCaseSource("ApiForApi")]
+        public void TestApiForApi(dynamic xmldata)
+        {
+            try
+            {
+                string url = String.Format("https://uitesting.eb-test.cloud/api/apitestapi/1.0.0/json");
+                string datas = GetResponse(url, xmldata.statuscode);
+                dynamic jsondata = JObject.Parse(datas);
+                Console.WriteLine("Data : " + JsonConvert.SerializeObject(jsondata.message.status));
+                Assert.AreEqual(xmldata.data, JsonConvert.SerializeObject(jsondata.message.status));
+                //httpClient.Dispose();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "API_ApiForThirdPartyApi_001")]
+        [TestCaseSource("ApiForThirdPartyApi")]
+        public void TestApiForThirdPartyApi(dynamic xmldata)
+        {
+            try
+            {
+                string url = String.Format("https://uitesting.eb-test.cloud/api/apitestapi/1.0.0/json");
                 string datas = GetResponse(url, xmldata.statuscode);
                 dynamic jsondata = JObject.Parse(datas);
                 Console.WriteLine("Data : " + JsonConvert.SerializeObject(jsondata.message.status));
@@ -186,6 +224,16 @@ namespace UITests.TestCases.User
         private static List<EbTestItem> ApiForSQLFunction()
         {
             return GetDataFromXML.GetDataFromFile(@"TestCases\User\ApiSQLFuncTestCase.xml");
+        }
+
+        private static List<EbTestItem> ApiForApi()
+        {
+            return GetDataFromXML.GetDataFromFile(@"TestCases\User\ApiForApiTestCase.xml");
+        }
+
+        private static List<EbTestItem> ApiForThirdPartyApi()
+        {
+            return GetDataFromXML.GetDataFromFile(@"TestCases\User\ApiForThirdPartyApiTestCase.xml");
         }
     }
 }
