@@ -47,7 +47,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id='ebm-objectcontainer']/div[2]/div[1]/a"));
             }
         }
 
@@ -363,6 +363,13 @@ namespace UITests.ObjectRepository.User
                 return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect8_dd']/div/div/ul/li[1]/a/span"));
             }
         }
+        public IWebElement BoolenSelectTrueTextAfterSave
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect8_dd']/button/div/div/div"));
+            }
+        }
         public IWebElement BoolenSelectFalseText
         {
             get
@@ -375,6 +382,13 @@ namespace UITests.ObjectRepository.User
             get
             {
                 return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect9_dd']/div/div/ul/li[2]/a/span"));
+            }
+        }
+        public IWebElement BoolenSelectFalseTextAfterSave
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect9_dd']/button/div/div/div"));
             }
         }
         public IWebElement BoolenSelectHelptext

@@ -6,34 +6,23 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using UITests.DataDriven;
+using UITests.ObjectRepository.User;
 
 namespace UITests.TestCases.User
 {
     [TestFixture]
-    public class UserLoginTestCase
+    public class UserLoginTestCase : BaseClass
     {
-        private IWebDriver driver;
-        ObjectRepository.User.UserLogin l;
-        BrowserOps browserOps = new BrowserOps();
-        string url = "https://hairocraft.eb-test.cloud/";
 
-        [SetUp]
-        public void Initialize()
-        {
-            browserOps.Init_Browser();
-        }
-
-        [TestCaseSource("UserLoginData")]
+        [TestCaseSource("UserLoginData"), Order(1)]
         public void ExecuteTest(dynamic Userdata)
         {
-            driver = browserOps.getDriver;
-            l = new ObjectRepository.User.UserLogin(driver);
-            browserOps.Goto(url);
-            l.UserName.SendKeys(Userdata.username);
+            browserOps.Goto("https://uitesting.eb-test.cloud/");
+            ul.UserName.SendKeys(Userdata.username);
             Console.Write("username value is entered \n");
-            l.Password.SendKeys(Userdata.password);
+            ul.Password.SendKeys(Userdata.password);
             Console.Write("password is entered");
-            l.LoginButton.Click();
+            ul.LoginButton.Click();
             Console.Write("\nlogin button is clicked");
             browserOps.implicitWait(10);
             if (string.Compare(driver.Url, Userdata.url) != 1)
@@ -42,7 +31,7 @@ namespace UITests.TestCases.User
             }
             else
             {
-                String ExpectedColor = l.TestResult.GetCssValue("background-color");
+                String ExpectedColor = ul.MessageBox.GetCssValue("background-color");
                 Assert.AreEqual(Userdata.color, ExpectedColor);
                 Console.Write("“Test passed for User Login InCorrent UserName & Password ”");
             }

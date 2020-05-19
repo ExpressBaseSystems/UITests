@@ -6,28 +6,22 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using UITests.DataDriven;
+using UITests.ObjectRepository.Tenant;
 
 namespace UITests.TestCases.Tenant
 {
     [TestFixture]
-    public class TenantLoginTestCase
+    public class TenantLoginTestCase :BaseClass
     {
-        private IWebDriver driver;
-        ObjectRepository.Tenant.TenantLogin l;
-        BrowserOps browserOps = new BrowserOps();
+        TenantLogin l;
         string url = "https://myaccount.eb-test.cloud/";
 
-        [SetUp]
-        public void Initialize()
-        {
-            browserOps.Init_Browser();
-        }
         
         [TestCaseSource("LoginTestData")]
         public void ExecuteTest(dynamic testdatas)
         {
-            driver = browserOps.getDriver;
-            l = new ObjectRepository.Tenant.TenantLogin(driver);
+            
+            l = new TenantLogin(driver);
             browserOps.Goto(url);
             l.UserName.SendKeys(testdatas.username);
             Console.Write("username value is entered \n");

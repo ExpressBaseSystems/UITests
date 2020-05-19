@@ -21,6 +21,10 @@ namespace UITests.DataDriven
         {
             wait.Until(ExpectedConditions.ElementExists(By.XPath(xpath)));
         }
+        public void ExistsXpathClickable(IWebElement xpath)
+        {
+            wait.Until(ExpectedConditions.ElementToBeClickable((xpath)));
+        }
 
         public void ExistsId(string id)
         {

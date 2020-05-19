@@ -85,7 +85,7 @@ namespace UITests.TestCases.User
                 tv = new TableVisualization(driver);
                 elementOps.ExistsId("NewFormButtondvContainer_1586780535084_0_0");
                 tv.NewFormButton.Click();
-                elementOps.ExistsXpath("//*[@id=\"NewFormdddvContainer_1586780535084_0_0\"]/div/ul/li/a");
+                //*[@id=\"NewFormdddvContainer_1586780535084_0_0\"]/div/ul/li/a");
                 string url = driver.Url;
                 tv.NewFormUserCreation.Click();
                 driver.SwitchTo().Window(driver.WindowHandles.Last());

@@ -51,13 +51,14 @@ namespace UITests.ObjectRepository.User
             }
         }
 
-        public IWebElement TestResult
+        public IWebElement MessageBox
         {
             get
             {
                 return this.driver.FindElement(By.Id("eb_messageBox_container"));
             }
         }
+
 
     }
 }

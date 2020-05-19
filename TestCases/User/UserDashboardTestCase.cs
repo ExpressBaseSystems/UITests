@@ -8,32 +8,22 @@ using UITests.ObjectRepository.User;
 
 namespace UITests.TestCases.User
 {
-    class UserDashboardTestCase
+    [TestFixture]
+    public class UserDashboardTestCase :BaseClass
     {
-        IWebDriver driver;
-        UserLogin ul;
+       
         UserDashboardObject udb;
-        BrowserOps browserOps = new BrowserOps();
 
-        [SetUp]
-        public void Initialize()
-        {
-            if (driver == null)
-            {
-                browserOps.Init_Browser();
-                driver = browserOps.getDriver;
-                ul = new UserLogin(driver);
-                udb = new UserDashboardObject(driver);
-            }
-        }
 
         [Test, Order(1)]
         public void UserLogin()
         {
-            browserOps.Goto("https://hairocraft.eb-test.cloud/");
-            ul.UserName.SendKeys("hairocraft123@gmail.com");
-            ul.Password.SendKeys("12345678");
+            browserOps.Goto("https://uitesting.eb-test.cloud/");
+            ul.UserName.SendKeys("kurian@expressbase.com");
+            ul.Password.SendKeys("@Kurian123");
             ul.LoginButton.Click();
+
+            udb = new UserDashboardObject(driver);
         }
 
         [Test, Order(2)]

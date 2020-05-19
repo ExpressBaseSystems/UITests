@@ -31,12 +31,18 @@ namespace UITests.TestCases.User
                 wait.Until(webDriver => (driver.PageSource.Contains("class=\"list-group-item inner_li Obj_link for_brd\"")));
                 browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashboard");
                 Console.WriteLine("Login Succesfull");
+
+                browserOps.implicitWait(1);
                 elementOps.ExistsXpath("//*[@id='appList']/div/ul/li/ul/li[7]/a");
-                wait.Until(webDriver => (driver.PageSource.Contains("class=\"ObjectTypeContainer\"")));
                 fo.MenuApplication.Click();
-                wait.Until(webDriver => (driver.PageSource.Contains("id=\"ebm-objtcontainer\"")));
+                browserOps.implicitWait(1);
+
+                actions.MoveToElement(fo.MenuSelectFormMenu).Perform();
+                elementOps.ExistsXpath("//*[@id='ebm-objtcontainer']/div[2]/div[1]");
                 fo.MenuSelectFormMenu.Click();
-                wait.Until(webDriver => (driver.PageSource.Contains("id=\"ebm-objectcontainer\"")));
+                browserOps.implicitWait(1);
+                actions.MoveToElement(fo.MenuSelectForm).Perform();
+                elementOps.ExistsXpath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a");
                 fo.MenuSelectForm.Click();
                 Console.WriteLine("Test Form Opened");
             }
@@ -60,25 +66,25 @@ namespace UITests.TestCases.User
                 fo.TextBoxUpperCase.SendKeys("uppercase");
                 browserOps.implicitWait(100);
                 //Assert.AreEqual("UPPERCASE", fo.TextBoxUpperCase.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Uppercase”");
-                
+
                 fo.TextBoxPassword.SendKeys("password");
                 Assert.AreEqual("password", fo.TextBoxPassword.GetAttribute("type"), true.ToString(), "“Test passed for User - side - TextBox - Password”");
-                
+
                 fo.TextBoxEmail.SendKeys("kurian@expressbase.com");
                 //Assert.AreEqual("email", fo.TextBoxEmail.GetAttribute("email"), true.ToString(), "“Test passed for User - side - TextBox - Email”");
-                
+
                 fo.TextBoxMultiLine.SendKeys("EXPRESSbase is a Platform on the cloud to build & run business applications 10x faster. Get the best of both worlds – stability of Ready-Made software, and flexibility of Custom software.");
                 Assert.AreEqual("3", fo.TextBoxMultiLine.GetAttribute("rows"), true.ToString(), "“Test passed for User - side - TextBox - MultiLine”");
-                
+
                 fo.TextBoxMaxLength.SendKeys("EXPRESSbase");
                 Assert.AreEqual("4", fo.TextBoxMaxLength.GetAttribute("maxlength"), true.ToString(), "“Test passed for User - side - TextBox - MultiLine”");
-                
+
                 fo.TextboxAutosuggestion.SendKeys("T");
                 Assert.AreEqual("True", (elementOps.IsWebElementPresent(fo.TextboxAutosuggestionItem)).ToString(), true.ToString(), "“Test passed for User - side - TextBox - Auto Suggestion”");
-                
+
                 //fo.TextboxReadOnly.SendKeys("Read");
                 Assert.AreEqual("true", fo.TextboxReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - TextBox - Read Only”");
-                
+
                 fo.TextboxRequired.Click();
                 fo.TextboxRequired.SendKeys("Test Data");
                 //Assert.AreEqual("3", fo.TextboxRequired.GetAttribute("rows"));
@@ -89,12 +95,12 @@ namespace UITests.TestCases.User
                 //Assert.AreEqual("3", fo.TextBoxMultiLine.GetAttribute("rows"));
                 //Console.Write("“Test passed for User - side - TextBox - MultiLine”");
 
-                fo.TextboxDoNotPersist.SendKeys("Do Not Persist");
+                //fo.TextboxDoNotPersist.SendKeys("Do Not Persist");
                 //Assert.AreEqual("3", fo.TextBoxMultiLine.GetAttribute("rows"));
                 //Console.Write("“Test passed for User - side - TextBox - MultiLine”");
 
                 Console.Write("“Test passed for User - side - TextBox - Form_BasicControls_TextBox_001”");
-            }           
+            }
             catch (Exception e)
             {
                 Console.WriteLine("Faliure!!\n" + e.Message);
@@ -103,7 +109,7 @@ namespace UITests.TestCases.User
 
 
         [Property("TestCaseId", "Form_BasicControls_NumericBox_001")]
-        [Test, Order(2)]
+        [Test, Order(3)]
         public void NumericTextBox()
         {
             try
@@ -114,7 +120,7 @@ namespace UITests.TestCases.User
                     "element.dispatchEvent(e); ");
                 Assert.AreEqual("numeric_plain", fo.NumericBox.GetAttribute("name"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
 
-                elementOps.SetValue("Numeric2","123");
+                elementOps.SetValue("Numeric2", "123");
                 elementOps.ExecuteScripts("const e = new Event('change');" +
                     "const element = document.querySelector('#Numeric2');" +
                     "element.dispatchEvent(e); ");
@@ -126,19 +132,19 @@ namespace UITests.TestCases.User
                     "element.dispatchEvent(e); ");
                 Assert.AreEqual("numeric_phone", fo.NumericBoxPhone.GetAttribute("name"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
 
-                elementOps.SetValue("Numeric9", "123");
+                elementOps.SetValue("Numeric9", UniqueId);
                 elementOps.ExecuteScripts("const e = new Event('change');" +
                     "const element = document.querySelector('#Numeric9');" +
                     "element.dispatchEvent(e); ");
                 Assert.AreEqual("numeric_unique", fo.NumericBoxUnique.GetAttribute("name"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
-                
+
 
                 //fo.NumericBoxReadOnly.SendKeys("123");
                 Assert.AreEqual("true", fo.NumericBoxReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
-                
+
                 fo.NumericBoxRequired.Click();
                 //Assert.AreEqual("numeric_plain", fo.NumericBoxRequired.GetAttribute("name"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
-                
+
                 elementOps.SetValue("Numeric7", "123456");
                 elementOps.ExecuteScripts("const e = new Event('change');" +
                     "const element = document.querySelector('#Numeric7');" +
@@ -161,8 +167,8 @@ namespace UITests.TestCases.User
                 elementOps.ExecuteScripts("const e = new Event('change');" +
                     "const element = document.querySelector('#Numeric10');" +
                     "element.dispatchEvent(e); ");
-                Assert.AreEqual("numeric_neg", fo.NumericBoxNegative.GetAttribute("name"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
-                
+                Assert.AreEqual("numeric_decimal", fo.NumericBoxDecimal.GetAttribute("name"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+
                 elementOps.SetValue("Numeric11", "-123");
                 elementOps.ExecuteScripts("const e = new Event('change');" +
                     "const element = document.querySelector('#Numeric11');" +
@@ -180,10 +186,10 @@ namespace UITests.TestCases.User
                     "const element = document.querySelector('#Numeric13');" +
                     "element.dispatchEvent(e); ");
                 Assert.AreEqual("numeric_help", fo.NumericBoxHelpText.GetAttribute("name"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
-               
+
                 Console.Write("“Test passed for User - side - NumericBox - Plain -  Form_BasicControls_NumericBox_001”");
 
-                
+
             }
             catch (Exception e)
             {
@@ -193,7 +199,7 @@ namespace UITests.TestCases.User
 
 
         [Property("TestCaseId", "Form_BasicControls_DateTimePicker_001")]
-        [Test, Order(2)]
+        // [Test, Order(4)]
         public void dateTimePicker()
         {
             try
@@ -212,7 +218,7 @@ namespace UITests.TestCases.User
 
 
         [Property("TestCaseId", "Form_BasicControls_BoolenSelect_001")]
-        [Test, Order(2)]
+        [Test, Order(5)]
         public void BoolenSelect()
         {
             try
@@ -221,13 +227,17 @@ namespace UITests.TestCases.User
 
                 //Assert.AreEqual("Tool Tip", fo.BoolenSelectToolTip.GetAttribute("data-original-title"), true.ToString(), "“Test passed for User - side - Boolean Select - Title”");
 
+                browserOps.implicitWait(10);
                 fo.BoolenSelectTrueText.Click();
-                wait.Until(webDriver => (driver.PageSource.Contains("class=\"dropdown-menu open dd_of_BooleanSelect8\"")));
+                fo.BoolenSelectTrueText.Click();
+                fo.BoolenSelectTrueText.Click();
+                //actions.MoveToElement(fo.BoolenSelectTrueTextSelect).Perform();                
                 Assert.AreEqual("Ohoo yes", fo.BoolenSelectTrueTextSelect.Text, true.ToString(), "“Test passed for User - side - Boolean Select - Title”");
-                
+                fo.BoolenSelectTrueTextSelect.Click();
+
                 fo.BoolenSelectFalseText.Click();
-                wait.Until(webDriver => (driver.PageSource.Contains("class=\"dropdown-menu open dd_of_BooleanSelect9\"")));
                 Assert.AreEqual("Ohoo Noo", fo.BoolenSelectFalseTextSelect.Text, true.ToString(), "“Test passed for User - side - Boolean Select - Title”");
+                fo.BoolenSelectFalseTextSelect.Click();
 
 
             }
@@ -239,7 +249,7 @@ namespace UITests.TestCases.User
 
 
         [Property("TestCaseId", "Form_BasicControls_CheckBoxGroup_001")]
-        [Test, Order(2)]
+        [Test, Order(6)]
         public void CheckBoxGroup()
         {
             try
@@ -266,19 +276,16 @@ namespace UITests.TestCases.User
 
 
         [Property("TestCaseId", "Form_BasicControls_RadioButton_001")]
-        [Test, Order(2)]
+        [Test, Order(7)]
         public void RadioButton()
         {
             try
             {
-                Assert.AreEqual("true", fo.RadioButtonGroupHidden.GetAttribute("eb-hidden"));
-                Console.Write("“Test passed for User - side - RadioButton - Hidden”");
+                Assert.AreEqual("true", fo.RadioButtonGroupHidden.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - RadioButton - Hidden”");
 
-                Assert.AreEqual("true", fo.RadioButtonGroupReadOnly.GetAttribute("disabled"));
-                Console.Write("“Test passed for User - side - RadioButton - ReadOnly”");
+                Assert.AreEqual("true", fo.RadioButtonGroupReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - RadioButton - ReadOnly”");
 
-                Assert.AreEqual("checkboxgrouprequired", fo.CheckBoxGroupRequired.GetAttribute("name"));
-                Console.Write("“Test passed for User - side - RadioButton - Required”");
+                Assert.AreEqual("checkboxgrouprequired", fo.CheckBoxGroupRequired.GetAttribute("name"), true.ToString(), "“Test passed for User - side - RadioButton - Required”");
             }
             catch (Exception e)
             {
@@ -286,21 +293,18 @@ namespace UITests.TestCases.User
             }
 
         }
-        
+
         [Property("TestCaseId", "Form_BasicControls_Label_001")]
-        [Test, Order(2)]
+        [Test, Order(8)]
         public void Label()
         {
             try
             {
-                Assert.AreEqual("true", fo.LabelHidden.GetAttribute("eb-hidden"));
-                Console.Write("“Test passed for User - side - Label - Hidden”");
+                Assert.AreEqual("true", fo.LabelHidden.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - Label - Hidden”");
 
-                Assert.AreEqual("True", (elementOps.IsWebElementPresent(fo.LabelHelpTextData)).ToString());
-                Console.Write("“Test passed for User - side - Label - HelpText”");
+                Assert.AreEqual("True", (elementOps.IsWebElementPresent(fo.LabelHelpTextData)).ToString(), true.ToString(), "“Test passed for User - side - Label - HelpText”");
 
-                //Assert.AreEqual("Tool Tip", fo.LabelToolTip.GetAttribute("data-original-title"));
-                Console.Write("“Test passed for User - side - RadioButton - Tool Tip”");
+                //Assert.AreEqual("Tool Tip", fo.LabelToolTip.GetAttribute("data-original-title"), true.ToString(), "“Test passed for User - side - RadioButton - Tool Tip”");
             }
             catch (Exception e)
             {
@@ -308,17 +312,17 @@ namespace UITests.TestCases.User
             }
 
         }
-        
-        
+
+
         [Property("TestCaseId", "Form_BasicControls_Label_001")]
-        [Test, Order(2)]
+        [Test, Order(9)]
         public void Boolean()
         {
             try
             {
                 Assert.AreEqual("true", fo.BoolenHidden.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - Boolean - Hidden”");
 
-                fo.BoolenReadOnly.Click();
+                //fo.BoolenReadOnly.Click();
                 Assert.AreEqual("true", fo.BoolenReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - Boolean - Read Only”");
 
                 fo.BoolenString.Click();
@@ -329,6 +333,8 @@ namespace UITests.TestCases.User
 
                 //Assert.AreEqual("True", IsElementPresent(fo.BoolenRequired).ToString(), true.ToString(), "“Test passed for User - side - Boolean - Required”");
 
+
+                fo.BoolenDoNotPersist.Click();
                 //Assert.AreEqual("Tool Tip", fo.BoolenDoNotPersist.GetAttribute("data-original-title"), true.ToString(), "“Test passed for User - side - Boolean - Do Not Persist”");
             }
             catch (Exception e)
@@ -339,41 +345,118 @@ namespace UITests.TestCases.User
         }
 
 
-        [Test, Order(5)]
+        [Test, Order(10)]
         public void SaveFoam()
         {
-            FormObject NewForm = new FormObject(driver);
-            NewForm.SaveForm.Click();
+            fo.SaveForm.Click();
 
             browserOps.implicitWait(2000);
+            browserOps.implicitWait(2000);
+            browserOps.DriverWait();
+            browserOps.DriverWait();
             //elementOps.ExistsXpath("//*[@id='objname']/span");
 
             //Assert.AreEqual("View Mode", fo.GetMode.Text, true.ToString(), "Form Saved and is opened in View Mode");
 
-            Assert.AreEqual("lowercase", NewForm.TextBoxLowerCase.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - lowercase”");
+            Assert.AreEqual("lowercase", fo.TextBoxLowerCase.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - lowercase”");
 
-            Assert.AreEqual("UPPERCASE", NewForm.TextBoxUpperCase.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Uppercase”");
+            Assert.AreEqual("UPPERCASE", fo.TextBoxUpperCase.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Uppercase”");
 
-            Assert.AreEqual("password", NewForm.TextBoxPassword.GetAttribute("type"), true.ToString(), "“Test passed for User - side - TextBox - Password”");
-            Assert.AreEqual("password", NewForm.TextBoxPassword.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Password Has data”");
+            Assert.AreEqual("password", fo.TextBoxPassword.GetAttribute("type"), true.ToString(), "“Test passed for User - side - TextBox - Password”");
+            Assert.AreEqual("password", fo.TextBoxPassword.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Password Has data”");
 
             //Assert.AreEqual("email", fo.TextBoxEmail.GetAttribute("email"), true.ToString(), "“Test passed for User - side - TextBox - Email”");
 
-            Assert.AreEqual("3", NewForm.TextBoxMultiLine.GetAttribute("rows"), true.ToString(), "“Test passed for User - side - TextBox - MultiLine”");
-            Assert.AreEqual("187", (NewForm.TextBoxMultiLine.GetAttribute("value").Length).ToString(), true.ToString(), "“Test passed for User - side - TextBox - MultiLine Has Data”");
+            Assert.AreEqual("3", fo.TextBoxMultiLine.GetAttribute("rows"), true.ToString(), "“Test passed for User - side - TextBox - MultiLine”");
+            Assert.AreEqual("187", (fo.TextBoxMultiLine.GetAttribute("value").Length).ToString(), true.ToString(), "“Test passed for User - side - TextBox - MultiLine Has Data”");
 
-            Assert.AreEqual("4", NewForm.TextBoxMaxLength.GetAttribute("maxlength"), true.ToString(), "“Test passed for User - side - TextBox - Max Length”");
-            Assert.AreEqual("EXPR", NewForm.TextBoxMaxLength.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - MultiLine Has Data”");
+            Assert.AreEqual("4", fo.TextBoxMaxLength.GetAttribute("maxlength"), true.ToString(), "“Test passed for User - side - TextBox - Max Length”");
+            Assert.AreEqual("EXPR", fo.TextBoxMaxLength.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - MultiLine Has Data”");
 
-            Assert.AreEqual("ui-autocomplete-input", NewForm.TextboxAutosuggestion.GetAttribute("class"), true.ToString(), "“Test passed for User - side - TextBox - Auto Suggestion”");
+            Assert.AreEqual("ui-autocomplete-input", fo.TextboxAutosuggestion.GetAttribute("class"), true.ToString(), "“Test passed for User - side - TextBox - Auto Suggestion”");
 
-            Assert.AreEqual("true", NewForm.TextboxReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - TextBox - Read Only”");
-            Assert.AreEqual("Read Only Data", NewForm.TextboxReadOnly.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Read Only Has Data”");
+            Assert.AreEqual("true", fo.TextboxReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - TextBox - Read Only”");
+            Assert.AreEqual("Read Only Data", fo.TextboxReadOnly.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Read Only Has Data”");
 
-            Assert.AreEqual("Test Data", NewForm.TextboxRequired.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Required”");
-           
-            Assert.AreEqual(UniqueId, NewForm.TextboxUnique.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Unique”");
-           
-            Assert.AreEqual("", NewForm.TextboxDoNotPersist.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Do Not Persist”");       }
+            Assert.AreEqual("Test Data", fo.TextboxRequired.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Required”");
+
+            Assert.AreEqual(UniqueId, fo.TextboxUnique.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Unique”");
+
+            Assert.AreEqual("", fo.TextboxDoNotPersist.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Do Not Persist”");
+
+
+
+            Assert.AreEqual("numeric_plain", fo.NumericBox.GetAttribute("name"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+            Assert.AreEqual("123.00", fo.NumericBox.GetAttribute("value"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+
+            Assert.AreEqual("numeric_currency", fo.NumericBoxCurrency.GetAttribute("name"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+            Assert.AreEqual("123.00", fo.NumericBoxCurrency.GetAttribute("value"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+
+            Assert.AreEqual("numeric_phone", fo.NumericBoxPhone.GetAttribute("name"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+            //Assert.AreEqual("701-215-3871", fo.NumericBoxPhone.GetAttribute("value"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+
+            Assert.AreEqual("numeric_unique", fo.NumericBoxUnique.GetAttribute("name"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+            Assert.AreNotEqual(UniqueId, fo.NumericBoxUnique.GetAttribute("value"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+
+            Assert.AreEqual("true", fo.NumericBoxReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+            Assert.AreEqual("123.00", fo.NumericBoxReadOnly.GetAttribute("value"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+
+            Assert.AreEqual("123.00", fo.NumericBoxRequired.GetAttribute("value"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+
+            Assert.AreEqual("5", fo.NumericBoxMax.GetAttribute("max"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+
+            Assert.AreEqual("5", fo.NumericBoxMin.GetAttribute("min"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+
+
+            Assert.AreEqual("Tool Tip", fo.NumericBoxTooltip.GetAttribute("data-original-title"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+
+            Assert.AreEqual("numeric_decimal", fo.NumericBoxDecimal.GetAttribute("name"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+            Assert.AreEqual("123.5000", fo.NumericBoxDecimal.GetAttribute("value"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+
+            Assert.AreEqual("numeric_neg", fo.NumericBoxNegative.GetAttribute("name"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+            Assert.AreEqual("-123.00", fo.NumericBoxNegative.GetAttribute("value"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+
+            Assert.AreEqual("numeric_persist", fo.NumericBoxDonotpersist.GetAttribute("name"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+            Assert.AreEqual("0.00", fo.NumericBoxDonotpersist.GetAttribute("value"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+
+            Assert.AreEqual("numeric_help", fo.NumericBoxHelpText.GetAttribute("name"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+
+
+
+            Assert.AreEqual("true", fo.BoolenSelectHidden.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - Boolean Select - Hidden”");
+
+            //Assert.AreEqual("Tool Tip", fo.BoolenSelectToolTip.GetAttribute("data-original-title"), true.ToString(), "“Test passed for User - side - Boolean Select - Title”");
+
+            Assert.AreEqual("Ohoo yes", fo.BoolenSelectTrueTextAfterSave.Text, true.ToString(), "“Test passed for User - side - Boolean Select - Title”");
+
+            Assert.AreEqual("Ohoo Noo", fo.BoolenSelectFalseTextAfterSave.Text, true.ToString(), "“Test passed for User - side - Boolean Select - Title”");
+
+
+
+
+            Assert.AreEqual("true", fo.CheckBoxGroupHidden.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - Hidden”");
+
+            Assert.AreEqual("true", fo.CheckBoxGroupReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - ReadOnly”");
+
+            Assert.AreEqual("checkboxgrouprequired", fo.CheckBoxGroupRequired.GetAttribute("name"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - Required”");
+
+
+            Assert.AreEqual("true", fo.LabelHidden.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - Label - Hidden”");
+
+            Assert.AreEqual("True", (elementOps.IsWebElementPresent(fo.LabelHelpTextData)).ToString(), true.ToString(), "“Test passed for User - side - Label - HelpText”");
+
+            //Assert.AreEqual("Tool Tip", fo.LabelToolTip.GetAttribute("data-original-title"), true.ToString(), "“Test passed for User - side - RadioButton - Tool Tip”");
+
+
+
+            Assert.AreEqual("true", fo.BoolenHidden.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - Boolean - Hidden”");
+
+            Assert.AreEqual("true", fo.BoolenReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - Boolean - Read Only”");
+
+            Assert.AreEqual("String", fo.BoolenString.GetAttribute("value-type"), true.ToString(), "“Test passed for User - side - Boolean - String”");
+
+            Assert.AreEqual("Int32", fo.BoolenInteger.GetAttribute("value-type"), true.ToString(), "“Test passed for User - side - Boolean - Integer”");
+
+        }
     }
 }

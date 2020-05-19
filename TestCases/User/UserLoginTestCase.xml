@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Login>
   <test name="test1">
-    <username type ="String"> josevin@expressbase.com</username>
-    <password type ="String"> Qwerty@1</password>
-    <url type ="String">https://hairocraft.eb-test.cloud/</url>
+    <username type ="String"> kurian@expressbase.com</username>
+    <password type ="String"> @Kurian123</password>
+    <url type ="String">https://uitesting.eb-test.cloud/UserDashboard</url>
   </test>
   <test name="test2">
     <username type ="String"> josevin@expressbase.com</username>

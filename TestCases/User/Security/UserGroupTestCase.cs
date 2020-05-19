@@ -14,32 +14,27 @@ using OpenQA.Selenium.Support.UI;
 namespace UITests.TestCases.User.Security
 {
     [TestFixture]
-    public class UserGroupTestCase
+    public class UserGroupTestCase : BaseClass
     {
-        IWebDriver driver;
-        UserLogin ul;
+        
         UserGroupObject ug;
-        BrowserOps browserOps = new BrowserOps();
-
-        [SetUp]
-        public void Initialize()
-        {
-            if (driver == null)
-            {
-                browserOps.Init_Browser();
-                driver = browserOps.getDriver;
-                ul = new UserLogin(driver);
-                ug = new UserGroupObject(driver);
-            }
-        }
+        GetUniqueId UID;
+        string UserName;
+        string Desp;
 
         [Test, Order(1)]
         public void UserLogin()
         {
-            browserOps.Goto("https://hairocraft.eb-test.cloud/");
-            ul.UserName.SendKeys("hairocraft123@gmail.com");
-            ul.Password.SendKeys("12345678");
+            browserOps.Goto("https://uitesting.eb-test.cloud/");
+            ul.UserName.SendKeys("kurian@expressbase.com");
+            ul.Password.SendKeys("@Kurian123");
             ul.LoginButton.Click();
+
+            ug = new UserGroupObject(driver);
+
+            UID = new GetUniqueId();
+            UserName = UID.GetId;
+            Desp = UID.GetId;
         }
 
         [TestCaseSource("UserGroupObjects"), Order(2)]
@@ -59,13 +54,14 @@ namespace UITests.TestCases.User.Security
 
 
             browserOps.implicitWait(50);
-            ug.Name.SendKeys(UserGroupObject.Name);
+            ug.Name.SendKeys(UserName);
             ug.Description.SendKeys(UserGroupObject.Description);
 
             browserOps.implicitWait(50);
             ug.AddUserButton.Click();
-            ug.SearchForUser.SendKeys(UserGroupObject.UserName);
+            ug.SearchForUser.SendKeys("Ku");
             browserOps.implicitWait(100);
+            elementOps.ExistsXpathClickable(ug.SelectUser);
             ug.SelectUser.Click();
             browserOps.implicitWait(100);
             ug.AddSelectedUser.Click();
@@ -90,6 +86,7 @@ namespace UITests.TestCases.User.Security
             ug.SaveIp.Click();
             browserOps.implicitWait(300);
             ug.SaveUserGroup.Click();
+            browserOps.implicitWait(300);
 
         }
 
@@ -98,7 +95,12 @@ namespace UITests.TestCases.User.Security
         {
             driver.SwitchTo().Window(driver.WindowHandles[1]).Close();
             driver.SwitchTo().Window(driver.WindowHandles.First());
+            driver.Navigate().Refresh();
+            driver.Navigate().Refresh();
 
+           
+            
+            ug.UserGroupSearch.SendKeys(UserName);
             ug.SelectToEdit.Click();
             driver.SwitchTo().Window(driver.WindowHandles.Last());
             ug.EditTheFirstUser.Click();
@@ -111,6 +113,8 @@ namespace UITests.TestCases.User.Security
             ug.OkButton.Click();
 
             ug.SaveUserGroup.Click();
+            browserOps.implicitWait(100);
+            elementOps.ExistsXpathClickable(ug.OkButton);
             ug.OkButton.Click();
         }
 
