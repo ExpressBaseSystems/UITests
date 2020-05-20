@@ -684,5 +684,28 @@ namespace UITests.TestCases.User
                 Console.WriteLine("Faliure!!\n" + e.Message);
             }
         }
+
+        [Property("TestCaseId", "TableVisualization_FD_020")]
+        [Test, Order(21)]
+        public void TVHavingFD()
+        {
+            try
+            {
+                tv = new TableVisualization(driver);
+                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-64-64-64-64");
+                elementOps.ExistsId("name");
+                tv.PSName.Click();
+                tv.PSName.SendKeys("A" + Keys.Enter);
+                elementOps.ExistsXpath("//*[@id=\"filterWindow_dvContainer_1589865744873_0_0_PowerSelect1tbl\"]/tbody/tr[1]/td");
+                tv.PSName.SendKeys(Keys.Enter);
+                elementOps.ExistsId("btnGo");
+                tv.RunButton.Click();
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.TVHeader).ToString(), "Success", "Success");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
     }
 }

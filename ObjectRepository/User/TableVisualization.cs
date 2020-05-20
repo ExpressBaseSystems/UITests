@@ -637,5 +637,39 @@ namespace UITests.ObjectRepository.User
                 return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[1]/th[5]"));
             }
         }
+
+        //------------------FD
+
+        public IWebElement PSName
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("name"));
+            }
+        }
+
+        public IWebElement PSSelectName
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"filterWindow_dvContainer_1589865744873_0_0_PowerSelect1tbl\"]/tbody/tr[1]/td"));
+            }
+        }
+
+        public IWebElement RunButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("btnGo"));
+            }
+        }
+
+        public IWebElement TVHeader
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1589865744873_0_0_wrapper\"]/div[3]/div[1]/div/table/thead"));
+            }
+        }
     }
 }

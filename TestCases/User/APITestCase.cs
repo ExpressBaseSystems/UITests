@@ -70,7 +70,7 @@ namespace UITests.TestCases.User
 
 
         [Property("TestCaseId", "API_DataReader_001")]
-        [TestCaseSource("ApiWithDataReaderData")]
+        [TestCaseSource("ApiWithDataReaderData"), Order(1)]
         public void TestApiWithDataReader(dynamic xmldata)
         {
             try
@@ -88,7 +88,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "API_DataWriter_001")]
-        [TestCaseSource("ApiWithDataWriterData")]
+        [TestCaseSource("ApiWithDataWriterData"), Order(2)]
         public void TestApiWithDataWriter(dynamic xmldata)
         {
             try
@@ -107,7 +107,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "API_DataProcessor_001")]
-        [TestCaseSource("ApiWithProcessorData")]
+        [TestCaseSource("ApiWithProcessorData"), Order(3)]
         public void TestApiWithProcessor(dynamic xmldata)
         {
             try
@@ -125,7 +125,7 @@ namespace UITests.TestCases.User
         }
         
         [Property("TestCaseId", "API_DataProcessor_002")]
-        [TestCaseSource("ApiForProcessorData")]
+        [TestCaseSource("ApiForProcessorData"), Order(4)]
         public void TestApiForProcessor(dynamic xmldata)
         {
             try
@@ -145,7 +145,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "API_ApiForSQLFunction_001")]
-        [TestCaseSource("ApiForSQLFunction")]
+        [TestCaseSource("ApiForSQLFunction"), Order(5)]
         public void TestApiForSQLFunction(dynamic xmldata)
         {
             try
@@ -164,7 +164,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "API_ApiForApi_001")]
-        [TestCaseSource("ApiForApi")]
+        [TestCaseSource("ApiForApi"), Order(6)]
         public void TestApiForApi(dynamic xmldata)
         {
             try
@@ -183,7 +183,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "API_ApiForThirdPartyApi_001")]
-        [TestCaseSource("ApiForThirdPartyApi")]
+        [TestCaseSource("ApiForThirdPartyApi"), Order(7)]
         public void TestApiForThirdPartyApi(dynamic xmldata)
         {
             try
