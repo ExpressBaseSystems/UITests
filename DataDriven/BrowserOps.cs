@@ -16,7 +16,9 @@ namespace UITests.DataDriven
         WebDriverWait wait;
         public void Init_Browser()
         {
-            driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
+            ChromeOptions options = new ChromeOptions();
+            options.SetLoggingPreference(LogType.Browser, LogLevel.All);
+            driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),options);
             driver.Manage().Window.Maximize();
         }
 

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Auth>
+  <test name="test1">
+    <files type="String">
+           UniqueRequest,
+           CreateAccountRequest,
+           ForgotPasswordRequest,
+           ResetPasswordRequest,
+           RefreshSolutionExtRequest,
+           SocialLoginRequest,
+           Authenticate,
+           CreateSolutionRequest,
+           SocialAutoSignInRequest,
+           RegisterRequest,
+           EmailverifyRequest,
+           SMSInitialRequest,
+           GetAllFromAppStoreExternalRequest,
+           GetAppStoreDetailedRequest
+    </files>
+  </test>
+</Auth>

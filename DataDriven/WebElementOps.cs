@@ -83,10 +83,14 @@ namespace UITests.DataDriven
         }
         
 
-        public object GetTableRowCountFromJS(string id)
+        public object GetTableRowCountFromJSusingID(string id)
         {
             return ((IJavaScriptExecutor)driver).ExecuteScript("return (document.getElementById('"+id+"').rows.length);");
         }
 
+        public object GetTableRowCountFromJS()
+        {
+            return ((IJavaScriptExecutor)driver).ExecuteScript("return (document.getElementsByTagName('table')[0].rows.length);");
+        }
     }
 }
