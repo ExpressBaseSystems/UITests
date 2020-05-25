@@ -19,3 +19,9 @@
         //}
     }
 }
+
+<Nullable>enable</Nullable>
+    <LangVersion>preview</LangVersion>
+
+
+<Nullable>annotations</Nullable>
