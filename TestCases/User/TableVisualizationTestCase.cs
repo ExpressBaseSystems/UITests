@@ -619,7 +619,7 @@ namespace UITests.TestCases.User
 
                 if (int.Parse(tv.PaginationSelectOption1.GetAttribute("innerHTML")) == 3)
                 {
-                    int val = int.Parse(elementOps.GetTableRowCountFromJS("dvnull_0_0").ToString()) - 7;
+                    int val = int.Parse(elementOps.GetTableRowCountFromJSusingID("dvnull_0_0").ToString()) - 7;
                     Assert.AreEqual(3, val, "Pagination Success", "Pagination Success");
                 }
             }

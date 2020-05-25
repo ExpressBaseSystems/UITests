@@ -22,7 +22,7 @@ namespace UITests.DataDriven
         public EbDataTypes Type { get; set; }
         public dynamic Value { get; set; }
     }
-
+    
     public class EbTestItem : DynamicObject
     {
         public string Name { get; set; }
@@ -49,7 +49,6 @@ namespace UITests.DataDriven
             return true;
         }
     }
-
 
     public class GetDataFromXML
     {
