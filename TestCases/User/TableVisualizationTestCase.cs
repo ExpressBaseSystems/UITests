@@ -72,6 +72,12 @@ namespace UITests.TestCases.User
                 actions.MoveToElement(tv.SelectTableVisualizationJamTopicList).Perform();
                 tv.SelectTableVisualizationJamTopicList.Click();
             }
+            else if (c == 4)
+            {
+                elementOps.ExistsXpath("//*[@id=\"ebm-objectcontainer\"]/div[2]/div[7]");
+                actions.MoveToElement(tv.SelectTableVisualizationFD).Perform();
+                tv.SelectTableVisualizationFD.Click();
+            }
         }
 
         [Property("TestCaseId", "TableVisualization_AddNewForm_001")]
@@ -107,7 +113,7 @@ namespace UITests.TestCases.User
             try
             {
                 tv = new TableVisualization(driver);
-                elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[3]/td[3]/a");
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[4]/td[3]/a");
                 tv.DataEntryLinkClick.Click();
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
                 tv.WebFormEditButton.Click();
@@ -243,6 +249,7 @@ namespace UITests.TestCases.User
                 tv = new TableVisualization(driver);
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[3]/td[3]/a");
                 tv.SortNameField.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("class=\"null tdheight dt-left sorting_asc\"")));
                 wait.Until(webDriver => (driver.PageSource.Contains("class=\"null tdheight dt-left sorting_asc\"")));
                 Assert.AreEqual("conditionformat", tv.ConditionalFormattingDiv.GetAttribute("class"),"Success!!! Conditional Formatting", "Success!!! Conditional Formatting");
                 browserOps.Refresh();
@@ -686,7 +693,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_FD_020")]
-        [Test, Order(21)]
+        [Test]
         public void TVHavingFD()
         {
             try
@@ -698,9 +705,19 @@ namespace UITests.TestCases.User
                 tv.PSName.SendKeys("A" + Keys.Enter);
                 elementOps.ExistsXpath("//*[@id=\"filterWindow_dvContainer_1589865744873_0_0_PowerSelect1tbl\"]/tbody/tr[1]/td");
                 tv.PSName.SendKeys(Keys.Enter);
+                elementOps.ExistsXpath("//*[@id=\"filterWindow_dvContainer_1589865744873_0_0_PowerSelect1name\"]/div/span");
+                tv.FDNameTxt.Click();
+                tv.FDNameTxt.SendKeys("Anoopa Baby");
+                elementOps.SetValue("filterWindow_dvContainer_1589865744873_0_0_Numeric1", "10000");
+                elementOps.SetValue("filterWindow_dvContainer_1589865744873_0_0_Date2", "15-04-2020");
+                tv.FDLocationOptionGlobal.Click();
+                tv.FDLocationOptionSelect.Click();
+                elementOps.ExistsXpath("//*[@id=\"filterWindow_dvContainer_1589865744873_0_0_UserLocation1Wraper\"]/span/div/ul/li[3]/a/label");
+                tv.FDLocationOptionKochi.Click();
                 elementOps.ExistsId("btnGo");
                 tv.RunButton.Click();
                 Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.TVHeader).ToString(), "Success", "Success");
+                Console.WriteLine(browserOps.ShowConsoleError());
             }
             catch (Exception e)
             {

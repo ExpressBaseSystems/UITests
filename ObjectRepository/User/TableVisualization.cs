@@ -70,6 +70,14 @@ namespace UITests.ObjectRepository.User
             }
         }
 
+        public IWebElement SelectTableVisualizationFD
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"ebm-objectcontainer\"]/div[2]/div[7]"));
+            }
+        }
+
         public IWebElement EBLoader
         {
             get
@@ -100,7 +108,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[3]/td[3]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[4]/td[3]/a"));
             }
         }
 
@@ -372,7 +380,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[5]/td[8]/div"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[6]/td[8]/div"));
             }
         }
 
@@ -436,7 +444,8 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[3]/td[11]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[4]/td[11]/a"));
+
             }
         }
 
@@ -669,6 +678,70 @@ namespace UITests.ObjectRepository.User
             get
             {
                 return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1589865744873_0_0_wrapper\"]/div[3]/div[1]/div/table/thead"));
+            }
+        }
+
+        public IWebElement FromDateFD
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("filterWindow_dvContainer_1589865744873_0_0_Date2"));
+            }
+        }
+
+        public IWebElement ToDateFD
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("filterWindow_dvContainer_1589865744873_0_0_Date3"));
+            }
+        }
+
+        public IWebElement FDLocationOptionGlobal
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("filterWindow_dvContainer_1589865744873_0_0_UserLocation1_checkbox"));
+            }
+        }
+
+        public IWebElement FDLocationOptionSelect
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"filterWindow_dvContainer_1589865744873_0_0_UserLocation1Wraper\"]/span/div/button"));
+            }
+        }
+
+        public IWebElement FDLocationOptionKochi
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"filterWindow_dvContainer_1589865744873_0_0_UserLocation1Wraper\"]/span/div/ul/li[3]/a/label"));
+            }
+        }
+
+        public IWebElement FDLocationOptionTPRA
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"filterWindow_dvContainer_1589865744873_0_0_UserLocation1Wraper\"]/span/div/ul/li[4]/a/label"));
+            }
+        }
+
+        public IWebElement FDNameTxt
+        {
+            get
+            {
+                return this.driver.FindElement(By.Name("filterWindow_dvContainer_1589865744873_0_0_TextBox1"));
+            }
+        }
+
+        public IWebElement FDNumeric
+        {
+            get
+            {
+                return this.driver.FindElement(By.Name("sal"));
             }
         }
     }
