@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using JSErrorCollector;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -14,6 +15,7 @@ namespace UITests.DataDriven
     {
         IWebDriver driver;
         WebDriverWait wait;
+        string ConsoleErr = "";
         public void Init_Browser()
         {
             ChromeOptions options = new ChromeOptions();
@@ -24,6 +26,7 @@ namespace UITests.DataDriven
 
         public void Goto(string url)
         {
+            GetConsoleErrors();
             driver.Url = url;
         }
 
@@ -66,6 +69,7 @@ namespace UITests.DataDriven
 
         public void Refresh()
         {
+            GetConsoleErrors();
             driver.Navigate().Refresh();
         }
 
@@ -79,5 +83,30 @@ namespace UITests.DataDriven
             wait.Until(ExpectedConditions.ElementToBeClickable(we));
         }
         
+        public void GetConsoleErrors()
+        {
+            //List<LogEntry> logs = driver.Manage().Logs.GetLog(LogType.Browser).ToList();
+            //foreach (LogEntry log in logs)
+            //{
+            //    while (logs.Count > 0)
+            //    {
+            //        String logInfo = log.ToString();
+            //        ConsoleErr = ConsoleErr + log.Message.ToString();
+            //    }
+            //    ConsoleErr = ConsoleErr + log.ToString();
+            //}
+
+            List<JavaScriptError> logs = JavaScriptError.ReadErrors(driver).ToList();
+            foreach (var log in logs)
+            {
+                ConsoleErr = ConsoleErr + log.ToString();
+            }
+        }
+
+        public string ShowConsoleError()
+        {
+            return ConsoleErr;
+        }
+
     }
 }

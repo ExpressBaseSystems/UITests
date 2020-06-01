@@ -51,7 +51,8 @@ namespace UITests.TestCases.User.Security
             usr = new Users(driver);
             nu = new UserRelated(driver);
             lo = new UserLogOut(driver);
-            GetTempMailId();
+            //GetTempMailId();
+            username = data.emailid;
             UserLogin();
             //usr.MenuButton.Click();
             elementOps.ExistsXpath("//*[@id=\"appList\"]/div/ul/li/ul/li[3]/a");
@@ -151,7 +152,7 @@ namespace UITests.TestCases.User.Security
             Console.WriteLine(nu.Message.GetAttribute("innerHTML"));
             elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
 
-            browserOps.implicitWait(50);
+            elementOps.ExistsXpath("//*[@id=\"layout_div\"]/div[2]/div/div/div/div[2]/div/ul/li[2]/a");
             nu.AddRoleTab.Click();
             browserOps.implicitWait(50);
             nu.EditRoleToggle.Click();

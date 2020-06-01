@@ -195,7 +195,7 @@ namespace UITests.ObjectRepository.User.Security.UserCreation
                 return this.driver.FindElement(By.Id("pwdResetNewConfirm"));
             }
         }
-
+        
         public IWebElement ResetButton
         {
             get
