@@ -80,6 +80,12 @@ namespace UITests.DataDriven
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
             js.ExecuteScript("document.getElementById('"+Id+"').value = '"+value+"'");
         }
+        public void SetQueryValue(string query, string value)
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript("document.querySelector('" + query+"').value = '"+value+"'");
+        }
+        
 
         public string GetValue(string Id)
         {
