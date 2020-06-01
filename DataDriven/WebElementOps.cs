@@ -43,7 +43,12 @@ namespace UITests.DataDriven
 
         public void ExistsName(string name)
         {
-            wait.Until(ExpectedConditions.ElementExists(By.ClassName(name)));
+            wait.Until(ExpectedConditions.ElementExists(By.Name(name)));
+        }
+
+        public void ExistsTagName(string name)
+        {
+            wait.Until(ExpectedConditions.ElementExists(By.TagName(name)));
         }
 
         public bool IsWebElementPresent(IWebElement webelement)
@@ -75,7 +80,13 @@ namespace UITests.DataDriven
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
             js.ExecuteScript("document.getElementById('"+Id+"').value = '"+value+"'");
         }
-        
+
+        public string GetValue(string Id)
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            return (string)js.ExecuteScript("return document.querySelector('#"+Id+"').value");
+        }
+
         public void ExecuteScripts(string script)
         {
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
@@ -86,6 +97,11 @@ namespace UITests.DataDriven
         public object GetTableRowCountFromJSusingID(string id)
         {
             return ((IJavaScriptExecutor)driver).ExecuteScript("return (document.getElementById('"+id+"').rows.length);");
+        }
+
+        public object GetTableRowCountFromJSusingTag(string tag)
+        {
+            return ((IJavaScriptExecutor)driver).ExecuteScript("return (document.getElementsByTagName('" + tag + "')[0].rows.length);");
         }
 
         public object GetTableRowCountFromJS()

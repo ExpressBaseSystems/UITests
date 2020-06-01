@@ -40,7 +40,7 @@ namespace UITests.TestCases.User
         public void ChooseTV(int c = 0)
         {
             tv = new TableVisualization(driver);
-            elementOps.ExistsXpath("//*[@id=\"appList\"]/div/ul/li/ul/li[6]/a");
+            elementOps.ExistsXpath("//*[@id=\"appList\"]/div/ul/li/ul/li[8]/a");
             Console.WriteLine("SelectTableView");
             tv.SelectApp.Click();
             Console.WriteLine("SelectTableViewClicked");
@@ -693,7 +693,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_FD_020")]
-        [Test]
+        [Test, Order(21)]
         public void TVHavingFD()
         {
             try
@@ -705,18 +705,52 @@ namespace UITests.TestCases.User
                 tv.PSName.SendKeys("A" + Keys.Enter);
                 elementOps.ExistsXpath("//*[@id=\"filterWindow_dvContainer_1589865744873_0_0_PowerSelect1tbl\"]/tbody/tr[1]/td");
                 tv.PSName.SendKeys(Keys.Enter);
+
                 elementOps.ExistsXpath("//*[@id=\"filterWindow_dvContainer_1589865744873_0_0_PowerSelect1name\"]/div/span");
                 tv.FDNameTxt.Click();
                 tv.FDNameTxt.SendKeys("Anoopa Baby");
+
                 elementOps.SetValue("filterWindow_dvContainer_1589865744873_0_0_Numeric1", "10000");
-                elementOps.SetValue("filterWindow_dvContainer_1589865744873_0_0_Date2", "15-04-2020");
+
+                string date = elementOps.GetValue("filterWindow_dvContainer_1589865744873_0_0_Date2");
+                tv.FDRadioLast_month.Click();
+                string date1 = elementOps.GetValue("filterWindow_dvContainer_1589865744873_0_0_Date2");
+                Assert.AreNotEqual(date, date1, "Success", "Success");
+
+                //elementOps.SetValue("filterWindow_dvContainer_1589865744873_0_0_Date2", "15-04-2020");
                 tv.FDLocationOptionGlobal.Click();
                 tv.FDLocationOptionSelect.Click();
                 elementOps.ExistsXpath("//*[@id=\"filterWindow_dvContainer_1589865744873_0_0_UserLocation1Wraper\"]/span/div/ul/li[3]/a/label");
                 tv.FDLocationOptionKochi.Click();
+
                 elementOps.ExistsId("btnGo");
                 tv.RunButton.Click();
-                Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.TVHeader).ToString(), "Success", "Success");
+
+                elementOps.ExistsTagName("table");
+                int val = int.Parse(elementOps.GetTableRowCountFromJSusingTag("tbody").ToString());
+                Assert.AreEqual("True", (val>0)?"True":"False", "Success", "Success");
+                Console.WriteLine(browserOps.ShowConsoleError());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "TableVisualization_FDAutoRun_022")]
+        [Test]
+        public void TVHavingFDAutorun()
+        {
+            try
+            {
+                UserLogin();
+                ChooseTV(4);
+                tv = new TableVisualization(driver);
+                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-72-72-72-72");
+               
+                elementOps.ExistsTagName("table");
+                int val = int.Parse(elementOps.GetTableRowCountFromJSusingTag("tbody").ToString());
+                Assert.AreEqual("True", (val > 0) ? "True" : "False", "Success", "Success");
                 Console.WriteLine(browserOps.ShowConsoleError());
             }
             catch (Exception e)
