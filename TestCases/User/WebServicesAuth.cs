@@ -25,7 +25,7 @@ namespace UITests.TestCases.User
                 string filenames = authfiles.files;
                 filenames.Replace("\n", "").Replace("\t", "").Replace("  ", "");
                 List<string> result = filenames.Split(',').ToList();
-                int cnt = int.Parse(elementOps.GetTableRowCountFromJS().ToString());
+                int cnt = int.Parse(elementOps.GetTableRowCountFromJSusingTag("table").ToString());
                 List<string> UnAuthReq = new List<string>();
                 for (int i = 1 ; i < cnt ; i++)
                 {
