@@ -22,7 +22,7 @@ namespace UITests.TestCases.User.Security
         string UserName;
         string Desp;
 
-        [Test, Order(1)]
+       
         public void UserLogin()
         {
             browserOps.Goto("https://uitesting.eb-test.cloud/");
@@ -37,9 +37,12 @@ namespace UITests.TestCases.User.Security
             Desp = UID.GetId;
         }
 
+        [Property("TestCaseId", "User_Secuity_CreateGroup_001")]
         [TestCaseSource("UserGroupObjects"), Order(2)]
         public void CreateUserGroup(dynamic UserGroupObject)
         {
+            UserLogin();
+
             browserOps.implicitWait(300);
             ug.locateUserGroupMenu.Click();
             browserOps.implicitWait(50);
@@ -90,6 +93,7 @@ namespace UITests.TestCases.User.Security
 
         }
 
+        [Property("TestCaseId", "User_Secuity_EditGroup_001")]
         [TestCaseSource("UserGroupObjects"), Order(3)]
         public void EditUserGroup(dynamic UserGroupEdit)
         {

@@ -95,12 +95,13 @@ namespace UITests.DataDriven
             //    }
             //    ConsoleErr = ConsoleErr + log.ToString();
             //}
-
+            Console.WriteLine("GetConsoleErrors ;"+ Convert.ToString(driver));
             List<JavaScriptError> logs = JavaScriptError.ReadErrors(driver).ToList();
             foreach (var log in logs)
             {
                 ConsoleErr = ConsoleErr + log.ToString();
             }
+            Console.WriteLine("GetConsoleErrors : Finished");
         }
 
         public string ShowConsoleError()

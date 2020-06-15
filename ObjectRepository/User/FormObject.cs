@@ -776,7 +776,7 @@ namespace UITests.ObjectRepository.User
         { 
             get
             {
-                return this.driver.FindElement(By.XPath("/html/body/div[4]/div[3]/div[2]/form/div[5]/div/div/ul/li[2]/a"));
+                return this.driver.FindElement(By.XPath("//*[@class='dropdown bootstrap-select open detch_select']/div/div/ul/li[1]/a/span"));
             }
         }
         public IWebElement DataGrid1PowerSelectInput
@@ -864,8 +864,7 @@ namespace UITests.ObjectRepository.User
             {
                 return this.driver.FindElement(By.Id("SysCreatedAt1"));
             }
-        }
-        
+        }        
         public IWebElement SysModifiedBy
         { 
             get
@@ -879,8 +878,7 @@ namespace UITests.ObjectRepository.User
             {
                 return this.driver.FindElement(By.Id("SysModifiedAt1"));
             }
-        } 
-        
+        }         
         public IWebElement UserSelectClick
         { 
             get
@@ -894,9 +892,7 @@ namespace UITests.ObjectRepository.User
             {
                 return this.driver.FindElement(By.XPath("//*[@id='UserSelect1Wraper']/div/div[2]/div[3]/div[5]/div[2]"));
             }
-        } 
-        
-
+        }         
         public IWebElement UserLocationGlobal
         { 
             get
@@ -918,6 +914,223 @@ namespace UITests.ObjectRepository.User
                 return this.driver.FindElement(By.XPath("//*[@id='UserLocation1Wraper']/span/div/ul/li[3]/a/label/input"));
             }
         }
+        
+        
 
+        public IWebElement DataGridStringAddRow
+        { 
+            get
+            {
+                return this.driver.FindElement(By.Id("DataGrid2addrow"));
+            }
+        }
+        public IWebElement DataGridStringRequired
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid2']/tbody/tr/td[2]/div/input"));
+            }
+        }
+        public IWebElement DataGridStringRO
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid2']/tbody/tr/td[3]/div/input"));
+            }
+        }
+        public IWebElement DataGridStringUnique
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid2']/tbody/tr/td[4]/div/input"));
+            }
+        }
+        public IWebElement DataGridStringDNP
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid2']/tbody/tr/td[5]/div/input"));
+            }
+        }
+        public IWebElement DataGridStringMultiLine
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid2']/tbody/tr/td[6]/div/textarea"));
+            }
+        }
+        public IWebElement DataGridStringPassword
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid2']/tbody/tr/td[7]/div/div/input"));
+            }
+        }
+        public IWebElement DataGridStringEmail
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid2']/tbody/tr/td[8]/div/div/input"));
+            }
+        }
+        public IWebElement DataGridStringSaveRow
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid2']/tbody/tr/td[9]/button[2]"));
+            }
+        }
+
+
+        public IWebElement DataGridNumericAddRow
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("DataGrid3addrow"));
+            }
+        }
+        public IWebElement DataGridNumericHidden
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid3']/tbody/tr/td[2]/div/div/input"));
+            }
+        }         
+
+
+        public IWebElement DataGridDataGrid4AddRow
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("DataGrid4addrow"));
+            }
+        }
+        public IWebElement DataGridBooleanSelectReadOnly
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid4']/tbody/tr/td[2]/div/div/input"));
+            }
+        }
+        public IWebElement DataGridBooleanSelectDNP
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid4']/tbody/tr/td[3]/div/div/input"));
+            }
+        }
+        public IWebElement DataGridDropDownDNP
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid4']/tbody/tr/td[4]/div/div/button"));
+            }
+        } 
+        public IWebElement DataGridDropDownDNPSelect
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[/html/body/div[4]/div[3]/div[2]/form/div[4]/div/div/ul/li[4]/a/span"));
+            }
+        }
+        public IWebElement DataGridBooleanSelectColumnDNP
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid4']/tbody/tr/td[5]/div/div/button"));
+            }
+        }        
+        public IWebElement DataGridBooleanSelectColumnDNPSelect
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("/html/body/div[4]/div[3]/div[2]/form/div[5]/div/div/ul/li[1]/a/span"));
+            }
+        }
+
+        public IWebElement DataGridPowerSelectAddRow
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("DataGrid5addrow"));
+            }
+        }
+        public IWebElement DataGridPowerSelectSimpleSelect
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid5']/tbody/tr/td[2]/div/div/button"));
+            }
+        }
+        public IWebElement DataGridPowerSelectSimpleSelectItem
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("/html/body/div[4]/div[3]/div[2]/form/div[4]/div/div/ul/li[2]/a"));
+            }
+        }
+        public IWebElement DataGridPowerSelectMultiSelect
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid5']/tbody/tr/td[2]/div/div/div/div/div/div/div/input"));
+            }
+        }
+        public IWebElement DataGridPowerSelectSimpleSelectMultiItem1
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("/html/body/div[4]/div[3]/div[2]/form/div[4]/div/div[2]/div[2]/table/tbody/tr[1]/td[1]/input"));
+            }
+        }
+        public IWebElement DataGridPowerSelectSimpleSelectMultiItem2
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("/html/body/div[4]/div[3]/div[2]/form/div[4]/div/div[2]/div[2]/table/tbody/tr[4]/td[1]/input"));
+            }
+        }
+        public IWebElement DataGridPowerSelectSimpleSelectMultiItem3
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("/html/body/div[4]/div[3]/div[2]/form/div[4]/div/div[2]/div[2]/table/tbody/tr[5]/td[1]/input"));
+            }
+        }
+        public IWebElement DataGridPowerSelectSimpleSelectMultiItem4
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("/html/body/div[4]/div[3]/div[2]/form/div[4]/div/div[2]/div[2]/table/tbody/tr[6]/td[1]/input"));
+            }
+        }
+        public IWebElement DataGridPowerReqMinSearch
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid5']/tbody/tr/td[2]/div/div/div/div/div/div/div/input"));
+            }
+        }
+        public IWebElement DataGridPowerReqMinSearchItem
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("/html/body/div[4]/div[3]/div[2]/form/div[4]/div/div[2]/div[2]/table/tbody/tr[1]/td[1]"));
+            }
+        } 
+        public IWebElement DataGridPowerGriddnp
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid5']/tbody/tr/td[2]/div/div/div/div/div/div/div/input"));
+            }
+        }
+        public IWebElement DataGridPowerGridDnpItem
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("/html/body/div[4]/div[3]/div[2]/form/div[4]/div/div[2]/div[2]/table/tbody/tr[1]/td[1]"));
+            }
+        }
     }
 }
