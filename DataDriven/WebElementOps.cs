@@ -80,6 +80,13 @@ namespace UITests.DataDriven
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
             js.ExecuteScript("document.getElementById('"+Id+"').value = '"+value+"'");
         }
+
+        public void SetValueByTag(string tagname, string value, int id = 0)
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript("document.getElementsByTagName('"+tagname+"')["+id+"].innerHTML = '"+value+"'");
+        }
+
         public void SetQueryValue(string query, string value)
         {
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
@@ -105,14 +112,15 @@ namespace UITests.DataDriven
             return ((IJavaScriptExecutor)driver).ExecuteScript("return (document.getElementById('"+id+"').rows.length);");
         }
 
-        public object GetTableRowCountFromJSusingTag(string tag)
+        public object GetTableRowCountFromJSusingTag(string tag, int id=0)
         {
-            return ((IJavaScriptExecutor)driver).ExecuteScript("return (document.getElementsByTagName('" + tag + "')[0].rows.length);");
+            return ((IJavaScriptExecutor)driver).ExecuteScript("return (document.getElementsByTagName('" + tag + "')["+id+"].rows.length);");
         }
 
-        public object GetTableRowCountFromJS()
+        public int GetTableRowCount(string xpath)
         {
-            return ((IJavaScriptExecutor)driver).ExecuteScript("return (document.getElementsByTagName('table')[0].rows.length);");
+            return driver.FindElements(By.XPath(xpath)).Count;
         }
+        
     }
 }

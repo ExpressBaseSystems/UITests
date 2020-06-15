@@ -36,7 +36,7 @@ namespace UITests.TestCases.User
         public void ChooseCV()
         {
             cv = new ChartVisualization(driver);
-            elementOps.ExistsXpath("//*[@id=\"appList\"]/div/ul/li/ul/li[6]/a");
+            elementOps.ExistsXpath("//*[@id=\"appList\"]/div/ul/li/ul/li[8]/a");
             cv.SelectApp.Click();
             elementOps.ExistsXpath("//*[@id=\"ebm-objtcontainer\"]/div[2]/div[3]");
             actions.MoveToElement(cv.SelectChartView).Perform();

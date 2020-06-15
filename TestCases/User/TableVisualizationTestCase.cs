@@ -162,8 +162,25 @@ namespace UITests.TestCases.User
             }
         }
 
-        [Property("TestCaseId", "TableVisualization_SearchBoxes_004")]
+        [Property("TestCaseId", "TableVisualization_CheckOperator_020")]
         [Test, Order(4)]
+        public void CheckOperator()
+        {
+            try
+            {
+                tv = new TableVisualization(driver);
+                elementOps.ExistsId("dvContainer_1586780535084_0_0_name_hdr_sel");
+                string opr = tv.CheckOperatorField.GetAttribute("innerHTML");
+                Assert.AreEqual(" &gt; ", opr, "Success!! Search  Complete", "Success!! Search  Complete");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "TableVisualization_SearchBoxes_004")]
+        [Test, Order(5)]
         public void SearchBoxes()
         {
             try
@@ -186,7 +203,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_RowGrouping_005")]
-        [Test, Order(5)]
+        [Test, Order(6)]
         public void RowGrouping()
         {
             try
@@ -206,7 +223,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_ToolTip_006")]
-        [Test, Order(6)]
+        [Test, Order(7)]
         public void ToolTip()
         {
             try
@@ -222,7 +239,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_InlineTable_007")]
-        [Test, Order(7)]
+        [Test, Order(8)]
         public void InlineTable()
         {
             try
@@ -241,7 +258,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_ConditionalFormatting_009")]
-        [Test, Order(8)]
+        [Test, Order(9)]
         public void ConditionalFormatting()
         {
             try
@@ -261,7 +278,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_Aggrigate_010")]
-        [Test, Order(9)]
+        [Test, Order(10)]
         public void Aggrigate()
         {
             try
@@ -277,7 +294,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_CustomColumn_011")]
-        [Test, Order(10)]
+        [Test, Order(11)]
         public void CustomColumn()
         {
             try
@@ -301,7 +318,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_ApprovalColumn_012")]
-        [Test, Order(11)]
+        [Test, Order(12)]
         public void ApprovalColumn()
         {
             try
@@ -322,7 +339,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_ActionColumn_013")]
-        [Test, Order(12)]
+        [Test, Order(13)]
         public void ActionColumn()
         {
             try
@@ -347,7 +364,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_RowHeight_017")]
-        [Test, Order(13)]
+        [Test, Order(14)]
         public void RowHeight()
         {
             try
@@ -363,8 +380,8 @@ namespace UITests.TestCases.User
             }
         }
 
-        [Property("TestCaseId", "TableVisualization_OperatorsCheck_017")]
-        [Test, Order(14)]
+        [Property("TestCaseId", "TableVisualization_OperatorsCheck_022")]
+        [Test, Order(15)]
         public void OperatorsCheck()
         {
             try
@@ -493,7 +510,7 @@ namespace UITests.TestCases.User
         //-------------------------------------------------------------------------------------------------------------------------------
 
         [Property("TestCaseId", "TableVisualization_TreeSearch_008")]
-        [Test, Order(15)]
+        [Test, Order(16)]
         public void TreeSearch()
         {
             try
@@ -513,7 +530,7 @@ namespace UITests.TestCases.User
         //------------------------------------------------------------------------------------------------------------------------------------------------
 
         [Property("TestCaseId", "TableVisualization_AutoDeploy_014")]
-        [Test, Order(16)]
+        [Test, Order(17)]
         public void AutoDeploy()
         {
             browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-33-33-33-33");
@@ -539,7 +556,7 @@ namespace UITests.TestCases.User
         }
         
         [Property("TestCaseId", "TableVisualization_PaginationCheck_016")]
-        [Test, Order(17)]
+        [Test, Order(18)]
         public void PaginationCheck()
         {
             try
@@ -639,7 +656,7 @@ namespace UITests.TestCases.User
         //--------------------------------------------------------------------------------------------------------------------------------
 
         [Property("TestCaseId", "TableVisualization_FixedColumn_015")]
-        [Test, Order(18)]
+        [Test, Order(19)]
         public void FixedColumn()
         {
             try
@@ -655,7 +672,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_AppearenceCheck_018")]
-        [Test, Order(19)]
+        [Test, Order(20)]
         public void AppearenceCheck()
         {
             try
@@ -676,7 +693,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_ExtendedMulitline_019")]
-        [Test, Order(20)]
+        [Test, Order(21)]
         public void ExtendedMulitline()
         {
             try
@@ -692,8 +709,26 @@ namespace UITests.TestCases.User
             }
         }
 
+        [Property("TestCaseId", "TableVisualization_CheckCreatedBy_021")]
+        [Test, Order(22)]
+        public void CheckCreatedBy()
+        {
+            try
+            {
+                tv = new TableVisualization(driver);
+                elementOps.ExistsId("dvnull_0_0_eb_created_by_hdr_txt1");
+                tv.CreatedBy.SendKeys("Josevin" + Keys.Enter);
+                browserOps.implicitWait(100);
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTagCourse).ToString(), "Success!! Search  Compelte", "Success!! Search  Compelte");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
         [Property("TestCaseId", "TableVisualization_FD_020")]
-        [Test, Order(21)]
+        [Test, Order(23)]
         public void TVHavingFD()
         {
             try
@@ -728,6 +763,7 @@ namespace UITests.TestCases.User
 
                 elementOps.ExistsTagName("table");
                 int val = int.Parse(elementOps.GetTableRowCountFromJSusingTag("tbody").ToString());
+                Console.WriteLine(val);
                 Assert.AreEqual("True", (val>0)?"True":"False", "Success", "Success");
                 Console.WriteLine(browserOps.ShowConsoleError());
             }
@@ -738,13 +774,11 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_FDAutoRun_022")]
-        [Test]
+        [Test, Order(24)]
         public void TVHavingFDAutorun()
         {
             try
             {
-                UserLogin();
-                ChooseTV(4);
                 tv = new TableVisualization(driver);
                 browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-72-72-72-72");
                

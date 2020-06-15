@@ -180,6 +180,14 @@ namespace UITests.ObjectRepository.User
 
         //--------------- Searching
 
+        public IWebElement CheckOperatorField
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("dvContainer_1586780535084_0_0_phno_hdr_sel"));
+            }
+        }
+
         public IWebElement SearchBoxNameField
         {
             get
@@ -209,6 +217,22 @@ namespace UITests.ObjectRepository.User
             get
             {
                 return this.driver.FindElement(By.XPath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div"));
+            }
+        }
+
+        public IWebElement SearchTagCourse
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"filterdisplayrowtd_dvnull_0_0\"]/div"));
+            }
+        }
+
+        public IWebElement CreatedBy
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("dvnull_0_0_eb_created_by_hdr_txt1"));
             }
         }
 
