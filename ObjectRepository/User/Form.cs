@@ -63,7 +63,24 @@ namespace UITests.ObjectRepository.User
             }
         }
 
+        public IWebElement FormMode
+        {
+            get
+            {
+                return this.driver.FindElement(By.ClassName("fmode"));
+            }
+        }
+
         //------------------
+
+
+        public IWebElement ParentForm
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("WebForm_kayu90ek"));
+            }
+        }
 
         public IWebElement ChildBookName
         {
@@ -97,7 +114,7 @@ namespace UITests.ObjectRepository.User
             }
         }
 
-        public IWebElement GridNameField
+        public IWebElement GridFirstField
         {
             get
             {
@@ -105,19 +122,19 @@ namespace UITests.ObjectRepository.User
             }
         }
 
-        public IWebElement GridAuthorField
+        public IWebElement GridSecondFieldNumeric
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid1']/tbody/tr/td[3]/div/input"));
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid1']/tbody/tr/td[3]/div/div/input"));
             }
         }
 
-        public IWebElement GridPriceField
+        public IWebElement GridThirdFieldNumeric
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid1']/tbody/tr/td[4]/div/input"));
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid1']/tbody/tr/td[4]/div/div/input"));
             }
         }
 
@@ -128,6 +145,8 @@ namespace UITests.ObjectRepository.User
                 return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid1']/tbody/tr/td[5]/button[2]"));
             }
         }
+
+
 
         public IWebElement SaveButton
         {
@@ -160,6 +179,224 @@ namespace UITests.ObjectRepository.User
             get
             {
                 return this.driver.FindElement(By.Id("webformcancel"));
+            }
+        }
+
+        public IWebElement NotificationCount
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("notification-count"));
+            }
+        }
+
+        public IWebElement NotificationButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("eb-expand-nfWindow"));
+            }
+        }
+
+        //------------Form Users
+
+        public IWebElement UserSalary
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("Numeric2"));
+            }
+        }
+
+        public IWebElement UserName
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("TextBox1"));
+            }
+        }
+
+        public IWebElement UserDOB
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("Date1"));
+            }
+        }
+
+        public IWebElement UserEmail
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("TextBox2"));
+            }
+        }
+
+        public IWebElement UserDeptSelectButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"SimpleSelect1_dd\"]/button"));
+            }
+        }
+
+        public IWebElement UserDeptSelectOpt
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"SimpleSelect1_dd\"]/div/div/ul/li[2]/a"));
+            }
+        }
+
+        public IWebElement UserStatusSelectButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"SimpleSelect2_dd\"]/button"));
+            }
+        }
+
+        public IWebElement UserStatusSelectOpt
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"SimpleSelect2_dd\"]/div/div/ul/li[2]/a"));
+            }
+        }
+
+        public IWebElement UserRemark
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("TextBox3"));
+            }
+        }
+
+        public IWebElement UserDGAddButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("DataGrid1addrow"));
+            }
+        }
+
+        public IWebElement UserDGCourseName
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid1']/tbody/tr/td[2]/div/input"));
+            }
+        }
+
+        public IWebElement UserDGYear
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid1']/tbody/tr/td[3]/div/input"));
+            }
+        }
+
+        public IWebElement UserDGCommit
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"tbl_DataGrid1\"]/tbody/tr/td[4]/button[2]"));
+            }
+        }
+
+        //----------Form Jam
+
+        public IWebElement JamTopic
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("TextBox1"));
+            }
+        }
+
+        //------------Form Course
+
+        public IWebElement CourseName
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("TextBox1"));
+            }
+        }
+
+        //------------- Form PDF
+
+        public IWebElement FormPDFDropDown
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"webformprint-selbtn\"]/div/button"));
+            }
+        }
+
+        public IWebElement FormPDFLink
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"webformprint-selbtn\"]/div/div/div/ul/li/a"));
+            }
+        }
+
+        public IWebElement FormPDFModal
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("iFramePdfModal"));
+            }
+        }
+
+        public IWebElement FormPDFPrint
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("webformprint"));
+            }
+        }
+
+        //-----------Save
+
+        public IWebElement FormSaveDropdown
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"webformsave-selbtn\"]/div/button"));
+            }
+        }
+
+        public IWebElement FormSaveNew
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"webformsave-selbtn\"]/div/div/div/ul/li[1]/a"));
+            }
+        }
+
+        public IWebElement FormSaveEdit
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"webformsave-selbtn\"]/div/div/div/ul/li[2]/a"));
+            }
+        }
+
+        public IWebElement FormSaveView
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"webformsave-selbtn\"]/div/div/div/ul/li[3]/a"));
+            }
+        }
+
+        public IWebElement FormSaveClose
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"webformsave-selbtn\"]/div/div/div/ul/li[4]/a"));
             }
         }
 

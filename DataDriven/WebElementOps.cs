@@ -105,7 +105,12 @@ namespace UITests.DataDriven
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
             js.ExecuteScript(script);
         }
-        
+
+        public string GetValueById(string Id)
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            return (string)js.ExecuteScript("return document.getElementById('"+Id+ "').textContent");
+        }
 
         public object GetTableRowCountFromJSusingID(string id)
         {
