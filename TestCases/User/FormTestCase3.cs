@@ -14,47 +14,17 @@ namespace UITests.TestCases.User
         FormObject fo;
         GetUniqueId UID;
         string UniqueId;
+        FormTestCase1 BasicFuntion = new FormTestCase1();
 
-        [Test, Order(1)]
-        public void UserLogin()
-        {
-            try
-            {
-                browserOps.Goto("https://uitesting.eb-test.cloud/");
-                ul.UserName.SendKeys("kurian@expressbase.com");
-                ul.Password.SendKeys("@Kurian123");
-                ul.LoginButton.Click();
-
-                fo = new FormObject(driver);
-                UID = new GetUniqueId();
-
-                wait.Until(webDriver => (driver.PageSource.Contains("class=\"list-group-item inner_li Obj_link for_brd\"")));
-                browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashboard");
-                Console.WriteLine("Login Succesfull");
-
-                browserOps.implicitWait(1);
-                elementOps.ExistsXpath("//*[@id='appList']/div/ul/li/ul/li[7]/a");
-                fo.MenuApplication.Click();
-                browserOps.implicitWait(1);
-
-                actions.MoveToElement(fo.MenuSelectFormMenu).Perform();
-                elementOps.ExistsXpath("//*[@id='ebm-objtcontainer']/div[2]/div[1]");
-                fo.MenuSelectFormMenu.Click();
-                browserOps.implicitWait(1);
-                actions.MoveToElement(fo.MenuSelectForm1).Perform();
-                elementOps.ExistsXpath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a");
-                fo.MenuSelectForm3.Click();
-                Console.WriteLine("Test Form Opened");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Faliure!!\n" + e.Message);
-            }
-        }
-
+        [Property("TestCaseId", "Form_PlatformControls_001")]
         [Test, Order(2)]
         public void PlatformControls()
         {
+            BasicFuntion.Userlogin(driver);
+            BasicFuntion.FormSelect(3, driver);
+            fo = new FormObject(driver);
+            UID = new GetUniqueId();
+
             fo.SysLocationSelectableClick.Click();
             fo.SysLocationSelectableItemSelect.Click();
             Assert.AreEqual("2", fo.SysLocationSelectableClick.GetAttribute("value"), true.ToString(), "“Test passed for User - side - SysLocation - Selectable”");

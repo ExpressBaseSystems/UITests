@@ -13,7 +13,7 @@ namespace UITests.TestCases.User
     [TestFixture]
     public class UserLoginTestCase : BaseClass
     {
-
+        [Property("TestCaseId", "User_Login_001")]
         [TestCaseSource("UserLoginData"), Order(1)]
         public void ExecuteTest(dynamic Userdata)
         {

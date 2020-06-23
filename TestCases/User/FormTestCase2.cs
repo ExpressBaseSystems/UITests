@@ -15,7 +15,7 @@ namespace UITests.TestCases.User
         GetUniqueId UID;
         string UniqueId;
 
-        [Test, Order(1)]
+       
         public void UserLogin()
         {
             try
@@ -52,9 +52,11 @@ namespace UITests.TestCases.User
             }
         }
 
-        //[Test, Order(2)]
+        [Property("TestCaseId", "Form_BasicControls_PowerSelect_001")]
+        [Test, Order(2)]
         public void PowerSelect()
         {
+            UserLogin();
             fo.PowerSelectSimpleSelect.Click();
             fo.PowerSelectSimpleSelectitem.Click();
 
@@ -78,6 +80,8 @@ namespace UITests.TestCases.User
         [Test, Order(3)]
         public void DataGrid1()
         {
+           
+
             fo.DataGrid1AddRow.Click();
             browserOps.implicitWait(100);
             browserOps.implicitWait(100);
@@ -88,7 +92,7 @@ namespace UITests.TestCases.User
 
             elementOps.SetQueryValue(".numinput", "123");
 
-            fo.DataGrid1DateInput.Click();
+            elementOps.SetQueryValue("div.Dg_body > table#tbl_DataGrid1 > tbody > tr > td > div.ctrl-cover > div.input-group > input.date", "15-04-2020");
             //fo.DataGrid1DateInputSelect.Click();
 
             fo.DataGrid1BooleanInput.Click();
@@ -102,7 +106,98 @@ namespace UITests.TestCases.User
             fo.UserSelectClick.Click();
             fo.UserSelectItemClick.Click();
 
+            
+        }
+        
+        [Test, Order(4)]
+        public void DataGridString()
+        {
+            //UserLogin();
 
+            fo.DataGridStringAddRow.Click();
+
+            browserOps.implicitWait(100);
+            browserOps.implicitWait(100);
+            browserOps.implicitWait(100);
+
+
+            fo.DataGridStringRequired.SendKeys("TestCase");
+            Assert.AreEqual("Read Only", fo.DataGridStringRO.GetAttribute("value"), true.ToString(), "“Test passed for User - side - Boolean - Hidden”");
+
+            fo.DataGridStringUnique.SendKeys("Test");
+            fo.DataGridStringDNP.SendKeys("Test");
+            fo.DataGridStringMultiLine.SendKeys("EXPRESSbase is a Platform on the cloud to build & run business applications 10x faster. Get the best of both worlds – stability of Ready-Made software, and flexibility of Custom software.");
+            fo.DataGridStringPassword.SendKeys("EXPRESS");
+            fo.DataGridStringEmail.SendKeys("kurian@expressbase.com");
+        }
+        
+        [Test, Order(5)]
+        public void DataGridNumeric()
+        {
+            UserLogin();
+
+            fo.DataGridNumericAddRow.Click();
+
+            browserOps.implicitWait(100);
+            browserOps.implicitWait(100);
+            browserOps.implicitWait(100);
+
+
+            //elementOps.SetQueryValue("div.Dg_body > table#tbl_DataGrid3 > tbody > tr > td:nth-child(2) > div.ctrl-cover > div.input-group > input.numinput", "30");
+            elementOps.SetQueryValue("div.Dg_body > table#tbl_DataGrid3 > tbody > tr > td:nth-child(3) > div.ctrl-cover > div.input-group > input.numinput", "30.25");
+            elementOps.SetQueryValue("div.Dg_body > table#tbl_DataGrid3 > tbody > tr > td:nth-child(4) > div.ctrl-cover > div.input-group > input.numinput", "30");
+            elementOps.SetQueryValue("div.Dg_body > table#tbl_DataGrid3 > tbody > tr > td:nth-child(5) > div.ctrl-cover > div.input-group > input.numinput", "30.500");
+            elementOps.SetQueryValue("div.Dg_body > table#tbl_DataGrid3 > tbody > tr > td:nth-child(6) > div.ctrl-cover > div.input-group > input.numinput", "-30.50");
+            //elementOps.SetQueryValue("div.Dg_body > table#tbl_DataGrid3 > tbody > tr > td:nth-child(7) > div.ctrl-cover > div.input-group > input.numinput", "30");
+            Assert.AreEqual("true", fo.DataGridNumericHidden.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - DataGridNumeric - Read Only”");
+            Assert.AreEqual("10.00", fo.DataGridNumericHidden.GetAttribute("value"), true.ToString(), "“Test passed for User - side - DataGridNumeric - Default Value Expression”");
+          
+        }
+        
+        [Test, Order(6)]
+        public void DataGridBooleanSelectDropDown()
+        {
+            UserLogin();
+
+            fo.DataGridDataGrid4AddRow.Click();
+
+            browserOps.implicitWait(100);
+            browserOps.implicitWait(100);
+            browserOps.implicitWait(100);
+
+           
+            Assert.AreEqual("true", fo.DataGridBooleanSelectReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - DataGrid BooleanSelect ReadOnly- Read Only”");
+            fo.DataGridBooleanSelectDNP.Click();
+
+            fo.DataGridDropDownDNP.Click();
+            fo.DataGridDropDownDNPSelect.Click();
+            //Assert.AreEqual("10.00", fo.DataGridNumericHidden.GetAttribute("value"), true.ToString(), "“Test passed for User - side - DataGridNumeric - Default Value Expression”");
+
+            fo.DataGridBooleanSelectColumnDNP.Click();
+            fo.DataGridBooleanSelectColumnDNPSelect.Click();
+        } 
+        
+        [Test, Order(7)]
+        public void DataGridPowerSelect()
+        {
+            UserLogin();
+
+            fo.DataGridPowerSelectAddRow.Click();
+
+            browserOps.implicitWait(100);
+            browserOps.implicitWait(100);
+            browserOps.implicitWait(100);
+
+           
+            Assert.AreEqual("true", fo.DataGridBooleanSelectReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - DataGrid BooleanSelect ReadOnly- Read Only”");
+            fo.DataGridBooleanSelectDNP.Click();
+
+            fo.DataGridDropDownDNP.Click();
+            fo.DataGridDropDownDNPSelect.Click();
+            //Assert.AreEqual("10.00", fo.DataGridNumericHidden.GetAttribute("value"), true.ToString(), "“Test passed for User - side - DataGridNumeric - Default Value Expression”");
+
+            fo.DataGridBooleanSelectColumnDNP.Click();
+            fo.DataGridBooleanSelectColumnDNPSelect.Click();
         }
     }
 }

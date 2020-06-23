@@ -12,11 +12,13 @@ namespace UITests.TestCases.User
     public class FormTestCase1 : BaseClass
     {
         FormObject fo;
+       // UserLogin ul;
         GetUniqueId UID;
         string UniqueId;
 
-        [Test, Order(1)]
-        public void UserLogin()
+
+
+        public void Userlogin(IWebDriver Driver)
         {
             try
             {
@@ -25,31 +27,50 @@ namespace UITests.TestCases.User
                 ul.Password.SendKeys("@Kurian123");
                 ul.LoginButton.Click();
 
-                fo = new FormObject(driver);
                 UID = new GetUniqueId();
 
-                wait.Until(webDriver => (driver.PageSource.Contains("class=\"list-group-item inner_li Obj_link for_brd\"")));
+                wait.Until(webDriver => (Driver.PageSource.Contains("class=\"list-group-item inner_li Obj_link for_brd\"")));
                 browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashboard");
-                Console.WriteLine("Login Succesfull");
-
-                browserOps.implicitWait(1);
-                elementOps.ExistsXpath("//*[@id='appList']/div/ul/li/ul/li[7]/a");
-                fo.MenuApplication.Click();
-                browserOps.implicitWait(1);
-
-                actions.MoveToElement(fo.MenuSelectFormMenu).Perform();
-                elementOps.ExistsXpath("//*[@id='ebm-objtcontainer']/div[2]/div[1]");
-                fo.MenuSelectFormMenu.Click();
-                browserOps.implicitWait(1);
-                actions.MoveToElement(fo.MenuSelectForm1).Perform();
-                elementOps.ExistsXpath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a");
-                fo.MenuSelectForm1.Click();
-                Console.WriteLine("Test Form Opened");
+                Console.WriteLine("Login Succesfull");               
+               
             }
             catch (Exception e)
             {
-                Console.WriteLine("Faliure!!\n" + e.Message);
+                Console.WriteLine("Faliure!!  " + e.Message + "Stack Trace" + e.StackTrace);
             }
+        }
+
+        public void FormSelect(int FormID, IWebDriver Driver)
+        {
+
+            fo = new FormObject(Driver);
+            browserOps.implicitWait(1);
+            elementOps.ExistsXpath("//*[@id='appList']/div/ul/li/ul/li[7]/a");
+            fo.MenuApplication.Click();
+            browserOps.implicitWait(1);
+
+            actions.MoveToElement(fo.MenuSelectFormMenu).Perform();
+            elementOps.ExistsXpath("//*[@id='ebm-objtcontainer']/div[2]/div[1]");
+            fo.MenuSelectFormMenu.Click();
+            browserOps.implicitWait(1);
+            if (FormID == 1)
+            {
+                actions.MoveToElement(fo.MenuSelectForm1).Perform();
+                elementOps.ExistsXpath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a");
+                fo.MenuSelectForm1.Click();
+            }else if(FormID == 2)
+            {
+                actions.MoveToElement(fo.MenuSelectForm2).Perform();
+                elementOps.ExistsXpath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a");
+                fo.MenuSelectForm2.Click();
+            }
+            else if(FormID == 3)
+            {
+                actions.MoveToElement(fo.MenuSelectForm3).Perform();
+                elementOps.ExistsXpath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a");
+                fo.MenuSelectForm3.Click();
+            }
+            Console.WriteLine("Test Form Opened");
         }
 
 
@@ -59,6 +80,9 @@ namespace UITests.TestCases.User
         {
             try
             {
+                Userlogin(driver);
+                FormSelect(1, driver);
+
                 fo.TextBoxLowerCase.SendKeys("LOWERCASE");
                 browserOps.implicitWait(100);
                 //Assert.AreEqual("lowercase", fo.TextBoxLowerCase.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - lowercase”");
@@ -199,7 +223,7 @@ namespace UITests.TestCases.User
 
 
         [Property("TestCaseId", "Form_BasicControls_DateTimePicker_001")]
-        // [Test, Order(4)]
+        //[Test, Order(4)]
         public void dateTimePicker()
         {
             try
@@ -314,7 +338,7 @@ namespace UITests.TestCases.User
         }
 
 
-        [Property("TestCaseId", "Form_BasicControls_Label_001")]
+        [Property("TestCaseId", "Form_BasicControls_Boolean_001")]
         [Test, Order(9)]
         public void Boolean()
         {
@@ -572,5 +596,6 @@ namespace UITests.TestCases.User
             SaveFoam();
 
         }
+
     }
 }

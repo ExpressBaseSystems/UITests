@@ -26,6 +26,7 @@ namespace UITests.TestCases.User
             udb = new UserDashboardObject(driver);
         }
 
+        [Property("TestCaseId", "User_Dashboard_001")]
         [Test, Order(2)]
         public void SwitchDashboard()
         {

@@ -16,7 +16,7 @@ namespace UITests.TestCases.Tenant
         TenantLogin l;
         string url = "https://myaccount.eb-test.cloud/";
 
-        
+        [Property("TestCaseId", "Tenent_Login_001")]
         [TestCaseSource("LoginTestData")]
         public void ExecuteTest(dynamic testdatas)
         {
