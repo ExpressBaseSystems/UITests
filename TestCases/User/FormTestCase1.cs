@@ -138,8 +138,8 @@ namespace UITests.TestCases.User
             Assert.AreEqual("true", fo.BooleanOnChangeEnableDisable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - Boolean -OnChange ReadOnly”");
         }
 
-        //[Property("TestCaseId", "Form_BasicControls_TextBox_001")]
-        //[Test, Order(2)]
+        [Property("TestCaseId", "Form_BasicControls_TextBox_001")]
+        [Test, Order(2)]
         public void TextBox()
         {
             try
@@ -191,8 +191,8 @@ namespace UITests.TestCases.User
         }
 
 
-     //   [Property("TestCaseId", "Form_BasicControls_NumericBox_001")]
-     //   [Test, Order(3)]
+        [Property("TestCaseId", "Form_BasicControls_NumericBox_001")]
+        [Test, Order(3)]
         public void NumericTextBox()
         {
             try
@@ -281,8 +281,8 @@ namespace UITests.TestCases.User
         }
 
 
-      //  [Property("TestCaseId", "Form_BasicControls_DateTimePicker_001")]
-        //[Test, Order(4)]
+        [Property("TestCaseId", "Form_BasicControls_DateTimePicker_001")]
+        [Test, Order(4)]
         public void dateTimePicker()
         {
             try
@@ -300,8 +300,8 @@ namespace UITests.TestCases.User
         }
 
 
-      //  [Property("TestCaseId", "Form_BasicControls_BoolenSelect_001")]
-     //   [Test, Order(5)]
+        [Property("TestCaseId", "Form_BasicControls_BoolenSelect_001")]
+        [Test, Order(5)]
         public void BoolenSelect()
         {
             try
@@ -331,8 +331,8 @@ namespace UITests.TestCases.User
         }
 
 
-      //  [Property("TestCaseId", "Form_BasicControls_CheckBoxGroup_001")]
-      //  [Test, Order(6)]
+        [Property("TestCaseId", "Form_BasicControls_CheckBoxGroup_001")]
+        [Test, Order(6)]
         public void CheckBoxGroup()
         {
             try
@@ -358,8 +358,8 @@ namespace UITests.TestCases.User
         }
 
 
-      //  [Property("TestCaseId", "Form_BasicControls_RadioButton_001")]
-      //  [Test, Order(7)]
+        [Property("TestCaseId", "Form_BasicControls_RadioButton_001")]
+        [Test, Order(7)]
         public void RadioButton()
         {
             try
@@ -377,8 +377,8 @@ namespace UITests.TestCases.User
 
         }
 
-     //   [Property("TestCaseId", "Form_BasicControls_Label_001")]
-       // [Test, Order(8)]
+        [Property("TestCaseId", "Form_BasicControls_Label_001")]
+        [Test, Order(8)]
         public void Label()
         {
             try
@@ -397,8 +397,8 @@ namespace UITests.TestCases.User
         }
 
 
-      //  [Property("TestCaseId", "Form_BasicControls_Boolean_001")]
-     //   [Test, Order(9)]
+        [Property("TestCaseId", "Form_BasicControls_Boolean_001")]
+        [Test, Order(9)]
         public void Boolean()
         {
             try
@@ -428,7 +428,7 @@ namespace UITests.TestCases.User
         }
 
 
-     //   [Test, Order(10)]
+        [Test, Order(10)]
         public void SaveFoam()
         {
             fo.SaveForm.Click();
@@ -543,7 +543,7 @@ namespace UITests.TestCases.User
 
         }
         
-     //   [Test, Order(11)]
+        [Test, Order(11)]
         public void EditFoam()
         {
 
