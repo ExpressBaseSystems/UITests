@@ -19,6 +19,7 @@ namespace UITests.DataDriven
         public void Init_Browser()
         {
             ChromeOptions options = new ChromeOptions();
+            options.AddArguments("--disable-popup-blocking");
             options.SetLoggingPreference(LogType.Browser, LogLevel.All);
             driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),options);
             driver.Manage().Window.Maximize();
