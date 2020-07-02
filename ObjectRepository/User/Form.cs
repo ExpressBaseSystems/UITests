@@ -71,6 +71,30 @@ namespace UITests.ObjectRepository.User
             }
         }
 
+        public IWebElement Message
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"eb_messageBox_container\"]/span"));
+            }
+        }
+
+        public IWebElement MessageClose
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("close-msg"));
+            }
+        }
+
+        public IWebElement EBLoader
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("eb_common_loader"));
+            }
+        }
+
         //------------------
 
 
@@ -114,6 +138,14 @@ namespace UITests.ObjectRepository.User
             }
         }
 
+        public IWebElement GridAddRowButton1
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("DataGrid2addrow"));
+            }
+        }
+
         public IWebElement GridFirstField
         {
             get
@@ -145,9 +177,7 @@ namespace UITests.ObjectRepository.User
                 return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid1']/tbody/tr/td[5]/button[2]"));
             }
         }
-
-
-
+        
         public IWebElement SaveButton
         {
             get
@@ -221,6 +251,14 @@ namespace UITests.ObjectRepository.User
             get
             {
                 return this.driver.FindElement(By.Id("Date1"));
+            }
+        }
+
+        public IWebElement UserPhno
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("TextBox4"));
             }
         }
 
@@ -364,7 +402,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"webformsave-selbtn\"]/div/button"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"webformsave-selbtn\"]/div/select"));
             }
         }
 
@@ -397,6 +435,303 @@ namespace UITests.ObjectRepository.User
             get
             {
                 return this.driver.FindElement(By.XPath("//*[@id=\"webformsave-selbtn\"]/div/div/div/ul/li[4]/a"));
+            }
+        }
+
+        //-----------Grid2
+
+        public IWebElement Grid2Field1
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid2']/tbody/tr/td[2]/div/div/input"));
+            }
+        }
+
+        public IWebElement Grid2Field2
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid2']/tbody/tr/td[3]/div/div/input"));
+
+            }
+        }
+
+        public IWebElement Grid2Field3
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid2']/tbody/tr/td[4]/div/div/select"));
+            }
+        }
+
+        public IWebElement Grid2Field4
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid2']/tbody/tr/td[5]/div/div/select"));
+            }
+        }
+
+        public IWebElement Grid2Field5
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid2']/tbody/tr/td[6]/div/div/div/div/div/div/div/input"));
+            }
+        }
+
+        public IWebElement Grid2Field6
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid2']/tbody/tr/td[7]/div/div/div"));
+            }
+        }
+
+        public IWebElement Grid2Field7
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid2']/tbody/tr/td[8]/div/input"));
+            }
+        }
+
+        public IWebElement Grid2Field8
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid2']/tbody/tr/td[9]/div/div/div"));
+            }
+        }
+
+        public IWebElement Grid2Field9
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid2']/tbody/tr/td[10]/div/input"));
+            }
+        }
+
+        public IWebElement Grid2Field10
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid2']/tbody/tr/td[11]/div/div/div/div[2]"));
+            }
+        }
+        
+        public IWebElement Grid2Field10Value
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid2']/tbody/tr/td[11]/div/div/div[2]/div[3]/div[2]"));
+            }
+        }
+
+        public IWebElement Grid2Field11
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid2']/tbody/tr/td[12]/div/div/input"));
+            }
+        }
+
+        public IWebElement Grid2Field12
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid2']/tbody/tr/td[13]/div/input"));
+            }
+        }
+
+        public IWebElement Grid2Field13
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid2']/tbody/tr/td[14]/div/input"));
+            }
+        }
+
+        public IWebElement Grid2CommitButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid2']/tbody/tr/td[14]/button[2]"));
+            }
+        }
+
+        //----------------------------Review Controller
+
+        public IWebElement ReviewFormTextBox
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("TextBox1"));
+            }
+        }
+
+        public IWebElement ReviewFormStatusDropDownStage1
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"tbl_Review1\"]/tbody/tr/td[3]/div/div/select"));
+            }
+        }
+
+        public IWebElement ReviewFormTextAreaStage1
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"tbl_Review1\"]/tbody/tr/td[5]/div/textarea"));
+            }
+        }
+
+        public IWebElement ReviewFormStatusDropDownStage2
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"tbl_Review1\"]/tbody/tr[2]/td[3]/div/div/select"));
+            }
+        }
+
+        public IWebElement ReviewFormTextAreaStage2
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"tbl_Review1\"]/tbody/tr[2]/td[5]/div/textarea"));
+            }
+        }
+
+        public IWebElement ReviewFormStatusDropDownStage3
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"tbl_Review1\"]/tbody/tr[3]/td[3]/div/div/select"));
+            }
+        }
+
+        public IWebElement ReviewFormTextAreaStage3
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"tbl_Review1\"]/tbody/tr[3]/td[5]/div/textarea"));
+            }
+        }
+
+        public IWebElement ReviewFormButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"cont_Review1\"]/div[3]/button"));
+            }
+        }
+
+        public IWebElement ReviewFormConfirmationOkButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"eb_dlogBox_container\"]/div/div[3]/button[1]"));
+            }
+        }
+
+        public IWebElement ReviewFormStageProcessing
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"tbl_Review1\"]/tbody/tr/td[3]"));
+            }
+        }
+
+        //--------FileUpload
+
+        public IWebElement FileUploadReqButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("FileUploader1_Upl_btn"));
+            }
+        }
+        
+
+        public IWebElement FileBrowser
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("FileUploader1-file-input"));
+            }
+        }
+        
+        public IWebElement FileUploadButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("FileUploader1-upload-lin"));
+            }
+        }
+        
+        public IWebElement FileUploadOkButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("FileUploader1-upl-ok"));
+            }
+        }
+        
+
+        public IWebElement FileUploadSuccessSpan
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"FileUploader1-eb-upl-bdy\"]/div[2]/div/div[4]/span[1]"));
+            }
+        }
+
+        public IWebElement FileUploader1Toggle
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"FileUploader1_GalleryUnq\"]/div[1]/div[1]"));
+            }
+        }
+
+        public IWebElement FileUploader1Toggle2
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"FileUploader1_GalleryUnq\"]/div[2]/div[1]"));
+            }
+        }
+
+        public IWebElement FileUploader1Img1
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"DEFAULT_ColBdy\"]/div/div/div/img"));
+            }
+        }
+
+        public IWebElement FileUploader1Img2
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"FileUploader1_G_one\"]/div/div/div/img"));
+            }
+        }
+
+        public IWebElement FileUploaderCategorySelect
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"FileUploader1-eb-upl-bdy\"]/div/div/div[4]/select"));
+            }
+        }
+
+        public IWebElement FileUploaderCategorySelect1
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"FileUploader1-eb-upl-bdy\"]/div[2]/div/div[4]/select"));
             }
         }
 

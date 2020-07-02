@@ -22,6 +22,14 @@ namespace UITests.ObjectRepository.User
             }
         }
 
+        public IWebElement ProfileImageDropDownXpath
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"notificaionandprofile\"]/div"));
+            }
+        }
+
         public IWebElement LogoutButton
         {
             get

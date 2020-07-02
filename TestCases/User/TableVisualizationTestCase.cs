@@ -25,6 +25,7 @@ namespace UITests.TestCases.User
             ulog.Password.SendKeys("Qwerty@123");
             ulog.LoginButton.Click();
             Console.WriteLine("Login Success");
+            browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashBoard");
         }
 
         public void UserLogOut()
@@ -36,50 +37,7 @@ namespace UITests.TestCases.User
             browserOps.implicitWait(50);
             Console.WriteLine("LogOut Success");
         }
-
-        public void ChooseTV(int c = 0)
-        {
-            tv = new TableVisualization(driver);
-            elementOps.ExistsXpath("//*[@id=\"appList\"]/div/ul/li/ul/li[8]/a");
-            Console.WriteLine("SelectTableView");
-            tv.SelectApp.Click();
-            Console.WriteLine("SelectTableViewClicked");
-            elementOps.ExistsXpath("//*[@id=\"ebm-objtcontainer\"]/div[2]/div[3]");
-            actions.MoveToElement(tv.SelectTableView).Perform();
-            tv.SelectTableView.Click();
-            Console.WriteLine("SelectTableView");
-            if (c == 0)
-            {
-                elementOps.ExistsXpath("//*[@id=\"ebm-objectcontainer\"]/div[2]/div");
-                actions.MoveToElement(tv.SelectTableVisualizationUsers).Perform();
-                tv.SelectTableVisualizationUsers.Click();
-            }
-            else if (c == 1)
-            {
-                elementOps.ExistsXpath("//*[@id=\"ebm-objectcontainer\"]/div[2]/div[2]");
-                actions.MoveToElement(tv.SelectTableVisualizationAccountTree).Perform();
-                tv.SelectTableVisualizationAccountTree.Click();
-            }
-            else if (c == 2)
-            {
-                elementOps.ExistsXpath("//*[@id=\"ebm-objectcontainer\"]/div[2]/div[5]");
-                actions.MoveToElement(tv.SelectTableVisualizationCourseList).Perform();
-                tv.SelectTableVisualizationCourseList.Click();
-            }
-            else if (c == 3)
-            {
-                elementOps.ExistsXpath("//*[@id=\"ebm-objectcontainer\"]/div[2]/div[6]");
-                actions.MoveToElement(tv.SelectTableVisualizationJamTopicList).Perform();
-                tv.SelectTableVisualizationJamTopicList.Click();
-            }
-            else if (c == 4)
-            {
-                elementOps.ExistsXpath("//*[@id=\"ebm-objectcontainer\"]/div[2]/div[7]");
-                actions.MoveToElement(tv.SelectTableVisualizationFD).Perform();
-                tv.SelectTableVisualizationFD.Click();
-            }
-        }
-
+        
         [Property("TestCaseId", "TableVisualization_AddNewForm_001")]
         [Test, Order(1)]
         public void AddNewForm()
@@ -87,11 +45,10 @@ namespace UITests.TestCases.User
             try
             {
                 UserLogin();
-                ChooseTV();
                 tv = new TableVisualization(driver);
+                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
                 elementOps.ExistsId("NewFormButtondvContainer_1586780535084_0_0");
                 tv.NewFormButton.Click();
-                //*[@id=\"NewFormdddvContainer_1586780535084_0_0\"]/div/ul/li/a");
                 string url = driver.Url;
                 tv.NewFormUserCreation.Click();
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
@@ -155,6 +112,34 @@ namespace UITests.TestCases.User
                 if ("USER0004" == tv.IdField1.GetAttribute("innerHTML") || "USER0005" == tv.IdField2.GetAttribute("innerHTML"))
                     Console.WriteLine("Success!! Descending Order");
                 browserOps.Refresh();
+
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[1]/th[4]");
+                tv.SortSMSField.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("class=\"tdheight dt-left sorting_asc\"")));
+
+                if(tv.SMSField1.GetAttribute("innerHTML") == "0")
+                    Console.WriteLine("Success!! Ascending Order");
+                browserOps.Refresh();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "TableVisualization_CheckSMS_003")]
+        [Test, Order(4)]
+        public void CheckSMS()
+        {
+            try
+            {
+                tv = new TableVisualization(driver);
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[3]/td[12]/div/button");
+                //tv.SMSButton.Click();
+                //elementOps.ExistsXpath("/html/body/ul[6]/li");
+                //tv.SendSMS.Click();
+                //Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SMSTemplate).ToString(), "Success!! Search  Compelte", "Success!! Search  Compelte");
+                //browserOps.Refresh();
             }
             catch (Exception e)
             {
@@ -163,7 +148,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_CheckOperator_020")]
-        [Test, Order(4)]
+        [Test, Order(5)]
         public void CheckOperator()
         {
             try
@@ -171,7 +156,7 @@ namespace UITests.TestCases.User
                 tv = new TableVisualization(driver);
                 elementOps.ExistsId("dvContainer_1586780535084_0_0_name_hdr_sel");
                 string opr = tv.CheckOperatorField.GetAttribute("innerHTML");
-                Assert.AreEqual(" &gt; ", opr, "Success!! Search  Complete", "Success!! Search  Complete");
+                Assert.AreEqual("=", opr, "Success!! Search  Complete", "Success!! Search  Complete");
             }
             catch (Exception e)
             {
@@ -180,7 +165,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_SearchBoxes_004")]
-        [Test, Order(5)]
+        [Test, Order(6)]
         public void SearchBoxes()
         {
             try
@@ -193,8 +178,45 @@ namespace UITests.TestCases.User
                 elementOps.ExistsId("dvContainer_1586780535084_0_0_name_hdr_txt1");
                 tv.SearchBoxNameField.SendKeys("Anoopa Baby" + Keys.Enter);
                 browserOps.implicitWait(100);
-                Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTag).ToString(), "Success!! Search  Compelte", "Success!! Search  Compelte");
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTag).ToString(), "Success!! Search  Complete", "Success!! Search  Complete");
                 tv.SearchTagClose.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("<td id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\" colspan=\"13\" style=\"padding: 2px !important; display: none;\"></td>")));
+
+                elementOps.ExistsId("dvContainer_1586780535084_0_0_phno_hdr_txt1");
+                tv.PhoneNumberSearch.SendKeys("9400176451" + Keys.Enter);
+                browserOps.implicitWait(100);
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTag).ToString(), "Success!! Search  Complete", "Success!! Search  Complete");
+                tv.SearchTagClose.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("<td id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\" colspan=\"13\" style=\"padding: 2px !important; display: none;\"></td>")));
+
+                elementOps.ExistsId("dvContainer_1586780535084_0_0_dept_hdr_txt1");
+                tv.DeptSearch.SendKeys("production" + Keys.Enter);
+                browserOps.implicitWait(100);
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTag).ToString(), "Success!! Search  Complete", "Success!! Search  Complete");
+                tv.SearchTagClose.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("<td id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\" colspan=\"13\" style=\"padding: 2px !important; display: none;\"></td>")));
+
+                elementOps.ExistsId("dvContainer_1586780535084_0_0_salary_hdr_txt1");
+                tv.SalSearch.SendKeys("15000" + Keys.Enter);
+                browserOps.implicitWait(100);
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTag).ToString(), "Success!! Search  Complete", "Success!! Search  Complete");
+                tv.SearchTagClose.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("<td id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\" colspan=\"13\" style=\"padding: 2px !important; display: none;\"></td>")));
+
+                elementOps.ExistsId("dvContainer_1586780535084_0_0_eb_phone6_hdr_txt1");
+                tv.SMSSearch.SendKeys("9400176451" + Keys.Enter);
+                browserOps.implicitWait(100);
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTag).ToString(), "Success!! Search  Complete", "Success!! Search  Complete");
+                tv.SearchTagClose.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("<td id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\" colspan=\"13\" style=\"padding: 2px !important; display: none;\"></td>")));
+
+                elementOps.ExistsId("dvContainer_1586780535084_0_0_user_id_hdr_txt1");
+                tv.UsrIdSearch.SendKeys("USER0001" + Keys.Enter);
+                browserOps.implicitWait(100);
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTag).ToString(), "Success!! Search  Complete", "Success!! Search  Complete");
+                tv.SearchTagClose.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("<td id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\" colspan=\"13\" style=\"padding: 2px !important; display: none;\"></td>")));
+                
             }
             catch (Exception e)
             {
@@ -203,7 +225,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_RowGrouping_005")]
-        [Test, Order(6)]
+        [Test, Order(7)]
         public void RowGrouping()
         {
             try
@@ -223,7 +245,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_ToolTip_006")]
-        [Test, Order(7)]
+        [Test, Order(8)]
         public void ToolTip()
         {
             try
@@ -239,7 +261,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_InlineTable_007")]
-        [Test, Order(8)]
+        [Test, Order(9)]
         public void InlineTable()
         {
             try
@@ -258,16 +280,15 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_ConditionalFormatting_009")]
-        [Test, Order(9)]
+        [Test, Order(10)]
         public void ConditionalFormatting()
         {
             try
             {
                 tv = new TableVisualization(driver);
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[3]/td[3]/a");
-                tv.SortNameField.Click();
-                wait.Until(webDriver => (driver.PageSource.Contains("class=\"null tdheight dt-left sorting_asc\"")));
-                wait.Until(webDriver => (driver.PageSource.Contains("class=\"null tdheight dt-left sorting_asc\"")));
+                tv.SortSalField.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("class=\"null tdheight dt-right sorting_asc\"")));
                 Assert.AreEqual("conditionformat", tv.ConditionalFormattingDiv.GetAttribute("class"),"Success!!! Conditional Formatting", "Success!!! Conditional Formatting");
                 browserOps.Refresh();
             }
@@ -278,7 +299,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_Aggrigate_010")]
-        [Test, Order(10)]
+        [Test, Order(11)]
         public void Aggrigate()
         {
             try
@@ -294,13 +315,12 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_CustomColumn_011")]
-        [Test, Order(11)]
+        [Test, Order(12)]
         public void CustomColumn()
         {
             try
             {
                 tv = new TableVisualization(driver);
-                browserOps.implicitWait(100);
                 if (elementOps.IsWebElementPresent(tv.CustomColumnHeader))
                 {
                     Console.WriteLine(tv.CustomColumnHeader.GetAttribute("innerHTML"));
@@ -318,16 +338,19 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_ApprovalColumn_012")]
-        [Test, Order(12)]
+        [Test, Order(13)]
         public void ApprovalColumn()
         {
             try
             {
                 tv = new TableVisualization(driver);
-                browserOps.implicitWait(100);
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[3]/td[3]/a");
+                tv.SortUserIdField.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("class=\"null tdheight dt-left sorting_asc\"")));
+
                 if (elementOps.IsWebElementPresent(tv.ApprovalColumnHeading))
                 {
-                    Assert.AreEqual("Approval Column", tv.ApprovalColumnHeading.GetAttribute("innerHTML"), "Success", "Success");
+                    Assert.AreEqual("stage_actions_cont", tv.ApprovalColumnDiv.GetAttribute("class"), "Success", "Success");
                 }
                 else
                     Console.WriteLine("Faliure");
@@ -339,7 +362,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_ActionColumn_013")]
-        [Test, Order(13)]
+        [Test, Order(14)]
         public void ActionColumn()
         {
             try
@@ -364,7 +387,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_RowHeight_017")]
-        [Test, Order(14)]
+        [Test, Order(15)]
         public void RowHeight()
         {
             try
@@ -381,8 +404,8 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_OperatorsCheck_022")]
-        [Test, Order(15)]
-        public void OperatorsCheck()
+        [Test, Order(16)]
+        public void OperatorsCheckForString()
         {
             try
             {
@@ -431,7 +454,21 @@ namespace UITests.TestCases.User
                 elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div");
                 Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.IdField1).ToString(), "Success", "Success");
                 browserOps.Refresh();
+                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
 
+        [Property("TestCaseId", "TableVisualization_OperatorsCheck_022")]
+        [Test, Order(17)]
+        public void OperatorsCheckForDate()
+        {
+            try
+            {
+                tv = new TableVisualization(driver);
                 //------------------------------------------------------------Date
 
                 //Equal
@@ -488,7 +525,7 @@ namespace UITests.TestCases.User
                 elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div");
                 Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.IdField1).ToString(), "Success", "Success");
                 browserOps.Refresh();
-                
+
                 //---Between
                 elementOps.ExistsId("dvContainer_1586780535084_0_0_dob_hdr_sel");
                 tv.DateChkButton.Click();
@@ -510,7 +547,7 @@ namespace UITests.TestCases.User
         //-------------------------------------------------------------------------------------------------------------------------------
 
         [Property("TestCaseId", "TableVisualization_TreeSearch_008")]
-        [Test, Order(16)]
+        [Test, Order(18)]
         public void TreeSearch()
         {
             try
@@ -530,7 +567,7 @@ namespace UITests.TestCases.User
         //------------------------------------------------------------------------------------------------------------------------------------------------
 
         [Property("TestCaseId", "TableVisualization_AutoDeploy_014")]
-        [Test, Order(17)]
+        [Test, Order(19)]
         public void AutoDeploy()
         {
             browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-33-33-33-33");
@@ -542,105 +579,26 @@ namespace UITests.TestCases.User
             browserOps.implicitWait(100);
             Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.AutogenRowGroupingAdditionalRow).ToString(), "Row Grouping Success", "Row Grouping Success");
             //------
-            elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[3]/a");
-            tv.AutogenEntryFields.Click();
-            Console.WriteLine("Link Clicked");
-            driver.SwitchTo().Window(driver.WindowHandles.Last());
-            tv.WebFormEditButton.Click();
-            Console.WriteLine("Edit Button Clicked");
-            browserOps.implicitWait(50);
-            string txt = tv.Mode.GetAttribute("innerHTML");
-            Assert.AreEqual(txt, "Edit Mode", "Success!! In Edit Mode", "Success!! In Edit Mode");
-            driver.Close();
-            driver.SwitchTo().Window(driver.WindowHandles.Last());
+            //elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[3]/a");
+            //tv.AutogenEntryFields.Click();
+            //Console.WriteLine("Link Clicked");
+            //driver.SwitchTo().Window(driver.WindowHandles.Last());
+            //tv.WebFormEditButton.Click();
+            //Console.WriteLine("Edit Button Clicked");
+            //browserOps.implicitWait(50);
+            //string txt = tv.Mode.GetAttribute("innerHTML");
+            //Assert.AreEqual(txt, "Edit Mode", "Success!! In Edit Mode", "Success!! In Edit Mode");
+            //driver.Close();
+            //driver.SwitchTo().Window(driver.WindowHandles.Last());
         }
         
         [Property("TestCaseId", "TableVisualization_PaginationCheck_016")]
-        [Test, Order(18)]
+        [Test, Order(20)]
         public void PaginationCheck()
         {
             try
             {
                 tv = new TableVisualization(driver);
-                string id;
-                string table_info;
-                int value;
-                int last_value;
-
-                //----next
-                elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[3]/a");
-                id = tv.PaginationFirstField.GetAttribute("innerHTML");
-                tv.PaginationNextButton.Click();
-                wait.Until(webDriver => (driver.PageSource.Contains("class=\"paginate_button previous\"")));
-                Assert.AreNotEqual(id, tv.PaginationFirstField.GetAttribute("innerHTML"));
-                table_info = tv.PaginationTableInfo.GetAttribute("innerHTML");
-                value = int.Parse(table_info.Split('-', '/')[1].Trim());
-                last_value = int.Parse(table_info.Split('-', '/')[2].Trim());
-                if (value == last_value)
-                {
-                    Assert.AreEqual("paginate_button next disabled", tv.PaginationNextli.GetAttribute("class"), "Next Button Success", "Next Button Success");
-                }
-                else
-                {
-                    Assert.AreEqual("paginate_button next", tv.PaginationNextli.GetAttribute("class"), "Next Button Success", "Next Button Success");
-                }
-
-                //----prev
-
-                elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[3]/a");
-                id = tv.PaginationFirstField.GetAttribute("innerHTML");
-                tv.PaginationPrevButton.Click();
-                wait.Until(webDriver => (driver.PageSource.Contains("class=\"paginate_button previous disabled\"")));
-                Assert.AreNotEqual(id, tv.PaginationFirstField.GetAttribute("innerHTML"));
-                table_info = tv.PaginationTableInfo.GetAttribute("innerHTML");
-                value = int.Parse(table_info.Split('-', '/')[0].Trim());
-                if (value == 1)
-                {
-                    Assert.AreEqual("paginate_button previous disabled", tv.PaginationPrevli.GetAttribute("class"), "Previous Button Success", "Previous Button Success");
-                }
-                else
-                {
-                    Assert.AreEqual("paginate_button previous", tv.PaginationPrevli.GetAttribute("class"), "Previous Button Success", "Previous Button Success");
-                }
-
-                //--------last
-
-                elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[3]/a");
-                id = tv.PaginationFirstField.GetAttribute("innerHTML");
-                tv.PaginationLastButton.Click();
-                wait.Until(webDriver => (driver.PageSource.Contains("class=\"paginate_button first\"")));
-                Assert.AreNotEqual(id, tv.PaginationFirstField.GetAttribute("innerHTML"));
-                table_info = tv.PaginationTableInfo.GetAttribute("innerHTML");
-                value = int.Parse(table_info.Split('-', '/')[1].Trim());
-                last_value = int.Parse(table_info.Split('-', '/')[2].Trim());
-                if (value == last_value)
-                {
-                    Assert.AreEqual("paginate_button last disabled", tv.PaginationLastli.GetAttribute("class"), "Last Button Success", "Last Button Success");
-                }
-                else
-                {
-                    Assert.AreEqual("paginate_button last", tv.PaginationLastli.GetAttribute("class"), "Last Button Success", "Last Button Success");
-                }
-
-                //---------first
-                elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[3]/a");
-                id = tv.PaginationFirstField.GetAttribute("innerHTML");
-                tv.PaginationFirstButton.Click();
-                wait.Until(webDriver => (driver.PageSource.Contains("class=\"paginate_button first disabled\"")));
-                Assert.AreNotEqual(id, tv.PaginationFirstField.GetAttribute("innerHTML"));
-                table_info = tv.PaginationTableInfo.GetAttribute("innerHTML");
-                value = int.Parse(table_info.Split('-', '/')[0].Trim());
-                if (value == 1)
-                {
-                    Assert.AreEqual("paginate_button first disabled", tv.PaginationFirstli.GetAttribute("class"), "First Button Success", "First Button Success");
-                }
-                else
-                {
-                    Assert.AreEqual("paginate_button first", tv.PaginationFirstli.GetAttribute("class"), "First Button Success", "First Button Success");
-                }
-
-                //-------
-
                 if (int.Parse(tv.PaginationSelectOption1.GetAttribute("innerHTML")) == 3)
                 {
                     int val = int.Parse(elementOps.GetTableRowCountFromJSusingID("dvnull_0_0").ToString()) - 7;
@@ -653,10 +611,118 @@ namespace UITests.TestCases.User
             }
         }
 
+        [Property("TestCaseId", "TableVisualization_AutoDeploy_014")]
+        [Test, Order(21)]
+        public void PaginationNext()
+        {
+            tv = new TableVisualization(driver);
+            string id;
+            string table_info;
+            int value;
+            int last_value;
+            
+            elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[3]/a");
+            id = tv.PaginationFirstField.GetAttribute("innerHTML");
+            tv.PaginationNextButton.Click();
+            wait.Until(webDriver => (driver.PageSource.Contains("class=\"paginate_button previous\"")));
+            Assert.AreNotEqual(id, tv.PaginationFirstField.GetAttribute("innerHTML"));
+            table_info = tv.PaginationTableInfo.GetAttribute("innerHTML");
+            value = int.Parse(table_info.Split('-', '/')[1].Trim());
+            last_value = int.Parse(table_info.Split('-', '/')[2].Trim());
+            if (value == last_value)
+            {
+                Assert.AreEqual("paginate_button next disabled", tv.PaginationNextli.GetAttribute("class"), "Next Button Success", "Next Button Success");
+            }
+            else
+            {
+                Assert.AreEqual("paginate_button next", tv.PaginationNextli.GetAttribute("class"), "Next Button Success", "Next Button Success");
+            }
+        }
+
+        [Property("TestCaseId", "TableVisualization_AutoDeploy_014")]
+        [Test, Order(22)]
+        public void PaginationPrev()
+        {
+            tv = new TableVisualization(driver);
+            string id;
+            string table_info;
+            int value;
+            
+            elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[3]/a");
+            id = tv.PaginationFirstField.GetAttribute("innerHTML");
+            tv.PaginationPrevButton.Click();
+            wait.Until(webDriver => (driver.PageSource.Contains("class=\"paginate_button previous disabled\"")));
+            Assert.AreNotEqual(id, tv.PaginationFirstField.GetAttribute("innerHTML"));
+            table_info = tv.PaginationTableInfo.GetAttribute("innerHTML");
+            value = int.Parse(table_info.Split('-', '/')[0].Trim());
+            if (value == 1)
+            {
+                Assert.AreEqual("paginate_button previous disabled", tv.PaginationPrevli.GetAttribute("class"), "Previous Button Success", "Previous Button Success");
+            }
+            else
+            {
+                Assert.AreEqual("paginate_button previous", tv.PaginationPrevli.GetAttribute("class"), "Previous Button Success", "Previous Button Success");
+            }
+        }
+
+        [Property("TestCaseId", "TableVisualization_AutoDeploy_014")]
+        [Test, Order(23)]
+        public void PaginationLast()
+        {
+            tv = new TableVisualization(driver);
+            string id;
+            string table_info;
+            int value;
+            int last_value;
+
+            elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[3]/a");
+            id = tv.PaginationFirstField.GetAttribute("innerHTML");
+            tv.PaginationLastButton.Click();
+            wait.Until(webDriver => (driver.PageSource.Contains("class=\"paginate_button first\"")));
+            Assert.AreNotEqual(id, tv.PaginationFirstField.GetAttribute("innerHTML"));
+            table_info = tv.PaginationTableInfo.GetAttribute("innerHTML");
+            value = int.Parse(table_info.Split('-', '/')[1].Trim());
+            last_value = int.Parse(table_info.Split('-', '/')[2].Trim());
+            if (value == last_value)
+            {
+                Assert.AreEqual("paginate_button last disabled", tv.PaginationLastli.GetAttribute("class"), "Last Button Success", "Last Button Success");
+            }
+            else
+            {
+                Assert.AreEqual("paginate_button last", tv.PaginationLastli.GetAttribute("class"), "Last Button Success", "Last Button Success");
+            }
+        }
+
+        [Property("TestCaseId", "TableVisualization_AutoDeploy_014")]
+        [Test, Order(24)]
+        public void PaginationFirst()
+        {
+            tv = new TableVisualization(driver);
+            string id;
+            string table_info;
+            int value;
+
+            elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[3]/a");
+            id = tv.PaginationFirstField.GetAttribute("innerHTML");
+            tv.PaginationFirstButton.Click();
+            wait.Until(webDriver => (driver.PageSource.Contains("class=\"paginate_button first disabled\"")));
+            Assert.AreNotEqual(id, tv.PaginationFirstField.GetAttribute("innerHTML"));
+            table_info = tv.PaginationTableInfo.GetAttribute("innerHTML");
+            value = int.Parse(table_info.Split('-', '/')[0].Trim());
+            if (value == 1)
+            {
+                Assert.AreEqual("paginate_button first disabled", tv.PaginationFirstli.GetAttribute("class"), "First Button Success", "First Button Success");
+            }
+            else
+            {
+                Assert.AreEqual("paginate_button first", tv.PaginationFirstli.GetAttribute("class"), "First Button Success", "First Button Success");
+            }
+        }
+
         //--------------------------------------------------------------------------------------------------------------------------------
 
         [Property("TestCaseId", "TableVisualization_FixedColumn_015")]
-        [Test, Order(19)]
+        [Test, Order(25)]
         public void FixedColumn()
         {
             try
@@ -672,7 +738,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_AppearenceCheck_018")]
-        [Test, Order(20)]
+        [Test, Order(26)]
         public void AppearenceCheck()
         {
             try
@@ -693,7 +759,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_ExtendedMulitline_019")]
-        [Test, Order(21)]
+        [Test, Order(27)]
         public void ExtendedMulitline()
         {
             try
@@ -710,7 +776,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_CheckCreatedBy_021")]
-        [Test, Order(22)]
+        [Test, Order(28)]
         public void CheckCreatedBy()
         {
             try
@@ -720,6 +786,13 @@ namespace UITests.TestCases.User
                 tv.CreatedBy.SendKeys("Josevin" + Keys.Enter);
                 browserOps.implicitWait(100);
                 Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTagCourse).ToString(), "Success!! Search  Compelte", "Success!! Search  Compelte");
+
+                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-99-99-99-99");
+                elementOps.ExistsId("dvnull_0_0_eb_created_by_hdr_txt1");
+                tv.CreatedBy.SendKeys("Anoopa" + Keys.Enter);
+                browserOps.implicitWait(100);
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTagCourse).ToString(), "Success!! Search  Compelte", "Success!! Search  Compelte");
+                
             }
             catch (Exception e)
             {
@@ -728,7 +801,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_FD_020")]
-        [Test, Order(23)]
+        [Test, Order(29)]
         public void TVHavingFD()
         {
             try
@@ -774,7 +847,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_FDAutoRun_022")]
-        [Test, Order(24)]
+        [Test, Order(30)]
         public void TVHavingFDAutorun()
         {
             try
