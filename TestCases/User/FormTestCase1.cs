@@ -144,6 +144,7 @@ namespace UITests.TestCases.User
         {
             try
             {
+                //Userlogin(driver);
                 fo.TextBoxLowerCase.SendKeys("LOWERCASE");
                 fo.TextBoxUpperCase.SendKeys("uppercase");
                 Assert.AreEqual("lowercase", fo.TextBoxLowerCase.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - lowercase”");
@@ -287,11 +288,28 @@ namespace UITests.TestCases.User
         {
             try
             {
-                fo.Date.Click();
-                browserOps.implicitWait(1000);
-                fo.SelectDate.Click();
-                //Assert.AreEqual("numeric_help", fo.NumericBoxHelpText.GetAttribute("name"));
-                //Console.Write("“Test passed for User - side - NumericBox - Plain”");
+                elementOps.SetValue("Date1", "15-04-2020");
+                Assert.AreEqual("numeric_plain", fo.Date.GetAttribute("value"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+
+                elementOps.SetValue("Date2", "2:00 PM");
+                Assert.AreEqual("numeric_plain", fo.Time.GetAttribute("name"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+
+                elementOps.SetValue("Date3", "15-04-2020 2:00 PM");
+                Assert.AreEqual("numeric_plain", fo.DateTime.GetAttribute("name"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+                
+                Assert.AreEqual("numeric_plain", fo.DateTimeToolTip.GetAttribute("name"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+                Assert.AreEqual("numeric_plain", fo.DateTimeReadOnly.GetAttribute("name"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+
+
+                fo.DateTimenullableSelect.Click();
+                elementOps.SetValue("Date8", "15-04-2020");
+                Assert.AreEqual("numeric_plain", fo.DateTimenullable.GetAttribute("value"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+
+                elementOps.SetValue("Date6", "15-05-2020");
+                Assert.AreEqual("numeric_plain", fo.NumericBox.GetAttribute("name"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+
+                elementOps.SetValue("Date8", "15-06-2020");
+                Assert.AreEqual("numeric_plain", fo.NumericBox.GetAttribute("name"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
             }
             catch (Exception e)
             {

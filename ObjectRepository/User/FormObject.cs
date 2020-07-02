@@ -43,6 +43,13 @@ namespace UITests.ObjectRepository.User
                 return this.driver.FindElement(By.Id("//*[@id='objname']/span"));
             }
         }
+        public IWebElement GoToTop
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='layout_div']/div[1]/div"));
+            }
+        }
 
         public IWebElement MenuApplication
         {
@@ -584,6 +591,13 @@ namespace UITests.ObjectRepository.User
             get
             {
                 return this.driver.FindElement(By.Id("Date7"));
+            }
+        }
+        public IWebElement DateTimenullableSelect
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='Date8Wraper']/div/span[1]/input"));
             }
         }
         public IWebElement DateTimenullable
@@ -1390,6 +1404,50 @@ namespace UITests.ObjectRepository.User
             get
             {
                 return this.driver.FindElement(By.XPath("/html/body/div[4]/div[3]/div[2]/form/div[4]/div/div[2]/div[2]/table/tbody/tr[1]/td[1]"));
+            }
+        }
+
+
+        public IWebElement DataGridDateTimeHidden
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid1']/tbody/tr/td[1]/div[1]/div/input"));
+            }
+        }
+        public IWebElement DataGridDateTimeReadOnly
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid1']/tbody/tr/td[2]/div[1]/div/input"));
+            }
+        }
+        public IWebElement DataGridDateTimeRequired
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid1']/tbody/tr/td[3]/div[1]/div/input"));
+            }
+        }
+        public IWebElement DataGridDateTimeDNP
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid1']/tbody/tr/td[4]/div[1]/div/input"));
+            }
+        }
+        public IWebElement DataGridDateTimeDateTime
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid1']/tbody/tr/td[5]/div[1]/div/input"));
+            }
+        }
+        public IWebElement DataGridDateTimeTime
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid1']/tbody/tr/td[6]/div[1]/div/input"));
             }
         }
     }
