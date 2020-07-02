@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Security;
@@ -32,19 +33,19 @@ namespace UITests.TestCases.User
                 browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashboard");
                 Console.WriteLine("Login Succesfull");
 
-                browserOps.implicitWait(1);
-                elementOps.ExistsXpath("//*[@id='appList']/div/ul/li/ul/li[7]/a");
-                fo.MenuApplication.Click();
-                browserOps.implicitWait(1);
+                //browserOps.implicitWait(1);
+                //elementOps.ExistsXpath("//*[@id='appList']/div/ul/li/ul/li[7]/a");
+                //fo.MenuApplication.Click();
+                //browserOps.implicitWait(1);
 
-                actions.MoveToElement(fo.MenuSelectFormMenu).Perform();
-                elementOps.ExistsXpath("//*[@id='ebm-objtcontainer']/div[2]/div[1]");
-                fo.MenuSelectFormMenu.Click();
-                browserOps.implicitWait(1);
-                actions.MoveToElement(fo.MenuSelectForm2).Perform();
-                elementOps.ExistsXpath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a");
-                fo.MenuSelectForm2.Click();
-                Console.WriteLine("Test Form Opened");
+                //actions.MoveToElement(fo.MenuSelectFormMenu).Perform();
+                //elementOps.ExistsXpath("//*[@id='ebm-objtcontainer']/div[2]/div[1]");
+                //fo.MenuSelectFormMenu.Click();
+                //browserOps.implicitWait(1);
+                //actions.MoveToElement(fo.MenuSelectForm2).Perform();
+                //elementOps.ExistsXpath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a");
+                //fo.MenuSelectForm2.Click();
+                //Console.WriteLine("Test Form Opened");
             }
             catch (Exception e)
             {
@@ -57,6 +58,7 @@ namespace UITests.TestCases.User
         public void PowerSelect()
         {
             UserLogin();
+            browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-66-66-66-66");
             fo.PowerSelectSimpleSelect.Click();
             fo.PowerSelectSimpleSelectitem.Click();
 
@@ -151,6 +153,7 @@ namespace UITests.TestCases.User
             //elementOps.SetQueryValue("div.Dg_body > table#tbl_DataGrid3 > tbody > tr > td:nth-child(7) > div.ctrl-cover > div.input-group > input.numinput", "30");
             Assert.AreEqual("true", fo.DataGridNumericHidden.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - DataGridNumeric - Read Only”");
             Assert.AreEqual("10.00", fo.DataGridNumericHidden.GetAttribute("value"), true.ToString(), "“Test passed for User - side - DataGridNumeric - Default Value Expression”");
+            Assert.AreEqual("10.00", fo.DataGridNumericHidden.GetAttribute("value"), true.ToString(), "“Test passed for User - side - DataGridNumeric - Default Value Expression”");
           
         }
         
@@ -188,16 +191,59 @@ namespace UITests.TestCases.User
             browserOps.implicitWait(100);
             browserOps.implicitWait(100);
 
-           
-            Assert.AreEqual("true", fo.DataGridBooleanSelectReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - DataGrid BooleanSelect ReadOnly- Read Only”");
-            fo.DataGridBooleanSelectDNP.Click();
+            fo.DataGridPowerSelectSimpleSelect.Click();
+            fo.DataGridPowerSelectSimpleSelectItem.Click();
+            Assert.AreEqual("true", fo.DataGridPowerSelectSimpleSelect.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - DataGrid BooleanSelect ReadOnly- Read Only”");
 
-            fo.DataGridDropDownDNP.Click();
-            fo.DataGridDropDownDNPSelect.Click();
-            //Assert.AreEqual("10.00", fo.DataGridNumericHidden.GetAttribute("value"), true.ToString(), "“Test passed for User - side - DataGridNumeric - Default Value Expression”");
+            actions.DoubleClick(fo.DataGridPowerSelectMultiSelect).Perform();
+            fo.DataGridPowerSelectSimpleSelectMultiItem1.Click();
+            fo.DataGridPowerSelectSimpleSelectMultiItem2.Click();
+            fo.DataGridPowerSelectSimpleSelectMultiItem3.Click();
+            fo.DataGridPowerSelectSimpleSelectMultiItem4.Click();
+            Assert.AreEqual("true", fo.DataGridBooleanSelectReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - DataGrid BooleanSelect ReadOnly- Read Only”");
+
+
+            fo.DataGridPowerReqMinSearch.SendKeys("lower");
+            fo.DataGridPowerReqMinSearchItem.Click();
+            Assert.AreEqual("true", fo.DataGridBooleanSelectReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - DataGrid BooleanSelect ReadOnly- Read Only”");
+            
+            
+            Assert.AreEqual("10.00", fo.DataGridNumericHidden.GetAttribute("value"), true.ToString(), "“Test passed for User - side - DataGridNumeric - Default Value Expression”");
 
             fo.DataGridBooleanSelectColumnDNP.Click();
             fo.DataGridBooleanSelectColumnDNPSelect.Click();
+        }
+        
+        [Test, Order(8)]
+        public void DataGridDateTime()
+        {
+            UserLogin();
+            browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-105-105-105-105");
+
+            fo.DataGrid1AddRow.Click();
+
+            browserOps.implicitWait(100);
+            browserOps.implicitWait(100);
+            browserOps.implicitWait(100);
+
+
+            //actions.DoubleClick(fo.DataGridPowerSelectMultiSelect).Perform();
+            
+                        
+            Assert.AreEqual("15-02-2018", fo.DataGridDateTimeReadOnly.GetAttribute("value"), true.ToString(), "“Test passed for User - side - DataGrid DateTime - ReadOnly”");
+            Assert.AreEqual("true", fo.DataGridDateTimeReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - DataGrid DateTime - ReadOnly”");
+
+            elementOps.SetQueryValue("div.Dg_body > table#tbl_DataGrid1 > tbody > tr > td:nth-child(3) > div.ctrl-cover > div.input-group > input.date", "15-04-2020");
+            Assert.AreEqual("15-04-2020", fo.DataGridDateTimeRequired.GetAttribute("value"), true.ToString(), "“Test passed for User - side - DataGrid DateTime - Required”");
+
+            elementOps.SetQueryValue("div.Dg_body > table#tbl_DataGrid1 > tbody > tr > td:nth-child(4) > div.ctrl-cover > div.input-group > input.date", "15-05-2021");
+            Assert.AreEqual("15-05-2021", fo.DataGridDateTimeDNP.GetAttribute("value"), true.ToString(), "“Test passed for User - side - DataGrid DateTime - DNP”");
+
+            elementOps.SetQueryValue("div.Dg_body > table#tbl_DataGrid1 > tbody > tr > td:nth-child(5) > div.ctrl-cover > div.input-group > input.date", "15-06-2020 07:00 PM");
+            Assert.AreEqual("15-06-2020 07:00 PM", fo.DataGridDateTimeDateTime.GetAttribute("value"), true.ToString(), "“Test passed for User - side - DataGrid DateTime - DateTime”");
+
+            elementOps.SetQueryValue("div.Dg_body > table#tbl_DataGrid1 > tbody > tr > td:nth-child(6) > div.ctrl-cover > div.input-group > input.date", "06:00 PM");
+            Assert.AreEqual("06:00 PM", fo.DataGridDateTimeTime.GetAttribute("value"), true.ToString(), "“Test passed for User - side - DataGrid DateTime - Time”");
         }
     }
 }

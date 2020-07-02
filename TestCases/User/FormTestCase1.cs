@@ -30,9 +30,9 @@ namespace UITests.TestCases.User
                 UID = new GetUniqueId();
 
                 wait.Until(webDriver => (Driver.PageSource.Contains("class=\"list-group-item inner_li Obj_link for_brd\"")));
-                browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashboard");
-                Console.WriteLine("Login Succesfull");               
-               
+                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=hairocraft_stagging-ebdbjiwavi72zy20200413071346-0-13-13-1419-1594");
+                Console.WriteLine("Login Succesfull");
+                fo = new FormObject(Driver);
             }
             catch (Exception e)
             {
@@ -43,7 +43,7 @@ namespace UITests.TestCases.User
         public void FormSelect(int FormID, IWebDriver Driver)
         {
 
-            fo = new FormObject(Driver);
+            
             browserOps.implicitWait(1);
             elementOps.ExistsXpath("//*[@id='appList']/div/ul/li/ul/li[7]/a");
             fo.MenuApplication.Click();
@@ -73,6 +73,70 @@ namespace UITests.TestCases.User
             Console.WriteLine("Test Form Opened");
         }
 
+        [Test, Order(1)]
+        public void Funtions()
+        {
+            Userlogin(driver);
+            //FormSelect(1, driver);
+
+            fo.TextBoxLowerCase.SendKeys("LOWERCASE");
+            fo.TextBoxLowerCase.Clear();
+            actions.MoveToElement(fo.TextBoxShowHidden).Perform();
+            fo.TextBoxUpperCase.SendKeys("uppercase");
+            fo.TextBoxUpperCase.Clear();
+
+
+            Assert.AreEqual("margin: 4px; display: none;", fo.TextBoxShowHidden.GetAttribute("style"), true.ToString(), "“Test passed for User - side - TextBox - Funtion Hide”", "“Test passed for User - side - TextBox - Funtion Hide”");
+            Assert.AreEqual("margin: 4px; display: none;", fo.NumericShowHidden.GetAttribute("style"), true.ToString(), "“Test passed for User - side - Numeric - Funtion Hide”");
+            Assert.AreEqual("margin: 4px; display: none;", fo.DateShowHidden.GetAttribute("style"), true.ToString(), "“Test passed for User - side - Date - Funtion Hide”");
+            Assert.AreEqual("margin: 4px; display: none;", fo.BooleanSelectShowHidden.GetAttribute("style"), true.ToString(), "“Test passed for User - side - BooelanSelect - Funtion Hide”");
+            Assert.AreEqual("margin: 4px; display: none;", fo.CheckboxesShowHidden.GetAttribute("style"), true.ToString(), "“Test passed for User - side - CheckBox - Funtion Hide”");
+            Assert.AreEqual("margin: 4px; display: none;", fo.RadioButtonShowHidden.GetAttribute("style"), true.ToString(), "“Test passed for User - side - RadioButton - Funtion Hide”");
+            Assert.AreEqual("margin: 4px; display: none;", fo.LabelShowHidden.GetAttribute("style"), true.ToString(), "“Test passed for User - side - Label - Funtion Hide”");
+            Assert.AreEqual("margin: 4px; display: none;", fo.BooleanShowHidden.GetAttribute("style"), true.ToString(), "“Test passed for User - side - Boolean - Funtion Hide”");
+
+
+            Assert.AreEqual("true", fo.TextBoxDisableEnable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - TextBox - Funtion EnableDiable”");
+            Assert.AreEqual("true", fo.NumericDisableEnable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - Numeric - Funtion EnableDiable”");
+            Assert.AreEqual("true", fo.DateDisableEnable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - Date - Funtion EnableDiable”");
+            Assert.AreEqual("true", fo.BooleanSelectDisableEnable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - BooelanSelect - Funtion EnableDiable”");
+            Assert.AreEqual("true", fo.CheckBoxDisableEnable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - Label - Funtion EnableDiable”");
+            Assert.AreEqual("true", fo.RadioButtonDisableEnable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - RadioButton - Funtion EnableDiable”");
+            Assert.AreEqual("true", fo.BooleanDisableEnable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - Boolean - Funtion EnableDiable”");
+
+            Assert.AreEqual("Default Value Expression", fo.TextBoxDVE.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Default Value Expression”");
+            Assert.AreEqual("1234.00", fo.NumericDVE.GetAttribute("value"), true.ToString(), "“Test passed for User - side - Numeric - Default Value Expression”");
+            Assert.AreEqual("21-05-2020", fo.DateDVE.GetAttribute("value"), true.ToString(), "“Test passed for User - side - Date - Default Value Expression”");
+            Assert.AreEqual("Yes", fo.BooleanSelectDVE.Text, true.ToString(), "“Test passed for User - side - BooelanSelect - Default Value Expression”");
+            // Assert.AreEqual("true", fo.CheckBoxDisableEnable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - Label - Default Value Expression”");
+            // Assert.AreEqual("true", fo.RadioButtonDisableEnable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - RadioButton - Default Value Expression”");
+            Assert.AreEqual("on", fo.BooleanDVE.GetAttribute("value"), true.ToString(), "“Test passed for User - side - Boolean - Default Value Expression”");
+
+            fo.TextBoxMaxLength.SendKeys("kurian@expressbase.com");
+            fo.TextboxAutosuggestion.SendKeys("kurian@expressbase.com");
+            fo.TextBoxLowerCase.Click();
+            fo.CheckBoxGroupOnChangeTrigger.Click();
+            fo.RadioButtonOnChangeTrigger.Click();
+            fo.BooleanOnChangeTrigger.Click();
+
+            Assert.AreEqual("margin: 4px; display: none;", fo.TextBoxOnChangeHideShow.GetAttribute("style"), true.ToString(), "“Test passed for User - side - TextBox - OnChange Funtion Hide”", "“Test passed for User - side - TextBox - OnChange Funtion Hide”");
+            Assert.AreEqual("true", fo.TextBoxOnChangeEnableDisable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - TextBox - OnChange Funtion EnableDiable”");
+            
+            Assert.AreEqual("margin: 4px; display: none;", fo.NumericOnChangeHideShow.GetAttribute("style"), true.ToString(), "“Test passed for User - side - Numeric OnChange- Funtion Hide”", "“Test passed for User - side - TextBox - OnChange Funtion Hide”");
+            Assert.AreEqual("true", fo.NumericOnChangeEnableDisable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - Numeric - OnChangeFuntion EnableDiable”");
+            
+            Assert.AreEqual("margin: 4px; display: none;", fo.BooleanSelectOnChangeHideShow.GetAttribute("style"), true.ToString(), "“Test passed for User - side - BooleanSelect OnChange - Funtion Hide”", "“Test passed for User - side - TextBox - OnChange Funtion Hide”");
+            Assert.AreEqual("true", fo.BooleanSelectOnChangeEnableDisable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - TextBox - BooleanSelect OnChange- Funtion EnableDiable”");
+
+            Assert.AreEqual("false", fo.CheckBoxGroupOnChangeHideShow.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - CheckBoxGroup -OnChange Funtion Hide”");
+            Assert.AreEqual("true", fo.CheckBoxGroupOnChangeEnableDisable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - CheckBoxGroup -OnChange Funtion EnableDiable”");
+
+            Assert.AreEqual("false", fo.RadioButtonnChangeHideShow.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - RadioButton -OnChange Hidden”");
+            Assert.AreEqual("true", fo.RadioButoonOnChangeEnableDisable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - RadioButton -OnChange ReadOnly”");
+            
+            Assert.AreEqual("false", fo.BooleanOnChangeHideShow.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - Boolean -OnChange Hidden”");
+            Assert.AreEqual("true", fo.BooleanOnChangeEnableDisable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - Boolean -OnChange ReadOnly”");
+        }
 
         [Property("TestCaseId", "Form_BasicControls_TextBox_001")]
         [Test, Order(2)]
@@ -80,16 +144,12 @@ namespace UITests.TestCases.User
         {
             try
             {
-                Userlogin(driver);
-                FormSelect(1, driver);
-
+                //Userlogin(driver);
                 fo.TextBoxLowerCase.SendKeys("LOWERCASE");
-                browserOps.implicitWait(100);
-                //Assert.AreEqual("lowercase", fo.TextBoxLowerCase.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - lowercase”");
-
                 fo.TextBoxUpperCase.SendKeys("uppercase");
-                browserOps.implicitWait(100);
-                //Assert.AreEqual("UPPERCASE", fo.TextBoxUpperCase.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Uppercase”");
+                Assert.AreEqual("lowercase", fo.TextBoxLowerCase.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - lowercase”");
+
+                Assert.AreEqual("UPPERCASE", fo.TextBoxUpperCase.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Uppercase”");
 
                 fo.TextBoxPassword.SendKeys("password");
                 Assert.AreEqual("password", fo.TextBoxPassword.GetAttribute("type"), true.ToString(), "“Test passed for User - side - TextBox - Password”");
@@ -223,16 +283,33 @@ namespace UITests.TestCases.User
 
 
         [Property("TestCaseId", "Form_BasicControls_DateTimePicker_001")]
-        //[Test, Order(4)]
+        [Test, Order(4)]
         public void dateTimePicker()
         {
             try
             {
-                fo.Date.Click();
-                browserOps.implicitWait(1000);
-                fo.SelectDate.Click();
-                //Assert.AreEqual("numeric_help", fo.NumericBoxHelpText.GetAttribute("name"));
-                //Console.Write("“Test passed for User - side - NumericBox - Plain”");
+                elementOps.SetValue("Date1", "15-04-2020");
+                Assert.AreEqual("numeric_plain", fo.Date.GetAttribute("value"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+
+                elementOps.SetValue("Date2", "2:00 PM");
+                Assert.AreEqual("numeric_plain", fo.Time.GetAttribute("name"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+
+                elementOps.SetValue("Date3", "15-04-2020 2:00 PM");
+                Assert.AreEqual("numeric_plain", fo.DateTime.GetAttribute("name"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+                
+                Assert.AreEqual("numeric_plain", fo.DateTimeToolTip.GetAttribute("name"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+                Assert.AreEqual("numeric_plain", fo.DateTimeReadOnly.GetAttribute("name"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+
+
+                fo.DateTimenullableSelect.Click();
+                elementOps.SetValue("Date8", "15-04-2020");
+                Assert.AreEqual("numeric_plain", fo.DateTimenullable.GetAttribute("value"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+
+                elementOps.SetValue("Date6", "15-05-2020");
+                Assert.AreEqual("numeric_plain", fo.NumericBox.GetAttribute("name"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+
+                elementOps.SetValue("Date8", "15-06-2020");
+                Assert.AreEqual("numeric_plain", fo.NumericBox.GetAttribute("name"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
             }
             catch (Exception e)
             {
