@@ -35,6 +35,10 @@ namespace UITests.DataDriven
         {
             wait.Until(ExpectedConditions.ElementExists(By.LinkText(text)));
         }
+        public void ExistsTextToBePresentInElement(IWebElement element, string text)
+        {
+            wait.Until(ExpectedConditions.TextToBePresentInElement(element, text));
+        }
 
         public void ExistsClass(string classname)
         {
@@ -50,7 +54,12 @@ namespace UITests.DataDriven
         {
             wait.Until(ExpectedConditions.ElementExists(By.TagName(name)));
         }
-
+        public void InvisibleWait(By we)
+        {
+            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(we));
+        }
+        
+       
         public bool IsWebElementPresent(IWebElement webelement)
         {
             try

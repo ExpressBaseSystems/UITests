@@ -183,7 +183,7 @@ namespace UITests.TestCases.User
         [Test, Order(7)]
         public void DataGridPowerSelect()
         {
-            UserLogin();
+           
 
             fo.DataGridPowerSelectAddRow.Click();
 

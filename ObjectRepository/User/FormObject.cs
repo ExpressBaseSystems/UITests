@@ -65,25 +65,39 @@ namespace UITests.ObjectRepository.User
                 return this.driver.FindElement(By.XPath("//*[@id='ebm-objtcontainer']/div[2]/div[1]"));
             }
         }
-        public IWebElement MenuSelectForm1
+        public IWebElement MenuSelectBasicControlsTextBox
         {
             get
             {
-                return this.driver.FindElement(By.LinkText("FormTestCase 1"));
+                return this.driver.FindElement(By.LinkText("Basic Controls TextBox"));
             }
         }
-        public IWebElement MenuSelectForm2
+        public IWebElement MenuSelectBasicControlsNumeric
         {
             get
             {
-                return this.driver.FindElement(By.LinkText("FormTestCase 2"));
+                return this.driver.FindElement(By.LinkText("Basic Controls Numeric"));
             }
         }
-        public IWebElement MenuSelectForm3
+        public IWebElement MenuSelectBasicControlsDateTime
         {
             get
             {
-                return this.driver.FindElement(By.LinkText("FormTestCase 3"));
+                return this.driver.FindElement(By.LinkText("Basic Controls DateTime"));
+            }
+        }
+        public IWebElement MenuSelectBasicControlsBooleanSelect
+        {
+            get
+            {
+                return this.driver.FindElement(By.LinkText("Basic Controls BooleanSelect"));
+            }
+        }
+        public IWebElement MenuSelectBasicControlsCheckBoxGroup
+        {
+            get
+            {
+                return this.driver.FindElement(By.LinkText("Basic Controls CheckBoxGroup"));
             }
         }
 
@@ -201,34 +215,10 @@ namespace UITests.ObjectRepository.User
         
 
 
-        public IWebElement TextBoxDVE
-        {
-            get
-            {
-                return this.driver.FindElement(By.Id("TextBox16"));
-            }
-        }
-        public IWebElement NumericDVE
-        {
-            get
-            {
-                return this.driver.FindElement(By.Id("Numeric18"));
-            }
-        }
-        public IWebElement DateDVE
-        {
-            get
-            {
-                return this.driver.FindElement(By.Id("Date15"));
-            }
-        }
-        public IWebElement BooleanSelectDVE
-        {
-            get
-            {
-                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect12_dd']/button"));
-            }
-        }
+        
+        
+       
+        
         public IWebElement BooleanDVE
         {
             get
@@ -239,48 +229,9 @@ namespace UITests.ObjectRepository.User
         
 
 
-        public IWebElement TextBoxOnChangeHideShow
-        {
-            get
-            {
-                return this.driver.FindElement(By.Id("cont_TextBox17"));
-            }
-        }
-        public IWebElement TextBoxOnChangeEnableDisable
-        {
-            get
-            {
-                return this.driver.FindElement(By.Id("TextBox18"));
-            }
-        }
-        public IWebElement NumericOnChangeHideShow
-        {
-            get
-            {
-                return this.driver.FindElement(By.Id("cont_Numeric19"));
-            }
-        }
-        public IWebElement NumericOnChangeEnableDisable
-        {
-            get
-            {
-                return this.driver.FindElement(By.Id("Numeric20lbltxtb"));
-            }
-        }
-        public IWebElement BooleanSelectOnChangeHideShow
-        {
-            get
-            {
-                return this.driver.FindElement(By.Id("cont_BooleanSelect15"));
-            }
-        }
-        public IWebElement BooleanSelectOnChangeEnableDisable
-        {
-            get
-            {
-                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect16_dd']/button"));
-            }
-        }
+        
+        
+        
         public IWebElement CheckBoxGroupOnChangeTrigger
         {
             get
@@ -352,7 +303,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.Id("TextBox1"));
+                return this.driver.FindElement(By.Id("TextBox3"));
             }
 
         }
@@ -360,42 +311,42 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.Id("TextBox2"));
+                return this.driver.FindElement(By.Id("TextBox4"));
             }
         }        
         public IWebElement TextBoxPassword
         {
             get
             {
-                return this.driver.FindElement(By.Id("TextBox3"));
+                return this.driver.FindElement(By.Id("TextBox5"));
             }
         }
         public IWebElement TextBoxEmail
         {
             get
             {
-                return this.driver.FindElement(By.Id("TextBox4"));
+                return this.driver.FindElement(By.Id("TextBox6"));
             }
         }
         public IWebElement TextBoxMultiLine
         {
             get
             {
-                return this.driver.FindElement(By.Id("TextBox5"));
+                return this.driver.FindElement(By.Id("TextBox13"));
             }
         }        
         public IWebElement TextBoxMaxLength
         {
             get
             {
-                return this.driver.FindElement(By.Id("TextBox6"));
+                return this.driver.FindElement(By.Id("TextBox7"));
             }
         }        
         public IWebElement TextboxAutosuggestion
         {
             get
             {
-                return this.driver.FindElement(By.Id("TextBox7"));
+                return this.driver.FindElement(By.Id("TextBox8"));
             }
         }
         public IWebElement TextboxAutosuggestionItem
@@ -409,37 +360,73 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.Id("TextBox8"));
+                return this.driver.FindElement(By.Id("cont_TextBox2"));
             }
         }
         public IWebElement TextboxReadOnly
         {
             get
             {
-                return this.driver.FindElement(By.Id("TextBox9"));
+                return this.driver.FindElement(By.Id("TextBox10"));
             }
         }
         public IWebElement TextboxRequired
         {
             get
             {
-                return this.driver.FindElement(By.Id("TextBox10"));
+                return this.driver.FindElement(By.Id("TextBox11"));
             }
         }
         public IWebElement TextboxUnique
         {
             get
             {
-                return this.driver.FindElement(By.Id("TextBox11"));
+                return this.driver.FindElement(By.Id("TextBox9"));
             }
         }
         public IWebElement TextboxDoNotPersist
         {
             get
             {
+                return this.driver.FindElement(By.Id("TextBox14"));
+            }
+        }        
+        public IWebElement TextBoxDVE
+        {
+            get
+            {
                 return this.driver.FindElement(By.Id("TextBox12"));
             }
         }
+        public IWebElement TextboxVE
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("TextBox15"));
+            }
+        }
+        public IWebElement TextboxOnChangeTrigger
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("TextBox16"));
+            }
+        }
+        public IWebElement TextBoxOnChangeHideShow
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_TextBox17"));
+            }
+        }
+        public IWebElement TextBoxOnChangeEnableDisable
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("TextBox18"));
+            }
+        }
+
 
 
 
@@ -457,11 +444,32 @@ namespace UITests.ObjectRepository.User
                 return this.driver.FindElement(By.Id("Numeric2"));
             }
         }
+        public IWebElement NumericBoxCurrencyIcon
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='Numeric2Wraper']/div/span/i"));
+            }
+        }
         public IWebElement NumericBoxPhone
         {
             get
             {
                 return this.driver.FindElement(By.Id("Numeric3"));
+            }
+        }
+        public IWebElement NumericBoxPhoneIcon
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='Numeric3Wraper']/div/span/i"));
+            }
+        }       
+        public IWebElement NumericBoxHidden
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_Numeric4"));
             }
         }       
         public IWebElement NumericBoxReadOnly
@@ -519,7 +527,42 @@ namespace UITests.ObjectRepository.User
             {
                 return this.driver.FindElement(By.Id("Numeric12"));
             }
-        }        
+        }
+        public IWebElement NumericDVE
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("Numeric16"));
+            }
+        }
+        public IWebElement NumericVE
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("Numeric17"));
+            }
+        }
+        public IWebElement NumericOnChangetrigger
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("Numeric13"));
+            }
+        }
+        public IWebElement NumericOnChangeHideShow
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_Numeric14"));
+            }
+        }
+        public IWebElement NumericOnChangeEnableDisable
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("Numeric15lbltxtb"));
+            }
+        }
         public IWebElement NumericBoxHelpText
         {
             get
@@ -537,13 +580,7 @@ namespace UITests.ObjectRepository.User
         
 
 
-        public IWebElement SelectDate
-        {
-            get
-            {
-                return this.driver.FindElement(By.XPath("/html/body/div[5]/div[1]/div[2]/table/tbody/tr[1]/td[5]"));
-            }
-        } 
+        
         public IWebElement Date
         {
             get
@@ -555,56 +592,98 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.Id("Date2"));
+                return this.driver.FindElement(By.Id("Date3"));
             }
         }
         public IWebElement DateTime
         {
             get
             {
-                return this.driver.FindElement(By.Id("Date3"));
+                return this.driver.FindElement(By.Id("Date2"));
             }
         }
         public IWebElement DateTimeHidden
         {
             get
             {
-                return this.driver.FindElement(By.Id("Date4"));
+                return this.driver.FindElement(By.Id("cont_Date4"));
             }
         }
         public IWebElement DateTimeReadOnly
         {
             get
             {
-                return this.driver.FindElement(By.Id("Date5"));
-            }
-        }
-        public IWebElement DateTimeRequired
-        {
-            get
-            {
-                return this.driver.FindElement(By.Id("Date6"));
-            }
-        }
-        public IWebElement DateTimeautocomplete
-        {
-            get
-            {
-                return this.driver.FindElement(By.Id("Date7"));
+                return this.driver.FindElement(By.Id("cont_Date5"));
             }
         }
         public IWebElement DateTimenullableSelect
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='Date8Wraper']/div/span[1]/input"));
+                return this.driver.FindElement(By.XPath("//*[@id='Date17Wraper']/div/span[1]/input"));
             }
         }
         public IWebElement DateTimenullable
         {
             get
             {
-                return this.driver.FindElement(By.Id("Date8"));
+                return this.driver.FindElement(By.Id("Date17"));
+            }
+        }
+        public IWebElement DateTimeDNP
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("Date13"));
+            }
+        }
+        public IWebElement DateTimeDVE
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("Date15"));
+            }
+        }
+        public IWebElement DateTimeVE
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("Date14"));
+            }
+        }
+        public IWebElement DateTimeYear
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("Date16"));
+            }
+        }
+        public IWebElement DateTimeTigger
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("Date18"));
+            }
+        }
+        public IWebElement DateTimeHideExpression
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_Date19"));
+            }
+        }
+        public IWebElement DateTimeReadOnlyExpression
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("Date20lbltxtb"));
+            }
+        }
+        public IWebElement DateTimeFormClick
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("WebForm-cont"));
             }
         }
         public IWebElement DateTimePlaceholder
@@ -645,53 +724,124 @@ namespace UITests.ObjectRepository.User
                 return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect6Wraper']/div/button"));
             }
         }
-        public IWebElement BoolenSelectDoNotPersist
-        {
-            get
-            {
-                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect7Wraper']/div/button"));
-            }
-        }
+        
         public IWebElement BoolenSelectTrueText
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect8_dd']/button"));
+                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect2_dd']/button"));
             }
         }
         public IWebElement BoolenSelectTrueTextSelect
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect8_dd']/div/div/ul/li[1]/a/span"));
+                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect2_dd']/div/div/ul/li[1]/a/span"));
             }
         }
         public IWebElement BoolenSelectTrueTextAfterSave
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect8_dd']/button/div/div/div"));
+                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect2_dd']/button/div/div/div"));
             }
         }
         public IWebElement BoolenSelectFalseText
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect9_dd']/button"));
+                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect3_dd']/button"));
             }
         }
         public IWebElement BoolenSelectFalseTextSelect
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect9_dd']/div/div/ul/li[2]/a/span"));
+                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect3_dd']/div/div/ul/li[2]/a/span"));
             }
         }
         public IWebElement BoolenSelectFalseTextAfterSave
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect9_dd']/button/div/div/div"));
+                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect3_dd']/button/div/div/div"));
+            }
+        }
+        public IWebElement BoolenSelectDNP
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect5_dd']/button"));
+            }
+        }
+        public IWebElement BoolenSelectDNPSelect
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect5_dd']/div/div/ul/li[1]/a/span"));
+            }
+        }
+        public IWebElement BoolenSelectDNPAfterSave
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect5_dd']/button/div/div/div"));
+            }
+        } 
+        public IWebElement BoolenSelectTrigger
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect7_dd']/button"));
+            }
+        }
+        public IWebElement BoolenSelectTriggerSelect
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect7_dd']/div/div/ul/li[1]/a/span"));
+            }
+        }
+        public IWebElement BoolenSelectTriggerAfterSave
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect7_dd']/button/div/div/div"));
+            }
+        }
+        public IWebElement BooleanSelectHideExpression
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_BooleanSelect8"));
+            }
+        }
+        public IWebElement BooleanSelectDisableExpression
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect9_dd']/button"));
+            }
+        }
+        public IWebElement BooleanSelectDVE
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect6_dd']/button/div/div/div"));
+            }
+        }
+        public IWebElement BooleanSelectVE
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect6_dd']/button/div/div/div"));
+            }
+        }
+        public IWebElement BooleanSelectReadOnly
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect4_dd']/button"));
             }
         }
         public IWebElement BoolenSelectHelptext
@@ -739,25 +889,25 @@ namespace UITests.ObjectRepository.User
                 return this.driver.FindElement(By.Id("CheckBoxGroup4_Rd0"));
             }
         }
-        public IWebElement CheckBoxGroupAllHidden
+        public IWebElement CheckBoxGroupTrigger
         {
             get
             {
-                return this.driver.FindElement(By.Id("CheckBoxGroup5_Rd0"));
+                return this.driver.FindElement(By.XPath("//*[@id='CheckBoxGroup7']/div[2]"));
             }
         }
-        public IWebElement CheckBoxGroupAllReadonly
+        public IWebElement CheckBoxGroupHideExpression
         {
             get
             {
-                return this.driver.FindElement(By.Id("CheckBoxGroup5_Rd1"));
+                return this.driver.FindElement(By.Id("cont_CheckBoxGroup8"));
             }
         }
-        public IWebElement CheckBoxGroupAllDoNotPersist
+        public IWebElement CheckBoxGroupDisableExpression
         {
             get
             {
-                return this.driver.FindElement(By.Id("CheckBoxGroup5_Rd2"));
+                return this.driver.FindElement(By.Id("CheckBoxGroup9_Rd0"));
             }
         }
 

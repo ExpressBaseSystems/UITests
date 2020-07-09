@@ -76,13 +76,14 @@ namespace UITests.DataDriven
 
         public void implicitWait(int sec)
         {
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(100);
         }
 
         public void ClickableWait(IWebElement we)
         {
             wait.Until(ExpectedConditions.ElementToBeClickable(we));
         }
+        
         
         public void GetConsoleErrors()
         {

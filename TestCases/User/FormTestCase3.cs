@@ -42,10 +42,10 @@ namespace UITests.TestCases.User
                 elementOps.ExistsXpath("//*[@id='ebm-objtcontainer']/div[2]/div[1]");
                 fo.MenuSelectFormMenu.Click();
                 browserOps.implicitWait(1);
-                actions.MoveToElement(fo.MenuSelectForm2).Perform();
-                elementOps.ExistsXpath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a");
-                fo.MenuSelectForm3.Click();
-                Console.WriteLine("Test Form Opened");
+                //actions.MoveToElement(fo.MenuSelectBasicControlsNumeric).Perform();
+                //elementOps.ExistsXpath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a");
+                //fo.MenuSelectForm3.Click();
+                //Console.WriteLine("Test Form Opened");
             }
             catch (Exception e)
             {
