@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,13 +30,6 @@ namespace UITests.TestCases.User
         {
             f = new Form(driver);
             elementOps.ExistsXpath("//*[@id=\"appList\"]/div/ul/li/ul/li[8]/a");
-            f.SelectApp.Click();
-            elementOps.ExistsXpath("//*[@id=\"ebm-objtcontainer\"]/div[2]/div[3]");
-            actions.MoveToElement(f.SelectTableView).Perform();
-            f.SelectTableView.Click();
-            elementOps.ExistsXpath("//*[@id=\"ebm-objectcontainer\"]/div[2]/div[10]");
-            actions.MoveToElement(f.SelectTableVisualizationDataPusherChild).Perform();
-            f.SelectTableVisualizationDataPusherChild.Click();
         }
 
         [Property("TestCaseId", "Form_DataPusher_001")]
@@ -189,7 +183,7 @@ namespace UITests.TestCases.User
 
                 var alert = driver.SwitchTo().Alert();
                 Assert.AreEqual("Hello", alert.Text, "Success", "Success");
-                
+                alert.Accept();
             }
             catch (Exception e)
             {
@@ -242,7 +236,6 @@ namespace UITests.TestCases.User
             {
                 int val;
                 int val1;
-
                 browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-86-86-86-86");
                 elementOps.ExistsXpath("//*[@id=\"nf-container\"]/li");
                 val = elementOps.GetTableRowCount("//*[@id=\"nf-container\"]/li");
@@ -288,10 +281,8 @@ namespace UITests.TestCases.User
                     "element.dispatchEvent(e); ");
                 f.UserName.SendKeys("Form Test User");
                 f.UserDOB.SendKeys("25-04-1995" + Keys.Enter);
-                elementOps.SetValue("Numeric1", "9400000028");
-                elementOps.ExecuteScripts("const e = new Event('change');" +
-                    "const element = document.querySelector('#Numeric1');" +
-                    "element.dispatchEvent(e); ");
+                Console.WriteLine("Date Entered");
+                f.UserPhno.SendKeys("9400000028");
                 f.UserDeptSelectButton.Click();
                 elementOps.ExistsXpath("//*[@id=\"SimpleSelect1_dd\"]/div/div/ul/li[2]/a");
                 f.UserDeptSelectOpt.Click();
@@ -346,6 +337,8 @@ namespace UITests.TestCases.User
                 
                 Assert.AreEqual("https://uitesting.eb-test.cloud/UserDashBoard", driver.Url, "Success", "Success");
                 Console.WriteLine("Close Mode");
+                //driver.Close();
+                //driver.SwitchTo().Window(driver.WindowHandles.Last());
             }
             catch (Exception e)
             {
@@ -503,13 +496,10 @@ namespace UITests.TestCases.User
 
         [Property("TestCaseId", "Form_FormGridValidation_001")]
         [Test, Order(13)]
-        public void FormGridValidation()
+        public void FormGridNumericValidation()
         {
             try
             {
-                UserLogin();
-                ChooseForm();
-                
                 browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
                 elementOps.ExistsId("DataGrid1addrow");
                 f.GridAddRowButton.Click();
@@ -519,7 +509,9 @@ namespace UITests.TestCases.User
                 elementOps.SetValue(x, "125");
                 elementOps.ExecuteScripts("const e = new Event('change');" +
                     "const element = document.querySelector('#" + x + "');" +
-                    "element.dispatchEvent(e); ");
+                    "element.dispatchEvent(e); "+
+                    "$(element).trigger('change');");
+                browserOps.implicitWait(50);
                 f.GridCommitButton.Click();
                 f.SaveButton.Click();
 
@@ -535,8 +527,317 @@ namespace UITests.TestCases.User
             }
         }
 
+        [Property("TestCaseId", "Form_FormGridValidation_002")]
+        [Test, Order(14)]
+        public void FormGridBooleanValidation()
+        {
+            try
+            {
+                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
+                elementOps.ExistsId("DataGrid2addrow");
+                f.GridAddRowButton1.Click();
+                elementOps.ExistsXpath("//*[@id='tbl_DataGrid2']/tbody/tr/td[2]/div/div/input");
+                string x1 = f.Grid2Field2.GetAttribute("id");
+                elementOps.SetValue(x1, "21-06-2020");
+                elementOps.ExecuteScripts("const e = new Event('change');" +
+                    "const element = document.querySelector('#" + x1 + "');" +
+                    "element.dispatchEvent(e); ");
+                var selectElement = new SelectElement(f.Grid2Field3);
+                selectElement.SelectByValue("yes");
+                selectElement = new SelectElement(f.Grid2Field4);
+                selectElement.SelectByValue("true");
+                f.Grid2CommitButton.Click();
+                f.SaveButton.Click();
+
+                elementOps.ExistsClass("eb_messageBox_container");
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+
+                Assert.AreEqual("New Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
+                Console.WriteLine("New Mode");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "Form_FormGridValidation_003")]
+        [Test, Order(15)]
+        public void FormGridDateValidation()
+        {
+            try
+            {
+                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
+                elementOps.ExistsId("DataGrid2addrow");
+                f.GridAddRowButton1.Click();
+                elementOps.ExistsXpath("//*[@id='tbl_DataGrid2']/tbody/tr/td[2]/div/div/input");
+                f.Grid2Field1.Click();
+                string x1 = f.Grid2Field2.GetAttribute("id");
+                elementOps.SetValue(x1, "23-06-2020");
+                elementOps.ExecuteScripts("const e = new Event('change');" +
+                    "const element = document.querySelector('#" + x1 + "');" +
+                    "element.dispatchEvent(e); " +
+                    "$(element).trigger('change');");
+                var selectElement = new SelectElement(f.Grid2Field3);
+                selectElement.SelectByValue("yes");
+                selectElement = new SelectElement(f.Grid2Field4);
+                selectElement.SelectByValue("true");
+                f.Grid2CommitButton.Click();
+                f.SaveButton.Click();
+
+                elementOps.ExistsClass("eb_messageBox_container");
+                Console.WriteLine(f.Message.GetAttribute("innerHTML"));
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+
+                Assert.AreEqual("New Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
+                Console.WriteLine("New Mode");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "Form_FormGridValidation_004")]
+        [Test, Order(16)]
+        public void FormGridDropDownValidation()
+        {
+            try
+            {
+                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
+                elementOps.ExistsId("DataGrid2addrow");
+                f.GridAddRowButton1.Click();
+                elementOps.ExistsXpath("//*[@id='tbl_DataGrid2']/tbody/tr/td[2]/div/div/input");
+                f.Grid2Field1.Click();
+                string x1 = f.Grid2Field2.GetAttribute("id");
+                elementOps.SetValue(x1, "21-06-2020");
+                elementOps.ExecuteScripts("const e = new Event('change');" +
+                    "const element = document.querySelector('#" + x1 + "');" +
+                    "element.dispatchEvent(e); ");
+                var selectElement = new SelectElement(f.Grid2Field3);
+                selectElement.SelectByValue("no");
+                selectElement = new SelectElement(f.Grid2Field4);
+                selectElement.SelectByValue("true");
+                f.Grid2CommitButton.Click();
+                f.SaveButton.Click();
+
+                elementOps.ExistsClass("eb_messageBox_container");
+                Console.WriteLine(f.Message.GetAttribute("innerHTML"));
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+
+                Assert.AreEqual("New Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
+                Console.WriteLine("New Mode");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "Form_FormGridValidation_005")]
+        [Test, Order(17)]
+        public void FormGridBooleanSelectValidation()
+        {
+            try
+            {
+                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
+                elementOps.ExistsId("DataGrid2addrow");
+                f.GridAddRowButton1.Click();
+                elementOps.ExistsXpath("//*[@id='tbl_DataGrid2']/tbody/tr/td[2]/div/div/input");
+                f.Grid2Field1.Click();
+                string x1 = f.Grid2Field2.GetAttribute("id");
+                elementOps.SetValue(x1, "21-06-2020");
+                elementOps.ExecuteScripts("const e = new Event('change');" +
+                    "const element = document.querySelector('#" + x1 + "');" +
+                    "element.dispatchEvent(e); ");
+                var selectElement = new SelectElement(f.Grid2Field3);
+                selectElement.SelectByValue("yes");
+                selectElement = new SelectElement(f.Grid2Field4);
+                selectElement.SelectByValue("false");
+                f.Grid2CommitButton.Click();
+                f.SaveButton.Click();
+
+                elementOps.ExistsClass("eb_messageBox_container");
+                Console.WriteLine(f.Message.GetAttribute("innerHTML"));
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+
+                Assert.AreEqual("New Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
+                Console.WriteLine("New Mode");
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "Form_FormGridValidation_006")]
+        [Test, Order(18)]
+        public void FormGridPowerSelectValidation()
+        {
+            try
+            {
+                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
+                elementOps.ExistsId("DataGrid2addrow");
+                f.GridAddRowButton1.Click();
+                elementOps.ExistsXpath("//*[@id='tbl_DataGrid2']/tbody/tr/td[2]/div/div/input");
+                f.Grid2Field1.Click();
+                string x1 = f.Grid2Field2.GetAttribute("id");
+                elementOps.SetValue(x1, "21-06-2020");
+                elementOps.ExecuteScripts("const e = new Event('change');" +
+                    "const element = document.querySelector('#" + x1 + "');" +
+                    "element.dispatchEvent(e); ");
+                var selectElement = new SelectElement(f.Grid2Field3);
+                selectElement.SelectByValue("yes");
+                selectElement = new SelectElement(f.Grid2Field4);
+                selectElement.SelectByValue("true");
+                f.Grid2Field5.Click();
+                f.Grid2Field5.SendKeys("A" + Keys.Enter);
+                elementOps.ExistsXpath("//*[@id=\"WebForm_kbnm7hcy\"]/div[3]/div/div[2]/div[2]/table/tbody/tr/td");
+                f.Grid2Field5.SendKeys(Keys.Enter);
+                f.Grid2CommitButton.Click();
+                f.SaveButton.Click();
+
+                elementOps.ExistsClass("eb_messageBox_container");
+                Console.WriteLine(f.Message.GetAttribute("innerHTML"));
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+
+                Assert.AreEqual("New Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
+                Console.WriteLine("New Mode");
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "Form_FormGridValidation_006")]
+        [Test, Order(19)]
+        public void FormGridCreatedByValidation()
+        {
+            try
+            {
+                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
+                elementOps.ExistsId("DataGrid2addrow");
+                f.GridAddRowButton1.Click();
+                elementOps.ExistsXpath("//*[@id='tbl_DataGrid2']/tbody/tr/td[2]/div/div/input");
+                string x = f.Grid2Field6.GetAttribute("innerHTML");
+
+                Assert.AreEqual("Anoopa Baby", x, "Success", "Success");
+                Console.WriteLine("Success");
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "Form_FormGridValidation_006")]
+        [Test, Order(20)]
+        public void FormGridCreatedAtValidation()
+        {
+            try
+            {
+                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
+                elementOps.ExistsId("DataGrid2addrow");
+                f.GridAddRowButton1.Click();
+                elementOps.ExistsXpath("//*[@id='tbl_DataGrid2']/tbody/tr/td[2]/div/div/input");
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(f.Grid2Field7).ToString(), "Success", "Success");
+                Console.WriteLine("Success");
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "Form_FormGridValidation_006")]
+        [Test, Order(21)]
+        public void FormGridModifiedByValidation()
+        {
+            try
+            {
+                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
+                elementOps.ExistsId("DataGrid2addrow");
+                f.GridAddRowButton1.Click();
+                elementOps.ExistsXpath("//*[@id='tbl_DataGrid2']/tbody/tr/td[2]/div/div/input");
+                string x = f.Grid2Field8.GetAttribute("innerHTML");
+
+                Assert.AreEqual("Anoopa Baby", x, "Success", "Success");
+                Console.WriteLine("Success");
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "Form_FormGridValidation_006")]
+        [Test, Order(22)]
+        public void FormGridModifiedAtValidation()
+        {
+            try
+            {
+                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
+                elementOps.ExistsId("DataGrid2addrow");
+                f.GridAddRowButton1.Click();
+                elementOps.ExistsXpath("//*[@id='tbl_DataGrid2']/tbody/tr/td[2]/div/div/input");
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(f.Grid2Field9).ToString(), "Success", "Success");
+                Console.WriteLine("Success");
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "Form_FormGridValidation_006")]
+        [Test, Order(23)]
+        public void FormGridUserSelectValidation()
+        {
+            try
+            {
+                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
+                elementOps.ExistsId("DataGrid2addrow");
+                f.GridAddRowButton1.Click();
+                elementOps.ExistsXpath("//*[@id='tbl_DataGrid2']/tbody/tr/td[2]/div/div/input");
+                f.Grid2Field1.Click();
+                string x1 = f.Grid2Field2.GetAttribute("id");
+                elementOps.SetValue(x1, "21-06-2020");
+                elementOps.ExecuteScripts("const e = new Event('change');" +
+                    "const element = document.querySelector('#" + x1 + "');" +
+                    "element.dispatchEvent(e); ");
+                var selectElement = new SelectElement(f.Grid2Field3);
+                selectElement.SelectByValue("yes");
+                selectElement = new SelectElement(f.Grid2Field4);
+                selectElement.SelectByValue("true");
+                f.Grid2Field10.Click();
+                elementOps.ExistsXpath("//*[@id='tbl_DataGrid2']/tbody/tr/td[11]/div/div/div[2]/div[3]/div[2]");
+                f.Grid2Field10Value.Click();
+                f.Grid2CommitButton.Click();
+                f.SaveButton.Click();
+
+                elementOps.ExistsClass("eb_messageBox_container");
+                Console.WriteLine(f.Message.GetAttribute("innerHTML"));
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+
+                Assert.AreEqual("New Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
+                Console.WriteLine("New Mode");
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
         [Property("TestCaseId", "Form_FormSave_001")]
-        [Test, Order(12)]
+        //[Test, Order(19)]
         public void FormSave()
         {
             try
@@ -547,14 +848,9 @@ namespace UITests.TestCases.User
                 browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-34-34-34-34");
                 elementOps.ExistsId("TextBox1");
                 f.JamTopic.SendKeys("Test Topic");
-                actions.MoveToElement(f.FormSaveDropdown).Perform();
-                f.FormSaveDropdown.Click();
+                var selectElement = new SelectElement(f.FormSaveDropdown);
+                selectElement.SelectByText("&Continue");
 
-                //wait.Until(webDriver => (driver.PageSource.Contains("id=\"eb_common_loader\" style=\"background-color: transparent; display: none;\"")));
-
-                //Assert.AreEqual("New Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
-                //Console.WriteLine("New Mode");
-                
             }
             catch (Exception e)
             {

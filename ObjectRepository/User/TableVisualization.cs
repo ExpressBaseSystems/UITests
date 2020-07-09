@@ -138,6 +138,38 @@ namespace UITests.ObjectRepository.User
             }
         }
 
+        public IWebElement SortSalField
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[1]/th[8]"));
+            }
+        }
+
+        public IWebElement SortSMSField
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[1]/th[12]"));
+            }
+        }
+
+        public IWebElement SortUserIdField
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[1]/th[3]"));
+            }
+        }
+
+        public IWebElement SMSField1
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[3]/td[12]/div/span"));
+            }
+        }
+
         public IWebElement IdField1
         {
             get
@@ -235,6 +267,47 @@ namespace UITests.ObjectRepository.User
                 return this.driver.FindElement(By.Id("dvnull_0_0_eb_created_by_hdr_txt1"));
             }
         }
+
+        public IWebElement PhoneNumberSearch
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("dvContainer_1586780535084_0_0_phno_hdr_txt1"));
+            }
+        }
+
+        public IWebElement DeptSearch
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("dvContainer_1586780535084_0_0_dept_hdr_txt1"));
+            }
+        }
+
+        public IWebElement SalSearch
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("dvContainer_1586780535084_0_0_salary_hdr_txt1"));
+            }
+        }
+
+        public IWebElement SMSSearch
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("dvContainer_1586780535084_0_0_eb_phone6_hdr_txt1"));
+            }
+        }
+
+        public IWebElement UsrIdSearch
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("dvContainer_1586780535084_0_0_user_id_hdr_txt1"));
+            }
+        }
+
 
         //---Operations
 
@@ -404,7 +477,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[6]/td[8]/div"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[3]/td[8]/div"));
             }
         }
 
@@ -451,6 +524,14 @@ namespace UITests.ObjectRepository.User
             get
             {
                 return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[1]/div/table/thead/tr[1]/th[10]"));
+            }
+        }
+
+        public IWebElement ApprovalColumnDiv
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[3]/td[10]/div"));
             }
         }
 
@@ -776,5 +857,32 @@ namespace UITests.ObjectRepository.User
                 return this.driver.FindElement(By.Id("RadioGroup1_Rd1"));
             }
         }
+
+        //------------SMS
+
+        public IWebElement SMSButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[3]/td[12]/div/button"));
+            }
+        }
+
+        public IWebElement SendSMS
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("/html/body/ul[6]/li"));
+            }
+        }
+
+        public IWebElement SMSTemplate
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"sms-modal-body\"]/div"));
+            }
+        }
+
     }
 }
