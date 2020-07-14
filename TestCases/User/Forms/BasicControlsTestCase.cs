@@ -81,6 +81,24 @@ namespace UITests.TestCases.User.Forms
                 elementOps.ExistsXpath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a");
                 fo.MenuSelectBasicControlsCheckBoxGroup.Click();
             }
+            else if (FormID == "BasicControlsRadioButton")
+            {
+                actions.MoveToElement(fo.MenuSelectBasicControlsRadioButton).Perform();
+                elementOps.ExistsXpath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a");
+                fo.MenuSelectBasicControlsRadioButton.Click();
+            }
+            else if (FormID == "BasicControlsRadioButton")
+            {
+                actions.MoveToElement(fo.MenuSelectBasicControlsRadioButton).Perform();
+                elementOps.ExistsXpath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a");
+                fo.MenuSelectBasicControlsRadioButton.Click();
+            }
+            else if (FormID == "BasicControlsPowerSelect")
+            {
+                actions.MoveToElement(fo.MenuSelectBasicControlsPowerSelect).Perform();
+                elementOps.ExistsXpath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a");
+                fo.MenuSelectBasicControlsPowerSelect.Click();
+            }
             Console.WriteLine("Test Form Opened");
         }
 
@@ -647,11 +665,15 @@ namespace UITests.TestCases.User.Forms
                 //Assert.AreEqual("checkboxgrouprequired", fo.CheckBoxGroupRequired.GetAttribute("name"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - Required”");
 
                 fo.CheckBoxGroupRequiredSelect.Click();
+                Assert.AreEqual("1", elementOps.GetValue("CheckBoxGroup3_Rd0"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - Required”"); 
 
                 fo.CheckBoxGroupDoNotPersist.Click();
+                Assert.AreEqual("1", elementOps.GetValue("CheckBoxGroup4_Rd0"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - Required”");
 
                 fo.SaveForm.Click();
-
+                elementOps.ExistsClass("eb_messageBox_container");
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+                Assert.AreEqual("View Mode", fo.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
                 browserOps.implicitWait(2000);
                 browserOps.implicitWait(2000);
                 browserOps.implicitWait(2000);
@@ -661,14 +683,17 @@ namespace UITests.TestCases.User.Forms
 
                 fo.MessageBoxClose.Click();
                 fo.EditForm.Click();
-
+                
+                Assert.AreEqual("Edit Mode", fo.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
                 browserOps.implicitWait(2000);
                 browserOps.DriverWait();
                 CheckBoxGroupValidation();
 
                 fo.SaveForm.Click();
                 browserOps.Refresh();
-
+                elementOps.ExistsClass("eb_messageBox_container");
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+                Assert.AreEqual("View Mode", fo.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
                 browserOps.implicitWait(2000);
                 browserOps.implicitWait(2000);
                 browserOps.implicitWait(2000);
@@ -692,6 +717,91 @@ namespace UITests.TestCases.User.Forms
 
             Assert.AreEqual(null, fo.CheckBoxGroupRequired.GetAttribute("value"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - Required”");
             Assert.AreEqual("1", fo.CheckBoxGroupDoNotPersist.GetAttribute("value"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - Required”");
+
+            Assert.AreEqual("1", elementOps.GetValue("CheckBoxGroup3_Rd0"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - Required”");
+
+            Assert.AreEqual("0", elementOps.GetValue("CheckBoxGroup4_Rd0"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - Required”");
+        }
+
+        [Property("TestCaseId", "Form_BasicControls_RadioButton_001")]
+        [Test, Order(7)]
+        public void RadioButton()
+        {
+            try
+            {
+                Userlogin("BasicControlsRadioButton");
+
+                Assert.AreEqual("true", fo.RadioButtonGroupHidden.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - RadioButton - Hidden”");
+
+                Assert.AreEqual("true", fo.RadioButtonGroupReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - RadioButton - ReadOnly”");
+                fo.RadioButtonGroupDoNotPersist.Click();
+                Assert.AreEqual("2", elementOps.RadioButtonCheckValidator("RadioGroup3"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - Required”");
+
+                fo.RadioButtonOnChangeTrigger.Click();
+
+                Assert.AreEqual("false", fo.RadioButtonnChangeHideShow.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - RadioButton -OnChange Hidden”");
+                Assert.AreEqual("true", fo.RadioButoonOnChangeEnableDisable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - RadioButton -OnChange ReadOnly”");
+
+                fo.SaveForm.Click();
+                elementOps.ExistsClass("eb_messageBox_container");
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+                Assert.AreEqual("1", elementOps.RadioButtonCheckValidator("RadioGroup3"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - Required”");
+
+                RadioButtonGroupValidator();
+                fo.EditForm.Click();
+                Assert.AreEqual("1", elementOps.RadioButtonCheckValidator("RadioGroup3"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - Required”");
+                RadioButtonGroupValidator();
+
+                fo.SaveForm.Click();
+                elementOps.ExistsClass("eb_messageBox_container");
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+                Assert.AreEqual("1", elementOps.RadioButtonCheckValidator("RadioGroup3"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - Required”");
+
+                RadioButtonGroupValidator();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+
+        }
+
+        public void RadioButtonGroupValidator()
+        {
+            Assert.AreEqual("true", fo.RadioButtonGroupHidden.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - RadioButton - Hidden”");
+            Assert.AreEqual("true", fo.RadioButtonGroupReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - RadioButton - ReadOnly”");
+            Assert.AreEqual("false", fo.RadioButtonnChangeHideShow.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - RadioButton -OnChange Hidden”");
+            Assert.AreEqual("true", fo.RadioButoonOnChangeEnableDisable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - RadioButton -OnChange ReadOnly”");
+        }
+
+        [Property("TestCaseId", "Form_BasicControls_PowerSelect_001")]
+        [Test, Order(8)]
+        public void PowerSelect()
+        {
+            Userlogin("BasicControlsPowerSelect");
+
+            fo.PowerSelectSimpleSelect.Click();
+            fo.PowerSelectSimpleSelectitem.Click();
+
+            Assert.AreEqual("true", fo.PowerSelectHidden.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - Boolean Select - Hidden”");
+
+            Assert.AreEqual("true", fo.PowerSelectReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - Boolean Select - Hidden”");
+
+            elementOps.ExistsXpathClickable(fo.PowerSelectMultiSelect);
+            fo.PowerSelectMultiSelect.Click();
+            actions.MoveToElement(fo.PowerSelectMultiSelect).DoubleClick().Build().Perform();
+            fo.PowerSelectMultiSelectItem1.Click();
+            fo.PowerSelectMultiSelectItem2.Click();
+
+            actions.DoubleClick(fo.PowerSelectRequired).DoubleClick().Build().Perform();
+            fo.PowerSelectRequired.Click();
+
+            actions.DoubleClick(fo.PowerSelectDNP).DoubleClick().Build().Perform();
+            fo.PowerSelectDNPItem.Click();
+
+
+            fo.PowerSelectSearch.SendKeys("Tes");
+            fo.PowerSelectSearchItem.Click();
         }
     }
 }

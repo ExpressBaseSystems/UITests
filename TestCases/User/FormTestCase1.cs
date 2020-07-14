@@ -127,8 +127,7 @@ namespace UITests.TestCases.User
             Assert.AreEqual("false", fo.CheckBoxGroupOnChangeHideShow.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - CheckBoxGroup -OnChange Funtion Hide”");
             Assert.AreEqual("true", fo.CheckBoxGroupOnChangeEnableDisable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - CheckBoxGroup -OnChange Funtion EnableDiable”");
 
-            Assert.AreEqual("false", fo.RadioButtonnChangeHideShow.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - RadioButton -OnChange Hidden”");
-            Assert.AreEqual("true", fo.RadioButoonOnChangeEnableDisable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - RadioButton -OnChange ReadOnly”");
+            
             
             Assert.AreEqual("false", fo.BooleanOnChangeHideShow.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - Boolean -OnChange Hidden”");
             Assert.AreEqual("true", fo.BooleanOnChangeEnableDisable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - Boolean -OnChange ReadOnly”");

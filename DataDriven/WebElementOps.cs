@@ -114,6 +114,12 @@ namespace UITests.DataDriven
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
             js.ExecuteScript(script);
         }
+        
+        public string RadioButtonCheckValidator(string name)
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            return (string)js.ExecuteScript("return $('input[name="+name+"]:checked').val();");
+        }
 
         public string GetValueById(string Id)
         {

@@ -36,11 +36,11 @@ namespace UITests.ObjectRepository.User
             }
         }
 
-        public IWebElement GetMode
+        public IWebElement FormMode
         {
             get
             {
-                return this.driver.FindElement(By.Id("//*[@id='objname']/span"));
+                return this.driver.FindElement(By.ClassName("fmode"));
             }
         }
         public IWebElement GoToTop
@@ -98,6 +98,34 @@ namespace UITests.ObjectRepository.User
             get
             {
                 return this.driver.FindElement(By.LinkText("Basic Controls CheckBoxGroup"));
+            }
+        }
+        public IWebElement MenuSelectBasicControlsRadioButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.LinkText("Basic Controls RadioButton"));
+            }
+        }
+        public IWebElement MenuSelectBasicControlsPowerSelect
+        {
+            get
+            {
+                return this.driver.FindElement(By.LinkText("Basic Controls PowerSelect"));
+            }
+        }
+        public IWebElement MenuSelectPlatformControls
+        {
+            get
+            {
+                return this.driver.FindElement(By.LinkText("PlatformControls"));
+            }
+        }
+        public IWebElement MenuSelectAdvanceControlsDataGrid
+        {
+            get
+            {
+                return this.driver.FindElement(By.LinkText("Advanced Controls DataGrid"));
             }
         }
 
@@ -253,27 +281,7 @@ namespace UITests.ObjectRepository.User
                 return this.driver.FindElement(By.Id("CheckBoxGroup7_Rd0"));
             }
         }
-        public IWebElement RadioButtonOnChangeTrigger
-        {
-            get
-            {
-                return this.driver.FindElement(By.Id("RadioGroup6_Rd1"));
-            }
-        }
-        public IWebElement RadioButtonnChangeHideShow
-        {
-            get
-            {
-                return this.driver.FindElement(By.Id("cont_RadioGroup7"));
-            }
-        }
-        public IWebElement RadioButoonOnChangeEnableDisable
-        {
-            get
-            {
-                return this.driver.FindElement(By.Id("RadioGroup8_Rd0"));
-            }
-        }
+        
         public IWebElement BooleanOnChangeTrigger
         {
             get
@@ -927,18 +935,12 @@ namespace UITests.ObjectRepository.User
                 return this.driver.FindElement(By.Id("RadioGroup2_Rd0"));
             }
         }
-        public IWebElement RadioButtonGroupRequired
-        {
-            get
-            {
-                return this.driver.FindElement(By.Id("RadioGroup3_Rd0"));
-            }
-        }
+       
         public IWebElement RadioButtonGroupDoNotPersist
         {
             get
             {
-                return this.driver.FindElement(By.Id("RadioGroup4_Rd0"));
+                return this.driver.FindElement(By.Id("RadioGroup3_Rd1"));
             }
         }        
         public IWebElement RadioButtonGroupHorizontalRender
@@ -955,8 +957,29 @@ namespace UITests.ObjectRepository.User
                 return this.driver.FindElement(By.Id("RadioGroup5Wraper"));
             }
         }
-        
-        
+        public IWebElement RadioButtonOnChangeTrigger
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("RadioGroup10_Rd1"));
+            }
+        }
+        public IWebElement RadioButtonnChangeHideShow
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_RadioGroup11"));
+            }
+        }
+        public IWebElement RadioButoonOnChangeEnableDisable
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("RadioGroup12_Rd0"));
+            }
+        }
+
+
 
         public IWebElement LabelHidden
         {
@@ -1044,7 +1067,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='PowerSelect1_dd']/div/div/ul/li[15]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id='PowerSelect1_dd']/div/div/ul/li[3]/a"));
             }
         }
         public IWebElement PowerSelectHidden
@@ -1054,25 +1077,32 @@ namespace UITests.ObjectRepository.User
                 return this.driver.FindElement(By.Id("cont_PowerSelect2"));
             }
         }
+        public IWebElement PowerSelectReadOnly
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("PowerSelect3lbltxtb"));
+            }
+        }
         public IWebElement PowerSelectMultiSelect
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='PowerSelect4textbox_unique']/div"));
+                return this.driver.FindElement(By.XPath("/html/body/div[4]/div[3]/div[2]/form/div[2]/table/tbody/tr/td[1]/div/div[2]/div/div/div/div/div/div/div/input"));
             }
         }
         public IWebElement PowerSelectMultiSelectItem1
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='PowerSelect4tbl']/tbody/tr[10]/td[1]/input"));
+                return this.driver.FindElement(By.XPath("//*[@id='PowerSelect4tbl']/tbody/tr[1]/td[1]/input"));
             }
         }
         public IWebElement PowerSelectMultiSelectItem2
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='PowerSelect4tbl']/tbody/tr[20]/td[1]/input"));
+                return this.driver.FindElement(By.XPath("//*[@id='PowerSelect4tbl']/tbody/tr[2]/td[1]/input"));
             }
         }
         public IWebElement PowerSelectRequired
@@ -1261,6 +1291,20 @@ namespace UITests.ObjectRepository.User
         } 
         
         
+        public IWebElement AutoId
+        { 
+            get
+            {
+                return this.driver.FindElement(By.Id("AutoId1"));
+            }
+        }
+        public IWebElement SysLocationReadOnly
+        { 
+            get
+            {
+                return this.driver.FindElement(By.Id("SysLocation1lbltxtb"));
+            }
+        }
         public IWebElement SysLocationSelectableClick
         { 
             get
