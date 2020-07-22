@@ -83,6 +83,12 @@ namespace UITests.DataDriven
             js.ExecuteScript("document.getElementById('"+Id+"').setAttribute('"+attribute+"', '"+value+"')");
         }
 
+        public void ChangeStyleByXpath(IWebElement element, string attribute, string value)
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript("arguments[0].setAttribute(arguments[1], arguments[2]);",element, attribute, value);
+        }
+
         public object GetValueFromJS(IWebElement element)
         {
             return ((IJavaScriptExecutor)driver).ExecuteScript("return arguments[0].innerHTML;", element);
@@ -96,6 +102,12 @@ namespace UITests.DataDriven
         {
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
             js.ExecuteScript("document.getElementById('"+Id+"').value = '"+value+"'");
+        }
+
+        public Boolean CheckForAttribute(string Id, string value)
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            return (Boolean)js.ExecuteScript("return document.getElementById('" + Id + "').hasAttribute('"+value+"')");
         }
 
         public void SetValueByTag(string tagname, string value, int id = 0)

@@ -1,7 +1,9 @@
 ﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using UITests.DataDriven;
 using UITests.ObjectRepository.User;
@@ -35,7 +37,15 @@ namespace UITests.TestCases.User
             browserOps.implicitWait(50);
             Console.WriteLine("LogOut Success");
         }
-        
+
+        public void CheckUsrLogin()
+        {
+            if (login_status == false)
+            {
+                UserLogin();
+                login_status = true;
+            }
+        }
 
         [Property("TestCaseId", "Form_DataPusher_001")]
         [Test, Order(1)]
@@ -43,7 +53,7 @@ namespace UITests.TestCases.User
         {
             try
             {
-                UserLogin();
+                CheckUsrLogin();
                 f = new Form(driver);
                 browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-100-100-100-100");
                 elementOps.ExistsId("TextBox1");
@@ -134,12 +144,15 @@ namespace UITests.TestCases.User
             }
         }
 
+        //------------------- File Uploader
+
         [Property("TestCaseId", "Form_FileUploader_001")]
         [Test, Order(2)]
-        public void ImageFileUploader()
+        public void ImageInImageUploader() //FileType Image
         {
             try
             {
+                CheckUsrLogin();
                 f = new Form(driver);
                 browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-100-100-100-100");
                 elementOps.ExistsId("FileUploader1_Upl_btn");
@@ -174,10 +187,11 @@ namespace UITests.TestCases.User
 
         [Property("TestCaseId", "Form_FileUploader_001")]
         [Test, Order(3)]
-        public void FileInImageUploader()
+        public void FileInImageUploader()         //FileType Image 
         {
             try
             {
+                CheckUsrLogin();
                 f = new Form(driver);
                 browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-100-100-100-100");
                 elementOps.ExistsId("FileUploader1_Upl_btn");
@@ -187,6 +201,8 @@ namespace UITests.TestCases.User
                 f.FileBrowser.SendKeys("C:\\Users\\user\\Pictures\\Hello.docx");
 
                 elementOps.ExistsId("FileUploader1-upload-lin");
+                actions.MoveToElement(f.FileUploadButton);
+                actions.Perform();
                 f.FileUploadButton.Click();
                 wait.Until(webDriver => (driver.PageSource.Contains("class=\"eb-upl-loader\" style=\"display: none;\"")));
                 f.FileUploadOkButton.Click();
@@ -212,10 +228,11 @@ namespace UITests.TestCases.User
 
         [Property("TestCaseId", "Form_FileUploader_001")]
         [Test, Order(4)]
-        public void ImageFileUploaderCategory()
+        public void ImageUploader_ChangeCategory()
         {
             try
             {
+                CheckUsrLogin();
                 f = new Form(driver);
                 browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-100-100-100-100");
                 elementOps.ExistsId("FileUploader1_Upl_btn");
@@ -258,6 +275,7 @@ namespace UITests.TestCases.User
         {
             try
             {
+                CheckUsrLogin();
                 f = new Form(driver);
                 browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-104-104-104-104");
                 elementOps.ExistsId("FileUploader1_Upl_btn");
@@ -267,6 +285,8 @@ namespace UITests.TestCases.User
                 f.FileBrowser.SendKeys("C:\\Users\\user\\Pictures\\Hello.docx");
 
                 elementOps.ExistsId("FileUploader1-upload-lin");
+                actions.MoveToElement(f.FileUploadButton);
+                actions.Perform();
                 f.FileUploadButton.Click();
                 wait.Until(webDriver => (driver.PageSource.Contains("class=\"eb-upl-loader\" style=\"display: none;\"")));
                 f.FileUploadOkButton.Click();
@@ -292,10 +312,11 @@ namespace UITests.TestCases.User
 
         [Property("TestCaseId", "Form_FileUploader_001")]
         [Test, Order(6)]
-        public void FileUploaderCategory()
+        public void FileUploader_ChangeCategory()
         {
             try
             {
+                CheckUsrLogin();
                 f = new Form(driver);
                 browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-104-104-104-104");
                 elementOps.ExistsId("FileUploader1_Upl_btn");
@@ -338,7 +359,7 @@ namespace UITests.TestCases.User
         {
             try
             {
-                UserLogin();
+                CheckUsrLogin();
                 f = new Form(driver);
                 browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-104-104-104-104");
                 elementOps.ExistsId("FileUploader1_Upl_btn");
@@ -364,6 +385,663 @@ namespace UITests.TestCases.User
                 f.FileUploader1Toggle.Click();
                 Assert.AreEqual("True", elementOps.IsWebElementPresent(f.FileUploader1Img1).ToString(), "Success!! Search  Compelte", "Success!! Search  Compelte");
 
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+        
+
+        [Property("TestCaseId", "Form_FileUploader_001")]
+        [Test, Order(8)]
+        public void ImageUploader_Hidden()
+        {
+            try
+            {
+                CheckUsrLogin();
+                f = new Form(driver);
+                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-121-121-121-121#");
+                elementOps.ExistsId("cont_FileUploader2");
+                Assert.AreEqual("true", f.FileUploader2.GetAttribute("eb-hidden").ToString(), "Success", "Success");
+                Console.WriteLine("Success");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "Form_FileUploader_001")]
+        [Test, Order(9)]
+        public void ImageUploader_ReadOnly()
+        {
+            try
+            {
+                CheckUsrLogin();
+                f = new Form(driver);
+                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-121-121-121-121");
+                elementOps.ExistsId("cont_FileUploader3");
+                Assert.AreEqual("true", f.FileUploader3.GetAttribute("eb-readonly").ToString(), "Success", "Success");
+                Console.WriteLine("Success");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "Form_FileUploader_001")]
+        [Test, Order(10)]
+        public void ImageFileUploader_Multiple()         //------------------------------
+        {
+            try
+            {
+                CheckUsrLogin();
+                f = new Form(driver);
+                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-121-121-121-121");
+                elementOps.ExistsId("cont_FileUploader1");
+                Assert.AreEqual(true, elementOps.CheckForAttribute("FileUploader1-file-input", "multiple"), "Success", "Success");
+                elementOps.ExistsId("FileUploader1_Upl_btn");
+                f.FileUploadReqButton.Click();
+
+                elementOps.ExistsId("FileUploader1-file-input");
+                f.FileBrowser.SendKeys("C:\\Users\\user\\Pictures\\Little_girls_Guitar_462552_2560x1440.jpg");
+                elementOps.ExistsId("FileUploader1-file-input");
+                f.FileBrowser.SendKeys("C:\\Users\\user\\Pictures\\306188-children-748x499.jpg");
+                actions.MoveToElement(f.FileUploadButton);
+                actions.Perform();
+                f.FileUploadButton.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("class=\"eb-upl-loader\" style=\"display: none;\"")));
+                browserOps.implicitWait(500);
+                f.FileUploadOkButton.Click();
+                elementOps.ExistsClass("eb_messageBox_container");
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+                f.SaveButton.Click();
+                Console.WriteLine("Success");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "Form_FileUploader_001")]
+        [Test, Order(11)]
+        public void ImageUploader_Tag()
+        {
+            try
+            {
+                CheckUsrLogin();
+                f = new Form(driver);
+                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-121-121-121-121");
+                elementOps.ExistsId("cont_FileUploader1");
+                elementOps.ExistsId("FileUploader1_Upl_btn");
+                f.FileUploadReqButton.Click();
+
+                elementOps.ExistsId("FileUploader1-file-input");
+                f.FileBrowser.SendKeys("C:\\Users\\user\\Pictures\\Little_girls_Guitar_462552_2560x1440.jpg");
+                elementOps.ExistsXpath("//*[@id=\"FileUploader1-eb-upl-bdy\"]/div[2]/div/div[4]/button[3]");
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(f.FileUploaderTag).ToString(), "Success!! Search  Compelte", "Success!! Search  Compelte");
+
+                f.FileUploaderTag.Click();
+                f.FileUploaderTagInput.SendKeys("girl" + Keys.Enter);
+                f.FileUploaderTag.Click();
+
+                actions.MoveToElement(f.FileUploadButton);
+                actions.Perform();
+                f.FileUploadButton.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("class=\"eb-upl-loader\" style=\"display: none;\"")));
+                f.FileUploadOkButton.Click();
+                elementOps.ExistsClass("eb_messageBox_container");
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+                f.SaveButton.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("id=\"eb_common_loader\" style=\"background-color: transparent; display: none;\"")));
+                elementOps.ExistsClass("eb_messageBox_container");
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+                Assert.AreEqual("View Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
+                Console.WriteLine("View Mode");
+                Assert.AreEqual(true, (elementOps.GetTableRowCount("//*[@id=\"FileUploader1_FUP_GW\"]/div[1]/div[2]/ul/li[1]") > 1) ? true : false, "Success", "Success");
+                Console.WriteLine("Success");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "Form_FileUploader_001")]
+        [Test, Order(12)]
+        public void ImageUploader_Crop()
+        {
+            try
+            {
+                CheckUsrLogin();
+                f = new Form(driver);
+                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-121-121-121-121");
+                elementOps.ExistsId("cont_FileUploader1");
+                elementOps.ExistsId("FileUploader1_Upl_btn");
+                f.FileUploadReqButton.Click();
+
+                elementOps.ExistsId("FileUploader1-file-input");
+                f.FileBrowser.SendKeys("C:\\Users\\user\\Pictures\\Little_girls_Guitar_462552_2560x1440.jpg");
+                elementOps.ExistsXpath("//*[@id=\"FileUploader1-eb-upl-bdy\"]/div[2]/div/div[4]/button[3]");
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(f.FileUploaderCrop).ToString(), "Success!! Search  Compelte", "Success!! Search  Compelte");
+
+                f.FileUploaderCrop.Click();
+                elementOps.ExistsXpath("//*[@id=\"container_crpcrp_modal\"]/div/div/div[2]/div[1]");
+                elementOps.ChangeStyleByXpath(f.FileUploaderCropSlider, "aria-valuenow", "0.3569");
+                f.FileUploaderCropButton.Click();
+                f.FileUploaderSaveButton.Click();
+
+                actions.MoveToElement(f.FileUploadButton);
+                actions.Perform();
+                f.FileUploadButton.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("class=\"eb-upl-loader\" style=\"display: none;\"")));
+                f.FileUploadOkButton.Click();
+                elementOps.ExistsClass("eb_messageBox_container");
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+                f.SaveButton.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("id=\"eb_common_loader\" style=\"background-color: transparent; display: none;\"")));
+                elementOps.ExistsClass("eb_messageBox_container");
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+                Assert.AreEqual("View Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
+                Console.WriteLine("View Mode");
+                
+                Console.WriteLine("Success");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "Form_FileUploader_001")]
+        [Test, Order(13)]
+        public void ImageUploader_DisableUpload()
+        {
+            try
+            {
+                CheckUsrLogin();
+                f = new Form(driver);
+                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-121-121-121-121");
+                elementOps.ExistsId("cont_FileUploader1");
+                
+                Assert.AreEqual("display: none;", f.FileUploaderDisableUpload.GetAttribute("style").ToString(), "Success", "Success");
+                Console.WriteLine("Success");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "Form_FileUploader_001")]
+        [Test, Order(14)]
+        public void ImageUploader_CheckFileSize() //----------------------
+        {
+            try
+            {
+                CheckUsrLogin();
+                f = new Form(driver);
+                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-104-104-104-104");
+                elementOps.ExistsId("FileUploader1_Upl_btn");
+                f.FileUploadReqButton.Click();
+
+                elementOps.ExistsId("FileUploader1-file-input");
+                f.FileBrowser.SendKeys("C:\\Users\\user\\Downloads\\Ford.jpg");
+                
+                elementOps.ExistsId("FileUploader1-upload-lin");
+                f.FileUploadButton.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("class=\"eb-upl-loader\" style=\"display: none;\"")));
+                f.FileUploadOkButton.Click();
+                elementOps.ExistsClass("eb_messageBox_container");
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+                f.SaveButton.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("id=\"eb_common_loader\" style=\"background-color: transparent; display: none;\"")));
+                elementOps.ExistsClass("eb_messageBox_container");
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+                Assert.AreEqual("View Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
+                Console.WriteLine("View Mode");
+
+                elementOps.ExistsXpath("//*[@id=\"FileUploader1_GalleryUnq\"]/div[2]/div[1]");
+                f.FileUploader1Toggle2.Click();
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(f.FileUploader1Img2).ToString(), "Success!! Search  Compelte", "Success!! Search  Compelte");
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "Form_FileUploader_001")]
+        [Test, Order(15)]
+        public void ImageUploader_HideEmptyCategory()
+        {
+            try
+            {
+                CheckUsrLogin();
+                f = new Form(driver);
+                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-121-121-121-121");
+                elementOps.ExistsId("cont_FileUploader1");
+
+                Assert.AreEqual("display: none;", f.FileUploaderHideEmptyCategory.GetAttribute("style").ToString(), "Success", "Success");
+                Console.WriteLine("Success");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "Form_FileUploader_001")]
+        [Test, Order(16)]
+        public void ImageUploader_ViewMode()
+        {
+            try
+            {
+                CheckUsrLogin();
+                f = new Form(driver);
+                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-123-123-123-123#");
+                elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[9]/a");
+                f.FileUploaderActionButton.Click();
+                driver.SwitchTo().Window(driver.WindowHandles.Last());
+
+                elementOps.ExistsXpath("//*[@id=\"FileUploader1_GalleryUnq\"]/div[1]/div[1]");
+                f.FileUploader1Toggle.Click();
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(f.FileUploader1Img1).ToString(), "Success!! Search  Compelte", "Success!! Search  Compelte");
+
+                f.FormSaveEditButton.Click();
+                elementOps.ExistsXpath("//*[@id=\"FileUploader1_GalleryUnq\"]/div[1]/div[1]");
+                f.FileUploader1Toggle.Click();
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(f.FileUploader1Img1).ToString(), "Success!! Search  Compelte", "Success!! Search  Compelte");
+                driver.Close();
+                driver.SwitchTo().Window(driver.WindowHandles.Last());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "Form_FileUploader_001")]
+        [Test, Order(17)]
+        public void ImageUploader_EditMode() 
+        {
+            try
+            {
+                CheckUsrLogin();
+                f = new Form(driver);
+                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-123-123-123-123#");
+                elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[9]/a");
+                f.FileUploaderActionButton.Click();
+                driver.SwitchTo().Window(driver.WindowHandles.Last());
+
+                elementOps.ExistsXpath("//*[@id=\"FileUploader1_GalleryUnq\"]/div[1]/div[1]");
+                f.FileUploader1Toggle.Click();
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(f.FileUploader1Img1).ToString(), "Success!! Search  Compelte", "Success!! Search  Compelte");
+
+                f.FormSaveEditButton.Click();
+                elementOps.ExistsXpath("//*[@id=\"FileUploader1_GalleryUnq\"]/div[1]/div[1]");
+                f.FileUploader1Toggle.Click();
+                elementOps.ExistsClass("eb_uplGal_thumbO_img");
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(f.FileUploader1Img1).ToString(), "Success!!", "Success!!");
+                driver.Close();
+                driver.SwitchTo().Window(driver.WindowHandles.Last());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "Form_FileUploader_001")]
+        [Test, Order(17)]
+        public void ImageUploader_Delete() //-----------------------
+        {
+            try
+            {
+                CheckUsrLogin();
+                f = new Form(driver);
+                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-123-123-123-123#");
+                elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[9]/a");
+                f.FileUploaderActionButton.Click();
+                driver.SwitchTo().Window(driver.WindowHandles.Last());
+
+                elementOps.ExistsXpath("//*[@id=\"FileUploader1_GalleryUnq\"]/div[1]/div[1]");
+                f.FileUploader1Toggle.Click();
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(f.FileUploader1Img1).ToString(), "Success!! Search  Compelte", "Success!! Search  Compelte");
+
+                f.FormSaveEditButton.Click();
+                elementOps.ExistsXpath("//*[@id=\"FileUploader1_GalleryUnq\"]/div[1]/div[1]");
+                elementOps.ChangeStyleByXpath(f.FileUploaderImgToggleDiv, "class", "Col_head");
+                elementOps.ChangeStyleByXpath(f.FileUploaderImgToggleDiv2, "class", "Col_apndBody collapse in");
+                actions.ContextClick(f.FileUploaderImgDiv);
+                actions.Perform();
+
+                elementOps.ExistsXpath("/html/body/ul/li[3]");
+                f.FileUploaderImgDelete.Click();
+                elementOps.ExistsXpath("//*[@id=\"eb_dlogBox_container\"]/div/div[3]/button[1]");
+                f.FileUploaderImgDeleteYesButton.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("id=\"eb_common_loader\" style=\"background-color: transparent; display: none;\"")));
+                elementOps.ExistsId("FileUploader1-file-input");
+                f.FileBrowser.SendKeys("C:\\Users\\user\\Pictures\\Little_girls_Guitar_462552_2560x1440.jpg");
+
+                elementOps.ExistsId("FileUploader1-upload-lin");
+                f.FileUploadButton.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("class=\"eb-upl-loader\" style=\"display: none;\"")));
+                f.FileUploadOkButton.Click();
+                elementOps.ExistsClass("eb_messageBox_container");
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+                f.SaveButton.Click();
+                driver.Close();
+                driver.SwitchTo().Window(driver.WindowHandles.Last());
+                var alert = driver.SwitchTo().Alert();
+                alert.Accept();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+        
+        //--------------Simple File Upload
+
+        [Property("TestCaseId", "Form_FormGridValidation_006")]
+        [Test, Order(18)]
+        public void SimpleFileUploaderImage()
+        {
+            try
+            {
+                CheckUsrLogin();
+                f = new Form(driver);
+                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-114-114-114-114#");
+                elementOps.ExistsId("TextBox1");
+                f.TextBox1.SendKeys("Test Img");
+
+                elementOps.ExistsId("SimpleFileUploader1_inputID");
+                f.SimpleFileUploader.SendKeys("C:\\Users\\user\\Pictures\\Little_girls_Guitar_462552_2560x1440.jpg");
+                wait.Until(webDriver => (driver.PageSource.Contains("class=\"fa fa-check-circle-o success\" style=\"display: inline;\"")));
+                f.SaveButton.Click();
+
+                elementOps.ExistsClass("eb_messageBox_container");
+                Console.WriteLine(f.Message.GetAttribute("innerHTML"));
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+
+                Assert.AreEqual("View Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
+                Console.WriteLine("Success");
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "Form_FormGridValidation_006")]
+        [Test, Order(19)]
+        public void SimpleFileUploaderFile()
+        {
+            try
+            {
+                CheckUsrLogin();
+                f = new Form(driver);
+                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-114-114-114-114#");
+                elementOps.ExistsId("TextBox1");
+                f.TextBox1.SendKeys("Test File");
+
+                elementOps.ExistsId("SimpleFileUploader1_inputID");
+                f.SimpleFileUploader.SendKeys("C:\\Users\\user\\Pictures\\Hello.docx");
+                wait.Until(webDriver => (driver.PageSource.Contains("class=\"fa fa-check-circle-o success\" style=\"display: inline;\"")));
+                f.SaveButton.Click();
+
+                elementOps.ExistsClass("eb_messageBox_container");
+                Console.WriteLine(f.Message.GetAttribute("innerHTML"));
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+
+                Assert.AreEqual("View Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
+                Console.WriteLine("Success");
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "Form_FormGridValidation_006")]
+        [Test, Order(20)]
+        public void SimpleFileUploader_Required()
+        {
+            try
+            {
+                CheckUsrLogin();
+                f = new Form(driver);
+                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-114-114-114-114#");
+                elementOps.ExistsId("TextBox1");
+                f.TextBox1.SendKeys("Test Img");
+
+                elementOps.ExistsId("SimpleFileUploader1_inputID");
+                f.SaveButton.Click();
+
+                elementOps.ExistsId("@name@errormsg");
+                Console.WriteLine(f.SimpleFileUploaderReqMsg.GetAttribute("innerHTML"));
+                Console.WriteLine("Success");
+                browserOps.Refresh();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "Form_FormGridValidation_006")]
+        [Test, Order(21)]
+        public void SimpleFileUploader_Hidden()
+        {
+            try
+            {
+                CheckUsrLogin();
+                f = new Form(driver);
+                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-114-114-114-114#");
+                elementOps.ExistsId("TextBox1");
+                f.TextBox1.SendKeys("Test Img");
+
+                elementOps.ExistsId("cont_SimpleFileUploader2");
+                Assert.AreEqual("true", f.SimpleFileUploader2.GetAttribute("eb-hidden").ToString(), "Success", "Success");
+                Console.WriteLine("Success");
+                browserOps.Refresh();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "Form_FormGridValidation_006")]
+        [Test, Order(22)]
+        public void SimpleFileUploader_ReadOnly()
+        {
+            try
+            {
+                CheckUsrLogin();
+                f = new Form(driver);
+                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-114-114-114-114#");
+                elementOps.ExistsId("TextBox1");
+                f.TextBox1.SendKeys("Test Img");
+
+                elementOps.ExistsId("cont_SimpleFileUploader3");
+                Assert.AreEqual("true", f.SimpleFileUploader3.GetAttribute("eb-readonly").ToString(), "Success", "Success");
+                Console.WriteLine("Success");
+                browserOps.Refresh();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "Form_FormGridValidation_006")]
+        [Test, Order(23)]
+        public void SimpleFileUploader_CheckMaxFiles()
+        {
+            try
+            {
+                CheckUsrLogin();
+                f = new Form(driver);
+                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-114-114-114-114#");
+                elementOps.ExistsId("TextBox1");
+                f.TextBox1.SendKeys("Test Img");
+
+                elementOps.ExistsId("SimpleFileUploader1_inputID");
+                f.SimpleFileUploader.SendKeys("C:\\Users\\user\\Pictures\\Little_girls_Guitar_462552_2560x1440.jpg");
+                wait.Until(webDriver => (driver.PageSource.Contains("class=\"fa fa-check-circle-o success\" style=\"display: inline;\"")));
+                elementOps.ExistsId("SimpleFileUploader1_inputID");
+                f.SimpleFileUploader.SendKeys("C:\\Users\\user\\Pictures\\Little_girls_Guitar_462552_2560x1440.jpg");
+
+                elementOps.ExistsClass("eb_messageBox_container");
+                Assert.AreEqual("Maximum number of files reached ", f.Message.GetAttribute("innerHTML"), "Success", "Success");
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "Form_FormGridValidation_006")]
+        [Test, Order(24)]
+        public void SimpleFileUploader_CheckFileSize()
+        {
+            try
+            {
+                CheckUsrLogin();
+                f = new Form(driver);
+                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-114-114-114-114#");
+                elementOps.ExistsId("TextBox1");
+                f.TextBox1.SendKeys("Test Img");
+
+                elementOps.ExistsId("SimpleFileUploader1_inputID");
+                f.SimpleFileUploader.SendKeys("C:\\Users\\user\\Downloads\\Ford.jpg");
+                
+                elementOps.ExistsClass("eb_messageBox_container");
+                Assert.AreEqual("Maximum file size is undefinedMB", f.Message.GetAttribute("innerHTML"), "Success", "Success");
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "TableVisualization_FDAutoRun_022")]
+        [Test, Order(25)]
+        public void CheckSimpleFileUploaderImage_ViewMode()
+        {
+            try
+            {
+                CheckUsrLogin();
+                f = new Form(driver);
+                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-116-116-116-116");
+                elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[12]/a");
+                f.SimpleFileUploaderEditLink1.Click();
+                driver.SwitchTo().Window(driver.WindowHandles.Last());
+                Assert.AreEqual("View Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
+                Console.WriteLine("View Mode");
+
+                elementOps.ExistsId("TextBox1");
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(f.SimpleFileUploaderImgViewMode).ToString(), "Success!!", "Success!!");
+                f.SimpleFileUploaderImgViewMode.Click();
+                browserOps.implicitWait(50);
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(f.SimpleFileUploaderImgViewer).ToString(), "Success!!", "Success!!");
+                driver.Close();
+                driver.SwitchTo().Window(driver.WindowHandles.Last());
+                var alert = driver.SwitchTo().Alert();
+                alert.Accept();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "TableVisualization_FDAutoRun_022")]
+        [Test, Order(26)]
+        public void CheckSimpleFileUploaderImage_EditMode()
+        {
+            try
+            {
+                CheckUsrLogin();
+                f = new Form(driver);
+                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-116-116-116-116");
+                elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[12]/a");
+                f.SimpleFileUploaderEditLink1.Click();
+                driver.SwitchTo().Window(driver.WindowHandles.Last());
+                Assert.AreEqual("View Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
+                Console.WriteLine("View Mode");
+
+                elementOps.ExistsId("TextBox1");
+                f.FormSaveEditButton.Click();
+                Assert.AreEqual("Edit Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
+                Console.WriteLine("Edit Mode");
+                elementOps.ExistsId("TextBox1");
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(f.SimpleFileUploaderImg).ToString(), "Success!!", "Success!!");
+                
+                driver.Close();
+                driver.SwitchTo().Window(driver.WindowHandles.Last());
+                var alert = driver.SwitchTo().Alert();
+                alert.Accept();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message);
+            }
+        }
+
+        [Property("TestCaseId", "TableVisualization_FDAutoRun_022")]
+        [Test, Order(26)]
+        public void CheckSimpleFileUploader_DeleteImage()
+        {
+            try
+            {
+                CheckUsrLogin();
+                f = new Form(driver);
+                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-116-116-116-116");
+                elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[12]/a");
+                f.SimpleFileUploaderEditLink1.Click();
+                driver.SwitchTo().Window(driver.WindowHandles.Last());
+                Assert.AreEqual("View Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
+                Console.WriteLine("View Mode");
+
+                elementOps.ExistsId("TextBox1");
+                f.FormSaveEditButton.Click();
+                Assert.AreEqual("Edit Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
+                Console.WriteLine("Edit Mode");
+                elementOps.ExistsId("TextBox1");
+                string filetype = f.SimpleFileUploaderFileType.GetAttribute("innerHTML").Split(".")[1];
+                string file = "C:\\Users\\user\\Pictures\\Little_girls_Guitar_462552_2560x1440.jpg";
+                if (filetype == "docx")
+                    file = "C:\\Users\\user\\Pictures\\Hello.docx";
+                actions.MoveToElement(f.SimpleFileUploaderImg);
+                actions.Perform();
+                var children = f.SimpleFileUploaderImgDelete.FindElements(By.XPath(".//*"));
+                Console.WriteLine(children);
+                f.SimpleFileUploaderImgDelete.Click();
+
+                elementOps.ExistsId("SimpleFileUploader1_inputID");
+                f.SimpleFileUploader.SendKeys(file);
+                wait.Until(webDriver => (driver.PageSource.Contains("class=\"fa fa-check-circle-o success\" style=\"display: inline;\"")));
+                f.SaveButton.Click();
+
+                elementOps.ExistsClass("eb_messageBox_container");
+                Console.WriteLine(f.Message.GetAttribute("innerHTML"));
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+
+                driver.Close();
+                driver.SwitchTo().Window(driver.WindowHandles.Last());
+                var alert = driver.SwitchTo().Alert();
+                alert.Accept();
             }
             catch (Exception e)
             {

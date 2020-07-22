@@ -105,8 +105,8 @@ namespace UITests.ObjectRepository.User
                 return this.driver.FindElement(By.Id("WebForm_kayu90ek"));
             }
         }
-
-        public IWebElement ChildBookName
+        
+        public IWebElement TextBox1
         {
             get
             {
@@ -114,7 +114,7 @@ namespace UITests.ObjectRepository.User
             }
         }
 
-        public IWebElement ChildBookDesc
+        public IWebElement TextBox2
         {
             get
             {
@@ -122,7 +122,7 @@ namespace UITests.ObjectRepository.User
             }
         }
 
-        public IWebElement ChildBookPrice
+        public IWebElement Numeric1
         {
             get
             {
@@ -398,6 +398,22 @@ namespace UITests.ObjectRepository.User
 
         //-----------Save
 
+        public IWebElement FormSaveDropdownButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"webformsave-selbtn\"]"));
+            }
+        }
+
+        public IWebElement FormSaveDropdownButton2
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"webformsave-selbtn\"]/div/div"));
+            }
+        }
+
         public IWebElement FormSaveDropdown
         {
             get
@@ -411,6 +427,14 @@ namespace UITests.ObjectRepository.User
             get
             {
                 return this.driver.FindElement(By.XPath("//*[@id=\"webformsave-selbtn\"]/div/div/div/ul/li[1]/a"));
+            }
+        }
+
+        public IWebElement FormSaveEditButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("webformedit"));
             }
         }
 
@@ -695,6 +719,14 @@ namespace UITests.ObjectRepository.User
             }
         }
 
+        public IWebElement FileUploader2Toggle
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"FileUploader2_GalleryUnq\"]/div[1]/div[1]"));
+            }
+        }
+
         public IWebElement FileUploader1Toggle2
         {
             get
@@ -707,9 +739,10 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"DEFAULT_ColBdy\"]/div/div/div/img"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"FileUploader1_GalleryUnq\"]/div/div[2]/div/div/div/img"));
             }
         }
+        
 
         public IWebElement FileUploader1Img2
         {
@@ -735,5 +768,254 @@ namespace UITests.ObjectRepository.User
             }
         }
 
+        public IWebElement SimpleFileUploader
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("SimpleFileUploader1_inputID"));
+            }
+        }
+
+        public IWebElement SimpleFileUploaderReqMsg
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("@name@errormsg"));
+            }
+        }
+
+        public IWebElement SimpleFileUploader2
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_SimpleFileUploader2"));
+            }
+        }
+
+        public IWebElement SimpleFileUploader3
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_SimpleFileUploader3"));
+            }
+        }
+
+        public IWebElement SimpleFileUploaderEditLink1
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[12]/a"));
+            }
+        }
+
+        public IWebElement SimpleFileUploaderImgViewMode
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"SimpleFileUploader1_SFUP\"]/div[2]/div/div/img"));
+            }
+        }
+
+        public IWebElement SimpleFileUploaderImgViewer
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("/html/body/div[6]/div[1]/img"));
+                //*[@id="SimpleFileUploader1_SFUP"]/div[2]/div/div/img
+            }
+        }
+
+        public IWebElement SimpleFileUploaderImg
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"SimpleFileUploader1_SFUP\"]/div[2]/div/div/img"));
+
+            }
+        }
+
+        public IWebElement SimpleFileUploaderImgDelete
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"SimpleFileUploader1_SFUP\"]/div[2]/div/div/span/i"));
+            }
+        }
+
+        public IWebElement SimpleFileUploaderFileType
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"SimpleFileUploader1_SFUP\"]/div[2]/div/div/div/p"));
+            }
+        }
+
+        public IWebElement FileUploaderActionButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[9]/a"));
+            }
+        }
+
+        public IWebElement FileUploaderImgDelete
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("/html/body/ul/li[3]"));
+            }
+        }
+
+        public IWebElement FileUploaderImgDeleteYesButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"eb_dlogBox_container\"]/div/div[3]/button[1]"));
+            }
+        }
+
+        public IWebElement FileUploaderImgDiv
+        {
+            get
+            {
+                return this.driver.FindElement(By.ClassName("eb_uplGal_thumbO_img"));
+            }
+        }
+
+        public IWebElement FileUploaderImgToggleDiv
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"FileUploader1_GalleryUnq\"]/div/div[1]"));
+            }
+        }
+
+        public IWebElement FileUploaderImgToggleDiv2
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"FileUploader1_GalleryUnq\"]/div/div[2]"));
+            }
+        }
+
+        public IWebElement FileUploader2
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_FileUploader2"));
+            }
+        }
+
+        public IWebElement FileUploader3
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_FileUploader3"));
+            }
+        }
+
+        public IWebElement FileUploader3UploadButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("FileUploader3_Upl_btn"));
+            }
+        }
+
+        public IWebElement FileUploaderMutlipleImg1
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"FileUploader1-eb-upl-bdy\"]/div[2]/div/div[4]/span[1]"));
+            }
+        }
+
+        public IWebElement FileUploaderMutlipleImg2
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"FileUploader1-eb-upl-bdy\"]/div[3]/div/div[4]/span[1]"));
+            }
+        }
+
+        public IWebElement FileUploaderTag
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"FileUploader1-eb-upl-bdy\"]/div[2]/div/div[4]/button[3]"));
+            }
+        }
+
+        public IWebElement FileUploaderTagInput
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"FileUploader1-eb-upl-bdy\"]/div[2]/div/div[4]/div/div/input"));
+            }
+        }
+
+        public IWebElement FileUploaderCrop
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"FileUploader1-eb-upl-bdy\"]/div[2]/div/div[4]/button[4]"));
+            }
+        }
+        
+        public IWebElement FileUploaderCropModal
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"container_crpcrp_modal\"]/div/div/div[2]/div[1]"));
+            }
+        }
+        
+        public IWebElement FileUploaderCropSlider
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"container_crp_cropy_container\"]/div[2]/input"));
+            }
+        }
+
+        public IWebElement FileUploaderCropButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("container_crp_crop"));
+            }
+        }
+        
+        public IWebElement FileUploaderSaveButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("container_crp_save"));
+            }
+        }
+        
+        public IWebElement FileUploaderDisableUpload
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"FileUploader4_FUP_GW\"]/div[1]"));
+            }
+        }
+        
+        public IWebElement FileUploaderHideEmptyCategory
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"FileUploader3_GalleryUnq\"]/div[1]"));
+            }
+        }
+
+        public IWebElement FileUploaderImgSelect
+        {
+            get
+            {
+                return this.driver.FindElement(By.Name("Mark"));
+            }
+        }
     }
 }
