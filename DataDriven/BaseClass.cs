@@ -1,10 +1,13 @@
-﻿using NUnit.Framework;
+﻿using Newtonsoft.Json.Linq;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using UITests.ObjectRepository.User;
 
 namespace UITests.DataDriven
@@ -19,6 +22,7 @@ namespace UITests.DataDriven
         public WebDriverWait wait;
         public WebElementOps elementOps;
         public Actions actions;
+        public bool login_status;
 
         [SetUp]
         public void Initialize()
@@ -29,9 +33,17 @@ namespace UITests.DataDriven
                 driver = browserOps.getDriver;
                 ul = new UserLogin(driver);
                 actions = new Actions(driver);
+                login_status = CheckLogin();
             }
             wait = browserOps.DriverWait();
             elementOps = new WebElementOps(driver, wait);
+        }
+
+        public bool CheckLogin()
+        {
+            if (driver.Url == "data:,")
+                return false;
+            return true;
         }
 
         [TearDown]
