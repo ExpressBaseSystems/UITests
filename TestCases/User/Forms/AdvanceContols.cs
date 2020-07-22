@@ -2,22 +2,20 @@
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
-using System.Security;
 using System.Text;
 using UITests.DataDriven;
 using UITests.ObjectRepository.User;
 
-namespace UITests.TestCases.User
+namespace UITests.TestCases.User.Forms
 {
-    [TestFixture]
-    public class FormTestCase2 : BaseClass
+    public class AdvanceContols : BaseClass
     {
         FormObject fo;
         GetUniqueId UID;
         string UniqueId;
+        string TodaysDate;
 
-       
-        public void UserLogin()
+        public void Userlogin(string FormId)
         {
             try
             {
@@ -30,59 +28,42 @@ namespace UITests.TestCases.User
                 UID = new GetUniqueId();
 
                 wait.Until(webDriver => (driver.PageSource.Contains("class=\"list-group-item inner_li Obj_link for_brd\"")));
-                browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashboard");
                 Console.WriteLine("Login Succesfull");
 
-                //browserOps.implicitWait(1);
-                //elementOps.ExistsXpath("//*[@id='appList']/div/ul/li/ul/li[7]/a");
-                //fo.MenuApplication.Click();
-                //browserOps.implicitWait(1);
-
-                //actions.MoveToElement(fo.MenuSelectFormMenu).Perform();
-                //elementOps.ExistsXpath("//*[@id='ebm-objtcontainer']/div[2]/div[1]");
-                //fo.MenuSelectFormMenu.Click();
-                //browserOps.implicitWait(1);
-                //actions.MoveToElement(fo.MenuSelectForm2).Perform();
-                //elementOps.ExistsXpath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a");
-                //fo.MenuSelectForm2.Click();
-                //Console.WriteLine("Test Form Opened");
+                FormSelect(FormId);
             }
             catch (Exception e)
             {
-                Console.WriteLine("Faliure!!\n" + e.Message);
+                Console.WriteLine("Faliure!!  " + e.Message + "Stack Trace" + e.StackTrace);
             }
         }
-
-        [Property("TestCaseId", "Form_BasicControls_PowerSelect_001")]
-        [Test, Order(2)]
-        public void PowerSelect()
+        public void FormSelect(string FormID)
         {
-            UserLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-66-66-66-66");
-            fo.PowerSelectSimpleSelect.Click();
-            fo.PowerSelectSimpleSelectitem.Click();
-
-            Assert.AreEqual("true", fo.PowerSelectHidden.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - Boolean Select - Hidden”");
-
-            actions.DoubleClick(fo.PowerSelectMultiSelect).Perform();
-            fo.PowerSelectMultiSelectItem1.Click();
-            fo.PowerSelectMultiSelectItem2.Click();
-            
-            actions.DoubleClick(fo.PowerSelectRequired).Perform();
-            fo.PowerSelectRequired.Click();
-            
-            actions.DoubleClick(fo.PowerSelectDNP).Perform();
-            fo.PowerSelectDNPItem.Click();
 
 
-            fo.PowerSelectSearch.SendKeys("Tes");
-            fo.PowerSelectSearchItem.Click();
+            browserOps.implicitWait(1);
+            elementOps.ExistsXpath("//*[@id='appList']/div/ul/li/ul/li[7]/a");
+            fo.MenuApplication.Click();
+            browserOps.implicitWait(1);
+
+            actions.MoveToElement(fo.MenuSelectFormMenu).Perform();
+            elementOps.ExistsXpath("//*[@id='ebm-objtcontainer']/div[2]/div[1]");
+            fo.MenuSelectFormMenu.Click();
+            browserOps.implicitWait(1);
+            if (FormID == "DataGrid")
+            {
+                actions.MoveToElement(fo.MenuSelectAdvanceControlsDataGrid).Perform();
+                elementOps.ExistsXpath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a");
+                fo.MenuSelectAdvanceControlsDataGrid.Click();
+            }
+            Console.WriteLine("Test Form Opened");
         }
 
-        [Test, Order(3)]
+        [Test, Order(1)]
         public void DataGrid1()
         {
-           
+
+            Userlogin("DataGrid");
 
             fo.DataGrid1AddRow.Click();
             browserOps.implicitWait(100);
@@ -100,21 +81,24 @@ namespace UITests.TestCases.User
             fo.DataGrid1BooleanInput.Click();
 
             fo.DataGrid1DropDownInput.Click();
+            browserOps.implicitWait(100);
             fo.DataGrid1DropDownSelect.Click();
 
-            fo.DataGrid1BooleanSelectSelect.Click();
             fo.DataGrid1BooleanSelectInput.Click();
+            browserOps.implicitWait(100);
+            fo.DataGrid1BooleanSelectSelect.Click();
 
             fo.UserSelectClick.Click();
+            browserOps.implicitWait(100);
             fo.UserSelectItemClick.Click();
 
-            
+
         }
-        
-        [Test, Order(4)]
+
+        [Test, Order(2)]
         public void DataGridString()
         {
-            //UserLogin();
+          //  Userlogin("DataGrid");
 
             fo.DataGridStringAddRow.Click();
 
@@ -132,11 +116,11 @@ namespace UITests.TestCases.User
             fo.DataGridStringPassword.SendKeys("EXPRESS");
             fo.DataGridStringEmail.SendKeys("kurian@expressbase.com");
         }
-        
-        [Test, Order(5)]
+
+        [Test, Order(3)]
         public void DataGridNumeric()
         {
-            UserLogin();
+           // Userlogin("DataGrid");
 
             fo.DataGridNumericAddRow.Click();
 
@@ -154,13 +138,13 @@ namespace UITests.TestCases.User
             Assert.AreEqual("true", fo.DataGridNumericHidden.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - DataGridNumeric - Read Only”");
             Assert.AreEqual("10.00", fo.DataGridNumericHidden.GetAttribute("value"), true.ToString(), "“Test passed for User - side - DataGridNumeric - Default Value Expression”");
             Assert.AreEqual("10.00", fo.DataGridNumericHidden.GetAttribute("value"), true.ToString(), "“Test passed for User - side - DataGridNumeric - Default Value Expression”");
-          
+
         }
-        
-        [Test, Order(6)]
+
+        [Test, Order(4)]
         public void DataGridBooleanSelectDropDown()
         {
-            UserLogin();
+           // Userlogin("DataGrid");
 
             fo.DataGridDataGrid4AddRow.Click();
 
@@ -168,7 +152,7 @@ namespace UITests.TestCases.User
             browserOps.implicitWait(100);
             browserOps.implicitWait(100);
 
-           
+
             Assert.AreEqual("true", fo.DataGridBooleanSelectReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - DataGrid BooleanSelect ReadOnly- Read Only”");
             fo.DataGridBooleanSelectDNP.Click();
 
@@ -178,13 +162,13 @@ namespace UITests.TestCases.User
 
             fo.DataGridBooleanSelectColumnDNP.Click();
             fo.DataGridBooleanSelectColumnDNPSelect.Click();
-        } 
-        
-        [Test, Order(7)]
+        }
+
+        [Test, Order(5)]
         public void DataGridPowerSelect()
         {
-            UserLogin();
 
+         //   Userlogin("DataGrid");
             fo.DataGridPowerSelectAddRow.Click();
 
             browserOps.implicitWait(100);
@@ -192,6 +176,7 @@ namespace UITests.TestCases.User
             browserOps.implicitWait(100);
 
             fo.DataGridPowerSelectSimpleSelect.Click();
+            elementOps.ExistsXpathClickable(fo.DataGridPowerSelectSimpleSelectItem);            
             fo.DataGridPowerSelectSimpleSelectItem.Click();
             Assert.AreEqual("true", fo.DataGridPowerSelectSimpleSelect.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - DataGrid BooleanSelect ReadOnly- Read Only”");
 
@@ -206,19 +191,18 @@ namespace UITests.TestCases.User
             fo.DataGridPowerReqMinSearch.SendKeys("lower");
             fo.DataGridPowerReqMinSearchItem.Click();
             Assert.AreEqual("true", fo.DataGridBooleanSelectReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - DataGrid BooleanSelect ReadOnly- Read Only”");
-            
-            
+
+
             Assert.AreEqual("10.00", fo.DataGridNumericHidden.GetAttribute("value"), true.ToString(), "“Test passed for User - side - DataGridNumeric - Default Value Expression”");
 
             fo.DataGridBooleanSelectColumnDNP.Click();
             fo.DataGridBooleanSelectColumnDNPSelect.Click();
         }
-        
-        [Test, Order(8)]
+
+        [Test, Order(6)]
         public void DataGridDateTime()
         {
-            UserLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-105-105-105-105");
+            //Userlogin("DataGrid");
 
             fo.DataGrid1AddRow.Click();
 
@@ -228,8 +212,8 @@ namespace UITests.TestCases.User
 
 
             //actions.DoubleClick(fo.DataGridPowerSelectMultiSelect).Perform();
-            
-                        
+
+
             Assert.AreEqual("15-02-2018", fo.DataGridDateTimeReadOnly.GetAttribute("value"), true.ToString(), "“Test passed for User - side - DataGrid DateTime - ReadOnly”");
             Assert.AreEqual("true", fo.DataGridDateTimeReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - DataGrid DateTime - ReadOnly”");
 

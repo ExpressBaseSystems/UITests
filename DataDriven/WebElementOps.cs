@@ -35,10 +35,18 @@ namespace UITests.DataDriven
         {
             wait.Until(ExpectedConditions.ElementExists(By.LinkText(text)));
         }
+        public void ExistsTextToBePresentInElement(IWebElement element, string text)
+        {
+            wait.Until(ExpectedConditions.TextToBePresentInElement(element, text));
+        }
 
         public void ExistsClass(string classname)
         {
             wait.Until(ExpectedConditions.ElementExists(By.ClassName(classname)));
+        }
+        public void PresenceOfAllElementsLocatedBy(string cssSelector)
+        {
+            wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.CssSelector(cssSelector)));
         }
 
         public void ExistsName(string name)
@@ -50,7 +58,12 @@ namespace UITests.DataDriven
         {
             wait.Until(ExpectedConditions.ElementExists(By.TagName(name)));
         }
-
+        public void InvisibleWait(By we)
+        {
+            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(we));
+        }
+        
+       
         public bool IsWebElementPresent(IWebElement webelement)
         {
             try
@@ -79,6 +92,10 @@ namespace UITests.DataDriven
         public object GetValueFromJS(IWebElement element)
         {
             return ((IJavaScriptExecutor)driver).ExecuteScript("return arguments[0].innerHTML;", element);
+        }
+        public void DoubleClickUsingJS(IWebElement element)
+        {
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].dblclick();", element);
         }
         
         public void SetValue(string Id, string value)
@@ -116,6 +133,12 @@ namespace UITests.DataDriven
         {
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
             js.ExecuteScript(script);
+        }
+        
+        public string RadioButtonCheckValidator(string name)
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            return (string)js.ExecuteScript("return $('input[name="+name+"]:checked').val();");
         }
 
         public string GetValueById(string Id)

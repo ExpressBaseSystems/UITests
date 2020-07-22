@@ -55,25 +55,25 @@ namespace UITests.TestCases.User
             browserOps.implicitWait(1);
             if (FormID == 1)
             {
-                actions.MoveToElement(fo.MenuSelectForm1).Perform();
+                actions.MoveToElement(fo.MenuSelectBasicControlsTextBox).Perform();
                 elementOps.ExistsXpath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a");
-                fo.MenuSelectForm1.Click();
+                fo.MenuSelectBasicControlsTextBox.Click();
             }else if(FormID == 2)
             {
-                actions.MoveToElement(fo.MenuSelectForm2).Perform();
+                actions.MoveToElement(fo.MenuSelectBasicControlsNumeric).Perform();
                 elementOps.ExistsXpath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a");
-                fo.MenuSelectForm2.Click();
+                fo.MenuSelectBasicControlsNumeric.Click();
             }
             else if(FormID == 3)
             {
-                actions.MoveToElement(fo.MenuSelectForm3).Perform();
-                elementOps.ExistsXpath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a");
-                fo.MenuSelectForm3.Click();
+                //actions.MoveToElement(fo.MenuSelectForm3).Perform();
+                //elementOps.ExistsXpath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a");
+                //fo.MenuSelectForm3.Click();
             }
             Console.WriteLine("Test Form Opened");
         }
 
-        [Test, Order(1)]
+        //[Test, Order(1)]
         public void Funtions()
         {
             Userlogin(driver);
@@ -104,9 +104,8 @@ namespace UITests.TestCases.User
             Assert.AreEqual("true", fo.RadioButtonDisableEnable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - RadioButton - Funtion EnableDiable”");
             Assert.AreEqual("true", fo.BooleanDisableEnable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - Boolean - Funtion EnableDiable”");
 
-            Assert.AreEqual("Default Value Expression", fo.TextBoxDVE.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Default Value Expression”");
-            Assert.AreEqual("1234.00", fo.NumericDVE.GetAttribute("value"), true.ToString(), "“Test passed for User - side - Numeric - Default Value Expression”");
-            Assert.AreEqual("21-05-2020", fo.DateDVE.GetAttribute("value"), true.ToString(), "“Test passed for User - side - Date - Default Value Expression”");
+            
+
             Assert.AreEqual("Yes", fo.BooleanSelectDVE.Text, true.ToString(), "“Test passed for User - side - BooelanSelect - Default Value Expression”");
             // Assert.AreEqual("true", fo.CheckBoxDisableEnable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - Label - Default Value Expression”");
             // Assert.AreEqual("true", fo.RadioButtonDisableEnable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - RadioButton - Default Value Expression”");
@@ -119,20 +118,16 @@ namespace UITests.TestCases.User
             fo.RadioButtonOnChangeTrigger.Click();
             fo.BooleanOnChangeTrigger.Click();
 
-            Assert.AreEqual("margin: 4px; display: none;", fo.TextBoxOnChangeHideShow.GetAttribute("style"), true.ToString(), "“Test passed for User - side - TextBox - OnChange Funtion Hide”", "“Test passed for User - side - TextBox - OnChange Funtion Hide”");
-            Assert.AreEqual("true", fo.TextBoxOnChangeEnableDisable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - TextBox - OnChange Funtion EnableDiable”");
             
-            Assert.AreEqual("margin: 4px; display: none;", fo.NumericOnChangeHideShow.GetAttribute("style"), true.ToString(), "“Test passed for User - side - Numeric OnChange- Funtion Hide”", "“Test passed for User - side - TextBox - OnChange Funtion Hide”");
-            Assert.AreEqual("true", fo.NumericOnChangeEnableDisable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - Numeric - OnChangeFuntion EnableDiable”");
             
-            Assert.AreEqual("margin: 4px; display: none;", fo.BooleanSelectOnChangeHideShow.GetAttribute("style"), true.ToString(), "“Test passed for User - side - BooleanSelect OnChange - Funtion Hide”", "“Test passed for User - side - TextBox - OnChange Funtion Hide”");
-            Assert.AreEqual("true", fo.BooleanSelectOnChangeEnableDisable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - TextBox - BooleanSelect OnChange- Funtion EnableDiable”");
+            
+            
+            
 
             Assert.AreEqual("false", fo.CheckBoxGroupOnChangeHideShow.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - CheckBoxGroup -OnChange Funtion Hide”");
             Assert.AreEqual("true", fo.CheckBoxGroupOnChangeEnableDisable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - CheckBoxGroup -OnChange Funtion EnableDiable”");
 
-            Assert.AreEqual("false", fo.RadioButtonnChangeHideShow.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - RadioButton -OnChange Hidden”");
-            Assert.AreEqual("true", fo.RadioButoonOnChangeEnableDisable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - RadioButton -OnChange ReadOnly”");
+            
             
             Assert.AreEqual("false", fo.BooleanOnChangeHideShow.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - Boolean -OnChange Hidden”");
             Assert.AreEqual("true", fo.BooleanOnChangeEnableDisable.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - Boolean -OnChange ReadOnly”");
@@ -144,7 +139,7 @@ namespace UITests.TestCases.User
         {
             try
             {
-                //Userlogin(driver);
+                Userlogin(driver);
                 fo.TextBoxLowerCase.SendKeys("LOWERCASE");
                 fo.TextBoxUpperCase.SendKeys("uppercase");
                 Assert.AreEqual("lowercase", fo.TextBoxLowerCase.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - lowercase”");
@@ -349,32 +344,7 @@ namespace UITests.TestCases.User
         }
 
 
-        [Property("TestCaseId", "Form_BasicControls_CheckBoxGroup_001")]
-        [Test, Order(6)]
-        public void CheckBoxGroup()
-        {
-            try
-            {
-                Assert.AreEqual("true", fo.CheckBoxGroupHidden.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - Hidden”");
-
-                Assert.AreEqual("true", fo.CheckBoxGroupReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - ReadOnly”");
-
-                Assert.AreEqual("checkboxgrouprequired", fo.CheckBoxGroupRequired.GetAttribute("name"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - Required”");
-
-                fo.CheckBoxGroupRequiredSelect.Click();
-                //Assert.AreEqual("true", fo.CheckBoxGroupAllHidden.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - Required”");
-
-                //Assert.AreEqual("disabled", fo.CheckBoxGroupAllReadonly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - Required”");
-
-                //Assert.AreEqual("checkboxgrouprequired", fo.CheckBoxGroupAllDoNotPersist.GetAttribute("name"), true.ToString(), "“Test passed for User - side - CheckBoxGroup - Required”");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Faliure!!\n" + e.Message);
-            }
-
-        }
-
+        
 
         [Property("TestCaseId", "Form_BasicControls_RadioButton_001")]
         [Test, Order(7)]
@@ -449,42 +419,7 @@ namespace UITests.TestCases.User
         [Test, Order(10)]
         public void SaveFoam()
         {
-            fo.SaveForm.Click();
-
-            browserOps.implicitWait(2000);
-            browserOps.implicitWait(2000);
-            browserOps.implicitWait(2000);
-            browserOps.DriverWait();
-            browserOps.DriverWait();
-            //elementOps.ExistsXpath("//*[@id='objname']/span");
-
-            //Assert.AreEqual("View Mode", fo.GetMode.Text, true.ToString(), "Form Saved and is opened in View Mode");
-
-            Assert.AreEqual("lowercase", fo.TextBoxLowerCase.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - lowercase”");
-
-            Assert.AreEqual("UPPERCASE", fo.TextBoxUpperCase.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Uppercase”");
-
-            Assert.AreEqual("password", fo.TextBoxPassword.GetAttribute("type"), true.ToString(), "“Test passed for User - side - TextBox - Password”");
-            Assert.AreEqual("password", fo.TextBoxPassword.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Password Has data”");
-
-            //Assert.AreEqual("email", fo.TextBoxEmail.GetAttribute("email"), true.ToString(), "“Test passed for User - side - TextBox - Email”");
-
-            Assert.AreEqual("3", fo.TextBoxMultiLine.GetAttribute("rows"), true.ToString(), "“Test passed for User - side - TextBox - MultiLine”");
-            Assert.AreEqual("187", (fo.TextBoxMultiLine.GetAttribute("value").Length).ToString(), true.ToString(), "“Test passed for User - side - TextBox - MultiLine Has Data”");
-
-            Assert.AreEqual("4", fo.TextBoxMaxLength.GetAttribute("maxlength"), true.ToString(), "“Test passed for User - side - TextBox - Max Length”");
-            Assert.AreEqual("EXPR", fo.TextBoxMaxLength.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - MultiLine Has Data”");
-
-            Assert.AreEqual("ui-autocomplete-input", fo.TextboxAutosuggestion.GetAttribute("class"), true.ToString(), "“Test passed for User - side - TextBox - Auto Suggestion”");
-
-            Assert.AreEqual("true", fo.TextboxReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - TextBox - Read Only”");
-            Assert.AreEqual("Read Only Data", fo.TextboxReadOnly.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Read Only Has Data”");
-
-            Assert.AreEqual("Test Data", fo.TextboxRequired.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Required”");
-
-            Assert.AreEqual(UniqueId, fo.TextboxUnique.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Unique”");
-
-            Assert.AreEqual("", fo.TextboxDoNotPersist.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Do Not Persist”");
+            
 
 
 
@@ -565,37 +500,7 @@ namespace UITests.TestCases.User
         public void EditFoam()
         {
 
-            fo.MessageBoxClose.Click();
-            fo.EditForm.Click();
-
-            browserOps.implicitWait(2000);
-            browserOps.DriverWait();
-
-            Assert.AreEqual("lowercase", fo.TextBoxLowerCase.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - lowercase”");
-
-            Assert.AreEqual("UPPERCASE", fo.TextBoxUpperCase.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Uppercase”");
-
-            Assert.AreEqual("password", fo.TextBoxPassword.GetAttribute("type"), true.ToString(), "“Test passed for User - side - TextBox - Password”");
-            Assert.AreEqual("password", fo.TextBoxPassword.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Password Has data”");
-
-            //Assert.AreEqual("email", fo.TextBoxEmail.GetAttribute("email"), true.ToString(), "“Test passed for User - side - TextBox - Email”");
-
-            Assert.AreEqual("3", fo.TextBoxMultiLine.GetAttribute("rows"), true.ToString(), "“Test passed for User - side - TextBox - MultiLine”");
-            Assert.AreEqual("187", (fo.TextBoxMultiLine.GetAttribute("value").Length).ToString(), true.ToString(), "“Test passed for User - side - TextBox - MultiLine Has Data”");
-
-            Assert.AreEqual("4", fo.TextBoxMaxLength.GetAttribute("maxlength"), true.ToString(), "“Test passed for User - side - TextBox - Max Length”");
-            Assert.AreEqual("EXPR", fo.TextBoxMaxLength.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - MultiLine Has Data”");
-
-            Assert.AreEqual("ui-autocomplete-input", fo.TextboxAutosuggestion.GetAttribute("class"), true.ToString(), "“Test passed for User - side - TextBox - Auto Suggestion”");
-
-            Assert.AreEqual("true", fo.TextboxReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - TextBox - Read Only”");
-            Assert.AreEqual("Read Only Data", fo.TextboxReadOnly.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Read Only Has Data”");
-
-            Assert.AreEqual("Test Data", fo.TextboxRequired.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Required”");
-
-            Assert.AreEqual(UniqueId, fo.TextboxUnique.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Unique”");
-
-            Assert.AreEqual("", fo.TextboxDoNotPersist.GetAttribute("value"), true.ToString(), "“Test passed for User - side - TextBox - Do Not Persist”");
+            
 
 
 
