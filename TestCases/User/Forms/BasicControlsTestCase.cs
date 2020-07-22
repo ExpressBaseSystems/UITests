@@ -786,18 +786,18 @@ namespace UITests.TestCases.User.Forms
                 Assert.AreEqual("true", fo.PowerSelectReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - Boolean Select - Hidden”");
 
                 elementOps.ExistsXpathClickable(fo.PowerSelectMultiSelect);
-                //actions.MoveToElement(fo.PowerSelectMultiSelect).DoubleClick().Build().Perform();
-                elementOps.ExecuteScripts("var Clickevent = new MouseEvent('dblclick', {'view': window});document.getElementById('PowerSelect4textbox_unique').dispatchEvent(Clickevent); ");
+                actions.MoveToElement(fo.PowerSelectMultiSelect).DoubleClick().Build().Perform();
+                //elementOps.ExecuteScripts("var Clickevent = new MouseEvent('dblclick', {'view': window});document.getElementById('PowerSelect4textbox_unique').dispatchEvent(Clickevent); ");
                 elementOps.ExistsXpathClickable(fo.PowerSelectMultiSelectItem1);
                 fo.PowerSelectMultiSelectItem1.Click();
                 fo.PowerSelectMultiSelectItem2.Click();
 
-                //actions.DoubleClick(fo.PowerSelectRequired).DoubleClick().Build().Perform();
-                elementOps.ExecuteScripts("var Clickevent = new MouseEvent('dblclick', {'view': window});document.getElementById('PowerSelect5textbox_unique').dispatchEvent(Clickevent); ");
+                actions.DoubleClick(fo.PowerSelectRequired).DoubleClick().Build().Perform();
+                //elementOps.ExecuteScripts("var Clickevent = new MouseEvent('dblclick', {'view': window});document.getElementById('PowerSelect5textbox_unique').dispatchEvent(Clickevent); ");
                 elementOps.ExistsXpathClickable(fo.PowerSelectRequiredItem);
-                //actions.MoveToElement(fo.PowerSelectRequiredItem).Perform();
-                elementOps.ExecuteScripts("var Clickevent = new MouseEvent('dblclick', {'view': window});document.querySelector('#PowerSelect5tbl > tbody > tr.even > td:nth-child(1)').dispatchEvent(Clickevent); ");
-                
+                actions.MoveToElement(fo.PowerSelectRequiredItem).Perform();
+                //elementOps.ExecuteScripts("var Clickevent = new MouseEvent('dblclick', {'view': window});document.querySelector('#PowerSelect5tbl > tbody > tr.even > td:nth-child(1)').dispatchEvent(Clickevent); ");
+                actions.DoubleClick(fo.PowerSelectRequiredItem).DoubleClick().Build().Perform();
 
 
                 int count = 0;
@@ -806,8 +806,8 @@ namespace UITests.TestCases.User.Forms
                 {
                     try
                     {
-                        //actions.DoubleClick(fo.PowerSelectDNP).DoubleClick().Build().Perform();
-                        fo.PowerSelectDNP.Click();
+                        actions.DoubleClick(fo.PowerSelectDNP).DoubleClick().Build().Perform();
+                        //fo.PowerSelectDNP.Click();
                         clicked = true;
                     }
                     catch (StaleElementReferenceException e)
@@ -818,7 +818,6 @@ namespace UITests.TestCases.User.Forms
                     }
                 }
 
-                //actions.DoubleClick(fo.PowerSelectRequiredItem).DoubleClick().Build().Perform();
                 //fo.PowerSelectRequiredItem.Click();
 
                 //elementOps.ExecuteScripts("var Clickevent = new MouseEvent('dblclick', {'view': window});document.getElementById('PowerSelect7textbox_unique').dispatchEvent(Clickevent); ");
