@@ -44,8 +44,8 @@ namespace UITests.DataDriven
             {
                 tid = testId.ToString();
             }
-            if(tid != null)
-                Console.WriteLine("Testcase ID   : "+ tid);
+            if (tid != null)
+                Console.WriteLine("Testcase ID   : " + tid);
         }
     }
 }

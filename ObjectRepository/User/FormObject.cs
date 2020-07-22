@@ -1116,7 +1116,7 @@ namespace UITests.ObjectRepository.User
         { 
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='PowerSelect5tbl']/tbody/tr[20]/td"));
+                return this.driver.FindElement(By.XPath("//*[@id='PowerSelect5tbl']/tbody/tr[1]/td"));
             }
         }
         public IWebElement PowerSelectDNP
@@ -1130,7 +1130,7 @@ namespace UITests.ObjectRepository.User
         { 
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='PowerSelect7tbl']/tbody/tr[1]"));
+                return this.driver.FindElement(By.XPath("//*[@id='PowerSelect7tbl']/tbody/tr[1]/td"));
             }
         }
         public IWebElement PowerSelectSearch
@@ -1351,14 +1351,14 @@ namespace UITests.ObjectRepository.User
         { 
             get
             {
-                return this.driver.FindElement(By.Id("UserSelect1"));
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid1']/tbody/tr/td[13]/div[1]"));
             }
         }
         public IWebElement UserSelectItemClick
         { 
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='UserSelect1Wraper']/div/div[2]/div[3]/div[5]/div[2]"));
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid1']/tbody/tr/td[13]/div[1]/div/div[1]/div/div[2]"));
             }
         }         
         public IWebElement UserLocationGlobal

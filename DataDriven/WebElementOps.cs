@@ -44,6 +44,10 @@ namespace UITests.DataDriven
         {
             wait.Until(ExpectedConditions.ElementExists(By.ClassName(classname)));
         }
+        public void PresenceOfAllElementsLocatedBy(string cssSelector)
+        {
+            wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.CssSelector(cssSelector)));
+        }
 
         public void ExistsName(string name)
         {
@@ -82,6 +86,10 @@ namespace UITests.DataDriven
         public object GetValueFromJS(IWebElement element)
         {
             return ((IJavaScriptExecutor)driver).ExecuteScript("return arguments[0].innerHTML;", element);
+        }
+        public void DoubleClickUsingJS(IWebElement element)
+        {
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].dblclick();", element);
         }
         
         public void SetValue(string Id, string value)

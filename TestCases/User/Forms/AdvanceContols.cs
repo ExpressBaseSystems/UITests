@@ -59,7 +59,7 @@ namespace UITests.TestCases.User.Forms
             Console.WriteLine("Test Form Opened");
         }
 
-        [Test, Order(3)]
+        [Test, Order(1)]
         public void DataGrid1()
         {
 
@@ -81,21 +81,24 @@ namespace UITests.TestCases.User.Forms
             fo.DataGrid1BooleanInput.Click();
 
             fo.DataGrid1DropDownInput.Click();
+            browserOps.implicitWait(100);
             fo.DataGrid1DropDownSelect.Click();
 
-            fo.DataGrid1BooleanSelectSelect.Click();
             fo.DataGrid1BooleanSelectInput.Click();
+            browserOps.implicitWait(100);
+            fo.DataGrid1BooleanSelectSelect.Click();
 
             fo.UserSelectClick.Click();
+            browserOps.implicitWait(100);
             fo.UserSelectItemClick.Click();
 
 
         }
 
-        [Test, Order(4)]
+        [Test, Order(2)]
         public void DataGridString()
         {
-            Userlogin("DataGrid");
+          //  Userlogin("DataGrid");
 
             fo.DataGridStringAddRow.Click();
 
@@ -114,10 +117,10 @@ namespace UITests.TestCases.User.Forms
             fo.DataGridStringEmail.SendKeys("kurian@expressbase.com");
         }
 
-        [Test, Order(5)]
+        [Test, Order(3)]
         public void DataGridNumeric()
         {
-            Userlogin("DataGrid");
+           // Userlogin("DataGrid");
 
             fo.DataGridNumericAddRow.Click();
 
@@ -138,10 +141,10 @@ namespace UITests.TestCases.User.Forms
 
         }
 
-        [Test, Order(6)]
+        [Test, Order(4)]
         public void DataGridBooleanSelectDropDown()
         {
-            Userlogin("DataGrid");
+           // Userlogin("DataGrid");
 
             fo.DataGridDataGrid4AddRow.Click();
 
@@ -161,11 +164,11 @@ namespace UITests.TestCases.User.Forms
             fo.DataGridBooleanSelectColumnDNPSelect.Click();
         }
 
-        [Test, Order(7)]
+        [Test, Order(5)]
         public void DataGridPowerSelect()
         {
 
-            Userlogin("DataGrid");
+         //   Userlogin("DataGrid");
             fo.DataGridPowerSelectAddRow.Click();
 
             browserOps.implicitWait(100);
@@ -173,6 +176,7 @@ namespace UITests.TestCases.User.Forms
             browserOps.implicitWait(100);
 
             fo.DataGridPowerSelectSimpleSelect.Click();
+            elementOps.ExistsXpathClickable(fo.DataGridPowerSelectSimpleSelectItem);            
             fo.DataGridPowerSelectSimpleSelectItem.Click();
             Assert.AreEqual("true", fo.DataGridPowerSelectSimpleSelect.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - DataGrid BooleanSelect ReadOnly- Read Only”");
 
@@ -195,11 +199,10 @@ namespace UITests.TestCases.User.Forms
             fo.DataGridBooleanSelectColumnDNPSelect.Click();
         }
 
-        [Test, Order(8)]
+        [Test, Order(6)]
         public void DataGridDateTime()
         {
-            Userlogin("DataGrid");
-            browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-105-105-105-105");
+            //Userlogin("DataGrid");
 
             fo.DataGrid1AddRow.Click();
 
