@@ -723,8 +723,9 @@ namespace UITests.TestCases.User
                 selectElement.SelectByValue("true");
                 f.Grid2Field5.Click();
                 f.Grid2Field5.SendKeys("A" + Keys.Enter);
-                elementOps.ExistsXpath("//*[@id=\"WebForm_kbnm7hcy\"]/div[3]/div/div[2]/div[2]/table/tbody/tr/td");
-                f.Grid2Field5.SendKeys(Keys.Enter);
+                elementOps.ExistsXpath("//*[@id=\"WebForm_kbnm7hcy\"]/div[3]/div/div[3]/div[2]/table/tbody/tr/td");
+                actions.DoubleClick(f.Grid2Field5Value);
+                actions.Perform();
                 f.Grid2CommitButton.Click();
                 f.SaveButton.Click();
 

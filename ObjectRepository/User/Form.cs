@@ -505,6 +505,14 @@ namespace UITests.ObjectRepository.User
             }
         }
 
+        public IWebElement Grid2Field5Value
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"WebForm_kbnm7hcy\"]/div[3]/div/div[3]/div[2]/table/tbody/tr/td"));
+            }
+        }
+
         public IWebElement Grid2Field6
         {
             get
