@@ -89,7 +89,7 @@ namespace UITests.TestCases.User.Forms
             fo.DataGrid1BooleanSelectSelect.Click();
 
             fo.UserSelectClick.Click();
-            browserOps.implicitWait(100);
+            elementOps.ExistsXpath("//*[@id='tbl_DataGrid1']/tbody/tr/td[13]/div[1]/div/div[2]/div[3]/div[1]/div[2]");
             fo.UserSelectItemClick.Click();
 
 
@@ -98,7 +98,7 @@ namespace UITests.TestCases.User.Forms
         [Test, Order(2)]
         public void DataGridString()
         {
-          //  Userlogin("DataGrid");
+             Userlogin("DataGrid");
 
             fo.DataGridStringAddRow.Click();
 
@@ -120,7 +120,7 @@ namespace UITests.TestCases.User.Forms
         [Test, Order(3)]
         public void DataGridNumeric()
         {
-           // Userlogin("DataGrid");
+           Userlogin("DataGrid");
 
             fo.DataGridNumericAddRow.Click();
 
@@ -134,7 +134,7 @@ namespace UITests.TestCases.User.Forms
             elementOps.SetQueryValue("div.Dg_body > table#tbl_DataGrid3 > tbody > tr > td:nth-child(4) > div.ctrl-cover > div.input-group > input.numinput", "30");
             elementOps.SetQueryValue("div.Dg_body > table#tbl_DataGrid3 > tbody > tr > td:nth-child(5) > div.ctrl-cover > div.input-group > input.numinput", "30.500");
             elementOps.SetQueryValue("div.Dg_body > table#tbl_DataGrid3 > tbody > tr > td:nth-child(6) > div.ctrl-cover > div.input-group > input.numinput", "-30.50");
-            //elementOps.SetQueryValue("div.Dg_body > table#tbl_DataGrid3 > tbody > tr > td:nth-child(7) > div.ctrl-cover > div.input-group > input.numinput", "30");
+            elementOps.SetQueryValue("div.Dg_body > table#tbl_DataGrid3 > tbody > tr > td:nth-child(7) > div.ctrl-cover > div.input-group > input.numinput", "30");
             Assert.AreEqual("true", fo.DataGridNumericHidden.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - DataGridNumeric - Read Only”");
             Assert.AreEqual("10.00", fo.DataGridNumericHidden.GetAttribute("value"), true.ToString(), "“Test passed for User - side - DataGridNumeric - Default Value Expression”");
             Assert.AreEqual("10.00", fo.DataGridNumericHidden.GetAttribute("value"), true.ToString(), "“Test passed for User - side - DataGridNumeric - Default Value Expression”");
@@ -167,36 +167,50 @@ namespace UITests.TestCases.User.Forms
         [Test, Order(5)]
         public void DataGridPowerSelect()
         {
+            try
+            {
+                Userlogin("DataGrid");
+                fo.DataGridPowerSelectAddRow.Click();
 
-         //   Userlogin("DataGrid");
-            fo.DataGridPowerSelectAddRow.Click();
+                browserOps.implicitWait(100);
+                browserOps.implicitWait(100);
+                browserOps.implicitWait(100);
 
-            browserOps.implicitWait(100);
-            browserOps.implicitWait(100);
-            browserOps.implicitWait(100);
+                //fo.DataGridPowerSelectSimpleSelect.Click();
+                //elementOps.ExistsXpathClickable(fo.DataGridPowerSelectSimpleSelectItem);            
+                //fo.DataGridPowerSelectSimpleSelectItem.Click();
+                //Assert.AreEqual("true", fo.DataGridPowerSelectSimpleSelect.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - DataGrid BooleanSelect ReadOnly- Read Only”");
 
-            fo.DataGridPowerSelectSimpleSelect.Click();
-            elementOps.ExistsXpathClickable(fo.DataGridPowerSelectSimpleSelectItem);            
-            fo.DataGridPowerSelectSimpleSelectItem.Click();
-            Assert.AreEqual("true", fo.DataGridPowerSelectSimpleSelect.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - DataGrid BooleanSelect ReadOnly- Read Only”");
-
-            actions.DoubleClick(fo.DataGridPowerSelectMultiSelect).Perform();
-            fo.DataGridPowerSelectSimpleSelectMultiItem1.Click();
-            fo.DataGridPowerSelectSimpleSelectMultiItem2.Click();
-            fo.DataGridPowerSelectSimpleSelectMultiItem3.Click();
-            fo.DataGridPowerSelectSimpleSelectMultiItem4.Click();
-            Assert.AreEqual("true", fo.DataGridBooleanSelectReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - DataGrid BooleanSelect ReadOnly- Read Only”");
-
-
-            fo.DataGridPowerReqMinSearch.SendKeys("lower");
-            fo.DataGridPowerReqMinSearchItem.Click();
-            Assert.AreEqual("true", fo.DataGridBooleanSelectReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - DataGrid BooleanSelect ReadOnly- Read Only”");
+                elementOps.ExistsXpath("//*[@id='DataGrid5_powerselectcolumn3textbox_unique']/div/input");
+                //actions.DoubleClick(fo.DataGridPowerSelectMultiSelect);
+                //actions.Perform();
+                fo.DataGridPowerSelectMultiSelect.SendKeys("low" + Keys.Enter);
+                //elementOps.ExistsXpath("//*[@id=\"WebForm_kckd7ze9\"]/div[2]/div/div[3]/div[2]/table/tbody/tr[1]/td[1]");
+                fo.DataGridPowerSelectSimpleSelectMultiItem1.Click();
+                fo.DataGridPowerSelectSimpleSelectMultiItem2.Click();
+                Console.WriteLine("Did It ");
+                //Assert.AreEqual("true", fo.DataGridPo.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - DataGrid BooleanSelect ReadOnly- Read Only”");
 
 
-            Assert.AreEqual("10.00", fo.DataGridNumericHidden.GetAttribute("value"), true.ToString(), "“Test passed for User - side - DataGridNumeric - Default Value Expression”");
+                fo.DataGridPowerGriddnp.SendKeys("lower" + Keys.Enter);
+                elementOps.ExistsXpath("/html/body/div[4]/div[3]/div[2]/form/div[4]/div/div[3]/div[2]/table/tbody/tr[1]/td[1]");
+                actions.DoubleClick(fo.DataGridPowerGridDnpItem).Build();
+                actions.Perform();
+                //fo.DataGridPowerReqMinSearch.SendKeys("lower" + Keys.Enter);
+                //elementOps.ExistsXpath("/html/body/div[4]/div[3]/div[2]/form/div[4]/div/div[3]/div[2]/table/tbody/tr[1]/td[1]");
+                //actions.DoubleClick(fo.DataGridPowerReqMinSearchItem).Build();
+                //actions.Perform();
+                //Assert.AreEqual("true", fo.DataGridBooleanSelectReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - DataGrid BooleanSelect ReadOnly- Read Only”");
 
-            fo.DataGridBooleanSelectColumnDNP.Click();
-            fo.DataGridBooleanSelectColumnDNPSelect.Click();
+
+                //Assert.AreEqual("10.00", fo.DataGridNumericHidden.GetAttribute("value"), true.ToString(), "“Test passed for User - side - DataGridNumeric - Default Value Expression”");
+
+                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message + e.StackTrace);
+            }
         }
 
         [Test, Order(6)]

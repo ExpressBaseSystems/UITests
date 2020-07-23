@@ -100,6 +100,12 @@ namespace UITests.TestCases.User.Forms
                 elementOps.ExistsXpath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a");
                 fo.MenuSelectBasicControlsPowerSelect.Click();
             }
+            else if (FormID == "BasicControlsSimpleSelect")
+            {
+                actions.MoveToElement(fo.MenuSelectBasicControlsSimpleSelect).Perform();
+                elementOps.ExistsXpath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a");
+                fo.MenuSelectBasicControlsSimpleSelect.Click();
+            }
             Console.WriteLine("Test Form Opened");
         }
 
@@ -786,19 +792,23 @@ namespace UITests.TestCases.User.Forms
                 Assert.AreEqual("true", fo.PowerSelectReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - Boolean Select - Hidden”");
 
                 elementOps.ExistsXpathClickable(fo.PowerSelectMultiSelect);
-                actions.MoveToElement(fo.PowerSelectMultiSelect).DoubleClick().Build().Perform();
+                //actions.MoveToElement(fo.PowerSelectMultiSelect).DoubleClick().Build().Perform();
+                fo.PowerSelectMultiSelect.SendKeys("l" + Keys.Enter);
                 //elementOps.ExecuteScripts("var Clickevent = new MouseEvent('dblclick', {'view': window});document.getElementById('PowerSelect4textbox_unique').dispatchEvent(Clickevent); ");
                 elementOps.ExistsXpathClickable(fo.PowerSelectMultiSelectItem1);
                 fo.PowerSelectMultiSelectItem1.Click();
                 fo.PowerSelectMultiSelectItem2.Click();
 
-                actions.DoubleClick(fo.PowerSelectRequired).DoubleClick().Build().Perform();
+                browserOps.implicitWait(10);
+                //actions.DoubleClick(fo.PowerSelectRequired).DoubleClick().Build().Perform();
+                fo.PowerSelectRequired.SendKeys("lo" + Keys.Enter);
                 //elementOps.ExecuteScripts("var Clickevent = new MouseEvent('dblclick', {'view': window});document.getElementById('PowerSelect5textbox_unique').dispatchEvent(Clickevent); ");
                 elementOps.ExistsXpathClickable(fo.PowerSelectRequiredItem);
-                actions.MoveToElement(fo.PowerSelectRequiredItem).Perform();
                 //elementOps.ExecuteScripts("var Clickevent = new MouseEvent('dblclick', {'view': window});document.querySelector('#PowerSelect5tbl > tbody > tr.even > td:nth-child(1)').dispatchEvent(Clickevent); ");
-                actions.DoubleClick(fo.PowerSelectRequiredItem).DoubleClick().Build().Perform();
-
+                //actions.DoubleClick(fo.PowerSelectRequiredItem);
+                //actions.Perform();
+                browserOps.implicitWait(10);
+                browserOps.implicitWait(10);
 
                 int count = 0;
                 bool clicked = false;
@@ -806,7 +816,7 @@ namespace UITests.TestCases.User.Forms
                 {
                     try
                     {
-                        actions.DoubleClick(fo.PowerSelectDNP).DoubleClick().Build().Perform();
+                        actions.MoveToElement(this.driver.FindElement(By.XPath("//*[@id='PowerSelect5tbl_wrapper']/div[3]/div[2]/table/tbody/tr[1]"))).DoubleClick().Build().Perform();
                         //fo.PowerSelectDNP.Click();
                         clicked = true;
                     }
@@ -818,21 +828,58 @@ namespace UITests.TestCases.User.Forms
                     }
                 }
 
-                //fo.PowerSelectRequiredItem.Click();
+                ////fo.PowerSelectRequiredItem.Click();
 
-                //elementOps.ExecuteScripts("var Clickevent = new MouseEvent('dblclick', {'view': window});document.getElementById('PowerSelect7textbox_unique').dispatchEvent(Clickevent); ");
-                //actions.DoubleClick(fo.PowerSelectDNP).DoubleClick().Build().Perform();
-                actions.MoveToElement(fo.PowerSelectDNPItem).Perform();
-                actions.DoubleClick(fo.PowerSelectDNPItem).Perform();
-                //fo.PowerSelectDNPItem.Click();
+                ////elementOps.ExecuteScripts("var Clickevent = new MouseEvent('dblclick', {'view': window});document.getElementById('PowerSelect7textbox_unique').dispatchEvent(Clickevent); ");
+                ////actions.DoubleClick(fo.PowerSelectDNP).DoubleClick().Build().Perform();
+                //actions.MoveToElement(fo.PowerSelectDNPItem).Perform();
+                //actions.DoubleClick(fo.PowerSelectDNPItem).Perform();
+                ////fo.PowerSelectDNPItem.Click();
 
 
-                fo.PowerSelectSearch.SendKeys("ysr");
-                fo.PowerSelectSearchItem.Click();
+                //fo.PowerSelectSearch.SendKeys("ysr");
+                //fo.PowerSelectSearchItem.Click();
             }
             catch (Exception e)
             {
-                Console.WriteLine("Faliure!!\n" + e.Message);
+                Console.WriteLine("Faliure!!\n" + e.Message + e.StackTrace);
+            }
+        }
+        
+        [Property("TestCaseId", "Form_BasicControls_Basic Controls SimpleSelect_001")]
+        [Test, Order(8)]
+        public void SimpleSelect()
+        {
+            try
+            {
+                Userlogin("BasicControlsSimpleSelect");
+                
+
+                browserOps.implicitWait(10);
+                //actions.DoubleClick(fo.PowerSelectRequired).DoubleClick().Build().Perform();
+                this.driver.FindElement(By.XPath("//*[@id='PowerSelect1textbox_lowercase']/div/input")).SendKeys("lo" + Keys.Enter);
+
+                int count = 0;
+                bool clicked = false;
+                while (count < 100 && !clicked)
+                {
+                    try
+                    {
+                        actions.MoveToElement(this.driver.FindElement(By.XPath("//*[@id='PowerSelect1tbl']/tbody/tr[1]"))).DoubleClick().Build().Perform();
+                        //fo.PowerSelectDNP.Click();
+                        clicked = true;
+                    }
+                    catch (StaleElementReferenceException e)
+                    {
+                        e.ToString();
+                        Console.WriteLine("Trying to recover from a stale element :" + e.Message + count);
+                        count = count + 1;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Faliure!!\n" + e.Message + e.StackTrace);
             }
         }
     }

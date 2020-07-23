@@ -114,6 +114,13 @@ namespace UITests.ObjectRepository.User
                 return this.driver.FindElement(By.LinkText("Basic Controls PowerSelect"));
             }
         }
+        public IWebElement MenuSelectBasicControlsSimpleSelect
+        {
+            get
+            {
+                return this.driver.FindElement(By.LinkText("Basic Controls SimpleSelect"));
+            }
+        }
         public IWebElement MenuSelectPlatformControls
         {
             get
@@ -1109,14 +1116,14 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='PowerSelect5textbox_unique']/div"));
+                return this.driver.FindElement(By.XPath("//*[@id='PowerSelect5textbox_lowercase']/div/input"));
             }
         }
         public IWebElement PowerSelectRequiredItem
         { 
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='PowerSelect5tbl']/tbody/tr[1]/td"));
+                return this.driver.FindElement(By.XPath("//*[@id='PowerSelect5tbl_wrapper']/div[3]/div[2]/table/tbody/tr[1]"));
             }
         }
         public IWebElement PowerSelectDNP
@@ -1358,7 +1365,7 @@ namespace UITests.ObjectRepository.User
         { 
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid1']/tbody/tr/td[13]/div[1]/div/div[1]/div/div[2]"));
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid1']/tbody/tr/td[13]/div[1]/div/div[2]/div[3]/div[1]/div[2]"));
             }
         }         
         public IWebElement UserLocationGlobal
@@ -1541,21 +1548,21 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid5']/tbody/tr/td[2]/div/div/div/div/div/div/div/input"));
+                return this.driver.FindElement(By.XPath("//*[@id='DataGrid5_powerselectcolumn3textbox_unique']/div/input"));
             }
         }
         public IWebElement DataGridPowerSelectSimpleSelectMultiItem1
         {
             get
             {
-                return this.driver.FindElement(By.XPath("/html/body/div[4]/div[3]/div[2]/form/div[4]/div/div[2]/div[2]/table/tbody/tr[1]/td[1]/input"));
+                return this.driver.FindElement(By.XPath("//html/body/div[4]/div[3]/div[2]/form/div[2]/div/div[3]/div[2]/table/tbody/tr[1]/td[1]/input"));
             }
         }
         public IWebElement DataGridPowerSelectSimpleSelectMultiItem2
         {
             get
             {
-                return this.driver.FindElement(By.XPath("/html/body/div[4]/div[3]/div[2]/form/div[4]/div/div[2]/div[2]/table/tbody/tr[4]/td[1]/input"));
+                return this.driver.FindElement(By.XPath("/html/body/div[4]/div[3]/div[2]/form/div[2]/div/div[3]/div[2]/table/tbody/tr[2]/td[1]/input"));
             }
         }
         public IWebElement DataGridPowerSelectSimpleSelectMultiItem3
@@ -1576,21 +1583,21 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid5']/tbody/tr/td[2]/div/div/div/div/div/div/div/input"));
+                return this.driver.FindElement(By.XPath("//*[@id='DataGrid5_powerselectcolumn4textbox_lowercase']/div/input"));
             }
         }
         public IWebElement DataGridPowerReqMinSearchItem
         {
             get
             {
-                return this.driver.FindElement(By.XPath("/html/body/div[4]/div[3]/div[2]/form/div[4]/div/div[2]/div[2]/table/tbody/tr[1]/td[1]"));
+                return this.driver.FindElement(By.XPath("/html/body/div[4]/div[3]/div[2]/form/div[4]/div/div[3]/div[2]/table/tbody/tr[1]/td[1]"));
             }
         } 
         public IWebElement DataGridPowerGriddnp
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid5']/tbody/tr/td[2]/div/div/div/div/div/div/div/input"));
+                return this.driver.FindElement(By.XPath("//*[@id='DataGrid5_powerselectcolumn7textbox_unique']/div/input"));
             }
         }
         public IWebElement DataGridPowerGridDnpItem
