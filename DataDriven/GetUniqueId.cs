@@ -11,7 +11,7 @@ namespace UITests.DataDriven
         {
             get
             {
-                return Guid.NewGuid().ToString().Substring(0, 8);
+                return Guid.NewGuid().ToString().Substring(0, 4);
             }
         }
     }

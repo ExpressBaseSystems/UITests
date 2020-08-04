@@ -176,7 +176,7 @@ namespace UITests.TestCases.User
             }
         }
 
-        [Property("TestCaseId", "Form_DisableCancel_001")]
+        [Property("TestCaseId", "Form_BeforeSaveRoutine_001")]
         [Test, Order(5)]
         public void BeforeSaveRoutine()
         {
@@ -722,8 +722,8 @@ namespace UITests.TestCases.User
                 selectElement = new SelectElement(f.Grid2Field4);
                 selectElement.SelectByValue("true");
                 f.Grid2Field5.Click();
-                f.Grid2Field5.SendKeys("A" + Keys.Enter);
-                elementOps.ExistsXpath("//*[@id=\"WebForm_kbnm7hcy\"]/div[3]/div/div[3]/div[2]/table/tbody/tr/td");
+                f.Grid2Field5.SendKeys("A"+Keys.Enter);
+                elementOps.ExistsXpath("//*[@id=\"WebForm_kbnm7hcy\"]/div[3]/div/div[2]/div[2]/table/tbody/tr/td");
                 actions.DoubleClick(f.Grid2Field5Value);
                 actions.Perform();
                 f.Grid2CommitButton.Click();
@@ -743,7 +743,7 @@ namespace UITests.TestCases.User
             }
         }
 
-        [Property("TestCaseId", "Form_FormGridValidation_006")]
+        [Property("TestCaseId", "Form_FormGridValidation_007")]
         [Test, Order(19)]
         public void FormGridCreatedByValidation()
         {
@@ -766,7 +766,7 @@ namespace UITests.TestCases.User
             }
         }
 
-        [Property("TestCaseId", "Form_FormGridValidation_006")]
+        [Property("TestCaseId", "Form_FormGridValidation_008")]
         [Test, Order(20)]
         public void FormGridCreatedAtValidation()
         {
@@ -787,7 +787,7 @@ namespace UITests.TestCases.User
             }
         }
 
-        [Property("TestCaseId", "Form_FormGridValidation_006")]
+        [Property("TestCaseId", "Form_FormGridValidation_009")]
         [Test, Order(21)]
         public void FormGridModifiedByValidation()
         {
@@ -810,7 +810,7 @@ namespace UITests.TestCases.User
             }
         }
 
-        [Property("TestCaseId", "Form_FormGridValidation_006")]
+        [Property("TestCaseId", "Form_FormGridValidation_010")]
         [Test, Order(22)]
         public void FormGridModifiedAtValidation()
         {
@@ -831,7 +831,7 @@ namespace UITests.TestCases.User
             }
         }
 
-        [Property("TestCaseId", "Form_FormGridValidation_006")]
+        [Property("TestCaseId", "Form_FormGridValidation_011")]
         [Test, Order(23)]
         public void FormGridUserSelectValidation()
         {

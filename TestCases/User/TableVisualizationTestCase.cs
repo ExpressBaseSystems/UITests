@@ -511,8 +511,9 @@ namespace UITests.TestCases.User
                 tv.StartsWithOperator.Click();
                 elementOps.ExistsId("dvContainer_1586780535084_0_0_name_hdr_txt1");
                 tv.SearchBoxNameField.SendKeys("a" + Keys.Enter);
-                browserOps.implicitWait(100);
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div");
                 Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTag).ToString(), "Success!! Search  Complete", "Success!! Search  Complete");
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div/i");
                 tv.SearchTagClose.Click();
                 Console.WriteLine("Starts With");
                 wait.Until(webDriver => (driver.PageSource.Contains("<td id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\" colspan=\"13\" style=\"padding: 2px !important; display: none;\"></td>")));
@@ -524,8 +525,9 @@ namespace UITests.TestCases.User
                 tv.EndsWithOperator.Click();
                 elementOps.ExistsId("dvContainer_1586780535084_0_0_name_hdr_txt1");
                 tv.SearchBoxNameField.SendKeys("a" + Keys.Enter);
-                browserOps.implicitWait(100);
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div");
                 Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTag).ToString(), "Success!! Search  Complete", "Success!! Search  Complete");
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div/i");
                 tv.SearchTagClose.Click();
                 wait.Until(webDriver => (driver.PageSource.Contains("<td id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\" colspan=\"13\" style=\"padding: 2px !important; display: none;\"></td>")));
 
@@ -536,8 +538,9 @@ namespace UITests.TestCases.User
                 tv.ContainsOperator.Click();
                 elementOps.ExistsId("dvContainer_1586780535084_0_0_name_hdr_txt1");
                 tv.SearchBoxNameField.SendKeys("o" + Keys.Enter);
-                browserOps.implicitWait(100);
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div");
                 Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTag).ToString(), "Success!! Search  Complete", "Success!! Search  Complete");
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div/i");
                 tv.SearchTagClose.Click();
                 wait.Until(webDriver => (driver.PageSource.Contains("<td id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\" colspan=\"13\" style=\"padding: 2px !important; display: none;\"></td>")));
 
@@ -548,8 +551,9 @@ namespace UITests.TestCases.User
                 tv.NameEqualToOperator.Click();
                 elementOps.ExistsId("dvContainer_1586780535084_0_0_name_hdr_txt1");
                 tv.SearchBoxNameField.SendKeys("Anoopa Baby" + Keys.Enter);
-                browserOps.implicitWait(100);
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div");
                 Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTag).ToString(), "Success!! Search  Complete", "Success!! Search  Complete");
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div/i");
                 tv.SearchTagClose.Click();
                 wait.Until(webDriver => (driver.PageSource.Contains("<td id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\" colspan=\"13\" style=\"padding: 2px !important; display: none;\"></td>")));
 
@@ -580,8 +584,9 @@ namespace UITests.TestCases.User
                 tv.DateEqualToOperator.Click();
                 elementOps.ExistsId("dvContainer_1586780535084_0_0_dob_hdr_txt1");
                 tv.FrmDate.SendKeys("25-04-1995" + Keys.Enter);
-                browserOps.implicitWait(100);
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div");
                 Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTag).ToString(), "Success!! Search  Complete", "Success!! Search  Complete");
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div/i");
                 tv.SearchTagClose.Click();
                 wait.Until(webDriver => (driver.PageSource.Contains("<td id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\" colspan=\"13\" style=\"padding: 2px !important; display: none;\"></td>")));
 
@@ -592,8 +597,9 @@ namespace UITests.TestCases.User
                 tv.DateLessThanOperator.Click();
                 elementOps.ExistsId("dvContainer_1586780535084_0_0_dob_hdr_txt1");
                 tv.FrmDate.SendKeys("25-04-1995" + Keys.Enter);
-                browserOps.implicitWait(100);
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div");
                 Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTag).ToString(), "Success!! Search  Complete", "Success!! Search  Complete");
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div/i");
                 tv.SearchTagClose.Click();
                 wait.Until(webDriver => (driver.PageSource.Contains("<td id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\" colspan=\"13\" style=\"padding: 2px !important; display: none;\"></td>")));
 
@@ -604,8 +610,9 @@ namespace UITests.TestCases.User
                 tv.DateGreaterThanOperator.Click();
                 elementOps.ExistsId("dvContainer_1586780535084_0_0_dob_hdr_txt1");
                 tv.FrmDate.SendKeys("25-04-1995" + Keys.Enter);
-                browserOps.implicitWait(100);
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div");
                 Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTag).ToString(), "Success!! Search  Complete", "Success!! Search  Complete");
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div/i");
                 tv.SearchTagClose.Click();
                 wait.Until(webDriver => (driver.PageSource.Contains("<td id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\" colspan=\"13\" style=\"padding: 2px !important; display: none;\"></td>")));
 
@@ -616,8 +623,9 @@ namespace UITests.TestCases.User
                 tv.DateLessThanorEqualOperator.Click();
                 elementOps.ExistsId("dvContainer_1586780535084_0_0_dob_hdr_txt1");
                 tv.FrmDate.SendKeys("25-04-1995" + Keys.Enter);
-                browserOps.implicitWait(100);
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div");
                 Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTag).ToString(), "Success!! Search  Complete", "Success!! Search  Complete");
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div/i");
                 tv.SearchTagClose.Click();
                 wait.Until(webDriver => (driver.PageSource.Contains("<td id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\" colspan=\"13\" style=\"padding: 2px !important; display: none;\"></td>")));
 
@@ -628,8 +636,9 @@ namespace UITests.TestCases.User
                 tv.DateGreaterThanorEqualOperator.Click();
                 elementOps.ExistsId("dvContainer_1586780535084_0_0_dob_hdr_txt1");
                 tv.FrmDate.SendKeys("25-04-1995" + Keys.Enter);
-                browserOps.implicitWait(100);
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div");
                 Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTag).ToString(), "Success!! Search  Complete", "Success!! Search  Complete");
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div/i");
                 tv.SearchTagClose.Click();
                 wait.Until(webDriver => (driver.PageSource.Contains("<td id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\" colspan=\"13\" style=\"padding: 2px !important; display: none;\"></td>")));
 
@@ -641,8 +650,9 @@ namespace UITests.TestCases.User
                 elementOps.ExistsId("dvContainer_1586780535084_0_0_dob_hdr_txt1");
                 tv.FrmDate.SendKeys("28-07-1994");
                 tv.ToDate.SendKeys("19-08-1994" + Keys.Enter);
-                browserOps.implicitWait(100);
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div");
                 Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTag).ToString(), "Success!! Search  Complete", "Success!! Search  Complete");
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div/i");
                 tv.SearchTagClose.Click();
                 wait.Until(webDriver => (driver.PageSource.Contains("<td id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\" colspan=\"13\" style=\"padding: 2px !important; display: none;\"></td>")));
 
@@ -674,8 +684,9 @@ namespace UITests.TestCases.User
                 tv.NumericEqualToOperator.Click();
                 elementOps.ExistsId("dvContainer_1586780535084_0_0_salary_hdr_txt1");
                 tv.NumericTextField1.SendKeys("10000" + Keys.Enter);
-                browserOps.implicitWait(100);
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div");
                 Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTag).ToString(), "Success!! Search  Complete", "Success!! Search  Complete");
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div/i");
                 tv.SearchTagClose.Click();
                 wait.Until(webDriver => (driver.PageSource.Contains("<td id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\" colspan=\"13\" style=\"padding: 2px !important; display: none;\"></td>")));
 
@@ -686,8 +697,9 @@ namespace UITests.TestCases.User
                 tv.NumericLessThanOperator.Click();
                 elementOps.ExistsId("dvContainer_1586780535084_0_0_salary_hdr_txt1");
                 tv.NumericTextField1.SendKeys("10000" + Keys.Enter);
-                browserOps.implicitWait(100);
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div");
                 Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTag).ToString(), "Success!! Search  Complete", "Success!! Search  Complete");
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div/i");
                 tv.SearchTagClose.Click();
                 wait.Until(webDriver => (driver.PageSource.Contains("<td id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\" colspan=\"13\" style=\"padding: 2px !important; display: none;\"></td>")));
 
@@ -698,8 +710,9 @@ namespace UITests.TestCases.User
                 tv.NumericGreaterThanOperator.Click();
                 elementOps.ExistsId("dvContainer_1586780535084_0_0_salary_hdr_txt1");
                 tv.NumericTextField1.SendKeys("10000" + Keys.Enter);
-                browserOps.implicitWait(100);
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div");
                 Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTag).ToString(), "Success!! Search  Complete", "Success!! Search  Complete");
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div/i");
                 tv.SearchTagClose.Click();
                 wait.Until(webDriver => (driver.PageSource.Contains("<td id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\" colspan=\"13\" style=\"padding: 2px !important; display: none;\"></td>")));
 
@@ -710,8 +723,9 @@ namespace UITests.TestCases.User
                 tv.NumericLessThanorEqualOperator.Click();
                 elementOps.ExistsId("dvContainer_1586780535084_0_0_salary_hdr_txt1");
                 tv.NumericTextField1.SendKeys("10000" + Keys.Enter);
-                browserOps.implicitWait(100);
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div");
                 Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTag).ToString(), "Success!! Search  Complete", "Success!! Search  Complete");
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div/i");
                 tv.SearchTagClose.Click();
                 wait.Until(webDriver => (driver.PageSource.Contains("<td id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\" colspan=\"13\" style=\"padding: 2px !important; display: none;\"></td>")));
 
@@ -722,8 +736,9 @@ namespace UITests.TestCases.User
                 tv.NumericGreaterThanorEqualOperator.Click();
                 elementOps.ExistsId("dvContainer_1586780535084_0_0_salary_hdr_txt1");
                 tv.NumericTextField1.SendKeys("10000" + Keys.Enter);
-                browserOps.implicitWait(100);
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div");
                 Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTag).ToString(), "Success!! Search  Complete", "Success!! Search  Complete");
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div/i");
                 tv.SearchTagClose.Click();
                 wait.Until(webDriver => (driver.PageSource.Contains("<td id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\" colspan=\"13\" style=\"padding: 2px !important; display: none;\"></td>")));
 
@@ -735,8 +750,9 @@ namespace UITests.TestCases.User
                 elementOps.ExistsId("dvContainer_1586780535084_0_0_salary_hdr_txt1");
                 tv.NumericTextField1.SendKeys("10000");
                 tv.NumericTextField2.SendKeys("18000" + Keys.Enter);
-                browserOps.implicitWait(100);
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div");
                 Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTag).ToString(), "Success!! Search  Complete", "Success!! Search  Complete");
+                elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\"]/div/i");
                 tv.SearchTagClose.Click();
                 wait.Until(webDriver => (driver.PageSource.Contains("<td id=\"filterdisplayrowtd_dvContainer_1586780535084_0_0\" colspan=\"13\" style=\"padding: 2px !important; display: none;\"></td>")));
 
@@ -814,7 +830,7 @@ namespace UITests.TestCases.User
             elementOps.ExistsId("rowgroupDD_dvnull_0_0");
             var selectElement = new SelectElement(tv.AutogenRowGroupingSelect);
             selectElement.SelectByValue("groupbycreatedby");
-            browserOps.implicitWait(100);
+            elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr[2]");
             Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.AutogenRowGroupingAdditionalRow).ToString(), "Row Grouping Success", "Row Grouping Success");
         }
 
@@ -832,22 +848,25 @@ namespace UITests.TestCases.User
 
             elementOps.ExistsId("dvnull_0_0_course_name_hdr_txt1");
             tv.CourseSearch.SendKeys("B.Tech CSE" + Keys.Enter);
-            browserOps.implicitWait(100);
+            elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvnull_0_0\"]/div");
             Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTagCourse).ToString(), "Success!! Search  Complete", "Success!! Search  Complete");
+            elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvnull_0_0\"]/div/i");
             tv.SearchTagCourseClose.Click();
             wait.Until(webDriver => (driver.PageSource.Contains("<td id=\"filterdisplayrowtd_dvnull_0_0\" colspan=\"11\" style=\"padding: 2px !important; display: none;\"></td>")));
 
             elementOps.ExistsId("dvnull_0_0_eb_created_by_hdr_txt1");
             tv.CreatedBySearch.SendKeys("Anoopa Baby" + Keys.Enter);
-            browserOps.implicitWait(100);
+            elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvnull_0_0\"]/div");
             Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTagCourse).ToString(), "Success!! Search  Complete", "Success!! Search  Complete");
+            elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvnull_0_0\"]/div/i");
             tv.SearchTagCourseClose.Click();
             wait.Until(webDriver => (driver.PageSource.Contains("<td id=\"filterdisplayrowtd_dvnull_0_0\" colspan=\"11\" style=\"padding: 2px !important; display: none;\"></td>")));
 
             elementOps.ExistsId("dvnull_0_0_eb_created_at_hdr_txt1");
             tv.CreatedAtSearch.SendKeys("05-07-2020" + Keys.Enter);
-            browserOps.implicitWait(100);
+            elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvnull_0_0\"]/div");
             Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTagCourse).ToString(), "Success!! Search  Complete", "Success!! Search  Complete");
+            elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvnull_0_0\"]/div/i");
             tv.SearchTagCourseClose.Click();
             wait.Until(webDriver => (driver.PageSource.Contains("<td id=\"filterdisplayrowtd_dvnull_0_0\" colspan=\"11\" style=\"padding: 2px !important; display: none;\"></td>")));
             Console.WriteLine("AutoDeployed Table search success");
@@ -1078,7 +1097,7 @@ namespace UITests.TestCases.User
                 {
                     UserLogin();
                     login_status = true;
-                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-33-33-33-33");
+                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-110-110-110-110#");
                 }
                 tv = new TableVisualization(driver);
                 
@@ -1086,7 +1105,7 @@ namespace UITests.TestCases.User
                 tv.AutoGenActionColumnLink.Click();
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
                 elementOps.ExistsXpath("//*[@id=\"objname\"]/span");
-                Assert.AreEqual("New Mode", tv.Mode.GetAttribute("innerHTML"), "Success", "Success");
+                Assert.AreEqual("View Mode", tv.Mode.GetAttribute("innerHTML"), "Success", "Success");
             }
             catch (Exception e)
             {
@@ -1202,7 +1221,7 @@ namespace UITests.TestCases.User
             }
         }
 
-        [Property("TestCaseId", "TableVisualization_FD_020")]
+        [Property("TestCaseId", "TableVisualization_TVHavingFD_020")]
         [Test, Order(34)]
         public void TVHavingFD()
         {
@@ -1217,9 +1236,10 @@ namespace UITests.TestCases.User
                 browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-64-64-64-64");
                 elementOps.ExistsId("name");
                 tv.PSName.Click();
-                tv.PSName.SendKeys("A" + Keys.Enter);
+                tv.PSName.SendKeys("Anoopa Baby" + Keys.Enter);
                 elementOps.ExistsXpath("//*[@id=\"filterWindow_dvContainer_1589865744873_0_0_PowerSelect1tbl\"]/tbody/tr[1]/td");
-                tv.PSName.SendKeys(Keys.Enter);
+                actions.DoubleClick(tv.PSSelectName);
+                actions.Perform();
 
                 elementOps.ExistsXpath("//*[@id=\"filterWindow_dvContainer_1589865744873_0_0_PowerSelect1name\"]/div/span");
                 tv.FDNameTxt.Click();
@@ -1235,7 +1255,7 @@ namespace UITests.TestCases.User
                 //elementOps.SetValue("filterWindow_dvContainer_1589865744873_0_0_Date2", "15-04-2020");
                 tv.FDLocationOptionGlobal.Click();
                 tv.FDLocationOptionSelect.Click();
-                elementOps.ExistsXpath("//*[@id=\"filterWindow_dvContainer_1589865744873_0_0_UserLocation1Wraper\"]/span/div/ul/li[3]/a/label");
+                elementOps.ExistsXpath("//*[@id=\"filterWindow_dvContainer_1589865744873_0_0_UserLocation1Wraper\"]/span/div/ul/li[2]/a/label/input");
                 tv.FDLocationOptionKochi.Click();
 
                 elementOps.ExistsId("btnGo");
@@ -1305,7 +1325,7 @@ namespace UITests.TestCases.User
         }
 
         [Property("TestCaseId", "TableVisualization_FDAutoRun_022")]
-        [Test, Order(36)]
+        [Test, Order(37)]
         public void RenderAsImage()
         {
             try

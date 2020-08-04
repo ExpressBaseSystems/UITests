@@ -21,6 +21,7 @@ namespace UITests.Bot.TestCases
                 b = new ChatBot(driver);
                 browserOps.Goto("https://uitesting.eb-test.cloud/bots");
                 elementOps.ExistsId("botno7");
+                b.UITestBot1.Click();
                 Assert.Multiple(() =>
                 {
                     Assert.AreEqual("True", elementOps.IsWebElementPresent(b.BotFrame).ToString(), "Success!!", "Success!!");
@@ -44,6 +45,8 @@ namespace UITests.Bot.TestCases
             {
                 b = new ChatBot(driver);
                 browserOps.Goto("https://uitesting.eb-test.cloud/bots");
+                elementOps.ExistsId("botno7");
+                b.UITestBot1.Click();
                 elementOps.ExistsClass("eb-chat-head");
                 Assert.Multiple(() =>
                 {
@@ -62,7 +65,7 @@ namespace UITests.Bot.TestCases
             }
         }
 
-        [Property("TestCaseId", "Bot_CheckBotHeader_001")]
+        [Property("TestCaseId", "Bot_BotMaximise_001")]
         [Test, Order(3)]
         public void BotMaximise()
         {
@@ -70,6 +73,8 @@ namespace UITests.Bot.TestCases
             {
                 b = new ChatBot(driver);
                 browserOps.Goto("https://uitesting.eb-test.cloud/bots");
+                elementOps.ExistsId("botno7");
+                b.UITestBot1.Click();
                 elementOps.ExistsId("maximizediv7");
                 b.BotMaximise.Click();
                 Assert.AreEqual("min-width: inherit; display: flex; width: 50%;", b.BotFrame.GetAttribute("style").ToString(), "Success", "Success");
@@ -82,7 +87,7 @@ namespace UITests.Bot.TestCases
             }
         }
 
-        [Property("TestCaseId", "Bot_CheckBotHeader_001")]
+        [Property("TestCaseId", "Bot_BotClose_001")]
         [Test, Order(4)]
         public void BotClose()
         {
@@ -90,10 +95,12 @@ namespace UITests.Bot.TestCases
             {
                 b = new ChatBot(driver);
                 browserOps.Goto("https://uitesting.eb-test.cloud/bots");
+                elementOps.ExistsId("botno7");
+                b.UITestBot1.Click();
                 elementOps.ExistsId("closediv7");
                 b.BotClose.Click();
                 Assert.AreEqual("min-width: inherit; display: none; opacity: 1;", b.BotFrame.GetAttribute("style").ToString(), "Success", "Success");
-                b.UITestBot.Click();
+                b.UITestBot1.Click();
                 Assert.AreEqual("min-width: inherit; display: flex; opacity: 1;", b.BotFrame.GetAttribute("style").ToString(), "Success", "Success");
             }
             catch (Exception e)
@@ -102,7 +109,7 @@ namespace UITests.Bot.TestCases
             }
         }
 
-        [Property("TestCaseId", "Bot_CheckBotHeader_001")]
+        [Property("TestCaseId", "Bot_CheckBotBody_001")]
         [Test, Order(5)]
         public void CheckBotBody()
         {
@@ -110,6 +117,8 @@ namespace UITests.Bot.TestCases
             {
                 b = new ChatBot(driver);
                 browserOps.Goto("https://uitesting.eb-test.cloud/bots");
+                elementOps.ExistsId("botno7");
+                b.UITestBot1.Click();
                 elementOps.ExistsClass("eb-chatBox");
                 Assert.Multiple(() =>
                 {
@@ -126,7 +135,7 @@ namespace UITests.Bot.TestCases
             }
         }
 
-        [Property("TestCaseId", "Bot_CheckBotHeader_001")]
+        [Property("TestCaseId", "Bot_BotStartOver_001")]
         [Test, Order(6)]
         public void BotStartOver()
         {
@@ -134,6 +143,8 @@ namespace UITests.Bot.TestCases
             {
                 b = new ChatBot(driver);
                 browserOps.Goto("https://uitesting.eb-test.cloud/bots");
+                elementOps.ExistsId("botno7");
+                b.UITestBot1.Click();
                 elementOps.ExistsClass("eb_botStartover");
                 b.BotBodyStartOver.Click();
                 elementOps.ExistsClass("msg-cont");

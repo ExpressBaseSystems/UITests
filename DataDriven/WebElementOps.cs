@@ -89,6 +89,12 @@ namespace UITests.DataDriven
             js.ExecuteScript("arguments[0].setAttribute(arguments[1], arguments[2]);",element, attribute, value);
         }
 
+        public void ChangeStyleByClassNameJQuery(string classname, string attribute, string value)
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript("$('." + classname + "').attr('" + attribute + "', '" + value + "')");
+        }
+
         public object GetValueFromJS(IWebElement element)
         {
             return ((IJavaScriptExecutor)driver).ExecuteScript("return arguments[0].innerHTML;", element);
