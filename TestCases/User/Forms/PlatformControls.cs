@@ -56,6 +56,12 @@ namespace UITests.TestCases.User.Forms
                 elementOps.ExistsXpath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a");
                 fo.MenuSelectPlatformControls.Click();
             }
+            if (FormID == "PlatformControlsCalendar")
+            {
+                actions.MoveToElement(fo.MenuSelectPlatformControlCalender).Perform();
+                elementOps.ExistsXpath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a");
+                fo.MenuSelectPlatformControlCalender.Click();
+            }
             Console.WriteLine("Test Form Opened");
         }
 
@@ -112,6 +118,47 @@ namespace UITests.TestCases.User.Forms
             Assert.AreEqual(TodaysDate, fo.SysModifiedAt.GetAttribute("value"), true.ToString(), "“Test passed for User - side - SysModifiedAt”");
         }
 
-       
+        [Property("TestCaseId", "Form_PlatformControls_001")]
+        [Test, Order(1)]
+        public void PlatformControlCalender()
+        {
+            Userlogin("PlatformControlsCalendar");
+            int count = 10;
+
+            for (int i = 0; i < 30; i++)
+            {
+                
+                UniqueId = UID.GetId;
+                this.driver.FindElement(By.Id("TextBox1")).SendKeys(UniqueId);
+
+                elementOps.SetValue("Numeric1", "123");
+                elementOps.ExecuteScripts("const e = new Event('change');" +
+                    "const element = document.querySelector('#Numeric1');" +
+                    "element.dispatchEvent(e); ");
+
+                elementOps.SetValue("Date1", "15-04-2020");
+                elementOps.ExecuteScripts("const e = new Event('change');" +
+                    "const element = document.querySelector('#Date1');" +
+                    "element.dispatchEvent(e); ");
+
+                fo.DataGrid1AddRow.Click();
+                this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid1']/tbody/tr/td[2]/div/input")).SendKeys(UniqueId);
+                this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid1']/tbody/tr/td[3]/div/div/input")).SendKeys(UniqueId);
+                elementOps.SetQueryValue("div.Dg_body > table#tbl_DataGrid1 > tbody > tr > td:nth-child(4) > div.ctrl-cover > div.input-group > input.date", count++ + "- 03-2020");
+
+                elementOps.ExecuteScripts("document.querySelector('#tbl_DataGrid1 > tbody > tr > td.ctrlstd > button.check-row.rowc').click();");
+                this.driver.FindElement(By.Id("webformsave")).Click();
+                elementOps.ExistsXpathClickable(this.driver.FindElement(By.Id("webformnew"))); 
+                elementOps.ExistsClass("eb_messageBox_container");
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: block");
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+
+
+                this.driver.FindElement(By.Id("webformnew")).Click();
+            }
+            
+
+        }
+
     }
 }

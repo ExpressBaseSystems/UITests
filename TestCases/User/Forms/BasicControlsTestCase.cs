@@ -347,8 +347,7 @@ namespace UITests.TestCases.User.Forms
 
                 fo.SaveForm.Click();
                 elementOps.ExistsClass("eb_messageBox_container");
-                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");                
-                browserOps.Refresh();
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");       
 
                 browserOps.implicitWait(2000);
                 browserOps.implicitWait(2000);
@@ -477,7 +476,7 @@ namespace UITests.TestCases.User.Forms
                     Assert.AreEqual("true", fo.DateTimeHidden.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
                     Assert.AreEqual("true", fo.DateTimeReadOnly.GetAttribute("eb-readonly"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
                     Assert.AreEqual("15-04-2020", fo.DateTimenullable.GetAttribute("value"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
-                    Assert.AreEqual("20-04-2015", fo.DateTimeDNP.GetAttribute("value"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+                    Assert.AreEqual("15-04-2020", fo.DateTimeDNP.GetAttribute("value"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
                     Assert.AreEqual("20-04-2015", fo.DateTimeDVE.GetAttribute("value"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
                 });
 
@@ -489,9 +488,10 @@ namespace UITests.TestCases.User.Forms
                 browserOps.implicitWait(2000);
                 browserOps.DriverWait();
                 browserOps.DriverWait();
-                Assert.AreEqual("2:00 PM", fo.Time.GetAttribute("value"), true.ToString(), 2.20);
-                Assert.AreEqual("15-04-2020 2:00 PM", fo.DateTime.GetAttribute("value"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
-                Assert.AreEqual("15-04-2020", fo.DateTimeDNP.GetAttribute("value"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+                Assert.AreEqual("02:00 PM", fo.Time.GetAttribute("value"), true.ToString(), 2.20);
+                Assert.AreEqual("15-04-2020 0" +
+                    "2:00 PM", fo.DateTime.GetAttribute("value"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+                Assert.AreEqual(TodaysDate, fo.DateTimeDNP.GetAttribute("value"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
                 DateTimePickerValidation();
 
                 fo.EditForm.Click();
@@ -506,15 +506,14 @@ namespace UITests.TestCases.User.Forms
                 fo.SaveForm.Click();
                 elementOps.ExistsClass("eb_messageBox_container");
                 elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
-                browserOps.Refresh();
 
                 browserOps.implicitWait(2000);
                 browserOps.implicitWait(2000);
                 browserOps.implicitWait(2000);
                 browserOps.DriverWait();
                 browserOps.DriverWait();
-                Assert.AreEqual("2:00 PM", fo.Time.GetAttribute("value"), true.ToString(), 2.20);
-                Assert.AreEqual("15-04-2020 2:00 PM", fo.DateTime.GetAttribute("value"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
+                Assert.AreEqual("02:00 PM", fo.Time.GetAttribute("value"), true.ToString(), 2.20);
+                Assert.AreEqual("15-04-2020 02:00 PM", fo.DateTime.GetAttribute("value"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
                 Assert.AreEqual(TodaysDate, fo.DateTimeDNP.GetAttribute("value"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
                 DateTimePickerValidation();
             }
@@ -536,7 +535,6 @@ namespace UITests.TestCases.User.Forms
                 Assert.AreEqual("15-07-2020", fo.DateTimeTigger.GetAttribute("value"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
                 Assert.AreEqual("15-01-2020", fo.DateTimeVE.GetAttribute("value"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
                 Assert.AreEqual("block", fo.DateTimeHideExpression.GetCssValue("display"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
-                Assert.AreEqual(null, fo.DateTimeReadOnlyExpression.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - NumericBox - Plain”");
             });
             
         }
@@ -613,7 +611,6 @@ namespace UITests.TestCases.User.Forms
                 fo.SaveForm.Click();
                 elementOps.ExistsClass("eb_messageBox_container");
                 elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
-                browserOps.Refresh();
 
                 browserOps.implicitWait(2000);
                 browserOps.implicitWait(2000);
@@ -784,6 +781,9 @@ namespace UITests.TestCases.User.Forms
             {
                 Userlogin("BasicControlsPowerSelect");
 
+                fo.SaveForm.Click();
+                Assert.True(elementOps.InvisibleWait(fo.RequiredText), true.ToString(), "Success!!", "Success!!");
+
                 fo.PowerSelectSimpleSelect.Click();
                 fo.PowerSelectSimpleSelectitem.Click();
 
@@ -802,50 +802,41 @@ namespace UITests.TestCases.User.Forms
                 browserOps.implicitWait(10);
                 //actions.DoubleClick(fo.PowerSelectRequired).DoubleClick().Build().Perform();
                 fo.PowerSelectRequired.SendKeys("lo" + Keys.Enter);
-                //elementOps.ExecuteScripts("var Clickevent = new MouseEvent('dblclick', {'view': window});document.getElementById('PowerSelect5textbox_unique').dispatchEvent(Clickevent); ");
-                elementOps.ExistsXpathClickable(fo.PowerSelectRequiredItem);
-                //elementOps.ExecuteScripts("var Clickevent = new MouseEvent('dblclick', {'view': window});document.querySelector('#PowerSelect5tbl > tbody > tr.even > td:nth-child(1)').dispatchEvent(Clickevent); ");
-                //actions.DoubleClick(fo.PowerSelectRequiredItem);
-                //actions.Perform();
-                browserOps.implicitWait(10);
-                browserOps.implicitWait(10);
-
-                int count = 0;
-                bool clicked = false;
-                while (count < 100 && !clicked)
-                {
-                    try
-                    {
-                        actions.MoveToElement(this.driver.FindElement(By.XPath("//*[@id='PowerSelect5tbl_wrapper']/div[3]/div[2]/table/tbody/tr[1]"))).DoubleClick().Build().Perform();
-                        //fo.PowerSelectDNP.Click();
-                        clicked = true;
-                    }
-                    catch (StaleElementReferenceException e)
-                    {
-                        e.ToString();
-                        Console.WriteLine("Trying to recover from a stale element :" + e.Message + count);
-                        count = count + 1;
-                    }
-                }
-
-                ////fo.PowerSelectRequiredItem.Click();
-
-                ////elementOps.ExecuteScripts("var Clickevent = new MouseEvent('dblclick', {'view': window});document.getElementById('PowerSelect7textbox_unique').dispatchEvent(Clickevent); ");
-                ////actions.DoubleClick(fo.PowerSelectDNP).DoubleClick().Build().Perform();
-                //actions.MoveToElement(fo.PowerSelectDNPItem).Perform();
-                //actions.DoubleClick(fo.PowerSelectDNPItem).Perform();
-                ////fo.PowerSelectDNPItem.Click();
+                elementOps.ExistspresenceOfElementLocated(By.XPath("//*[@id='PowerSelect5tbl']/tbody/tr[1]/td"));
+                elementOps.doubleClick(fo.PowerSelectRequiredItem);
+                //int count = 0;
+                //bool clicked = false;
+                //while (count < 10 && !clicked)
+                //{
+                //    try
+                //    {
+                //        actions.MoveToElement(fo.PowerSelectRequiredItem).DoubleClick().Build().Perform();
+                //        //fo.PowerSelectDNP.Click();
+                //        clicked = true;
+                //    }
+                //    catch (StaleElementReferenceException e)
+                //    {
+                //        e.ToString();
+                //        Console.WriteLine("Trying to recover from a stale element :" + e + count);
+                //        count = count + 1;
+                //    }
+                //}
+                elementOps.doubleClick(fo.PowerSelectDNP);
+                elementOps.doubleClick(fo.PowerSelectDNPItem);
+                
+                
+                elementOps.doubleClick(fo.PowerSelectSearch);
+                elementOps.doubleClick(fo.PowerSelectSearchItem);
 
 
-                //fo.PowerSelectSearch.SendKeys("ysr");
-                //fo.PowerSelectSearchItem.Click();
+                
             }
             catch (Exception e)
             {
                 Console.WriteLine("Faliure!!\n" + e.Message + e.StackTrace);
             }
-        }
-        
+        }        
+
         [Property("TestCaseId", "Form_BasicControls_Basic Controls SimpleSelect_001")]
         [Test, Order(8)]
         public void SimpleSelect()
@@ -853,34 +844,72 @@ namespace UITests.TestCases.User.Forms
             try
             {
                 Userlogin("BasicControlsSimpleSelect");
-                
 
-                browserOps.implicitWait(10);
-                //actions.DoubleClick(fo.PowerSelectRequired).DoubleClick().Build().Perform();
-                this.driver.FindElement(By.XPath("//*[@id='PowerSelect1textbox_lowercase']/div/input")).SendKeys("lo" + Keys.Enter);
+                fo.SimpleSelectWithGroup.Click();
+                fo.SimpleSelectWithGroupItem.Click();
+                Assert.AreEqual("Option 1", fo.SimpleSelectWithGroupSelection.Text, true.ToString(), "“Test passed for User - side - SimpleSelect - Hidden”");
 
-                int count = 0;
-                bool clicked = false;
-                while (count < 100 && !clicked)
-                {
-                    try
-                    {
-                        actions.MoveToElement(this.driver.FindElement(By.XPath("//*[@id='PowerSelect1tbl']/tbody/tr[1]"))).DoubleClick().Build().Perform();
-                        //fo.PowerSelectDNP.Click();
-                        clicked = true;
-                    }
-                    catch (StaleElementReferenceException e)
-                    {
-                        e.ToString();
-                        Console.WriteLine("Trying to recover from a stale element :" + e.Message + count);
-                        count = count + 1;
-                    }
-                }
+                Assert.AreEqual("true", fo.SimpleSelectHidden.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - SimpleSelect - Hidden”");
+                Assert.AreEqual("true", fo.SimpleSelectReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - SimpleSelect - ReadOnly”");
+
+                fo.SimpleSelectWithOutGroup.Click();
+                fo.SimpleSelectWithOutGroupItem.Click();
+                Assert.AreEqual("Option 1", fo.SimpleSelectWithOutGroupSelection.Text, true.ToString(), "“Test passed for User - side - SimpleSelect - Hidden”");
+
+                fo.SimpleSelectMultiSelect.Click();
+                fo.SimpleSelectMultiSelectGroupItem1.Click();
+                fo.SimpleSelectMultiSelectGroupItem2.Click();
+
+                //elementOps.ExistsLinkText("Option 1, option 2");
+                //Assert.AreEqual("Option 1, option 2", fo.SimpleSelectMultiSelectSelection.Text, true.ToString(), "“Test passed for User - side - SimpleSelect - Hidden”");
+
+                fo.SimpleSelectDNP.Click();
+                fo.SimpleSelectDNPItem.Click();
+                Assert.AreEqual("option 2", fo.SimpleSelectDNPSelection.Text, true.ToString(), "“Test passed for User - side - SimpleSelect - Hidden”");
+
+                fo.SimpleSelectTrigger.Click();
+                fo.SimpleSelectTriggerItem1.Click();
+
+                elementOps.InvisibleWait(By.Id("cont_SimpleSelect8"));
+                Assert.AreEqual("none", fo.SimpleSelectHideExpression.GetCssValue("display"), true.ToString(), "“Test passed for User - side - SimpleSelect - Hidden”");
+                Assert.AreEqual("true", fo.SimpleSelectDisableExpression.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - SimpleSelect - Hidden”");
+
+                Assert.AreEqual("option 1", fo.SimpleSelectDVESelection.Text, true.ToString(), "“Test passed for User - side - SimpleSelect - Hidden”");
+                Assert.AreEqual("option 1", fo.SimpleSelectVESelection.Text, true.ToString(), "“Test passed for User - side - SimpleSelect - Hidden”");
+
+                fo.SaveForm.Click();
+                elementOps.ExistsClass("eb_messageBox_container");
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+
+                SimpleSelectValidator();
+                fo.EditForm.Click();
+                SimpleSelectValidator();
+
+                fo.SaveForm.Click();
+                elementOps.ExistsClass("eb_messageBox_container");
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+
+                SimpleSelectValidator();
             }
             catch (Exception e)
             {
                 Console.WriteLine("Faliure!!\n" + e.Message + e.StackTrace);
             }
+        }
+
+        public void SimpleSelectValidator()
+        {
+            Assert.AreEqual("Option 1", fo.SimpleSelectWithGroupSelection.Text, true.ToString(), "“Test passed for User - side - SimpleSelect - Hidden”");
+            Assert.AreEqual("true", fo.SimpleSelectHidden.GetAttribute("eb-hidden"), true.ToString(), "“Test passed for User - side - SimpleSelect - Hidden”");
+            Assert.AreEqual("true", fo.SimpleSelectReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - SimpleSelect - ReadOnly”");
+            Assert.AreEqual("Option 1", fo.SimpleSelectWithOutGroupSelection.Text, true.ToString(), "“Test passed for User - side - SimpleSelect - Hidden”");
+            Assert.AreEqual("Option 1, option 2", fo.SimpleSelectMultiSelectSelection.Text, true.ToString(), "“Test passed for User - side - SimpleSelect - Hidden”");           
+            Assert.AreEqual("- select -", fo.SimpleSelectDNPSelection.Text, true.ToString(), "“Test passed for User - side - SimpleSelect - Hidden”");
+            elementOps.InvisibleWait(By.Id("cont_SimpleSelect8"));
+            Assert.AreEqual("none", fo.SimpleSelectHideExpression.GetCssValue("display"), true.ToString(), "“Test passed for User - side - SimpleSelect - Hidden”");
+            Assert.AreEqual("true", fo.SimpleSelectDisableExpression.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - SimpleSelect - Hidden”");
+            Assert.AreEqual("option 1", fo.SimpleSelectDVESelection.Text, true.ToString(), "“Test passed for User - side - SimpleSelect - Hidden”");
+            Assert.AreEqual("option 1", fo.SimpleSelectVESelection.Text, true.ToString(), "“Test passed for User - side - SimpleSelect - Hidden”");
         }
     }
 }
