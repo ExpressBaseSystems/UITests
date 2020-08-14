@@ -769,6 +769,7 @@ namespace UITests.ObjectRepository.User
                 return this.driver.FindElement(By.Id("name"));
             }
         }
+        
 
         public IWebElement PSSelectName
         {
@@ -830,7 +831,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"filterWindow_dvContainer_1589865744873_0_0_UserLocation1Wraper\"]/span/div/ul/li[3]/a/label"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"filterWindow_dvContainer_1589865744873_0_0_UserLocation1Wraper\"]/span/div/ul/li[2]/a/label/input"));
             }
         }
 

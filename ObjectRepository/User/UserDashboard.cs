@@ -158,6 +158,46 @@ namespace UITests.ObjectRepository.User
             }
         }
 
+        public IWebElement FDButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("filter-dg"));
+            }
+        }
+
+        public IWebElement FDLocationGlobal
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("paramdiv_UserLocation1_checkbox"));
+            }
+        }
+
+        public IWebElement FDLocationOptionSelect
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"paramdiv_UserLocation1Wraper\"]/span/div/button"));
+            }
+        }
+
+        public IWebElement FDLocationOptionKochi
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"paramdiv_UserLocation1Wraper\"]/span/div/ul/li[2]/a/label/input"));
+            }
+        }
+
+        public IWebElement RunButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("btnGo"));
+            }
+        }
+
         public IWebElement GoogleMapDiv
         {
             get
@@ -179,6 +219,38 @@ namespace UITests.ObjectRepository.User
             get
             {
                 return this.driver.FindElement(By.Id("undefined_link_tile6"));
+            }
+        }
+
+        public IWebElement DashBoardDropDownButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("UserDashBoardSwitchBtn"));
+            }
+        }
+
+        public IWebElement DropDownDashBoard2
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"UserDashBoardSwitchList\"]/div[2]/button"));
+            }
+        }
+
+        public IWebElement DashBoard2DataLabel
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("tbundefinedDataLabel1_Data_pane"));
+            }
+        }
+
+        public IWebElement TV1
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("t1"));
             }
         }
 

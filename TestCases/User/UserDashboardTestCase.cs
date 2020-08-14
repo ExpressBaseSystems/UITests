@@ -97,7 +97,7 @@ namespace UITests.TestCases.User
             Console.WriteLine("Link To WebForm Working");
         }
 
-        [Property("TestCaseId", "UserDashBoard_CheckLinkToWebForm_001")]
+        [Property("TestCaseId", "UserDashBoard_CheckAppearance_001")]
         [Test, Order(5)]
         public void CheckAppearance()
         {
@@ -106,7 +106,7 @@ namespace UITests.TestCases.User
             Assert.AreEqual("background-image: linear-gradient(to right bottom, rgb(140, 138, 255), rgb(255, 255, 255));", u.LayoutDiv.GetAttribute("style"), "Success", "Success");
         }
 
-        [Property("TestCaseId", "UserDashBoard_CheckLinkToWebForm_001")]
+        [Property("TestCaseId", "UserDashBoard_BrowseTV_001")]
         [Test, Order(6)]
         public void BrowseTV()
         {
@@ -119,7 +119,7 @@ namespace UITests.TestCases.User
             driver.SwitchTo().Window(driver.WindowHandles.Last());
         }
 
-        [Property("TestCaseId", "UserDashBoard_CheckLinkToWebForm_001")]
+        [Property("TestCaseId", "UserDashBoard_RefreshTV_001")]
         [Test, Order(7)]
         public void RefreshTV()
         {
@@ -134,7 +134,7 @@ namespace UITests.TestCases.User
             Console.WriteLine("Table Visualization Present");
         }
 
-        [Property("TestCaseId", "UserDashBoard_CheckLinkToWebForm_001")]
+        [Property("TestCaseId", "UserDashBoard_BrowseChart_001")]
         [Test, Order(8)]
         public void BrowseChart()
         {
@@ -147,7 +147,7 @@ namespace UITests.TestCases.User
             driver.SwitchTo().Window(driver.WindowHandles.Last());
         }
 
-        [Property("TestCaseId", "UserDashBoard_CheckLinkToWebForm_001")]
+        [Property("TestCaseId", "UserDashBoard_RefreshChart_001")]
         [Test, Order(9)]
         public void RefreshChart()
         {
@@ -158,7 +158,7 @@ namespace UITests.TestCases.User
             Console.WriteLine("Chart Present");
         }
 
-        [Property("TestCaseId", "UserDashBoard_CheckLinkToWebForm_001")]
+        [Property("TestCaseId", "UserDashBoard_LinkDashBoard_001")]
         [Test, Order(10)]
         public void LinkDashBoard()
         {
@@ -176,7 +176,7 @@ namespace UITests.TestCases.User
             driver.SwitchTo().Window(driver.WindowHandles.Last());
         }
 
-        [Property("TestCaseId", "UserDashBoard_CheckLinkToWebForm_001")]
+        [Property("TestCaseId", "UserDashBoard_LinkDashBoardHavingFD_001")]
         [Test, Order(11)]
         public void LinkDashBoardHavingFD()
         {
@@ -187,6 +187,16 @@ namespace UITests.TestCases.User
             u.LinkToDashBoardFD.Click();
             driver.SwitchTo().Window(driver.WindowHandles.Last());
             Assert.AreEqual("https://uitesting.eb-test.cloud/DashBoard/DashBoardView?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-22-130-130-130-130", driver.Url, "Success", "Success");
+            wait.Until(webDriver => (driver.PageSource.Contains("id=\"eb_common_loader\" style=\"background-color: transparent; display: none;\"")));
+            elementOps.ExistsId("filter-dg");
+            u.FDButton.Click();
+            elementOps.ExistsId("paramdiv_PowerSelect1name");
+            elementOps.ExistsId("btnGo");
+            browserOps.ClickableWait(u.RunButton);
+            u.RunButton.Click();
+            wait.Until(webDriver => (driver.PageSource.Contains("id=\"tb1tile0_processing\" class=\"dataTables_processing panel panel-default\" style=\"display: none;\"")));
+            Assert.True(elementOps.GetTableRowCount("//*[@id=\"tb1tile0\"]/tbody/tr") > 0, "Success", "Success");
+
             driver.Close();
             driver.SwitchTo().Window(driver.WindowHandles.Last());
 
@@ -194,8 +204,8 @@ namespace UITests.TestCases.User
             driver.SwitchTo().Window(driver.WindowHandles.Last());
         }
 
-        [Property("TestCaseId", "UserDashBoard_CheckLinkToWebForm_001")]
-        [Test, Order(11)]
+        [Property("TestCaseId", "UserDashBoard_CheckGoogleMap_001")]
+        [Test, Order(12)]
         public void CheckGoogleMap()
         {
             CheckUsrLogin();
@@ -204,8 +214,8 @@ namespace UITests.TestCases.User
             Console.WriteLine("Map Present");
         }
 
-        [Property("TestCaseId", "UserDashBoard_CheckLinkToWebForm_001")]
-        [Test, Order(12)]
+        [Property("TestCaseId", "UserDashBoard_BrowseGoogleMap_001")]
+        [Test, Order(13)]
         public void BrowseGoogleMap()
         {
             CheckUsrLogin();
@@ -217,8 +227,8 @@ namespace UITests.TestCases.User
             driver.SwitchTo().Window(driver.WindowHandles.Last());
         }
 
-        [Property("TestCaseId", "UserDashBoard_CheckLinkToWebForm_001")]
-        [Test, Order(13)]
+        [Property("TestCaseId", "UserDashBoard_RefreshGoogleMap_001")]
+        [Test, Order(14)]
         public void RefreshGoogleMap()
         {
             CheckUsrLogin();
@@ -227,6 +237,23 @@ namespace UITests.TestCases.User
             wait.Until(webDriver => (driver.PageSource.Contains("class=\"dash-loader\" style=\"display: none;\"")));
             elementOps.ExistsXpath("//*[@id=\"tile6\"]/div[2]");
             Console.WriteLine("Map Present");
+        }
+
+        [Property("TestCaseId", "UserDashBoard_SwitchDashBoard_001")]
+        [Test, Order(14)]
+        public void SwitchDashBoard()
+        {
+            CheckUsrLogin();
+            elementOps.ExistsId("UserDashBoardSwitchBtn");
+            u.DashBoardDropDownButton.Click();
+            elementOps.ExistsId("UserDashBoardSwitchList");
+            u.DropDownDashBoard2.Click();
+            wait.Until(webDriver => (driver.PageSource.Contains("class=\"dash-loader\" style=\"display: none;\"")));
+            Assert.Multiple(() =>
+            {
+                Assert.True(elementOps.IsWebElementPresent(u.DashBoard2DataLabel), "Success", "Success");
+                Assert.True(elementOps.IsWebElementPresent(u.TV1), "Success", "Success");
+            });
         }
     }
 }

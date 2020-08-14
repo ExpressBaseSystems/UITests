@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,6 +22,8 @@ namespace UITests.Bot.TestCases
             {
                 b = new ChatBot(driver);
                 browserOps.Goto("https://uitesting.eb-test.cloud/bots");
+                elementOps.ExistsId("botno7");
+                b.UITestBot1.Click();
                 driver.SwitchTo().Frame("ebbot_iframe7");
                 elementOps.ExistsId("anon_mail");
                 b.BotBodyMsgEmail.SendKeys("testuser@expressbase.com");
@@ -38,7 +41,7 @@ namespace UITests.Bot.TestCases
             }
         }
 
-        [Property("TestCaseId", "Bot_CheckBotWebformIcon_001")]
+        [Property("TestCaseId", "Bot_CheckBotWebform_001")]
         [Test, Order(2)]
         public void CheckBotWebform()
         {
@@ -46,6 +49,8 @@ namespace UITests.Bot.TestCases
             {
                 b = new ChatBot(driver);
                 browserOps.Goto("https://uitesting.eb-test.cloud/bots");
+                elementOps.ExistsId("botno7");
+                b.UITestBot1.Click();
                 driver.SwitchTo().Frame("ebbot_iframe7");
                 elementOps.ExistsId("anon_mail");
                 b.BotBodyMsgEmail.SendKeys("testuser@expressbase.com");
@@ -69,7 +74,7 @@ namespace UITests.Bot.TestCases
             }
         }
 
-        [Property("TestCaseId", "Bot_CheckBotWebformIcon_001")]
+        [Property("TestCaseId", "Bot_CheckBotTV_001")]
         [Test, Order(3)]
         public void CheckBotTV()
         {
@@ -77,6 +82,8 @@ namespace UITests.Bot.TestCases
             {
                 b = new ChatBot(driver);
                 browserOps.Goto("https://uitesting.eb-test.cloud/bots");
+                elementOps.ExistsId("botno7");
+                b.UITestBot1.Click();
                 driver.SwitchTo().Frame("ebbot_iframe7");
                 elementOps.ExistsId("anon_mail");
                 b.BotBodyMsgEmail.SendKeys("testuser@expressbase.com");
@@ -86,7 +93,7 @@ namespace UITests.Bot.TestCases
                 elementOps.ExistsXpath("//*[@id=\"TVcontrol1\"]/tbody/tr[1]");
                 int val1 = elementOps.GetTableRowCount("//*[@id=\"TVcontrol1\"]/tbody/tr");
                 Assert.True(val1 > 0, "Success!!", "Success!!");
-                b.VisualizationSubmitButton.Click();
+                b.TVcontrol1SubmitButton.Click();
             }
             catch (Exception e)
             {
@@ -94,88 +101,94 @@ namespace UITests.Bot.TestCases
             }
         }
 
-        [Property("TestCaseId", "Bot_CheckBotWebformIcon_001")]
+        [Property("TestCaseId", "Bot_CheckBotWebForm1_001")]
         [Test, Order(4)]
-        public void TextBoxCore()
+        public void CheckBotWebForm1()
         {
             try
             {
                 b = new ChatBot(driver);
                 browserOps.Goto("https://uitesting.eb-test.cloud/bots");
+                elementOps.ExistsId("botno7");
+                b.UITestBot1.Click();
+                elementOps.ExistsId("ebbot_iframe7");
                 driver.SwitchTo().Frame("ebbot_iframe7");
                 elementOps.ExistsId("anon_mail");
                 b.BotBodyMsgEmail.SendKeys("testuser@expressbase.com");
                 b.MailSubmitButton.Click();
-                elementOps.ExistsXpath("/html/body/div[2]/div[1]/div[3]/div/div/div/button[3]");
-                b.Form3ChooseButton.Click();
-                elementOps.ExistsId("TextBox8");
-                Assert.True(b.TextBoxNameIcon.GetAttribute("class").Contains("fa-user"), "Success!!", "Success!!");
-                b.TextBox8.SendKeys("Test User"+Keys.Enter);
+                elementOps.ExistsXpath("/html/body/div[2]/div[1]/div[3]/div/div/div/button[6]");
+                b.Form6ChooseButton.Click();
 
+                elementOps.ExistsId("cont_Image1");
+                Assert.True(elementOps.IsWebElementPresent(b.Image1), "Success!!", "Success!!");
+                b.Image1Button.Click();
+                elementOps.ExistsId("cont_Video1");
+                Assert.True(elementOps.IsWebElementPresent(b.Video1), "Success!!", "Success!!");
+                b.Video1Button.Click();
+                elementOps.ExistsId("cont_Rating1");
+                elementOps.ChangeStyleByClassNameJQuery("jq-ry-rated-group", "style", "width: 57.8947%");
+                b.Rating1Button.Click();
                 elementOps.ExistsId("TextBox1");
-                b.TextBox1.SendKeys("Test User 1" + Keys.Enter);
-
-                elementOps.ExistsId("TextBox3");
-                b.TextBox3.SendKeys("Test User" + Keys.Enter);
-                elementOps.ExistsXpath("/html/body/div[2]/div[1]/div[9]/div[1]/div");
-                Assert.True( b.TextBoxUpperCase.GetAttribute("innerHTML").Contains("TEST USER"), "Success", "Success");
-
-                elementOps.ExistsId("TextBox2");
-                b.TextBox2.SendKeys("Test User" + Keys.Enter);
-                elementOps.ExistsXpath("/html/body/div[2]/div[1]/div[11]/div[1]/div");
-                Assert.True(b.TextBoxLowerCase.GetAttribute("innerHTML").Contains("test user"), "Success", "Success");
-
-                elementOps.ExistsId("TextBox4");
-                Assert.True(b.TextBoxPasswordIcon.GetAttribute("class").Contains("fa-key"), "Success!!", "Success!!");
-                b.TextBox4.SendKeys("password" + Keys.Enter);
-
-                elementOps.ExistsId("TextBox5");
-                Assert.True(b.TextBoxEmailIcon.GetAttribute("class").Contains("fa-envelope"), "Success!!", "Success!!");
-                b.TextBox5.SendKeys("abc@lmn.xyz" + Keys.Enter);
-
-                elementOps.ExistsId("TextBox7");
-                Assert.True(elementOps.CheckForAttribute("TextBox7","rows"), "Success!!", "Success!!");
-                b.TextBox7.SendKeys("Test User Bio" + Keys.Enter);
-
-                elementOps.ExistsId("TextBox6");
-                elementOps.SetValue("TextBox6", "#b42727");
-                b.ColorSubmitButton.Click();
-
-                elementOps.ExistsName("formsubmit");
-                b.FormSubmitButton.Click();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Faliure!!\n" + e.Message);
-            }
-        }
-
-        [Property("TestCaseId", "Bot_CheckBotWebformIcon_001")]
-        [Test, Order(5)]
-        public void TextBoxBehaviour()
-        {
-            try
-            {
-                b = new ChatBot(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/bots");
-                driver.SwitchTo().Frame("ebbot_iframe7");
-                elementOps.ExistsId("anon_mail");
-                b.BotBodyMsgEmail.SendKeys("testuser@expressbase.com");
-                b.MailSubmitButton.Click();
-                elementOps.ExistsXpath("/html/body/div[2]/div[1]/div[3]/div/div/div/button[4]");
-                b.Form4ChooseButton.Click();
-                elementOps.ExistsId("TextBox1");//Hidden
                 b.TextBox1.SendKeys("Test User" + Keys.Enter);
-                
-                elementOps.ExistsId("TextBox2");//Autocomplete off
-                Assert.True(b.TextBox2.GetAttribute("autocomplete").Contains("off"), "Success", "Success");
-                b.TextBox2.SendKeys("Test User" + Keys.Enter);
+                elementOps.ExistsId("SimpleFileUploader1_inputID");
+                b.ImageInput1.SendKeys("C:\\Users\\user\\Pictures\\code1.png");
+                wait.Until(webDriver => (driver.PageSource.Contains("class=\"fa fa-check-circle-o success\" style=\"display: inline;\"")));
+                b.ImageInput1Button.Click();
+                elementOps.ExistsId("EmailControl1");
+                b.EmailControl1.SendKeys("uitest@gmail.com");
+                b.EmailControl1Button.Click();
+                elementOps.ExistsId("BooleanSelect1");
+                var selectElement = new SelectElement(b.BooleanSelect1);
+                selectElement.SelectByValue("true");
+                b.BooleanSelect1Button.Click();
+                elementOps.ExistsId("Locations1");
+                var selectElement2 = new SelectElement(b.LocationsSelect);
+                selectElement2.SelectByValue("kochi");
+                elementOps.ExistsXpath("//*[@id=\"cont_Locations1\"]/following-sibling::div/div");
+                b.Locations1SubmitButton.Click();
+                elementOps.ExistsId("InputGeoLocation1address");
+                b.LocationAddress.Clear();
+                b.LocationAddress.SendKeys("Mulan");
+                browserOps.implicitWait(100);
+                b.LocationAddress.SendKeys(Keys.Down + Keys.Enter);
+                actions.MoveToElement(b.LocationAddressButton);
+                actions.Perform();
+                b.LocationAddressButton.Click();
+                elementOps.ExistsId("Phone1");
+                b.Phone1.SendKeys("8123456789");
+                b.Phone1Button.Click();
+                elementOps.ExistsId("Date1");
+                b.Date1.Click();
+                b.Date1.SendKeys(Keys.Backspace + Keys.Backspace + Keys.Backspace + Keys.Backspace + Keys.Backspace + Keys.Backspace + Keys.Backspace + Keys.Backspace);
+                b.Date1.SendKeys("23-03-1994");
+                b.Date1Button.Click();
+                elementOps.ExistsId("RadioGroup1");
+                b.RadioGroup1Value.Click();
+                b.RadioGroup1Button.Click();
+                elementOps.ExistsXpath("//*[@id=\"ButtonSelect1\"]/div[1]");
+                b.ButtonSelect1.Click();
+                elementOps.ExistsId("SimpleSelect1");
+                var selectElement1 = new SelectElement(b.SimpleSelect1);
+                selectElement1.SelectByValue("eggitarian");
+                b.SimpleSelect1Button.Click();
+                elementOps.ExistsId("RadioButton2");
+                b.RadioButton2.Click();
+                b.RadioButton2Button.Click();
+                elementOps.ExistsClass("slick-next");
+                b.StaticCardSet2NextButton.Click();
+                b.StaticCardSet2SubmitButton.Click();
+                elementOps.ExistsId("Numeric1");
+                elementOps.SetValue("Numeric1", "123");
+                elementOps.ExecuteScripts("const e = new Event('change');" +
+                    "const element = document.querySelector('#Numeric1');" +
+                    "element.dispatchEvent(e); " +
+                    "$(element).trigger('change');");
+                b.Numeric1Button.Click();
 
-                elementOps.ExistsId("TextBox9");//readonly
-                Assert.True(b.TextBox9.GetAttribute("disabled").Contains("true"), "Success", "Success");
-                b.ProceedButton.Click();
                 elementOps.ExistsName("formsubmit");
                 b.FormSubmitButton.Click();
+                elementOps.ExistsXpath("/html/body/div[2]/div[1]/div[4]/div/div/div/button[6]");
+                Assert.True(b.FormSubmitSuccessMsg.GetAttribute("innerHTML").Contains("Your User Registration form submitted successfully"), "Success!!", "Success!!");
             }
             catch (Exception e)
             {
@@ -183,37 +196,29 @@ namespace UITests.Bot.TestCases
             }
         }
 
-        [Property("TestCaseId", "Bot_CheckBotWebformIcon_001")]
-        [Test, Order(5)]
-        public void TextBoxValidationAndHelp()
+        [Property("TestCaseId", "Bot_CheckBotWebForm1Visualizations_001")]
+        [Test, Order(4)]
+        public void CheckBotWebForm1Visualizations()
         {
             try
             {
                 b = new ChatBot(driver);
                 browserOps.Goto("https://uitesting.eb-test.cloud/bots");
+                elementOps.ExistsId("botno7");
+                b.UITestBot1.Click();
+                elementOps.ExistsId("ebbot_iframe7");
                 driver.SwitchTo().Frame("ebbot_iframe7");
                 elementOps.ExistsId("anon_mail");
                 b.BotBodyMsgEmail.SendKeys("testuser@expressbase.com");
                 b.MailSubmitButton.Click();
-                elementOps.ExistsXpath("/html/body/div[2]/div[1]/div[3]/div/div/div/button[5]");
-                b.Form5ChooseButton.Click();
-                elementOps.ExistsId("TextBox1");
-                Assert.Multiple(() =>
-                {
-                    Assert.True(elementOps.CheckForAttribute("TextBox1", "required"), "Success", "Success");
-                    Assert.True(b.TextBoxHelpText.GetAttribute("innerHTML").Contains("(All books are classified as either fiction or nonfiction. Within these two types of books you’ll find dozens of more specific types, or genres.)"), "Success", "Success");
-                    Assert.True(b.TextBox1.GetAttribute("placeholder") != "", "Success", "Success");
-                });
-                b.TextBox1.SendKeys("Test Book Category" + Keys.Enter);
+                elementOps.ExistsXpath("/html/body/div[2]/div[1]/div[3]/div/div/div/button[7]");
+                b.Form7ChooseButton.Click();
 
-                elementOps.ExistsId("TextBox2");//Unique
-                b.TextBox2.SendKeys("Test Book" + Keys.Enter);
+                elementOps.ExistsXpath("//*[@id=\"TVcontrol1\"]/tbody/tr[1]");
+                int val1 = elementOps.GetTableRowCount("//*[@id=\"TVcontrol1\"]/tbody/tr");
+                Assert.True(val1 > 0, "Success!!", "Success!!");
+                b.TVcontrol1SubmitButton.Click();
 
-                elementOps.ExistsId("TextBox3");//validation
-                b.TextBox3.SendKeys("Test Book Id" + Keys.Enter);
-                b.ProceedButton.Click();
-                elementOps.ExistsName("formsubmit");
-                b.FormSubmitButton.Click();
             }
             catch (Exception e)
             {

@@ -204,7 +204,7 @@ namespace UITests.TestCases.User.Security
         }
 
         [Property("TestCaseId", "Security_DeleteUser_003")]
-        //[Test, Order(6)]
+        [Test, Order(6)]
         public void DeleteUser()
         {
             usr = new Users(driver);

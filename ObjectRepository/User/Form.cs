@@ -509,7 +509,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"WebForm_kbnm7hcy\"]/div[3]/div/div[3]/div[2]/table/tbody/tr/td"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"WebForm_kbnm7hcy\"]/div[3]/div/div[2]/div[2]/table/tbody/tr/td"));
             }
         }
 

@@ -36,9 +36,6 @@
     <None Update="TestCases\Tenant\TenantNewSolutionTestCase.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\User\AddLocationTestCase.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="TestCases\User\ApiDataReaderTestCase.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
