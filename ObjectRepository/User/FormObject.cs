@@ -772,7 +772,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect2_dd']/div/div/ul/li[1]/a/span"));
+                return this.driver.FindElement(By.XPath("//*[@id='WebForm_kcbr5skg']/div[6]/div/div/ul/li[1]/a"));
             }
         }
         public IWebElement BoolenSelectTrueTextAfterSave
@@ -793,7 +793,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect3_dd']/div/div/ul/li[2]/a/span"));
+                return this.driver.FindElement(By.XPath("//*[@id='WebForm_kcbr5skg']/div[6]/div/div/ul/li[2]/a"));
             }
         }
         public IWebElement BoolenSelectFalseTextAfterSave
