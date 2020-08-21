@@ -55,6 +55,11 @@ namespace UITests.TestCases.User.Forms
                 actions.MoveToElement(fo.MenuSelectAdvanceControlsDataGrid).Perform();
                 elementOps.ExistsXpath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a");
                 fo.MenuSelectAdvanceControlsDataGrid.Click();
+            }else if (FormID == "DataGridBooleanselect&DropDown")
+            {
+                actions.MoveToElement(fo.MenuSelectAdvanceControlsDataGridBooleanselectDropDown).Perform();
+                elementOps.ExistsXpath("//*[@id='ebm-objectcontainer']/div[2]/div[2]/a");
+                fo.MenuSelectAdvanceControlsDataGridBooleanselectDropDown.Click();
             }
             Console.WriteLine("Test Form Opened");
         }
@@ -142,29 +147,6 @@ namespace UITests.TestCases.User.Forms
         }
 
         [Test, Order(4)]
-        public void DataGridBooleanSelectDropDown()
-        {
-           // Userlogin("DataGrid");
-
-            fo.DataGridDataGrid4AddRow.Click();
-
-            browserOps.implicitWait(100);
-            browserOps.implicitWait(100);
-            browserOps.implicitWait(100);
-
-
-            Assert.AreEqual("true", fo.DataGridBooleanSelectReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - DataGrid BooleanSelect ReadOnly- Read Only”");
-            fo.DataGridBooleanSelectDNP.Click();
-
-            fo.DataGridDropDownDNP.Click();
-            fo.DataGridDropDownDNPSelect.Click();
-            //Assert.AreEqual("10.00", fo.DataGridNumericHidden.GetAttribute("value"), true.ToString(), "“Test passed for User - side - DataGridNumeric - Default Value Expression”");
-
-            fo.DataGridBooleanSelectColumnDNP.Click();
-            fo.DataGridBooleanSelectColumnDNPSelect.Click();
-        }
-
-        [Test, Order(5)]
         public void DataGridPowerSelect()
         {
             try
@@ -213,7 +195,7 @@ namespace UITests.TestCases.User.Forms
             }
         }
 
-        [Test, Order(6)]
+        [Test, Order(5)]
         public void DataGridDateTime()
         {
             //Userlogin("DataGrid");
@@ -242,6 +224,43 @@ namespace UITests.TestCases.User.Forms
 
             elementOps.SetQueryValue("div.Dg_body > table#tbl_DataGrid1 > tbody > tr > td:nth-child(6) > div.ctrl-cover > div.input-group > input.date", "06:00 PM");
             Assert.AreEqual("06:00 PM", fo.DataGridDateTimeTime.GetAttribute("value"), true.ToString(), "“Test passed for User - side - DataGrid DateTime - Time”");
+        }
+
+        [Test, Order(6)]
+        public void DataGridBooleanSelect()
+        {
+            Userlogin("DataGridBooleanselect&DropDown");
+
+            fo.DataGridBooleanSelectAddRow.Click();
+
+            browserOps.implicitWait(100);
+            browserOps.implicitWait(100);
+            browserOps.implicitWait(100);
+
+
+            //Assert.AreEqual("true", fo.DataGridBooleanSelectReadOnly.GetAttribute("disabled"), true.ToString(), "“Test passed for User - side - DataGrid BooleanSelect ReadOnly- Read Only”");
+            fo.DataGridBooleanSelectDNP.Click();
+
+            
+        }
+        [Test, Order(7)]
+        public void DataGridSimpleSelectDropDown()
+        {
+            Userlogin("DataGridBooleanselect&DropDown");
+            string id;
+
+            fo.DataGridNumericAddRow.Click();
+
+            id = fo.DataGridDropDownDNPGetId.GetAttribute("id");
+            fo.DataGridDropDownDNP.Click();
+            fo.DataGridDropDownDNPSelect.Click();
+            //Assert.AreEqual("10.00", fo.DataGridNumericHidden.GetAttribute("value"), true.ToString(), "“Test passed for User - side - DataGridNumeric - Default Value Expression”");
+
+            fo.DataGridDropDownDNP.Click();
+            fo.DataGridDropDownDNPSelect.Click();
+            
+            fo.DataGridDropDownTrigger.Click();
+            fo.DataGridDropDownTiggerSelect.Click();
         }
     }
 }

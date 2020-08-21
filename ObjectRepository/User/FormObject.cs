@@ -50,6 +50,13 @@ namespace UITests.ObjectRepository.User
                 return this.driver.FindElement(By.XPath("//*[@id='layout_div']/div[1]/div"));
             }
         }
+        public By RequiredText
+        {
+            get
+            {
+                return By.LinkText("This field is required");
+            }
+        }
 
         public IWebElement MenuApplication
         {
@@ -128,11 +135,25 @@ namespace UITests.ObjectRepository.User
                 return this.driver.FindElement(By.LinkText("PlatformControls"));
             }
         }
+        public IWebElement MenuSelectPlatformControlCalender
+        {
+            get
+            {
+                return this.driver.FindElement(By.LinkText("PlatformC Calendar Form"));
+            }
+        }
         public IWebElement MenuSelectAdvanceControlsDataGrid
         {
             get
             {
                 return this.driver.FindElement(By.LinkText("Advanced Controls DataGrid"));
+            }
+        }
+        public IWebElement MenuSelectAdvanceControlsDataGridBooleanselectDropDown
+        {
+            get
+            {
+                return this.driver.FindElement(By.LinkText("DataGrid Booleanselect&DropDown"));
             }
         }
 
@@ -751,7 +772,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect2_dd']/div/div/ul/li[1]/a/span"));
+                return this.driver.FindElement(By.XPath("//*[@id='WebForm_kcbr5skg']/div[6]/div/div/ul/li[1]/a"));
             }
         }
         public IWebElement BoolenSelectTrueTextAfterSave
@@ -772,7 +793,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect3_dd']/div/div/ul/li[2]/a/span"));
+                return this.driver.FindElement(By.XPath("//*[@id='WebForm_kcbr5skg']/div[6]/div/div/ul/li[2]/a"));
             }
         }
         public IWebElement BoolenSelectFalseTextAfterSave
@@ -793,7 +814,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect5_dd']/div/div/ul/li[1]/a/span"));
+                return this.driver.FindElement(By.XPath("//*[@id='WebForm_kcbr5skg']/div[6]/div/div/ul/li[1]/a"));
             }
         }
         public IWebElement BoolenSelectDNPAfterSave
@@ -814,7 +835,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect7_dd']/div/div/ul/li[1]/a/span"));
+                return this.driver.FindElement(By.XPath("//*[@id='WebForm_kcbr5skg']/div[6]/div/div/ul/li[1]/a"));
             }
         }
         public IWebElement BoolenSelectTriggerAfterSave
@@ -1063,6 +1084,163 @@ namespace UITests.ObjectRepository.User
         }
         
         
+        public IWebElement SimpleSelectWithGroup
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("SimpleSelect1_dd"));
+            }
+        }
+        public IWebElement SimpleSelectWithGroupItem
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='SimpleSelect1_dd']/div/div/ul/li[4]/a/span"));
+            }
+        }
+        public IWebElement SimpleSelectWithGroupSelection
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='SimpleSelect1_dd']/button/div/div/div"));
+            }
+        }
+        public IWebElement SimpleSelectHidden
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_SimpleSelect3"));
+            }
+        }
+        public IWebElement SimpleSelectReadOnly
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='SimpleSelect4_dd']/button"));
+            }
+        }
+        public IWebElement SimpleSelectWithOutGroup
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("SimpleSelect2_dd"));
+            }
+        }
+        public IWebElement SimpleSelectWithOutGroupItem
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='SimpleSelect2_dd']/div/div/ul/li[2]/a/span"));
+            }
+        }
+        public IWebElement SimpleSelectWithOutGroupSelection
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='SimpleSelect1_dd']/button/div/div/div"));
+            }
+        }
+        public IWebElement SimpleSelectMultiSelect
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("SimpleSelect5_dd"));
+            }
+        }
+        public IWebElement SimpleSelectMultiSelectGroupItem1
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='SimpleSelect5_dd']/div/div[3]/ul/li[1]/a/span[2]"));
+            }
+        }
+        public IWebElement SimpleSelectMultiSelectGroupItem2
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='SimpleSelect5_dd']/div/div[3]/ul/li[2]/a/span[2]"));
+            }
+        }
+        public IWebElement SimpleSelectMultiSelectSelection
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='SimpleSelect5_dd']/button/div/div/div"));
+            }
+        }
+        public IWebElement SimpleSelectDNP
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("SimpleSelect6_dd"));
+            }
+        }
+        public IWebElement SimpleSelectDNPItem
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='SimpleSelect6_dd']/div/div/ul/li[3]/a/span"));
+            }
+        }
+        public IWebElement SimpleSelectDNPSelection
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='SimpleSelect6_dd']/button/div/div/div"));
+            }
+        }
+        public IWebElement SimpleSelectTrigger
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("SimpleSelect7_dd"));
+            }
+        }
+        public IWebElement SimpleSelectTriggerItem1
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='SimpleSelect7_dd']/div/div/ul/li[2]/a/span"));
+            }
+        }
+        public IWebElement SimpleSelectTriggerItem2
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='SimpleSelect7_dd']/div/div/ul/li[3]/a/span"));
+            }
+        }
+        public IWebElement SimpleSelectTriggerSelection
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='SimpleSelect1_dd']/button/div/div/div"));
+            }
+        }public IWebElement SimpleSelectHideExpression
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_SimpleSelect8"));
+            }
+        }public IWebElement SimpleSelectDisableExpression
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='SimpleSelect9_dd']/button"));
+            }
+        }public IWebElement SimpleSelectDVESelection
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='SimpleSelect10_dd']/button/div/div/div"));
+            }
+        }public IWebElement SimpleSelectVESelection
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='SimpleSelect11_dd']/button/div/div/div"));
+            }
+        }
         public IWebElement PowerSelectSimpleSelect
         {
             get
@@ -1074,7 +1252,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='PowerSelect1_dd']/div/div/ul/li[3]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id='WebForm_kckd7ze9']/div[6]/div/div/ul/li[3]/a"));
             }
         }
         public IWebElement PowerSelectHidden
@@ -1123,14 +1301,15 @@ namespace UITests.ObjectRepository.User
         { 
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='PowerSelect5tbl_wrapper']/div[3]/div[2]/table/tbody/tr[1]"));
+                IWebElement parent = this.driver.FindElement(By.Id("PowerSelect5DDdiv"));
+                return parent.FindElement(By.XPath("//*[@id='PowerSelect5tbl']/tbody/tr[1]/td"));
             }
         }
         public IWebElement PowerSelectDNP
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='PowerSelect7textbox_unique']/div"));
+                return this.driver.FindElement(By.XPath("//*[@id='PowerSelect7textbox_lowercase']/div/input"));
             }
         }
         public IWebElement PowerSelectDNPItem
@@ -1144,7 +1323,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='PowerSelect8textbox_unique']/div/input"));
+                return this.driver.FindElement(By.XPath("//*[@id='PowerSelect8textbox_lowercase']/div/input"));
             }
         }
         public IWebElement PowerSelectSearchItem
@@ -1473,53 +1652,75 @@ namespace UITests.ObjectRepository.User
         }         
 
 
-        public IWebElement DataGridDataGrid4AddRow
+        public IWebElement DataGridBooleanSelectAddRow
         {
             get
             {
-                return this.driver.FindElement(By.Id("DataGrid4addrow"));
+                return this.driver.FindElement(By.Id("DataGrid2addrow"));
             }
         }
         public IWebElement DataGridBooleanSelectReadOnly
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid4']/tbody/tr/td[2]/div/div/input"));
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid2']/tbody/tr/td[2]/div/div/input"));
             }
         }
         public IWebElement DataGridBooleanSelectDNP
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid4']/tbody/tr/td[3]/div/div/input"));
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid2']/tbody/tr/td[3]/div/div/input"));
             }
-        }
-        public IWebElement DataGridDropDownDNP
-        {
-            get
-            {
-                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid4']/tbody/tr/td[4]/div/div/button"));
-            }
-        } 
-        public IWebElement DataGridDropDownDNPSelect
-        {
-            get
-            {
-                return this.driver.FindElement(By.XPath("//*[/html/body/div[4]/div[3]/div[2]/form/div[4]/div/div/ul/li[4]/a/span"));
-            }
-        }
+        }       
         public IWebElement DataGridBooleanSelectColumnDNP
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid4']/tbody/tr/td[5]/div/div/button"));
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid2']/tbody/tr/td[5]/div/div/button"));
             }
         }        
         public IWebElement DataGridBooleanSelectColumnDNPSelect
         {
             get
             {
-                return this.driver.FindElement(By.XPath("/html/body/div[4]/div[3]/div[2]/form/div[5]/div/div/ul/li[1]/a/span"));
+                return this.driver.FindElement(By.XPath("/html/body/div[4]/div[3]/div[2]/form/div[3]/div/div/ul/li[2]/a/span"));
+            }
+        }
+        public IWebElement DataGridDropDownDNP
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid3']/tbody/tr/td[2]/div/div/button"));
+            }
+        }
+        public IWebElement DataGridDropDownDNPGetId
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid3']/tbody/tr/td[2]/div/div"));
+            }
+        }
+
+        public IWebElement DataGridDropDownDNPSelect
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='WebForm_kd88b5s9']/div[3]/div/div/ul/li[2]/a/span"));
+            }
+        }
+        public IWebElement DataGridDropDownTrigger
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='tbl_DataGrid3']/tbody/tr/td[3]/div/div/button"));
+            }
+        }
+        public IWebElement DataGridDropDownTiggerSelect
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id='WebForm_kd88b5s9']/div[4]/div/div/ul/li[2]/a/span"));
             }
         }
 

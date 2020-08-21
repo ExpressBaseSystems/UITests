@@ -25,6 +25,10 @@ namespace UITests.DataDriven
         {
             wait.Until(ExpectedConditions.ElementToBeClickable((xpath)));
         }
+        public  void ExistspresenceOfElementLocated(By xpath)
+        {
+             wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy((xpath)));
+        }
 
         public void ExistsId(string id)
         {
@@ -58,9 +62,9 @@ namespace UITests.DataDriven
         {
             wait.Until(ExpectedConditions.ElementExists(By.TagName(name)));
         }
-        public void InvisibleWait(By we)
+        public bool InvisibleWait(By we)
         {
-            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(we));
+           return wait.Until(ExpectedConditions.InvisibilityOfElementLocated(we));
         }
         
        
@@ -140,7 +144,19 @@ namespace UITests.DataDriven
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
             js.ExecuteScript(script);
         }
-        
+        public void doubleClick(IWebElement webElement)
+        {
+
+            //For FF browser.
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript("var evt = document.createEvent('MouseEvents');" + "evt.initMouseEvent('dblclick',true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0,null);" + "arguments[0].dispatchEvent(evt);", webElement);
+
+            //For IE
+
+            //((JavascriptExecutor)driver).executeScript("arguments[0].fireEvent('ondblclick');", webElement);
+
+        }
+
         public string RadioButtonCheckValidator(string name)
         {
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
