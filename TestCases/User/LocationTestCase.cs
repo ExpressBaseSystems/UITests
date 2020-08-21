@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace UITests.TestCases.User
     {
         Location loc;
         UserLogin ulog;
+        string subloc = null;
 
         public void UserLogin()
         {
@@ -36,6 +38,7 @@ namespace UITests.TestCases.User
             {
                 UserLogin();
                 login_status = true;
+                browserOps.Goto("https://uitesting.eb-test.cloud/TenantUser/EbLocations");
             }
         }
 
@@ -44,7 +47,6 @@ namespace UITests.TestCases.User
         public void AddRootLocation()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/TenantUser/EbLocations");
             elementOps.ExistsXpath("//*[@id=\"tbl\"]/tbody/tr");
             int val = elementOps.GetTableRowCount("//*[@id=\"tbl\"]/tbody/tr");
             elementOps.ExistsId("add_root_loc");
@@ -52,7 +54,7 @@ namespace UITests.TestCases.User
             elementOps.ExistsId("loc_type");
             var selectElement = new SelectElement(loc.LocType);
             selectElement.SelectByValue("3");
-            loc.LocName.SendKeys("Test Loc "+ id.GetId);
+            loc.LocName.SendKeys("AATest Loc " + id.GetId);
             loc.LocShortName.SendKeys("TL");
             //elementOps.ExistsName("Logo");
             //loc.Logo.SendKeys("C:\\Users\\user\\Pictures\\kerala.jpg");
@@ -66,18 +68,18 @@ namespace UITests.TestCases.User
         public void AddSubLocation()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/TenantUser/EbLocations");
             elementOps.ExistsXpath("//*[@id=\"tbl\"]/tbody/tr");
             int val = elementOps.GetTableRowCount("//*[@id=\"tbl\"]/tbody/tr");
             loc.LocField6.Click();
-            actions.ContextClick(loc.LocField6).Build();
+            actions.ContextClick(loc.LocField6);
             actions.Perform();
             elementOps.ExistsXpath("/html/body/ul/li");
             loc.AddSubLoc.Click();
-            elementOps.ExistsId("loc_type");
+            elementOps.ExistsXpath("//*[@id=\"loc_type\"]/option[4]");
             var selectElement = new SelectElement(loc.LocType);
             selectElement.SelectByValue("3");
-            loc.LocName.SendKeys("Test Loc" + id.GetId);
+            subloc = "Test Loc" + id.GetId;
+            loc.LocName.SendKeys(subloc);
             loc.LocShortName.SendKeys("TL");
             //elementOps.ExistsName("Logo");
             //loc.Logo.SendKeys("C:\\Users\\user\\Pictures\\kerala.jpg");
@@ -91,14 +93,15 @@ namespace UITests.TestCases.User
         public void EditLocation()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/TenantUser/EbLocations");
             elementOps.ExistsXpath("//*[@id=\"tbl\"]/tbody/tr");
             int val = elementOps.GetTableRowCount("//*[@id=\"tbl\"]/tbody/tr");
+            elementOps.ExistsXpath("//*[@id=\"tbl\"]/tbody/tr[7]/td[1]");
+            wait.Until(webDriver => (driver.PageSource.Contains(subloc)));
             loc.LocField7.Click();
-            browserOps.ClickableWait(loc.LocField7);
-            actions.ContextClick(loc.LocField7).Build();
+            actions = new Actions(driver);
+            actions.ContextClick(loc.LocField7);
             actions.Perform();
-            elementOps.ExistsXpath("/html/body/ul/li");
+            elementOps.ExistsXpath("/html/body/ul/li[2]");
             loc.EditSubLoc.Click();
             elementOps.ExistsId("loc_type");
             var selectElement = new SelectElement(loc.LocType);
@@ -112,6 +115,7 @@ namespace UITests.TestCases.User
             loc.AddLocButton.Click();
             wait.Until(webDriver => (driver.PageSource.Contains("id=\"eb_common_loader\" style=\"background-color: transparent; display: none;\"")));
             Assert.True(elementOps.GetTableRowCount("//*[@id=\"tbl\"]/tbody/tr") == val, "Success", "Success");
+            browserOps.Refresh();
         }
 
         [Property("TestCaseId", "Location_MoveSubLocation_001")]
@@ -122,26 +126,27 @@ namespace UITests.TestCases.User
             browserOps.Goto("https://uitesting.eb-test.cloud/TenantUser/EbLocations");
             elementOps.ExistsXpath("//*[@id=\"tbl\"]/tbody/tr");
             int val = elementOps.GetTableRowCount("//*[@id=\"tbl\"]/tbody/tr");
-            browserOps.ClickableWait(loc.LocField6);
-            loc.LocField6.Click();
-            actions.ContextClick(loc.LocField6).Build();
+            browserOps.ClickableWait(loc.LocField7);
+            loc.LocField7.Click();
+            actions = new Actions(driver);
+            actions.ContextClick(loc.LocField7).Build();
             actions.Perform();
             elementOps.ExistsXpath("/html/body/ul/li");
             loc.MoveSubLoc.Click();
 
             elementOps.ExistsClass("treemodalul");
-            actions.MoveToElement(loc.MoveGroupButton);
-            actions.Perform();
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.ClassName("treemodalul")));
             loc.MoveGroupButton.Click();
-            elementOps.ExistsXpath("/html/body/ul/li[5]/ul/li");
+            elementOps.ExistsXpath("/html/body/ul/li[5]");
+            actions = new Actions(driver);
             actions.MoveToElement(loc.MoveGroup);
             actions.Perform();
             loc.MoveGroup.Click();
-            Console.WriteLine("xxx");
             loc.MoveButton.Click();
 
             wait.Until(webDriver => (driver.PageSource.Contains("id=\"eb_common_loader\" style=\"background-color: transparent; display: none;\"")));
             Assert.True(elementOps.GetTableRowCount("//*[@id=\"tbl\"]/tbody/tr") == val, "Success", "Success");
+            browserOps.Refresh();
         }
 
         [Property("TestCaseId", "Location_AddLocationType_001")]
@@ -236,7 +241,7 @@ namespace UITests.TestCases.User
             elementOps.ExistsId("add_root_loc");
             loc.AddNewRootLocation.Click();
             elementOps.ExistsId("loc_type");
-            
+
             Assert.True(elementOps.IsWebElementPresent(loc.CustomFieldInput), "Success", "Success");
         }
 
@@ -252,7 +257,7 @@ namespace UITests.TestCases.User
             browserOps.ClickableWait(loc.AddLocButton);
             loc.AddLocButton.Click();
             var alert = driver.SwitchTo().Alert();
-            Assert.True(alert.Text.Contains("Required field is empty") , "Success", "Success");
+            Assert.True(alert.Text.Contains("Required field is empty"), "Success", "Success");
             alert.Accept();
         }
 
@@ -270,6 +275,68 @@ namespace UITests.TestCases.User
             loc.RemoveCustomField.Click();
         }
 
-        
+        [Property("TestCaseId", "Location_LocationSwitcher_001")]
+        [Test, Order(12)]
+        public void LocationSwitcher()
+        {
+            CheckUsrLogin();
+            browserOps.Goto("https://uitesting.eb-test.cloud/TenantUser/EbLocations");
+            elementOps.ExistsId("switch_loc");
+            string loc1 = loc.CurrentLocationName.GetAttribute("innerHTML").ToString();
+            loc.LocationSwitcherTab.Click();
+            wait.Until(webDriver => (driver.PageSource.Contains("id=\"loc_switchModal\" style=\"display: block;\"")));
+            loc.LocationKochi.Click();
+            loc.LocationSubmitButton.Click();
+            string loc2 = loc.CurrentLocationName.GetAttribute("innerHTML").ToString();
+            Assert.True(loc1 != loc2, "Success", "Success");
+            loc.LocationSwitcherTab.Click();
+            wait.Until(webDriver => (driver.PageSource.Contains("id=\"loc_switchModal\" style=\"display: block;\"")));
+            loc.LocationDefault.Click();
+            loc.LocationSubmitButton.Click();
+        }
+
+        [Property("TestCaseId", "Location_LocationSwitcher_002")]
+        [Test, Order(13)]
+        public void LocationSwitcherTree()
+        {
+            CheckUsrLogin();
+            browserOps.Goto("https://uitesting.eb-test.cloud/TenantUser/EbLocations");
+            elementOps.ExistsId("switch_loc");
+            string loc1 = loc.CurrentLocationName.GetAttribute("innerHTML").ToString();
+            loc.LocationSwitcherTab.Click();
+            wait.Until(webDriver => (driver.PageSource.Contains("id=\"loc_switchModal\" style=\"display: block;\"")));
+            loc.LocationSwitcherTreei.Click();
+            elementOps.ExistsXpath("//*[@id=\"loc_switchModal\"]/div/div/div[2]/ul/li[2]/ul/li[1]/a");
+            loc.LocationSwitcherTreeLoc.Click();
+            loc.LocationSubmitButton.Click();
+            string loc2 = loc.CurrentLocationName.GetAttribute("innerHTML").ToString();
+            Assert.True(loc1 != loc2, "Success", "Success");
+            loc.LocationSwitcherTab.Click();
+            wait.Until(webDriver => (driver.PageSource.Contains("id=\"loc_switchModal\" style=\"display: block;\"")));
+            loc.LocationDefault.Click();
+            loc.LocationSubmitButton.Click();
+        }
+
+        [Property("TestCaseId", "Location_LocationSwitcher_003")]
+        [Test, Order(14)]
+        public void LocationSwitcherSearch()
+        {
+            CheckUsrLogin();
+            browserOps.Goto("https://uitesting.eb-test.cloud/TenantUser/EbLocations");
+            elementOps.ExistsId("switch_loc");
+            string loc1 = loc.CurrentLocationName.GetAttribute("innerHTML").ToString();
+            loc.LocationSwitcherTab.Click();
+            wait.Until(webDriver => (driver.PageSource.Contains("id=\"loc_switchModal\" style=\"display: block;\"")));
+            loc.LocationSearch.SendKeys("Tri");
+            loc.LocationDefault.Click();
+            loc.LocationSubmitButton.Click();
+            string loc2 = loc.CurrentLocationName.GetAttribute("innerHTML").ToString();
+            Assert.True(loc1 != loc2, "Success", "Success");
+            loc.LocationSwitcherTab.Click();
+            wait.Until(webDriver => (driver.PageSource.Contains("id=\"loc_switchModal\" style=\"display: block;\"")));
+            loc.LocationDefault.Click();
+            loc.LocationSubmitButton.Click();
+        }
+
     }
 }

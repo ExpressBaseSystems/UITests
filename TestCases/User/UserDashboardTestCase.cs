@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,6 +46,7 @@ namespace UITests.TestCases.User
         {
             CheckUsrLogin();
             elementOps.ExistsId("t0");
+            elementOps.ExistsXpath("//*[@id=\"tb1tile0\"]/tbody/tr");
             int headings_count = elementOps.GetTableRowCount("//*[@id=\"tb1tile0_wrapper\"]/div[3]/div[1]/div/table/thead/tr/th");
             Assert.AreEqual(true, headings_count > 0 ? true : false, "Success", "Success");
             int row_count = elementOps.GetTableRowCount("//*[@id=\"tb1tile0\"]/tbody/tr");
@@ -58,6 +60,7 @@ namespace UITests.TestCases.User
         {
             CheckUsrLogin();
             elementOps.ExistsId("t1");
+            elementOps.ExistsXpath("//*[@id=\"canvasDivtb1tile1\"]/iframe");
             Assert.AreEqual("True", elementOps.IsWebElementPresent(u.ChartIFrame).ToString(), "Success", "Success");
             Console.WriteLine("Chart Present");
         }
@@ -164,6 +167,7 @@ namespace UITests.TestCases.User
         {
             CheckUsrLogin();
             elementOps.ExistsId("tbundefinedLinks1_link");
+            actions = new Actions(driver);
             actions.MoveToElement(u.LinkToDashBoard);
             actions.Perform();
             u.LinkToDashBoard.Click();
@@ -182,6 +186,7 @@ namespace UITests.TestCases.User
         {
             CheckUsrLogin();
             elementOps.ExistsId("tbundefinedLinks2_link");
+            actions = new Actions(driver);
             actions.MoveToElement(u.LinkToDashBoardFD);
             actions.Perform();
             u.LinkToDashBoardFD.Click();
@@ -234,13 +239,13 @@ namespace UITests.TestCases.User
             CheckUsrLogin();
             elementOps.ExistsId("undefined_restart_tile6");
             u.GoogleMapRefreshButton.Click();
-            wait.Until(webDriver => (driver.PageSource.Contains("class=\"dash-loader\" style=\"display: none;\"")));
+            wait.Until(webDriver => (driver.PageSource.Contains("id=\"eb_common_loader\" style=\"background-color: transparent; display: none;\"")));
             elementOps.ExistsXpath("//*[@id=\"tile6\"]/div[2]");
             Console.WriteLine("Map Present");
         }
 
         [Property("TestCaseId", "UserDashBoard_SwitchDashBoard_001")]
-        [Test, Order(14)]
+        [Test, Order(15)]
         public void SwitchDashBoard()
         {
             CheckUsrLogin();
@@ -248,7 +253,7 @@ namespace UITests.TestCases.User
             u.DashBoardDropDownButton.Click();
             elementOps.ExistsId("UserDashBoardSwitchList");
             u.DropDownDashBoard2.Click();
-            wait.Until(webDriver => (driver.PageSource.Contains("class=\"dash-loader\" style=\"display: none;\"")));
+            wait.Until(webDriver => (driver.PageSource.Contains("id=\"eb_common_loader\" style=\"background-color: transparent; display: none;\"")));
             Assert.Multiple(() =>
             {
                 Assert.True(elementOps.IsWebElementPresent(u.DashBoard2DataLabel), "Success", "Success");

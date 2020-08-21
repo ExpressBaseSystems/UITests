@@ -33,6 +33,7 @@ namespace UITests.Bot.TestCases
                 Console.WriteLine( driver.Manage().Cookies.AllCookies.Count);
                 driver.Manage().Cookies.DeleteCookieNamed("bot_rToken");
                 driver.Manage().Cookies.DeleteCookieNamed("bot_bToken");
+                browserOps.Refresh();
             }
             catch (Exception e)
             {
@@ -50,6 +51,7 @@ namespace UITests.Bot.TestCases
                 browserOps.Goto("https://uitesting.eb-test.cloud/bots");
                 elementOps.ExistsId("botno10");
                 b.UITestBot2.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("id=\"eb_iframecont10\" appid=\"10\" class=\"eb_iframecont eb__-bot___-eb_iframecont10\" style=\"display: flex;\"")));
                 elementOps.ExistsId("ebbot_iframe10");
                 driver.SwitchTo().Frame("ebbot_iframe10");
                 elementOps.ExistsId("anon_phno");
@@ -190,6 +192,7 @@ namespace UITests.Bot.TestCases
             {
                 b = new ChatBot(driver);
                 browserOps.Goto("https://demo.eb-test.cloud/bots");
+                elementOps.ChangeStyle("eb_iframecont6", "style", "display: none; opacity: 0;");
                 elementOps.ExistsId("botno5");
                 b.UITestBot7.Click();
                 elementOps.ExistsId("ebbot_iframe5");

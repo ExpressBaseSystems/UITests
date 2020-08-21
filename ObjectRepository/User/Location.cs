@@ -110,7 +110,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"tbl\"]/tbody/tr[6]"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"tbl\"]/tbody/tr[6]/td"));
             }
         }
 
@@ -118,7 +118,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"tbl\"]/tbody/tr[7]"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"tbl\"]/tbody/tr[7]/td"));
             }
         }
 
@@ -277,6 +277,80 @@ namespace UITests.ObjectRepository.User
             get
             {
                 return this.driver.FindElement(By.XPath("//*[@id=\"add_location_bdy\"]/div[5]/div/input"));
+            }
+        }
+
+        //------------------------------Location Switcher
+
+        public IWebElement LocationSwitcherTab
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("switch_loc"));
+            }
+        }
+
+        public IWebElement LocationKochi
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"loc_switchModal\"]/div/div/div[2]/ul/li[3]/a"));
+            }
+        }
+
+        public IWebElement LocationKerala
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"loc_switchModal\"]/div/div/div[2]/ul/li[2]/a"));
+            }
+        }
+
+        public IWebElement LocationDefault
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"loc_switchModal\"]/div/div/div[2]/ul/li[1]/a"));
+            }
+        }
+
+        public IWebElement LocationSubmitButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("setLocSub"));
+            }
+        }
+
+        public IWebElement CurrentLocationName
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("LocInfoCr_name"));
+            }
+        }
+
+        public IWebElement LocationSwitcherTreei
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"loc_switchModal\"]/div/div/div[2]/ul/li[2]/i"));
+            }
+        }
+
+        public IWebElement LocationSwitcherTreeLoc
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"loc_switchModal\"]/div/div/div[2]/ul/li[2]/ul/li[1]/a"));
+            }
+        }
+
+        public IWebElement LocationSearch
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("loc-search"));
             }
         }
 

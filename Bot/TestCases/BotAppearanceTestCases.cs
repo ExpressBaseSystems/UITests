@@ -22,6 +22,7 @@ namespace UITests.Bot.TestCases
                 browserOps.Goto("https://uitesting.eb-test.cloud/bots");
                 elementOps.ExistsId("botno7");
                 b.UITestBot1.Click();
+                elementOps.ExistsId("ebbot_iframe7");
                 Assert.Multiple(() =>
                 {
                     Assert.AreEqual("True", elementOps.IsWebElementPresent(b.BotFrame).ToString(), "Success!!", "Success!!");
@@ -47,7 +48,7 @@ namespace UITests.Bot.TestCases
                 browserOps.Goto("https://uitesting.eb-test.cloud/bots");
                 elementOps.ExistsId("botno7");
                 b.UITestBot1.Click();
-                elementOps.ExistsClass("eb-chat-head");
+                elementOps.ExistsId("headerIcon7");
                 Assert.Multiple(() =>
                 {
                     Assert.True(elementOps.IsWebElementPresent(b.BotHeaderIcon), "Success!!", "Success!!");
@@ -76,10 +77,11 @@ namespace UITests.Bot.TestCases
                 elementOps.ExistsId("botno7");
                 b.UITestBot1.Click();
                 elementOps.ExistsId("maximizediv7");
+                browserOps.ClickableWait(b.BotMaximise);
                 b.BotMaximise.Click();
-                Assert.AreEqual("min-width: inherit; display: flex; width: 50%;", b.BotFrame.GetAttribute("style").ToString(), "Success", "Success");
+                Assert.AreEqual("display: flex; width: 50%;", b.BotFrame.GetAttribute("style").ToString(), "Success", "Success");
                 b.BotMaximise.Click();
-                Assert.AreEqual("min-width: inherit; display: flex;", b.BotFrame.GetAttribute("style").ToString(), "Success", "Success");
+                Assert.AreEqual("display: flex;", b.BotFrame.GetAttribute("style").ToString(), "Success", "Success");
             }
             catch (Exception e)
             {
@@ -98,10 +100,11 @@ namespace UITests.Bot.TestCases
                 elementOps.ExistsId("botno7");
                 b.UITestBot1.Click();
                 elementOps.ExistsId("closediv7");
+                browserOps.ClickableWait(b.BotClose);
                 b.BotClose.Click();
-                Assert.AreEqual("min-width: inherit; display: none; opacity: 1;", b.BotFrame.GetAttribute("style").ToString(), "Success", "Success");
+                Assert.AreEqual("display: none;", b.BotFrame.GetAttribute("style").ToString(), "Success", "Success");
                 b.UITestBot1.Click();
-                Assert.AreEqual("min-width: inherit; display: flex; opacity: 1;", b.BotFrame.GetAttribute("style").ToString(), "Success", "Success");
+                Assert.AreNotEqual("display: none;", b.BotFrame.GetAttribute("style").ToString(), "Success", "Success");
             }
             catch (Exception e)
             {
@@ -119,6 +122,8 @@ namespace UITests.Bot.TestCases
                 browserOps.Goto("https://uitesting.eb-test.cloud/bots");
                 elementOps.ExistsId("botno7");
                 b.UITestBot1.Click();
+                elementOps.ExistsId("ebbot_iframe7");
+                driver.SwitchTo().Frame("ebbot_iframe7");
                 elementOps.ExistsClass("eb-chatBox");
                 Assert.Multiple(() =>
                 {
@@ -136,7 +141,7 @@ namespace UITests.Bot.TestCases
         }
 
         [Property("TestCaseId", "Bot_BotStartOver_001")]
-        [Test, Order(6)]
+        //[Test, Order(6)]
         public void BotStartOver()
         {
             try
@@ -145,10 +150,15 @@ namespace UITests.Bot.TestCases
                 browserOps.Goto("https://uitesting.eb-test.cloud/bots");
                 elementOps.ExistsId("botno7");
                 b.UITestBot1.Click();
-                elementOps.ExistsClass("eb_botStartover");
+                elementOps.ExistsId("ebbot_iframe7");
+                driver.SwitchTo().Frame("ebbot_iframe7");
+                elementOps.ExistsId("anon_mail");
+                b.BotBodyMsgEmail.SendKeys("testuser@expressbase.com");
+                b.MailSubmitButton.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("Click to explore")));
+                elementOps.ExistsClass("startOvercont");
                 b.BotBodyStartOver.Click();
-                elementOps.ExistsClass("msg-cont");
-                Assert.True(elementOps.IsWebElementPresent(b.BotBodyMsgEmail), "Success!!", "Success!!");
+                wait.Until(webDriver => (driver.PageSource.Contains("Click to explore")));
             }
             catch (Exception e)
             {

@@ -302,10 +302,10 @@ namespace UITests.TestCases.User
                 Console.WriteLine("Date Entered");
                 f.UserPhno.SendKeys("9400000028");
                 f.UserDeptSelectButton.Click();
-                elementOps.ExistsXpath("//*[@id=\"SimpleSelect1_dd\"]/div/div/ul/li[2]/a");
+                elementOps.ExistsXpath("//*[@id=\"WebForm_k8yfaqyr\"]/div[5]/div/div/ul/li[2]/a");
                 f.UserDeptSelectOpt.Click();
                 f.UserStatusSelectButton.Click();
-                elementOps.ExistsXpath("//*[@id=\"SimpleSelect2_dd\"]/div/div/ul/li[2]/a");
+                elementOps.ExistsXpath("//*[@id=\"WebForm_k8yfaqyr\"]/div[5]/div/div/ul/li[2]/a");
                 f.UserStatusSelectOpt.Click();
                 f.UserRemark.SendKeys("No Remarks");
                 f.UserDGAddButton.Click();
@@ -722,8 +722,8 @@ namespace UITests.TestCases.User
                 selectElement = new SelectElement(f.Grid2Field4);
                 selectElement.SelectByValue("true");
                 f.Grid2Field5.Click();
-                f.Grid2Field5.SendKeys("A"+Keys.Enter);
-                elementOps.ExistsXpath("//*[@id=\"WebForm_kbnm7hcy\"]/div[3]/div/div[2]/div[2]/table/tbody/tr/td");
+                f.Grid2Field5.SendKeys("A");
+                elementOps.ExistsXpath("//*[@id=\"WebForm_kbnm7hcy\"]/div[4]/div/div[2]/div[2]/table/tbody/tr/td");
                 actions.DoubleClick(f.Grid2Field5Value);
                 actions.Perform();
                 f.Grid2CommitButton.Click();
@@ -873,7 +873,7 @@ namespace UITests.TestCases.User
         }
         
         [Property("TestCaseId", "Form_FormSave_001")]
-        //[Test, Order(19)]
+        [Test, Order(24)]
         public void FormSave()
         {
             try
@@ -882,14 +882,41 @@ namespace UITests.TestCases.User
                 browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-34-34-34-34");
                 elementOps.ExistsId("TextBox1");
                 f.JamTopic.SendKeys("Test Topic");
-                actions.MoveToElement(f.FormSaveDropdownButton2);
-                actions.Perform();
-                f.FormSaveDropdownButton2.Click();
-                //elementOps.ChangeStyleByXpath(f.FormSaveDropdownButton,"class", "dropdown bootstrap-select open");
-                //elementOps.ChangeStyleByXpath(f.FormSaveDropdownButton2, "style", "max-height: 660.2px; overflow: hidden; min-height: 83px;");
-                //var selectElement = new SelectElement(f.FormSaveDropdown);
-                //selectElement.SelectByText("&Continue");
+                elementOps.ExecuteScripts("$('#webformsave-selbtn').children('div').children('button')[0].click()");
+                f.FormSaveNew.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("id=\"eb_common_loader\" style=\"background-color: transparent; display: none;\"")));
 
+                Assert.AreEqual("New Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
+                Console.WriteLine("New Mode");
+
+                elementOps.ExistsId("TextBox1");
+                f.JamTopic.SendKeys("Test Topic");
+                elementOps.ExecuteScripts("$('#webformsave-selbtn').children('div').children('button')[0].click()");
+                f.FormSaveEdit.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("id=\"eb_common_loader\" style=\"background-color: transparent; display: none;\"")));
+
+                Assert.AreEqual("Edit Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
+                Console.WriteLine("Edit Mode");
+
+                browserOps.Refresh();
+                elementOps.ExistsId("TextBox1");
+                f.JamTopic.SendKeys("Test Topic");
+                elementOps.ExecuteScripts("$('#webformsave-selbtn').children('div').children('button')[0].click()");
+                f.FormSaveView.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("id=\"eb_common_loader\" style=\"background-color: transparent; display: none;\"")));
+
+                Assert.AreEqual("View Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
+                Console.WriteLine("View Mode");
+
+                browserOps.Refresh();
+                elementOps.ExistsId("TextBox1");
+                f.JamTopic.SendKeys("Test Topic");
+                elementOps.ExecuteScripts("$('#webformsave-selbtn').children('div').children('button')[0].click()");
+                f.FormSaveClose.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("id=\"eb_common_loader\" style=\"background-color: transparent; display: none;\"")));
+
+                browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashBoard");
+                Console.WriteLine("Close Mode");
             }
             catch (Exception e)
             {

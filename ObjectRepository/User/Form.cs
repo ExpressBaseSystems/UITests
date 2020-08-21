@@ -282,7 +282,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"SimpleSelect1_dd\"]/div/div/ul/li[2]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"WebForm_k8yfaqyr\"]/div[5]/div/div/ul/li[2]/a"));
             }
         }
 
@@ -298,7 +298,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"SimpleSelect2_dd\"]/div/div/ul/li[2]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"WebForm_k8yfaqyr\"]/div[5]/div/div/ul/li[2]/a"));
             }
         }
 
@@ -402,7 +402,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"webformsave-selbtn\"]"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"webformsave-selbtn\"]/div/button"));
             }
         }
 
@@ -410,7 +410,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"webformsave-selbtn\"]/div/div"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"webformsave-selbtn\"]/div"));
             }
         }
 
@@ -509,7 +509,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"WebForm_kbnm7hcy\"]/div[3]/div/div[2]/div[2]/table/tbody/tr/td"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"WebForm_kbnm7hcy\"]/div[4]/div/div[2]/div[2]/table/tbody/tr/td"));
             }
         }
 
@@ -655,7 +655,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"cont_Review1\"]/div[3]/button"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"cont_Review1\"]/div[3]/div"));
             }
         }
 
@@ -829,7 +829,6 @@ namespace UITests.ObjectRepository.User
             get
             {
                 return this.driver.FindElement(By.XPath("/html/body/div[6]/div[1]/img"));
-                //*[@id="SimpleFileUploader1_SFUP"]/div[2]/div/div/img
             }
         }
 
@@ -838,7 +837,6 @@ namespace UITests.ObjectRepository.User
             get
             {
                 return this.driver.FindElement(By.XPath("//*[@id=\"SimpleFileUploader1_SFUP\"]/div[2]/div/div/img"));
-
             }
         }
 

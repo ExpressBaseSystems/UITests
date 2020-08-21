@@ -70,6 +70,14 @@ namespace UITests.Bot.ObjectRepository
             }
         }
 
+        public IWebElement UITestBot9
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("botno6"));
+            }
+        }
+
         public IWebElement BotFrame
         {
             get
@@ -106,7 +114,7 @@ namespace UITests.Bot.ObjectRepository
         {
             get
             {
-                return this.driver.FindElement(By.ClassName("eb__-bot___-headersubtext"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"eb_iframecont7\"]/div[1]/div[2]/div"));
             }
         }
 

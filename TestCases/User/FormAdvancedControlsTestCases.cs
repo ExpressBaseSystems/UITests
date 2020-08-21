@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -49,7 +50,7 @@ namespace UITests.TestCases.User
 
         [Property("TestCaseId", "Form_ReviewControl_001")]
         [Test, Order(1)]
-        public void ReviewControlUser()
+        public void ReviewControl()
         {
             try
             {
@@ -57,6 +58,7 @@ namespace UITests.TestCases.User
                 f = new Form(driver);
                 browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-100-100-100-100");
                 elementOps.ExistsId("TextBox1");
+                int val = elementOps.GetTableRowCount("//*[@id=\"nf-container\"]/li");
                 f.ReviewFormTextBox.SendKeys("Test");
                 f.SaveButton.Click();
 
@@ -110,9 +112,10 @@ namespace UITests.TestCases.User
                 elementOps.ExistsClass("eb_messageBox_container");
                 Console.WriteLine(f.Message.GetAttribute("innerText"));
                 elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+                int val1 = elementOps.GetTableRowCount("//*[@id=\"nf-container\"]/li");
                 Assert.AreEqual("View Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
                 Console.WriteLine("View Mode");
-
+                Assert.True(val < val1, "Success", "Success");
                 elementOps.ExecuteScripts("$('#eb_messageBox_container').hide();");
 
                 UserLogOut();
@@ -125,8 +128,8 @@ namespace UITests.TestCases.User
                 browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashBoard");
                 browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-100-100-100-100");
                 elementOps.ExistsId("TextBox1");
-                f.ReviewFormTextBox.SendKeys("Test");
-                f.SaveButton.Click();
+                f.ReviewFormTextBox.SendKeys("Test"+Keys.Control+"s");
+                //f.SaveButton.Click();
 
                 elementOps.ExistsClass("eb_messageBox_container");
                 elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
@@ -164,6 +167,7 @@ namespace UITests.TestCases.User
                 f.FileBrowser.SendKeys("C:\\Users\\user\\Pictures\\code.png");
 
                 elementOps.ExistsId("FileUploader1-upload-lin");
+                actions = new Actions(driver);
                 actions.MoveToElement(f.FileUploadButton);
                 actions.Perform();
                 f.FileUploadButton.Click();
@@ -207,6 +211,7 @@ namespace UITests.TestCases.User
                 f.FileBrowser.SendKeys("C:\\Users\\user\\Pictures\\Hello.docx");
 
                 elementOps.ExistsId("FileUploader1-upload-lin");
+                actions = new Actions(driver);
                 actions.MoveToElement(f.FileUploadButton);
                 actions.Perform();
                 f.FileUploadButton.Click();
@@ -254,6 +259,7 @@ namespace UITests.TestCases.User
                 selectElement.SelectByIndex(1);
 
                 elementOps.ExistsId("FileUploader1-upload-lin");
+                actions = new Actions(driver);
                 actions.MoveToElement(f.FileUploadButton);
                 actions.Perform();
                 f.FileUploadButton.Click();
@@ -297,6 +303,7 @@ namespace UITests.TestCases.User
                 f.FileBrowser.SendKeys("C:\\Users\\user\\Pictures\\Hello.docx");
 
                 elementOps.ExistsId("FileUploader1-upload-lin");
+                actions = new Actions(driver);
                 actions.MoveToElement(f.FileUploadButton);
                 actions.Perform();
                 f.FileUploadButton.Click();
@@ -344,6 +351,7 @@ namespace UITests.TestCases.User
                 selectElement.SelectByIndex(1);
 
                 elementOps.ExistsId("FileUploader1-upload-lin");
+                actions = new Actions(driver);
                 actions.MoveToElement(f.FileUploadButton);
                 actions.Perform();
                 f.FileUploadButton.Click();
@@ -387,6 +395,7 @@ namespace UITests.TestCases.User
                 f.FileBrowser.SendKeys("C:\\Users\\user\\Pictures\\code.png");
 
                 elementOps.ExistsId("FileUploader1-upload-lin");
+                actions = new Actions(driver);
                 actions.MoveToElement(f.FileUploadButton);
                 actions.Perform();
                 f.FileUploadButton.Click();
@@ -453,7 +462,7 @@ namespace UITests.TestCases.User
 
         [Property("TestCaseId", "Form_FileUploader_009")]
         [Test, Order(10)]
-        public void ImageFileUploader_Multiple()         //------------------------------
+        public void ImageFileUploader_Multiple()         
         {
             try
             {
@@ -469,12 +478,14 @@ namespace UITests.TestCases.User
 
                 elementOps.ExistsId("FileUploader1-file-input");
                 f.FileBrowser.SendKeys("C:\\Users\\user\\Pictures\\code.png");
+                actions = new Actions(driver);
                 actions.MoveToElement(f.FileUploadButton);
                 actions.Perform();
                 f.FileUploadButton.Click();
                 wait.Until(webDriver => (driver.PageSource.Contains("class=\"eb-upl-loader\" style=\"display: none;\"")));
                 elementOps.ExistsId("FileUploader1-file-input");
                 f.FileBrowser.SendKeys("C:\\Users\\user\\Pictures\\code1.png");
+                actions = new Actions(driver);
                 actions.MoveToElement(f.FileUploadButton);
                 actions.Perform();
                 f.FileUploadButton.Click();
@@ -512,12 +523,14 @@ namespace UITests.TestCases.User
                 elementOps.ExistsXpath("//*[@id=\"FileUploader1-eb-upl-bdy\"]/div[2]/div/div[4]/button[3]");
                 Assert.AreEqual("True", elementOps.IsWebElementPresent(f.FileUploaderTag).ToString(), "Success!! Search  Compelte", "Success!! Search  Compelte");
 
+                actions = new Actions(driver);
                 actions.MoveToElement(f.FileUploaderTag);
                 actions.Perform();
                 f.FileUploaderTag.Click();
                 f.FileUploaderTagInput.SendKeys("girl" + Keys.Enter);
                 f.FileUploaderTag.Click();
 
+                actions = new Actions(driver);
                 actions.MoveToElement(f.FileUploadButton);
                 actions.Perform();
                 f.FileUploadButton.Click();
@@ -560,6 +573,7 @@ namespace UITests.TestCases.User
                 elementOps.ExistsXpath("//*[@id=\"FileUploader1-eb-upl-bdy\"]/div[2]/div/div[4]/button[3]");
                 Assert.AreEqual("True", elementOps.IsWebElementPresent(f.FileUploaderCrop).ToString(), "Success!! Search  Compelte", "Success!! Search  Compelte");
 
+                actions = new Actions(driver);
                 actions.MoveToElement(f.FileUploaderCrop);
                 actions.Perform();
                 f.FileUploaderCrop.Click();
@@ -568,6 +582,7 @@ namespace UITests.TestCases.User
                 f.FileUploaderCropButton.Click();
                 f.FileUploaderSaveButton.Click();
 
+                actions = new Actions(driver);
                 actions.MoveToElement(f.FileUploadButton);
                 actions.Perform();
                 f.FileUploadButton.Click();
@@ -628,6 +643,7 @@ namespace UITests.TestCases.User
                 f.FileBrowser.SendKeys("C:\\Users\\user\\Downloads\\Ford.jpg");
                 
                 elementOps.ExistsId("FileUploader1-upload-lin");
+                actions = new Actions(driver);
                 actions.MoveToElement(f.FileUploadButton);
                 actions.Perform();
                 f.FileUploadButton.Click();
@@ -643,8 +659,8 @@ namespace UITests.TestCases.User
                 Console.WriteLine("View Mode");
 
                 elementOps.ExistsXpath("//*[@id=\"FileUploader1_GalleryUnq\"]/div[2]/div[1]");
-                f.FileUploader1Toggle2.Click();
-                Assert.AreEqual("True", elementOps.IsWebElementPresent(f.FileUploader1Img2).ToString(), "Success!! Search  Compelte", "Success!! Search  Compelte");
+                f.FileUploader1Toggle.Click();
+                Assert.AreEqual("True", elementOps.IsWebElementPresent(f.FileUploader1Img1).ToString(), "Success!! Search  Compelte", "Success!! Search  Compelte");
 
             }
             catch (Exception e)
@@ -757,6 +773,7 @@ namespace UITests.TestCases.User
                 elementOps.ExistsXpath("//*[@id=\"FileUploader1_GalleryUnq\"]/div[1]/div[1]");
                 elementOps.ChangeStyleByXpath(f.FileUploaderImgToggleDiv, "class", "Col_head");
                 elementOps.ChangeStyleByXpath(f.FileUploaderImgToggleDiv2, "class", "Col_apndBody collapse in");
+                actions = new Actions(driver);
                 actions.ContextClick(f.FileUploaderImgDiv);
                 actions.Perform();
 
@@ -766,19 +783,22 @@ namespace UITests.TestCases.User
                 f.FileUploaderImgDeleteYesButton.Click();
                 //wait.Until(webDriver => (driver.PageSource.Contains("id=\"eb_common_loader\" style=\"background-color: transparent; display: none;\"")));
                 wait.Until(webDriver => (driver.PageSource.Contains("id=\"eb_messageBox_container\" style=\"background-color: rgb(255, 0, 0); color: rgb(255, 255, 255); display: none;\"")));
-                //elementOps.ExistsId("FileUploader1-file-input");
-                //f.FileBrowser.SendKeys("C:\\Users\\user\\Pictures\\code.png");
+                elementOps.ExistsId("FileUploader1_Upl_btn");
+                f.FileUploadReqButton.Click();
 
-                //elementOps.ExistsId("FileUploader1-upload-lin");
-                //f.FileUploadButton.Click();
-                //wait.Until(webDriver => (driver.PageSource.Contains("class=\"eb-upl-loader\" style=\"display: none;\"")));
-                //f.FileUploadOkButton.Click();
-                //elementOps.ExistsClass("eb_messageBox_container");
-                //elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
-                //f.SaveButton.Click();
-                //elementOps.ExistsClass("eb_messageBox_container");
-                //driver.Close();
-                //driver.SwitchTo().Window(driver.WindowHandles.Last());
+                elementOps.ExistsId("FileUploader1-file-input");
+                f.FileBrowser.SendKeys("C:\\Users\\user\\Pictures\\code.png");
+
+                elementOps.ExistsId("FileUploader1-upload-lin");
+                f.FileUploadButton.Click();
+                wait.Until(webDriver => (driver.PageSource.Contains("class=\"eb-upl-loader\" style=\"display: none;\"")));
+                f.FileUploadOkButton.Click();
+                elementOps.ExistsClass("eb_messageBox_container");
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+                f.SaveButton.Click();
+                elementOps.ExistsClass("eb_messageBox_container");
+                driver.Close();
+                driver.SwitchTo().Window(driver.WindowHandles.Last());
             }
             catch (Exception e)
             {
@@ -811,7 +831,7 @@ namespace UITests.TestCases.User
 
                 Assert.AreEqual("View Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
                 Console.WriteLine("Success");
-
+                browserOps.Refresh();
             }
             catch (Exception e)
             {
@@ -842,7 +862,7 @@ namespace UITests.TestCases.User
 
                 Assert.AreEqual("View Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
                 Console.WriteLine("Success");
-
+                browserOps.Refresh();
             }
             catch (Exception e)
             {
@@ -943,6 +963,7 @@ namespace UITests.TestCases.User
                 elementOps.ExistsClass("eb_messageBox_container");
                 Assert.AreEqual("Maximum number of files reached ", f.Message.GetAttribute("innerHTML"), "Success", "Success");
                 elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+                browserOps.Refresh();
             }
             catch (Exception e)
             {
@@ -977,7 +998,7 @@ namespace UITests.TestCases.User
 
         [Property("TestCaseId", "Form_SimpleFileUploader_008")]
         [Test, Order(26)]
-        public void CheckSimpleFileUploaderImage_ViewMode()
+        public void CheckSimpleFileUploaderImage_ViewMode()  // Act sep according to file type
         {
             try
             {
@@ -991,14 +1012,19 @@ namespace UITests.TestCases.User
                 Console.WriteLine("View Mode");
 
                 elementOps.ExistsId("TextBox1");
+                string val = f.TextBox1.GetAttribute("value");
+                Console.WriteLine(val);
                 Assert.AreEqual("True", elementOps.IsWebElementPresent(f.SimpleFileUploaderImgViewMode).ToString(), "Success!!", "Success!!");
                 f.SimpleFileUploaderImgViewMode.Click();
-                browserOps.implicitWait(50);
-                Assert.AreEqual("True", elementOps.IsWebElementPresent(f.SimpleFileUploaderImgViewer).ToString(), "Success!!", "Success!!");
+                if (val.Contains("File"))
+                {
+                    var alert = driver.SwitchTo().Alert();
+                    alert.Dismiss();
+                }
+                else
+                    Assert.AreEqual("True", elementOps.IsWebElementPresent(f.SimpleFileUploaderImgViewer).ToString(), "Success!!", "Success!!");
                 driver.Close();
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
-                var alert = driver.SwitchTo().Alert();
-                alert.Accept();
             }
             catch (Exception e)
             {
@@ -1030,8 +1056,8 @@ namespace UITests.TestCases.User
                 
                 driver.Close();
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
-                var alert = driver.SwitchTo().Alert();
-                alert.Accept();
+                //var alert = driver.SwitchTo().Alert();
+                //alert.Accept();
             }
             catch (Exception e)
             {
@@ -1063,6 +1089,7 @@ namespace UITests.TestCases.User
                 string file = "C:\\Users\\user\\Pictures\\code.png";
                 if (filetype == "docx")
                     file = "C:\\Users\\user\\Pictures\\Hello.docx";
+                actions = new Actions(driver);
                 actions.MoveToElement(f.SimpleFileUploaderImg);
                 actions.Perform();
                 var children = f.SimpleFileUploaderImgDelete.FindElements(By.XPath(".//*"));
@@ -1080,8 +1107,8 @@ namespace UITests.TestCases.User
 
                 driver.Close();
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
-                var alert = driver.SwitchTo().Alert();
-                alert.Accept();
+                //var alert = driver.SwitchTo().Alert();
+                //alert.Accept();
             }
             catch (Exception e)
             {

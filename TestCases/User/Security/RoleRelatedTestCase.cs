@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -13,361 +14,275 @@ using UITests.ObjectRepository.User.Security;
 namespace UITests.TestCases.User.Security
 {
     [TestFixture]
-    public class RoleRelatedTestCase : BaseClass
+    public class RoleRelatedTestCase :BaseClass
     {
-        public RoleRelated role;
+        UserLogin ulog;
+        RoleRelated r;
         public string role_name;
         string anon_role;
         public string urlrols = "https://uitesting.eb-test.cloud/Security/CommonList?type=Roles";
+
         public void UserLogin()
         {
+            ulog = new UserLogin(driver);
             browserOps.Goto("https://uitesting.eb-test.cloud/");
-            ul.UserName.SendKeys("anoopa.baby@expressbase.com");
-            ul.Password.SendKeys("Qwerty@123");
-            ul.LoginButton.Click();
+            ulog.UserName.SendKeys("anoopa.baby@expressbase.com");
+            ulog.Password.SendKeys("Qwerty@123");
+            ulog.LoginButton.Click();
+            Console.WriteLine("Login Success");
+            r = new RoleRelated(driver);
+            browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashBoard");
         }
 
-        [TestCaseSource("Roles"), Order(1)]
-        public void CreateNewRole(dynamic r)
+        public void CheckUsrLogin()
         {
-            UserLogin();
-            role = new RoleRelated(driver);
-            browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashboard");
-
-            elementOps.ExistsXpath("//*[@id=\"appList\"]/div/ul/li/ul/li[3]/a");
-            role.SecurityLink.Click();
-            elementOps.ExistsXpath("//*[@id=\"ebm-security\"]/div[2]/ul/li[5]/a");
-            role.RoleLink.Click();
-
-            browserOps.UrlToBe(urlrols);
-            role.BtnNewRole.Click();
-
-            browserOps.SwitchTo();
-            browserOps.UrlToBe("https://uitesting.eb-test.cloud/Security/ManageRoles");
-
-            elementOps.ExistsId("txtRoleName");
-            role_name = r.rolename + id.GetId;
-            role.RoleName.SendKeys(role_name);
-            role.RoleDesc.SendKeys(r.description);
-            role.SlctApp.Click();
-            role.SlctAppOpt.Click();
-            browserOps.implicitWait(5);
-
-            role.TabPermsn.Click();
-            elementOps.ExistsId("aWebForm");
-            role.Webfrm.Click();
-            browserOps.implicitWait(5);
-            role.Frm1P1.Click();
-            role.Frm1P2.Click();
-            role.Frm1P3.Click();
-            role.Frm2P1.Click();
-            role.Frm2P2.Click();
-            browserOps.implicitWait(5);
-            role.Webfrm.Click();
-            role.Webfrm.Displayed.Equals(false);
-            browserOps.implicitWait(100);
-
-            role.TVis.Displayed.Equals(true);
-            role.TVis.Click();
-            role.Tvis1.Click();
-            role.TVis2.Click();
-
-            elementOps.ExistsXpath("//*[@id='ulTabOnMngRole']/li[3]/a");
-            role.TabSubRols.Click();
-            elementOps.ExistsId("btnAddModalAdd_Roles");
-            role.BtnAddRols.Click();
-            elementOps.ExistsId("txtSearchAdd_Roles");
-            role.SrchRols.SendKeys("Test Role");
-            browserOps.implicitWait(50);
-            browserOps.SwitchTo();
-            elementOps.ExistsXpath("//*[@id='divSearchResultsAdd_Roles']/div[2]/div[1]/input");
-            role.Rol1.Click();
-            elementOps.ExistsXpath("//*[@id='divSearchResultsAdd_Roles']/div[4]/div[1]/input");
-            role.Rol2.Click();
-            elementOps.ExistsId("btnModalOkAdd_Roles");
-            role.BtnbOkAdd_Rols.Click();
-
-            elementOps.ExistsXpath("//*[@id='ulTabOnMngRole']/li[4]");
-            role.TabUsrs.Click();
-            elementOps.ExistsId("btnAddModalAdd_Users");
-            role.BtnAddUser.Click();
-            elementOps.ExistsId("txtSearchAdd_Users");
-            role.SrchUser.Click();
-            role.SrchUser.SendKeys("Jos");
-            browserOps.implicitWait(100);
-            browserOps.SwitchTo();
-            elementOps.ExistsXpath("//*[@id='divSearchResultsAdd_Users']/div[1]/div[1]/input");
-            role.Usr1.Click();
-            elementOps.ExistsXpath("//*[@id='divSearchResultsAdd_Users']/div[2]/div[1]/input");
-            role.Usr2.Click();
-            elementOps.ExistsId("btnModalOkAdd_Users");
-            role.BtnOkAdd_Usrs.Click();
-
-            elementOps.ExistsId("btnSaveAll");
-            role.BtnSave.Click();
-            elementOps.ExistsXpath("//*[@id='eb_dlogBox_container']/div/div[3]/button");
-            role.BtnDlgBoxOk.Click();
-            Console.WriteLine("New Role Created....");
-        }
-
-        [TestCaseSource("Roles"), Order(2)]
-        public void EditRole(dynamic edt_r)
-        {
-            browserOps.SwitchTo();
-            role = new RoleRelated(driver);
-
-            browserOps.UrlToBe(urlrols);
-            driver.Navigate().Refresh();
-
-            elementOps.ExistsId("txtSrchCmnList");
-            role.SrchRole.SendKeys(role_name);
-
-            role.SlctRole.Click();
-            browserOps.SwitchTo();
-            role.RoleDesc.Clear();
-            role.RoleDesc.SendKeys(edt_r.editdesc);
-
-            role.TabPermsn.Click();
-            browserOps.implicitWait(20);
-            role.TVis.Click();
-            role.TVis3.Click();
-            role.TVis.Click();
-
-            elementOps.ExistsXpath("//*[@id='ulTabOnMngRole']/li[3]/a");
-            role.TabSubRols.Click();
-            elementOps.ExistsId("btnAddModalAdd_Roles");
-            role.BtnAddRols.Click();
-            elementOps.ExistsId("txtSearchAdd_Roles");
-            role.SrchRols.SendKeys("Test Role");
-            browserOps.implicitWait(50);
-            browserOps.SwitchTo();
-            elementOps.ExistsXpath("//*[@id='divSearchResultsAdd_Roles']/div[1]/div[1]/input");
-            role.Rol1.Click();
-            elementOps.ExistsXpath("//*[@id='divSearchResultsAdd_Roles']/div[6]/div[1]/input");
-            role.Rol3.Click();
-            elementOps.ExistsId("btnModalOkAdd_Roles");
-            role.BtnbOkAdd_Rols.Click();
-
-            elementOps.ExistsXpath("//*[@id='ulTabOnMngRole']/li[4]");
-            role.TabUsrs.Click();
-            elementOps.ExistsId("btnAddModalAdd_Users");
-            role.BtnAddUser.Click();
-            elementOps.ExistsId("txtSearchAdd_Users");
-            role.SrchUser.Click();
-            role.SrchUser.SendKeys("Jos");
-            browserOps.implicitWait(100);
-            browserOps.SwitchTo();
-            elementOps.ExistsXpath("//*[@id='divSearchResultsAdd_Users']/div[1]/div[1]/input");
-            role.Usr1.Click();
-            elementOps.ExistsXpath("//*[@id='divSearchResultsAdd_Users']/div[2]/div[1]/input");
-            role.Usr2.Click();
-            elementOps.ExistsId("btnModalOkAdd_Users");
-            role.BtnOkAdd_Usrs.Click();
-
-            elementOps.ExistsId("btnSaveAll");
-            role.BtnSave.Click();
-            elementOps.ExistsXpath("//*[@id='eb_dlogBox_container']/div/div[3]/button");
-            role.BtnDlgBoxOk.Click();
-            Console.WriteLine("Role Edited....");
-            browserOps.implicitWait(20);
-            browserOps.SwitchTo();
-            driver.FindElement(By.Id("txtSrchCmnList")).Clear();
-            driver.Navigate().Refresh();
-        }
-
-        [TestCaseSource("Roles"), Order(3)]
-        public void UniqNameCheck(dynamic r)
-        {
-
-            role = new RoleRelated(driver);
-
-            browserOps.UrlToBe(urlrols);
-            role.BtnNewRole.Click();
-
-            browserOps.SwitchTo();
-            browserOps.UrlToBe("https://uitesting.eb-test.cloud/Security/ManageRoles");
-
-            elementOps.ExistsId("txtRoleName");
-
-            role.RoleName.SendKeys(role_name);
-            role.RoleDesc.SendKeys(r.description);
-
-            string currentmsgblk = string.Empty;
-
-            elementOps.ExistsId("btnSaveAll");
-            role.BtnSave.Click();
-
-            if (role.MsgBox.Displayed)
+            if (login_status == false)
             {
-                currentmsgblk = role.MsgBox.GetAttribute("style");
-            }
-            string msgblk = "display: block";
-
-            if (currentmsgblk.Contains(msgblk))
-            {
-                Console.WriteLine("Role Name is Already Exists ");
+                UserLogin();
+                login_status = true;
                 browserOps.Goto("https://uitesting.eb-test.cloud/Security/CommonList?type=Roles");
             }
-            else
-            {
-                Console.WriteLine("New Role Created With the Same Name....");
-
-                elementOps.ExistsXpath("//*[@id='eb_dlogBox_container']/div/div[3]/button");
-                role.BtnDlgBoxOk.Click();
-
-                browserOps.implicitWait(20);
-                browserOps.SwitchTo();
-                browserOps.UrlToBe("https://uitesting.eb-test.cloud/Security/CommonList?type=Roles");
-                driver.Navigate().Refresh();
-            }
         }
 
-        [TestCaseSource("Roles"), Order(4)]
-        public void Anonymous_Role(dynamic ar)
+        [Property("TestCaseId", "Role_UniqNameCheck_001")]
+        [Test, Order(1)]
+        public void UniqNameCheck()
         {
+            CheckUsrLogin();
+            elementOps.ExistsXpath("//*[@id=\"tblCommonList\"]/tbody/tr");
+            int val = elementOps.GetTableRowCount("//*[@id=\"tblCommonList\"]/tbody/tr");
+            r.BtnNewRole.Click();
             browserOps.SwitchTo();
-            role = new RoleRelated(driver);
-
-            browserOps.UrlToBe(urlrols);
-            driver.Navigate().Refresh();
-
-            browserOps.UrlToBe(urlrols);
-            role.BtnNewRole.Click();
-
-            browserOps.SwitchTo();
-            browserOps.UrlToBe("https://uitesting.eb-test.cloud/Security/ManageRoles");
-
             elementOps.ExistsId("txtRoleName");
-            anon_role = ar.anonymsrole + id.GetId;
-            role.RoleName.SendKeys(anon_role);
-            role.RoleDesc.SendKeys(ar.description);
-            role.SlctApp.Click();
-            role.SlctAppOpt.Click();
-            browserOps.implicitWait(5);
-
-            elementOps.ExistsXpath("//*[@id='ulTabOnMngRole']/li[1]/a");
-            role.TabSet.Click();
-            elementOps.ExistsXpath("//*[@id='settings']/div[1]/div/div/label[2]");
-            role.RolTyp.Click();
-
-            role.TabPermsn.Click();
-            elementOps.ExistsId("aWebForm");
-            role.Webfrm.Click();
-            browserOps.implicitWait(5);
-            role.Frm1P1.Click();
-            role.Frm1P2.Click();
-            browserOps.implicitWait(5);
-            role.Webfrm.Click();
-            role.Webfrm.Displayed.Equals(false);
-            browserOps.implicitWait(100);
-            role.TVis.Displayed.Equals(true);
-            role.TVis.Click();
-            elementOps.ExistsXpath("//*[@id='tblTableVisualization']/tbody/tr[3]/td[2]/input");
-            role.Tvis1.Click();
-            role.TVis2.Click();
-            role.TVis3.Click();
-
-            elementOps.ExistsId("btnSaveAll");
-            role.BtnSave.Click();
-            elementOps.ExistsXpath("//*[@id='eb_dlogBox_container']/div/div[3]/button");
-            role.BtnDlgBoxOk.Click();
-            Console.WriteLine("New Anonymous Role Created....");
-
+            role_name = "Test Role" + id.GetId;
+            r.RoleName.SendKeys(role_name);
+            wait.Until(webDriver => (!driver.PageSource.Contains("title=\"Validating...\"")));
+            Assert.True(elementOps.IsWebElementPresent(r.RoleNameVerify), "Success", "Success");
+            driver.Close();
             browserOps.SwitchTo();
-            browserOps.UrlToBe(urlrols);
-            driver.Navigate().Refresh();
-        }
-
-        [TestCaseSource("Roles"), Order(5)]
-        public void Rol_LtdAces(dynamic rl)
-        {
-            browserOps.SwitchTo();
-            role = new RoleRelated(driver);
-
-            browserOps.UrlToBe(urlrols);
-            driver.Navigate().Refresh();
-
-            browserOps.UrlToBe(urlrols);
-            role.BtnNewRole.Click();
-
-            browserOps.SwitchTo();
-            browserOps.UrlToBe("https://uitesting.eb-test.cloud/Security/ManageRoles");
-
-            elementOps.ExistsId("txtRoleName");
-            role_name = rl.ltdlocrole + id.GetId;
-            role.RoleName.SendKeys(role_name);
-            role.RoleDesc.SendKeys(rl.description);
-            role.SlctApp.Click();
-            role.SlctAppOpt.Click();
-            browserOps.implicitWait(5);
-
-            elementOps.ExistsXpath("//*[@id='ulTabOnMngRole']/li[1]/a");
-            role.TabSet.Click();
-
-            //elementOps.ExistsXpath("//*[@id='settings']/div[2]/div/div/label[2]");
-            //role.RolLocs.Click();
-            //role.Loc1.Click();
-            //role.Loc2.Click();
-            //role.Loc3.Click();
-
-            actions.MoveToElement(role.TabPermsn).Perform();
-            role.TabPermsn.Click();
-
-            role.TabPermsn.Click();
-            elementOps.ExistsId("aWebForm");
-            role.Webfrm.Click();
-            browserOps.implicitWait(5);
-            role.Frm1P2.Click();
-            role.Frm2P1.Click();
-            role.Frm2P2.Click();
-            browserOps.implicitWait(5);
-            role.Webfrm.Click();
-            role.Webfrm.Displayed.Equals(false);
-            browserOps.implicitWait(100);
-
-            role.TVis.Displayed.Equals(true);
-            role.TVis.Click();
-            role.TVis2.Click();
-
-            elementOps.ExistsXpath("//*[@id='ulTabOnMngRole']/li[3]/a");
-            role.TabSubRols.Click();
-            elementOps.ExistsId("btnAddModalAdd_Roles");
-            role.BtnAddRols.Click();
-            elementOps.ExistsId("txtSearchAdd_Roles");
-            role.SrchRols.SendKeys("Test Role");
-            browserOps.implicitWait(50);
-            browserOps.SwitchTo();
-            elementOps.ExistsXpath("//*[@id='divSearchResultsAdd_Roles']/div[2]/div[1]/input");
-            role.Rol1.Click();
-            elementOps.ExistsId("btnModalOkAdd_Roles");
-            role.BtnbOkAdd_Rols.Click();
-
-            elementOps.ExistsXpath("//*[@id='ulTabOnMngRole']/li[4]");
-            role.TabUsrs.Click();
-            elementOps.ExistsId("btnAddModalAdd_Users");
-            role.BtnAddUser.Click();
-            elementOps.ExistsId("txtSearchAdd_Users");
-            role.SrchUser.Click();
-            role.SrchUser.SendKeys("Jos");
-            browserOps.implicitWait(50);
-            browserOps.SwitchTo();
-            elementOps.ExistsXpath("//*[@id='divSearchResultsAdd_Users']/div[4]/div[1]/input");
-            role.Usr2.Click();
-            elementOps.ExistsId("btnModalOkAdd_Users");
-            role.BtnOkAdd_Usrs.Click();
-
-            elementOps.ExistsId("btnSaveAll");
-            role.BtnSave.Click();
-            elementOps.ExistsXpath("//*[@id='eb_dlogBox_container']/div/div[3]/button");
-            role.BtnDlgBoxOk.Click();
-            Console.WriteLine("New Role With Limited Access is Created....");
-            browserOps.UrlToBe(urlrols);
             browserOps.Refresh();
         }
 
-        private static List<EbTestItem> Roles()
+        [Property("TestCaseId", "Role_CreateNewRole_001")]
+        [Test, Order(2)]
+        public void CreateNewRole()
         {
-            return GetDataFromXML.GetDataFromFile(@"TestCases\User\Security\RoleRelatedTestCase.xml");
+            CheckUsrLogin();
+            elementOps.ExistsXpath("//*[@id=\"tblCommonList\"]/tbody/tr");
+            int val = elementOps.GetTableRowCount("//*[@id=\"tblCommonList\"]/tbody/tr");
+            r.BtnNewRole.Click();
+            browserOps.SwitchTo();
+
+            elementOps.ExistsId("txtRoleName");
+            role_name = "Test Role" + id.GetId;
+            r.RoleName.SendKeys(role_name);
+            wait.Until(webDriver => (driver.PageSource.Contains("class=\"fa fa-check\" aria-hidden=\"true\" style=\"color:green; padding: 9px;\"")));
+            r.RoleDesc.SendKeys("Test Role Desc");
+            r.SlctApp.Click();
+            r.SlctAppOpt.Click();
+
+            elementOps.ExistsId("btnSaveAll");
+            r.BtnSave.Click();
+            elementOps.ExistsXpath("//*[@id='eb_dlogBox_container']/div/div[3]/button");
+            r.BtnDlgBoxOk.Click();
+            Console.WriteLine("New Role Created....");
+            browserOps.SwitchTo();
+            browserOps.Refresh();
+            int val1 = elementOps.GetTableRowCount("//*[@id=\"tblCommonList\"]/tbody/tr");
+            Assert.True(val1 > val, "Success", "Success");
         }
+
+
+        [Property("TestCaseId", "Role_SetPermission_001")]
+        [Test, Order(3)]
+        public void SetPermission()
+        {
+            CheckUsrLogin();
+            elementOps.ExistsXpath("//*[@id=\"tblCommonList\"]/tbody/tr");
+            r.ChooseRole.Click();
+            browserOps.SwitchTo();
+            elementOps.ExistsXpath("//*[@id=\"ulTabOnMngRole\"]/li[2]/a");
+            r.TabPermsn.Click();
+
+            elementOps.ExistsId("aWebForm");
+            actions = new Actions(driver);
+            actions.MoveToElement(r.Webfrm);
+            actions.Perform();
+            r.Webfrm.Click();
+            elementOps.ExistsXpath("//*[@id='tblWebForm']/tbody/tr[1]/td[2]/input");
+            actions = new Actions(driver);
+            actions.MoveToElement(r.Frm1P1);
+            actions.Perform();
+            r.Frm1P1.Click();
+
+            elementOps.ExistsId("btnSaveAll");
+            r.BtnSave.Click();
+            elementOps.ExistsXpath("//*[@id='eb_dlogBox_container']/div/div[3]/button");
+            r.BtnDlgBoxOk.Click();
+            Console.WriteLine("Permission Set");
+            browserOps.SwitchTo();
+            browserOps.Refresh();
+        }
+
+        [Property("TestCaseId", "Role_SetSubRoles_001")]
+        [Test, Order(4)]
+        public void SetSubRoles()
+        {
+            CheckUsrLogin();
+            elementOps.ExistsXpath("//*[@id=\"tblCommonList\"]/tbody/tr");
+            r.ChooseRole.Click();
+            browserOps.SwitchTo();
+            elementOps.ExistsXpath("//*[@id=\"ulTabOnMngRole\"]/li[3]/a");
+            r.TabSubRols.Click();
+
+            elementOps.ExistsXpath("//*[@id='divroles']/div[1]/button");
+            actions = new Actions(driver);
+            actions.MoveToElement(r.BtnAddRols);
+            actions.Perform();
+            r.BtnAddRols.Click();
+            elementOps.ExistsXpath("//*[@id=\"divSearchResultsAdd_Roles\"]/div[1]/div[1]/input");
+            r.Rol1.Click();
+            elementOps.ExistsId("btnModalOkAdd_Roles");
+            r.BtnbOkAdd_Rols.Click();
+
+            elementOps.ExistsId("btnSaveAll");
+            r.BtnSave.Click();
+            elementOps.ExistsXpath("//*[@id='eb_dlogBox_container']/div/div[3]/button");
+            r.BtnDlgBoxOk.Click();
+            Console.WriteLine("Sub Role Set");
+            browserOps.SwitchTo();
+            browserOps.Refresh();
+        }
+
+        [Property("TestCaseId", "Role_SubRolesSearch_001")]
+        [Test, Order(5)]
+        public void SubRolesSearch()
+        {
+            CheckUsrLogin();
+            elementOps.ExistsXpath("//*[@id=\"tblCommonList\"]/tbody/tr");
+            r.ChooseRole.Click();
+            browserOps.SwitchTo();
+            elementOps.ExistsXpath("//*[@id=\"ulTabOnMngRole\"]/li[3]/a");
+            r.TabSubRols.Click();
+
+            elementOps.ExistsId("btnAddModalAdd_Roles");
+            actions = new Actions(driver);
+            actions.MoveToElement(r.BtnAddRols);
+            actions.Perform();
+            r.BtnAddRols.Click();
+            elementOps.ExistsId("txtSearchAdd_Roles");
+            r.SrchRols.SendKeys("SolutionO");
+            Console.WriteLine("Sub Role Search Success");
+            driver.Close();
+            browserOps.SwitchTo();
+            browserOps.Refresh();
+        }
+        
+        [Property("TestCaseId", "Role_SearchUser_001")]
+        [Test, Order(6)]
+        public void SearchUser()
+        {
+            CheckUsrLogin();
+            elementOps.ExistsXpath("//*[@id=\"tblCommonList\"]/tbody/tr");
+            r.ChooseRole.Click();
+            browserOps.SwitchTo();
+            elementOps.ExistsXpath("//*[@id='ulTabOnMngRole']/li[4]");
+            r.TabUsrs.Click();
+
+            elementOps.ExistsId("btnAddModalAdd_Users");
+            actions = new Actions(driver);
+            actions.MoveToElement(r.BtnAddUser);
+            actions.Perform();
+            r.BtnAddUser.Click();
+            elementOps.ExistsId("txtSearchAdd_Users");
+
+            r.SrchUser.SendKeys("Anoopa");
+            elementOps.ExistsXpath("//*[@id='divSearchResultsAdd_Users']/div[1]/div[1]/input");
+            r.Usr1.Click();
+            elementOps.ExistsId("btnModalOkAdd_Users");
+            r.BtnOkAdd_Usrs.Click();
+            elementOps.ExistsId("btnSaveAll");
+            r.BtnSave.Click();
+            elementOps.ExistsXpath("//*[@id='eb_dlogBox_container']/div/div[3]/button");
+            r.BtnDlgBoxOk.Click();
+            Console.WriteLine("Set User Success");
+            browserOps.SwitchTo();
+            browserOps.Refresh();
+        }
+
+
+        [Property("TestCaseId", "Role_Anonymous_Role_001")]
+        [Test, Order(7)]
+        public void Anonymous_Role()
+        {
+            CheckUsrLogin();
+            elementOps.ExistsXpath("//*[@id=\"tblCommonList\"]/tbody/tr");
+            int val = elementOps.GetTableRowCount("//*[@id=\"tblCommonList\"]/tbody/tr");
+            r.BtnNewRole.Click();
+            browserOps.SwitchTo();
+
+            elementOps.ExistsId("txtRoleName");
+            anon_role = "Test Anonymous Role" + id.GetId;
+            r.RoleName.SendKeys(anon_role);
+            wait.Until(webDriver => (driver.PageSource.Contains("class=\"fa fa-check\" aria-hidden=\"true\" style=\"color:green; padding: 9px;\"")));
+            r.RoleDesc.SendKeys("Test Anonymous Role Desc");
+            r.SlctApp.Click();
+            r.SlctAppOpt.Click();
+
+            elementOps.ExistsXpath("//*[@id='ulTabOnMngRole']/li[1]/a");
+            r.TabSet.Click();
+            elementOps.ExistsXpath("//*[@id='settings']/div[1]/div/div/label[2]");
+            r.RolTyp.Click();
+
+            elementOps.ExistsId("btnSaveAll");
+            r.BtnSave.Click();
+            elementOps.ExistsXpath("//*[@id='eb_dlogBox_container']/div/div[3]/button");
+            r.BtnDlgBoxOk.Click();
+            Console.WriteLine("New Role Created....");
+            browserOps.SwitchTo();
+            browserOps.Refresh();
+            int val1 = elementOps.GetTableRowCount("//*[@id=\"tblCommonList\"]/tbody/tr");
+            Assert.True(val1 > val, "Success", "Success");
+
+        }
+
+        [Property("TestCaseId", "Role_Rol_LtdAces_001")]
+        [Test, Order(8)]
+        public void Rol_LtdAces()
+        {
+            CheckUsrLogin();
+            elementOps.ExistsXpath("//*[@id=\"tblCommonList\"]/tbody/tr");
+            int val = elementOps.GetTableRowCount("//*[@id=\"tblCommonList\"]/tbody/tr");
+            r.BtnNewRole.Click();
+            browserOps.SwitchTo();
+
+            elementOps.ExistsId("txtRoleName");
+            role_name = "Test Role" + id.GetId;
+            r.RoleName.SendKeys(role_name);
+            wait.Until(webDriver => (driver.PageSource.Contains("class=\"fa fa-check\" aria-hidden=\"true\" style=\"color:green; padding: 9px;\"")));
+            r.RoleDesc.SendKeys("Test Role DEsc");
+            r.SlctApp.Click();
+            r.SlctAppOpt.Click();
+
+            elementOps.ExistsXpath("//*[@id='ulTabOnMngRole']/li[1]/a");
+            r.TabSet.Click();
+
+            elementOps.ExistsXpath("//*[@id='settings']/div[2]/div/div/label[2]");
+            r.RolLocs.Click();
+            r.Loc1.Click();
+            r.Loc2.Click();
+
+            elementOps.ExistsId("btnSaveAll");
+            r.BtnSave.Click();
+            elementOps.ExistsXpath("//*[@id='eb_dlogBox_container']/div/div[3]/button");
+            r.BtnDlgBoxOk.Click();
+            Console.WriteLine("New Role Created....");
+            browserOps.SwitchTo();
+            browserOps.Refresh();
+            int val1 = elementOps.GetTableRowCount("//*[@id=\"tblCommonList\"]/tbody/tr");
+            Assert.True(val1 > val, "Success", "Success");
+
+        }
+        
     }
 }

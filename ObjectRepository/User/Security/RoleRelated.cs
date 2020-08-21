@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UITests.TestCases.User.Security;
 
 namespace UITests.ObjectRepository.User.Security
 {
@@ -12,8 +13,6 @@ namespace UITests.ObjectRepository.User.Security
         {
             this.driver = driver;
         }
-
-        public string role_name { get; set; } = string.Empty;
 
         public IWebElement SecurityLink
         {
@@ -67,7 +66,7 @@ namespace UITests.ObjectRepository.User.Security
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='selectApp']/option[3]"));
+                return this.driver.FindElement(By.XPath("//*[@id='selectApp']/option[4]"));
             }
         }
 
@@ -99,7 +98,7 @@ namespace UITests.ObjectRepository.User.Security
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[text()='CJB - HOC Coimbatore']"));
+                return this.driver.FindElement(By.XPath("//*[text()='Thiruvananthapuram - Thiruvananthapuram']"));
             }
         }
 
@@ -107,7 +106,7 @@ namespace UITests.ObjectRepository.User.Security
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[text()='COK - HOC Kochi']"));
+                return this.driver.FindElement(By.XPath("//*[text()='Ernakulam - Ernakulam']"));
             }
         }
 
@@ -115,7 +114,7 @@ namespace UITests.ObjectRepository.User.Security
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[text()='TRV - HOC Trivandrum']"));
+                return this.driver.FindElement(By.XPath("//*[text()='Kochi Corporation - Kochi Corporation']"));
             }
         }
 
@@ -159,7 +158,7 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
-        public IWebElement Frm2P1
+        public IWebElement Frm1P4
         {
             get
             {
@@ -167,7 +166,7 @@ namespace UITests.ObjectRepository.User.Security
             }
         }
 
-        public IWebElement Frm2P2
+        public IWebElement Frm1P5
         {
             get
             {
@@ -219,7 +218,7 @@ namespace UITests.ObjectRepository.User.Security
         {
             get
             {
-                return this.driver.FindElement(By.Id("btnAddModalAdd_Roles"));
+                return this.driver.FindElement(By.XPath("//*[@id='divroles']/div[1]/button"));
             }
         }
 
@@ -358,5 +357,22 @@ namespace UITests.ObjectRepository.User.Security
                 return this.driver.FindElement(By.ClassName("eb_messageBox_container"));
             }
         }
+
+        public IWebElement ChooseRole
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"tblCommonList\"]/tbody/tr[3]/td[8]/i"));
+            }
+        }
+
+        public IWebElement RoleNameVerify
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"spanRoleName\"]/i"));
+            }
+        }
+
     }
 }

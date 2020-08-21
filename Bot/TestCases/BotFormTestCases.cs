@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace UITests.Bot.TestCases
                 browserOps.Goto("https://uitesting.eb-test.cloud/bots");
                 elementOps.ExistsId("botno7");
                 b.UITestBot1.Click();
+                elementOps.ExistsId("ebbot_iframe7");
                 driver.SwitchTo().Frame("ebbot_iframe7");
                 elementOps.ExistsId("anon_mail");
                 b.BotBodyMsgEmail.SendKeys("testuser@expressbase.com");
@@ -51,6 +53,7 @@ namespace UITests.Bot.TestCases
                 browserOps.Goto("https://uitesting.eb-test.cloud/bots");
                 elementOps.ExistsId("botno7");
                 b.UITestBot1.Click();
+                elementOps.ExistsId("ebbot_iframe7");
                 driver.SwitchTo().Frame("ebbot_iframe7");
                 elementOps.ExistsId("anon_mail");
                 b.BotBodyMsgEmail.SendKeys("testuser@expressbase.com");
@@ -84,6 +87,7 @@ namespace UITests.Bot.TestCases
                 browserOps.Goto("https://uitesting.eb-test.cloud/bots");
                 elementOps.ExistsId("botno7");
                 b.UITestBot1.Click();
+                elementOps.ExistsId("ebbot_iframe7");
                 driver.SwitchTo().Frame("ebbot_iframe7");
                 elementOps.ExistsId("anon_mail");
                 b.BotBodyMsgEmail.SendKeys("testuser@expressbase.com");
@@ -176,6 +180,9 @@ namespace UITests.Bot.TestCases
                 b.RadioButton2Button.Click();
                 elementOps.ExistsClass("slick-next");
                 b.StaticCardSet2NextButton.Click();
+                actions = new Actions(driver);
+                actions.MoveToElement(b.StaticCardSet2SubmitButton);
+                actions.Perform();
                 b.StaticCardSet2SubmitButton.Click();
                 elementOps.ExistsId("Numeric1");
                 elementOps.SetValue("Numeric1", "123");
@@ -188,7 +195,7 @@ namespace UITests.Bot.TestCases
                 elementOps.ExistsName("formsubmit");
                 b.FormSubmitButton.Click();
                 elementOps.ExistsXpath("/html/body/div[2]/div[1]/div[4]/div/div/div/button[6]");
-                Assert.True(b.FormSubmitSuccessMsg.GetAttribute("innerHTML").Contains("Your User Registration form submitted successfully"), "Success!!", "Success!!");
+                Assert.True(b.FormSubmitSuccessMsg.GetAttribute("innerHTML").Contains("Your User Registration submitted successfully"), "Success!!", "Success!!");
             }
             catch (Exception e)
             {
