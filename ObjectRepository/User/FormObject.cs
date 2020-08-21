@@ -814,7 +814,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect5_dd']/div/div/ul/li[1]/a/span"));
+                return this.driver.FindElement(By.XPath("//*[@id='WebForm_kcbr5skg']/div[6]/div/div/ul/li[1]/a"));
             }
         }
         public IWebElement BoolenSelectDNPAfterSave
@@ -835,7 +835,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='BooleanSelect7_dd']/div/div/ul/li[1]/a/span"));
+                return this.driver.FindElement(By.XPath("//*[@id='WebForm_kcbr5skg']/div[6]/div/div/ul/li[1]/a"));
             }
         }
         public IWebElement BoolenSelectTriggerAfterSave
@@ -1252,7 +1252,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='PowerSelect1_dd']/div/div/ul/li[3]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id='WebForm_kckd7ze9']/div[6]/div/div/ul/li[3]/a"));
             }
         }
         public IWebElement PowerSelectHidden
