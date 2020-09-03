@@ -81,6 +81,19 @@ namespace UITests.DataDriven
             }
         }
 
+        public bool IsAlertPresent()
+        {
+            try
+            {
+                driver.SwitchTo().Alert();
+                return true;
+            }
+            catch (NoAlertPresentException )
+            {
+                return false;
+            }
+        }
+
         public void ChangeStyle(string Id, string attribute, string value)
         {
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
@@ -183,6 +196,12 @@ namespace UITests.DataDriven
         {
             return driver.FindElements(By.XPath(xpath)).Count;
         }
-        
+
+        public bool HasAttribute(string id, string attribute)
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            return (bool)js.ExecuteScript("return (document.getElementById('"+id+"').hasAttribute('"+ attribute + "'));");
+        }
+
     }
 }
