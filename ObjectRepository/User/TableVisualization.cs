@@ -256,7 +256,23 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"filterdisplayrowtd_dvnull_0_0\"]/div"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"filterdisplayrowtd_dvContainer_1227560092_0_0\"]/div"));
+            }
+        }
+
+        public IWebElement SearchTagCourse2
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"filterdisplayrowtd_dvContainer_1227524158_0_0\"]/div"));
+            }
+        }
+
+        public IWebElement SearchTagCourse3
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"filterdisplayrowtd_dvContainer_1228026803_0_0\"]/div"));
             }
         }
 
@@ -264,7 +280,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"filterdisplayrowtd_dvnull_0_0\"]/div/i"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"filterdisplayrowtd_dvContainer_1227560092_0_0\"]/div/i"));
             }
         }
 
@@ -272,7 +288,15 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.Id("dvnull_0_0_eb_created_by_hdr_txt1"));
+                return this.driver.FindElement(By.Id("dvContainer_1227524158_0_0_eb_created_by_hdr_txt1"));
+            }
+        }
+
+        public IWebElement CreatedBy2
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("dvContainer_1228026803_0_0_eb_created_by_hdr_txt1"));
             }
         }
 
@@ -568,7 +592,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[3]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1227560092_0_0\"]/tbody/tr[3]/td[3]/a"));
             }
         }
 
@@ -576,7 +600,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.Id("rowgroupDD_dvnull_0_0"));
+                return this.driver.FindElement(By.Id("rowgroupDD_dvContainer_1227560092_0_0"));
             }
         }
 
@@ -584,7 +608,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0\"]/tbody/tr[2]"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1227560092_0_0\"]/tbody/tr[2]"));
             }
         }
 
@@ -604,7 +628,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[3]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1227560092_0_0\"]/tbody/tr[3]/td[3]/a"));
             }
         }
 
@@ -612,7 +636,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0_first\"]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1227560092_0_0_first\"]/a"));
             }
         }
 
@@ -620,7 +644,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.Id("dvnull_0_0_first"));
+                return this.driver.FindElement(By.Id("dvContainer_1227560092_0_0_first"));
             }
         }
 
@@ -628,7 +652,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0_previous\"]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1227560092_0_0_previous\"]/a"));
             }
         }
 
@@ -636,7 +660,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.Id("dvnull_0_0_previous"));
+                return this.driver.FindElement(By.Id("dvContainer_1227560092_0_0_previous"));
             }
         }
 
@@ -644,7 +668,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0_next\"]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1227560092_0_0_next\"]/a"));
             }
         }
 
@@ -652,7 +676,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.Id("dvnull_0_0_next"));
+                return this.driver.FindElement(By.Id("dvContainer_1227560092_0_0_next"));
             }
         }
         
@@ -660,7 +684,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0_last\"]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1227560092_0_0_last\"]/a"));
             }
         }
 
@@ -668,7 +692,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.Id("dvnull_0_0_last"));
+                return this.driver.FindElement(By.Id("dvContainer_1227560092_0_0_last"));
             }
         }
 
@@ -676,7 +700,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.Id("dvnull_0_0_info"));
+                return this.driver.FindElement(By.Id("dvContainer_1227560092_0_0_info"));
             }
         }
 
@@ -684,7 +708,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0_length\"]/label/select/option[1]"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1227560092_0_0_length\"]/label/select/option[1]"));
             }
         }
 
@@ -704,7 +728,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0_wrapper\"]/div[3]/div[2]/div[1]/div/table/thead/tr[1]/th[2]"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1227524158_0_0_wrapper\"]/div[3]/div[2]/div[1]/div/table/thead/tr[1]/th[2]"));
             }
         }
 
@@ -714,7 +738,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0\"]/tbody/tr[1]/td[3]/span"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1227524158_0_0\"]/tbody/tr[1]/td[3]/span"));
             }
         }
 
@@ -973,7 +997,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.Id("dvnull_0_0_course_name_hdr_txt1"));
+                return this.driver.FindElement(By.Id("dvContainer_1227560092_0_0_course_name_hdr_txt1"));
             }
         }
 
@@ -981,7 +1005,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.Id("dvnull_0_0_eb_created_by_hdr_txt1"));
+                return this.driver.FindElement(By.Id("dvContainer_1227560092_0_0_eb_created_by_hdr_txt1"));
             }
         }
 
@@ -989,7 +1013,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.Id("dvnull_0_0_eb_created_at_hdr_txt1"));
+                return this.driver.FindElement(By.Id("dvContainer_1227560092_0_0_eb_created_at_hdr_txt1"));
             }
         }
 
@@ -999,7 +1023,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[10]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1227560092_0_0\"]/tbody/tr[3]/td[10]/a"));
             }
         }
 
@@ -1017,7 +1041,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[4]/img"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1228095208_0_0\"]/tbody/tr[3]/td[4]/img"));
                 
             }
         }

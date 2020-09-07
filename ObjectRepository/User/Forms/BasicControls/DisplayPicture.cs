@@ -118,6 +118,54 @@ namespace UITests.ObjectRepository.User.Forms.BasicControls
             }
         }
 
+        public IWebElement DisplayPicture6Input
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_DisplayPicture6-file-input"));
+            }
+        }
+
+        public IWebElement DisplayPicture6Change
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"DisplayPicture6Wraper\"]/div[2]/div[3]"));
+            }
+        }
+
+        public IWebElement DisplayPicture6UploadButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_DisplayPicture6-upload-lin"));
+            }
+        }
+
+        public IWebElement DisplayPicture6Button
+        {
+            get
+            {
+                return this.driver.FindElement(By.ClassName("browse-btn"));
+            }
+        }
+
+        public IWebElement DisplayPicture6CropResize
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"cont_DisplayPicture6_cropy_container\"]/div[1]/div[3]"));
+            }
+        }
+
+        public IWebElement DisplayPicture6CropButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_DisplayPicture6-crop-lin"));
+            }
+        }
+
         public IWebElement DisplayPicture7
         {
             get

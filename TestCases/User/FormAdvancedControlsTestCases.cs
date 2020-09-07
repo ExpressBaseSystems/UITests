@@ -698,7 +698,7 @@ namespace UITests.TestCases.User
                 CheckUsrLogin();
                 f = new Form(driver);
                 browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-123-123-123-123#");
-                elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[9]/a");
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1228095060_0_0\"]/tbody/tr[3]/td[9]/a");
                 f.FileUploaderActionButton.Click();
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
 
@@ -726,7 +726,7 @@ namespace UITests.TestCases.User
                 CheckUsrLogin();
                 f = new Form(driver);
                 browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-123-123-123-123#");
-                elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[9]/a");
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1228095060_0_0\"]/tbody/tr[3]/td[9]/a");
                 f.FileUploaderActionButton.Click();
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
 
@@ -761,7 +761,7 @@ namespace UITests.TestCases.User
                 CheckUsrLogin();
                 f = new Form(driver);
                 browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-123-123-123-123#");
-                elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[9]/a");
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1228095060_0_0\"]/tbody/tr[3]/td[9]/a");
                 f.FileUploaderActionButton.Click();
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
 
@@ -782,7 +782,8 @@ namespace UITests.TestCases.User
                 elementOps.ExistsXpath("//*[@id=\"eb_dlogBox_container\"]/div/div[3]/button[1]");
                 f.FileUploaderImgDeleteYesButton.Click();
                 //wait.Until(webDriver => (driver.PageSource.Contains("id=\"eb_common_loader\" style=\"background-color: transparent; display: none;\"")));
-                wait.Until(webDriver => (driver.PageSource.Contains("id=\"eb_messageBox_container\" style=\"background-color: rgb(255, 0, 0); color: rgb(255, 255, 255); display: none;\"")));
+                //wait.Until(webDriver => (driver.PageSource.Contains("id=\"eb_messageBox_container\" style=\"background-color: rgb(255, 0, 0); color: rgb(255, 255, 255); display: none;\"")));
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
                 elementOps.ExistsId("FileUploader1_Upl_btn");
                 f.FileUploadReqButton.Click();
 
@@ -1005,7 +1006,7 @@ namespace UITests.TestCases.User
                 CheckUsrLogin();
                 f = new Form(driver);
                 browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-116-116-116-116");
-                elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[12]/a");
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1228095208_0_0\"]/tbody/tr[3]/td[12]/a");
                 f.SimpleFileUploaderEditLink1.Click();
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
                 Assert.AreEqual("View Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
@@ -1041,7 +1042,7 @@ namespace UITests.TestCases.User
                 CheckUsrLogin();
                 f = new Form(driver);
                 browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-116-116-116-116");
-                elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[12]/a");
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1228095208_0_0\"]/tbody/tr[3]/td[12]/a");
                 f.SimpleFileUploaderEditLink1.Click();
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
                 Assert.AreEqual("View Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
@@ -1074,7 +1075,7 @@ namespace UITests.TestCases.User
                 CheckUsrLogin();
                 f = new Form(driver);
                 browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-116-116-116-116");
-                elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[12]/a");
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1228095208_0_0\"]/tbody/tr[3]/td[12]/a");
                 f.SimpleFileUploaderEditLink1.Click();
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
                 Assert.AreEqual("View Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");

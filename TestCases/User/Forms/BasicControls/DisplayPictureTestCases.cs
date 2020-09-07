@@ -61,9 +61,30 @@ namespace UITests.TestCases.User.Forms.BasicControls
             actions.MoveToElement(d.DisplayPicture5Change);
             actions.Perform();
             d.DisplayPicture5Change.Click();
-            elementOps.ExistsId("cont_DisplayPicture4-file-input");
+            elementOps.ExistsId("cont_DisplayPicture5-file-input");
             d.DisplayPicture5Input.SendKeys("C:\\Users\\user\\Pictures\\code.png");
             d.DisplayPicture5UploadButton.Click();
+            Assert.True(elementOps.IsWebElementPresent(d.DisplayPicture5), "Success", "Success");
+        }
+
+        [Property("TestCaseId", "DisplayPicture_Behaviour_001")]
+        [Test, Order(2)]
+        public void DisplayPicture_Crop()
+        {
+            CheckUsrLogin();
+
+            elementOps.ExistsId("displaypicture6");
+            actions = new Actions(driver);
+            actions.MoveToElement(d.DisplayPicture6Change);
+            actions.Perform();
+            d.DisplayPicture6Change.Click();
+            elementOps.ExistsId("cont_DisplayPicture6-file-input");
+            d.DisplayPicture6Input.SendKeys("C:\\Users\\user\\Pictures\\code.png");
+            Assert.True(elementOps.IsWebElementPresent(d.DisplayPicture6CropResize), "Success", "Success");
+            elementOps.ChangeStyleByXpath(d.DisplayPicture6CropResize,"style", "width: 256px; height: 216px;");
+            d.DisplayPicture6CropButton.Click();
+            d.DisplayPicture6UploadButton.Click();
+            Assert.True(elementOps.IsWebElementPresent(d.DisplayPicture6), "Success", "Success");
         }
     }
 }

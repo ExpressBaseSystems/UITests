@@ -45,8 +45,8 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-85-85-85-85");
-                elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr");
-                int val = elementOps.GetTableRowCount("//*[@id=\"dvnull_0_0\"]/tbody/tr");
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1228019724_0_0\"]/tbody/tr");
+                int val = elementOps.GetTableRowCount("//*[@id=\"dvContainer_1228019724_0_0\"]/tbody/tr");
                 Console.WriteLine(val);
 
                 browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-86-86-86-86");
@@ -68,8 +68,8 @@ namespace UITests.TestCases.User
                 elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
 
                 browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-85-85-85-85");
-                elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr");
-                int val1 = elementOps.GetTableRowCount("//*[@id=\"dvnull_0_0\"]/tbody/tr");
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1228019724_0_0\"]/tbody/tr");
+                int val1 = elementOps.GetTableRowCount("//*[@id=\"dvContainer_1228019724_0_0\"]/tbody/tr");
                 Console.WriteLine(val1);
                 Assert.AreEqual(val + 1, val1, "Success", "Success");
             }
@@ -87,8 +87,8 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-85-85-85-85");
-                elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr");
-                int val = elementOps.GetTableRowCount("//*[@id=\"dvnull_0_0\"]/tbody/tr");
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1228019724_0_0\"]/tbody/tr");
+                int val = elementOps.GetTableRowCount("//*[@id=\"dvContainer_1228019724_0_0\"]/tbody/tr");
                 Console.WriteLine(val);
 
                 browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-86-86-86-86");
@@ -109,8 +109,8 @@ namespace UITests.TestCases.User
                 elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
 
                 browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-85-85-85-85");
-                elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr");
-                int val1 = elementOps.GetTableRowCount("//*[@id=\"dvnull_0_0\"]/tbody/tr");
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1228019724_0_0\"]/tbody/tr");
+                int val1 = elementOps.GetTableRowCount("//*[@id=\"dvContainer_1228019724_0_0\"]/tbody/tr");
                 Console.WriteLine(val1);
                 Assert.AreEqual(val, val1, "Success", "Success");
             }
@@ -128,15 +128,15 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-88-88-88-88");
-                elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[11]/a");
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1227503513_0_0\"]/tbody/tr[3]/td[11]/a");
                 f.ActionButton.Click();
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
                 elementOps.ExistsId("webformdelete");
                 Assert.AreEqual("False", f.DeleteButton.Enabled.ToString(), "Success", "Success");
 
                 browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-85-85-85-85");
-                elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[11]/a");
-                f.ActionButton.Click();
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1228019724_0_0\"]/tbody/tr[3]/td[11]/a");
+                f.ActionButton1.Click();
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
                 elementOps.ExistsId("webformdelete");
                 Assert.AreEqual("True", f.DeleteButton.Enabled.ToString(), "Success", "Success");
@@ -155,7 +155,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-88-88-88-88");
-                elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[11]/a");
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1227503513_0_0\"]/tbody/tr[3]/td[11]/a");
                 f.ActionButton.Click();
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
                 elementOps.ExistsId("webformcancel");
@@ -164,8 +164,8 @@ namespace UITests.TestCases.User
                 Console.WriteLine("Success 1");
 
                 browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-85-85-85-85");
-                elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[11]/a");
-                f.ActionButton.Click();
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1228019724_0_0\"]/tbody/tr[3]/td[11]/a");
+                f.ActionButton1.Click();
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
                 elementOps.ExistsId("webformcancel");
                 Assert.AreEqual("True", f.CancelButton.Enabled.ToString(), "Success", "Success");
@@ -212,8 +212,8 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-36-36-36-36");
-                elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr");
-                int val = elementOps.GetTableRowCount("//*[@id=\"dvnull_0_0\"]/tbody/tr");
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1227524158_0_0\"]/tbody/tr");
+                int val = elementOps.GetTableRowCount("//*[@id=\"dvContainer_1227524158_0_0\"]/tbody/tr");
                 Console.WriteLine(val);
 
                 browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-86-86-86-86");
@@ -232,8 +232,8 @@ namespace UITests.TestCases.User
                 elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
 
                 browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-36-36-36-36");
-                elementOps.ExistsXpath("//*[@id=\"dvnull_0_0\"]/tbody/tr");
-                int val1 = elementOps.GetTableRowCount("//*[@id=\"dvnull_0_0\"]/tbody/tr");
+                elementOps.ExistsXpath("//*[@id=\"dvContainer_1227524158_0_0\"]/tbody/tr");
+                int val1 = elementOps.GetTableRowCount("//*[@id=\"dvContainer_1227524158_0_0\"]/tbody/tr");
                 Console.WriteLine(val1);
                 Assert.AreEqual(val+1, val1, "Success", "Success");
 
@@ -722,7 +722,7 @@ namespace UITests.TestCases.User
                 selectElement = new SelectElement(f.Grid2Field4);
                 selectElement.SelectByValue("true");
                 f.Grid2Field5.Click();
-                f.Grid2Field5.SendKeys("A");
+                f.Grid2Field5.SendKeys("A"+Keys.Enter);
                 elementOps.ExistsXpath("//*[@id=\"WebForm_kbnm7hcy\"]/div[4]/div/div[2]/div[2]/table/tbody/tr/td");
                 actions.DoubleClick(f.Grid2Field5Value);
                 actions.Perform();

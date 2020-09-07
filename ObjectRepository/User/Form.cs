@@ -192,7 +192,15 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[11]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1227503513_0_0\"]/tbody/tr[3]/td[11]/a"));
+            }
+        }
+
+        public IWebElement ActionButton1
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1228019724_0_0\"]/tbody/tr[3]/td[11]/a"));
             }
         }
 
@@ -812,7 +820,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[12]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1228095208_0_0\"]/tbody/tr[3]/td[12]/a"));
             }
         }
 
@@ -860,7 +868,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"dvnull_0_0\"]/tbody/tr[3]/td[9]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"dvContainer_1228095060_0_0\"]/tbody/tr[3]/td[9]/a"));
             }
         }
 
