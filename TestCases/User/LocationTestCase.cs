@@ -306,7 +306,7 @@ namespace UITests.TestCases.User
             loc.LocationSwitcherTab.Click();
             wait.Until(webDriver => (driver.PageSource.Contains("id=\"loc_switchModal\" style=\"display: block;\"")));
             loc.LocationSwitcherTreei.Click();
-            elementOps.ExistsXpath("//*[@id=\"loc_switchModal\"]/div/div/div[2]/ul/li[2]/ul/li[1]/a");
+            elementOps.ExistsXpath("//*[@id=\"loc_switchModal\"]/div/div/div[2]/ul/li[19]/ul/li[1]/a");
             loc.LocationSwitcherTreeLoc.Click();
             loc.LocationSubmitButton.Click();
             string loc2 = loc.CurrentLocationName.GetAttribute("innerHTML").ToString();

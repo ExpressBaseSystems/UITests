@@ -171,6 +171,7 @@ namespace UITests.TestCases.User.Security
             actions.Perform();
             r.BtnAddRols.Click();
             elementOps.ExistsId("txtSearchAdd_Roles");
+            browserOps.ClickableWait(r.SrchRols);
             r.SrchRols.SendKeys("SolutionO");
             Console.WriteLine("Sub Role Search Success");
             driver.Close();

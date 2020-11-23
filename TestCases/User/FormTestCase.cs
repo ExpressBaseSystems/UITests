@@ -491,7 +491,8 @@ namespace UITests.TestCases.User
 
                 string title_after = driver.Title;
                 Assert.AreNotEqual(title_before, title_after, "Success", "Success");
-                browserOps.Refresh();
+                elementOps.ExecuteScripts("$('#eb_messageBox_container').hide();");
+                f.FormNewMode.Click();
 
                 elementOps.ExistsId("TextBox1");
                 f.TextBox1.SendKeys("Nil");
@@ -898,7 +899,8 @@ namespace UITests.TestCases.User
                 Assert.AreEqual("Edit Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
                 Console.WriteLine("Edit Mode");
 
-                browserOps.Refresh();
+                elementOps.ExecuteScripts("$('#eb_messageBox_container').hide();");
+                f.FormNewMode.Click();
                 elementOps.ExistsId("TextBox1");
                 f.JamTopic.SendKeys("Test Topic");
                 elementOps.ExecuteScripts("$('#webformsave-selbtn').children('div').children('button')[0].click()");
@@ -908,7 +910,8 @@ namespace UITests.TestCases.User
                 Assert.AreEqual("View Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
                 Console.WriteLine("View Mode");
 
-                browserOps.Refresh();
+                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+                f.FormNewMode.Click();
                 elementOps.ExistsId("TextBox1");
                 f.JamTopic.SendKeys("Test Topic");
                 elementOps.ExecuteScripts("$('#webformsave-selbtn').children('div').children('button')[0].click()");

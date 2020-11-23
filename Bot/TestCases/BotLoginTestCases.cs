@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,6 +58,10 @@ namespace UITests.Bot.TestCases
                 elementOps.ExistsId("anon_phno");
                 b.BotBodyMsgPhoneNumber.SendKeys("8123456789");
                 b.PhoneNumberSubmitButton.Click();
+                elementOps.ExistsId("TextBox1");
+                b.TextBox1.SendKeys("Test User" + Keys.Enter);
+                elementOps.ExistsName("formsubmit");
+                b.FormSubmitButton.Click();
                 wait.Until(webDriver => (driver.PageSource.Contains("Click to explore")));
                 Console.WriteLine(driver.Manage().Cookies.AllCookies.Count);
                 driver.Manage().Cookies.DeleteCookieNamed("bot_rToken");

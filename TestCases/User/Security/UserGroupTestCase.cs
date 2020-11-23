@@ -16,27 +16,37 @@ namespace UITests.TestCases.User.Security
     [TestFixture]
     public class UserGroupTestCase : BaseClass
     {
-        
+        UserLogin uln;
         UserGroupObject ug;
         GetUniqueId UID;
         string UserName;
         string Desp;
 
-       
         public void UserLogin()
         {
-            browserOps.Goto("https://uitesting.eb-test.cloud/");
-            ul.UserName.SendKeys("kurian@expressbase.com");
-            ul.Password.SendKeys("@Kurian123");
-            ul.LoginButton.Click();
-
             ug = new UserGroupObject(driver);
 
             UID = new GetUniqueId();
             UserName = UID.GetId;
             Desp = UID.GetId;
-        }
 
+            uln = new UserLogin(driver);
+            browserOps.Goto("https://uitesting.eb-test.cloud/");
+            uln.UserName.SendKeys("anoopa.baby@expressbase.com");
+            uln.Password.SendKeys("Qwerty@123");
+            uln.LoginButton.Click();
+            Console.WriteLine("Login Success");
+            browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashBoard");
+        }
+        public void CheckUsrLogin()
+        {
+            if (login_status == false)
+            {
+                UserLogin();
+                login_status = true;
+            }
+        }
+       
         [Property("TestCaseId", "User_Secuity_CreateGroup_001")]
         [TestCaseSource("UserGroupObjects"), Order(2)]
         public void CreateUserGroup(dynamic UserGroupObject)
@@ -122,11 +132,6 @@ namespace UITests.TestCases.User.Security
             ug.OkButton.Click();
         }
 
-        [TearDown]
-        public void EndTest()
-        {
-            //driver.Close();
-        }
 
         private static List<EbTestItem> UserGroupObjects()
         {

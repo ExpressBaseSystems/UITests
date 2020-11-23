@@ -146,7 +146,7 @@ namespace UITests.ObjectRepository.User.Forms.BasicControls
         {
             get
             {
-                return this.driver.FindElement(By.Id("TextBox14Wraper"));
+                return this.driver.FindElement(By.Id("cont_TextBox14"));
             }
         }
 

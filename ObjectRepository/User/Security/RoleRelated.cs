@@ -234,7 +234,7 @@ namespace UITests.ObjectRepository.User.Security
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id='divSearchResultsAdd_Roles']/div[1]/div[1]/input"));
+                return this.driver.FindElement(By.XPath("//*[@id='divSearchResultsAdd_Roles']/div[2]/div[1]/input"));
             }
         }
 

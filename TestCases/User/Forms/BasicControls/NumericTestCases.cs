@@ -270,7 +270,7 @@ namespace UITests.TestCases.User.Forms.BasicControls
             Assert.True(elementOps.HasAttribute("Numeric6", "required"), "Success", "Success");
             n.Numeric6.SendKeys(Keys.Tab);
             Assert.True(elementOps.HasAttribute("Numeric6Wraper", "style"), "Success", "Success");
-            Assert.True(n.Numeric6Div.GetAttribute("style").ToString() == "box-shadow: rgba(238, 0, 0, 0.72) 0px 0px 3px 1px;", "Success", "Success");
+            Assert.True(n.Numeric6Div.GetAttribute("style").ToString() == "border: 1px solid rgb(255, 0, 0);", "Success", "Success");
         }
 
         [Property("TestCaseId", "Numeric_InputMode_001")]

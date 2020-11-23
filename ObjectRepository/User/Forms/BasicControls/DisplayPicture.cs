@@ -54,6 +54,31 @@ namespace UITests.ObjectRepository.User.Forms.BasicControls
             }
         }
 
+
+        public IWebElement DisplayPicture2Input
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_DisplayPicture2-file-input"));
+            }
+        }
+
+        public IWebElement DisplayPicture2Change
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"DisplayPicture2Wraper\"]/div[2]/div[3]"));
+            }
+        }
+
+        public IWebElement DisplayPicture2UploadButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_DisplayPicture2-upload-lin"));
+            }
+        }
+
         public IWebElement DisplayPicture3
         {
             get
@@ -62,11 +87,61 @@ namespace UITests.ObjectRepository.User.Forms.BasicControls
             }
         }
 
+
+        public IWebElement DisplayPicture3Input
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_DisplayPicture3-file-input"));
+            }
+        }
+
+        public IWebElement DisplayPicture3Change
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"DisplayPicture3Wraper\"]/div[2]/div[3]"));
+            }
+        }
+
+        public IWebElement DisplayPicture3UploadButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_DisplayPicture3-upload-lin"));
+            }
+        }
+
         public IWebElement DisplayPicture4
         {
             get
             {
                 return this.driver.FindElement(By.Id("displaypicture4"));
+            }
+        }
+
+
+        public IWebElement DisplayPicture4Input
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_DisplayPicture4-file-input"));
+            }
+        }
+
+        public IWebElement DisplayPicture4Change
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"DisplayPicture4Wraper\"]/div[2]/div[3]"));
+            }
+        }
+
+        public IWebElement DisplayPicture4UploadButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_DisplayPicture4-upload-lin"));
             }
         }
 
@@ -174,6 +249,40 @@ namespace UITests.ObjectRepository.User.Forms.BasicControls
             }
         }
 
+
+        public IWebElement DisplayPicture7Input
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_DisplayPicture7-file-input"));
+            }
+        }
+        
+
+        public IWebElement DisplayPicture7UploadButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_DisplayPicture7-upload-lin"));
+            }
+        }
+
+        public IWebElement DisplayPicture7Change
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"DisplayPicture7Wraper\"]/div[2]/div[3]"));
+            }
+        }
+
+        public IWebElement DisplayPicture7CropResize
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"cont_DisplayPicture7_cropy_container\"]/div[1]/div[1]"));
+            }
+        }
+
         public IWebElement DisplayPicture8
         {
             get
@@ -182,11 +291,77 @@ namespace UITests.ObjectRepository.User.Forms.BasicControls
             }
         }
 
+
+        public IWebElement DisplayPicture8Input
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_DisplayPicture8-file-input"));
+            }
+        }
+        
+        public IWebElement DisplayPicture8UploadButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_DisplayPicture8-upload-lin"));
+            }
+        }
+
+        public IWebElement DisplayPicture8Change
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"DisplayPicture8Wraper\"]/div[2]/div[3]"));
+            }
+        }
+
+        public IWebElement DisplayPicture8CropResize
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"cont_DisplayPicture8_cropy_container\"]/div[1]/div[1]"));
+            }
+        }
+        
         public IWebElement DisplayPicture9
         {
             get
             {
                 return this.driver.FindElement(By.Id("displaypicture9"));
+            }
+        }
+
+        public IWebElement DisplayPicture9FullScreen
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("/html/body/div[14]/div/img"));
+            }
+        }
+
+
+        public IWebElement DisplayPicture9Input
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_DisplayPicture9-file-input"));
+            }
+        }
+
+        public IWebElement DisplayPicture9Change
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("//*[@id=\"DisplayPicture9Wraper\"]/div[2]/div[3]"));
+            }
+        }
+
+        public IWebElement DisplayPicture9UploadButton
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("cont_DisplayPicture9-upload-lin"));
             }
         }
 

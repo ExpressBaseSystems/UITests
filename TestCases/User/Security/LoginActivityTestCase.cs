@@ -21,6 +21,7 @@ namespace UITests.TestCases.User.Security
             uln.Password.SendKeys("Qwerty@123");
             uln.LoginButton.Click();
             Console.WriteLine("Login Success");
+            browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashBoard");
         }
 
         [Property("TestCaseId", "LoginActivity_CheckLoginActivity_001")]
@@ -29,12 +30,11 @@ namespace UITests.TestCases.User.Security
         {
             usr = new Users(driver);
             UserLogin();
-            //usr.MenuButton.Click();
-            elementOps.ExistsXpath("//*[@id=\"appList\"]/div/ul/li/ul/li[3]/a");
-            usr.ChooseSecurity.Click();
-            Console.WriteLine("Security");
-            usr.ChooseLoginActivity.Click();
-            Console.WriteLine("Login Activity");
+            browserOps.Goto("https://uitesting.eb-test.cloud/Security/LoginActivity");
+
+            elementOps.ExistsXpath("//*[@id=\"activity_table\"]/tbody/tr[1]");
+            int val1 = elementOps.GetTableRowCount("//*[@id=\"activity_table\"]/tbody/tr");
+            Assert.True(0 < val1, "Success", "Success");
         }
     }
 }

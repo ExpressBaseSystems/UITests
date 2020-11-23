@@ -334,7 +334,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"loc_switchModal\"]/div/div/div[2]/ul/li[2]/i"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"loc_switchModal\"]/div/div/div[2]/ul/li[19]/i"));
             }
         }
 
@@ -342,7 +342,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"loc_switchModal\"]/div/div/div[2]/ul/li[2]/ul/li[1]/a"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"loc_switchModal\"]/div/div/div[2]/ul/li[19]/ul/li[1]/a"));
             }
         }
 

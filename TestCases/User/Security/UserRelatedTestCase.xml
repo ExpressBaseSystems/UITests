@@ -3,7 +3,7 @@
   <test name="test1">
     <fullname type ="String">Test User</fullname>
     <nickname type ="String">User1</nickname>
-    <emailid type ="String">cofyovagni@enayu.com</emailid>
+    <emailid type ="String">user</emailid>
     <password type ="String">@Qwerty123</password>
     <confirmpassword type ="String">@Qwerty123</confirmpassword>
   </test>

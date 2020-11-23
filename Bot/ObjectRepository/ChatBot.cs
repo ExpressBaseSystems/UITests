@@ -90,7 +90,7 @@ namespace UITests.Bot.ObjectRepository
         {
             get
             {
-                return this.driver.FindElement(By.ClassName("eb__-bot___-eb-chat-head"));
+                return this.driver.FindElement(By.ClassName("eb-chat-head eb__-bot___-eb-chat-head7"));
             }
         }
 

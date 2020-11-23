@@ -42,6 +42,15 @@ namespace UITests.TestCases.User.Security
             uln.Password.SendKeys("Qwerty@123");
             uln.LoginButton.Click();
             Console.WriteLine("Login Success");
+            browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashBoard");
+        }
+        public void CheckUsrLogin()
+        {
+            if (login_status == false)
+            {
+                UserLogin();
+                login_status = true;
+            }
         }
 
         [Property("TestCaseId", "Security_NewUserCreate_001")]
@@ -52,21 +61,16 @@ namespace UITests.TestCases.User.Security
             nu = new UserRelated(driver);
             lo = new UserLogOut(driver);
             //GetTempMailId();
-            username = data.emailid;
-            UserLogin();
-            //usr.MenuButton.Click();
-            elementOps.ExistsXpath("//*[@id=\"appList\"]/div/ul/li/ul/li[3]/a");
-            usr.ChooseSecurity.Click();
-            Console.WriteLine("Security");
-            usr.ChooseUsers.Click();
-            Console.WriteLine("Users");
+            username = data.emailid + id.GetId + "@test.com";
+            CheckUsrLogin();
+            browserOps.Goto("https://uitesting.eb-test.cloud/Security/CommonList?type=Users");
 
             elementOps.ExistsId("btnNewCmnList");
             string url = driver.Url;
             nu.CreateUserButton.Click();
             browserOps.implicitWait(200);
-            if (!elementOps.IsWebElementPresent(nu.Message))
-            {
+            //if (!elementOps.IsWebElementPresent(nu.Message))
+            //{
                 Console.WriteLine("Inside New User Creation");
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
                 string emailid_style = nu.EmailId.GetAttribute("style");
@@ -82,18 +86,18 @@ namespace UITests.TestCases.User.Security
                 nu.ConfirmPassword.SendKeys(data.confirmpassword);
 
                 nu.AddRoleTab.Click();
-                browserOps.implicitWait(50);
+                elementOps.ExistsId("btnAddModalAdd_Roles");
                 nu.AddRoleButton.Click();
-                browserOps.implicitWait(50);
+                elementOps.ExistsXpath("//*[@id=\"divSearchResultsAdd_Roles\"]/div[1]/div[1]/input");
                 nu.SolutionOwner.Click();
                 nu.SolutionAdmin.Click();
                 nu.RolesOkButton.Click();
-                browserOps.implicitWait(50);
+                elementOps.ExistsXpath("//*[@id=\"layout_div\"]/div[2]/div/div/div/div[2]/div/ul/li[4]/a");
 
                 nu.AddGroupTab.Click();
-                browserOps.implicitWait(50);
+                elementOps.ExistsId("btnAddModalAdd_User_Group");
                 nu.AddGroupButton.Click();
-                browserOps.implicitWait(50);
+                elementOps.ExistsXpath("//*[@id=\"divSearchResultsAdd_User_Group\"]/div/div[1]/input");
                 nu.TestUserGroup.Click();
                 nu.ChooseGroupOkButton.Click();
                 browserOps.implicitWait(50);
@@ -101,7 +105,7 @@ namespace UITests.TestCases.User.Security
                 //if (emailid_style == nu.EmailId.GetAttribute("style") && passwordstyle == nu.Password.GetAttribute("style") && confrimpasswordstyle == nu.ConfirmPassword.GetAttribute("style"))
                 //{
                 nu.SaveButton.Click();
-                browserOps.implicitWait(50);
+                elementOps.ExistsName("Ok");
                 nu.SaveOkButton.Click();
                 Console.WriteLine("New User Created");
                 //}
@@ -113,16 +117,18 @@ namespace UITests.TestCases.User.Security
                 browserOps.implicitWait(50);
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
 
-                browserOps.Goto("https://ebdbsmwonmu3ky20200326103301.eb-test.cloud/");
+                browserOps.Goto("https://uitesting.eb-test.cloud/");
                 uln.UserName.SendKeys(username);
                 uln.Password.SendKeys(password);
                 uln.LoginButton.Click();
-            }
-            else
-            {
-                Console.WriteLine(nu.Message.GetAttribute("innerHTML"));
-                elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
-            }
+                browserOps.Refresh();
+                UserLogin();
+            //}
+            //else
+            //{
+            //    Console.WriteLine(nu.Message.GetAttribute("innerHTML"));
+            //    elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
+            //}
         }
 
         [Property("TestCaseId", "Security_EditUserData_002")]
@@ -131,16 +137,10 @@ namespace UITests.TestCases.User.Security
         {
             usr = new Users(driver);
             nu = new UserRelated(driver);
-            //UserLogin();
-            //browserOps.implicitWait(50);
-            usr.MenuButton.Click();
-            usr.ChooseSecurity.Click();
-            Console.WriteLine("Security");
-            usr.ChooseUsers.Click();
-            Console.WriteLine("Users");
+            CheckUsrLogin();
+            browserOps.Goto("https://uitesting.eb-test.cloud/Security/CommonList?type=Users");
 
-            browserOps.implicitWait(50);
-
+            elementOps.ExistsXpath("//*[@id=\"tblCommonList\"]/tbody/tr[10]/td[10]/i");
             nu.VieworEditIcon.Click();
             browserOps.implicitWait(50);
             driver.SwitchTo().Window(driver.WindowHandles.Last());
@@ -154,13 +154,16 @@ namespace UITests.TestCases.User.Security
 
             elementOps.ExistsXpath("//*[@id=\"layout_div\"]/div[2]/div/div/div/div[2]/div/ul/li[2]/a");
             nu.AddRoleTab.Click();
-            browserOps.implicitWait(50);
+            elementOps.ExistsXpath("//*[@id=\"divSelectedDisplayAdd_Roles\"]/div[1]/div/div[3]/div/i");
             nu.EditRoleToggle.Click();
             nu.ViewRole.Click();
             browserOps.implicitWait(10);
             Console.WriteLine(nu.Message.GetAttribute("innerHTML"));
             elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
-
+            driver.SwitchTo().Window(driver.WindowHandles.Last());
+            driver.Close();
+            driver.SwitchTo().Window(driver.WindowHandles.Last());
+            
             browserOps.implicitWait(200);
             nu.EditRoleToggle.Click();
             nu.RemoveRole.Click();
@@ -204,20 +207,19 @@ namespace UITests.TestCases.User.Security
         }
 
         [Property("TestCaseId", "Security_DeleteUser_003")]
-        [Test, Order(6)]
+        //[Test, Order(6)]
         public void DeleteUser()
         {
             usr = new Users(driver);
             nu = new UserRelated(driver);
-            UserLogin();
-            browserOps.implicitWait(50);
+            CheckUsrLogin();
             //usr.MenuButton.Click();
             usr.ChooseSecurity.Click();
             Console.WriteLine("Security");
             usr.ChooseUsers.Click();
             Console.WriteLine("Users");
 
-            browserOps.implicitWait(50);
+            elementOps.ExistsXpath("//*[@id=\"tblCommonList\"]/tbody/tr[10]/td[10]/i");
             nu.VieworEditIcon.Click();
             Console.WriteLine("View / Edit Clicked");
             browserOps.implicitWait(50);
@@ -239,22 +241,17 @@ namespace UITests.TestCases.User.Security
         {
             usr = new Users(driver);
             nu = new UserRelated(driver);
-            //UserLogin();
-            //browserOps.implicitWait(50);
+            CheckUsrLogin();
             driver.SwitchTo().Window(driver.WindowHandles.Last());
-            usr.MenuButton.Click();
-            usr.ChooseSecurity.Click();
-            Console.WriteLine("Security");
-            usr.ChooseUsers.Click();
-            Console.WriteLine("Users");
+            browserOps.Goto("https://uitesting.eb-test.cloud/Security/CommonList?type=Users");
 
-            browserOps.implicitWait(50);
+            elementOps.ExistsXpath("//*[@id=\"tblCommonList\"]/tbody/tr[10]/td[10]/i");
             nu.VieworEditIcon.Click();
-            Console.WriteLine("View / Edit Clicked");
-            browserOps.implicitWait(50);
             driver.SwitchTo().Window(driver.WindowHandles.Last());
             nu.LoginActivityTab.Click();
-            Console.WriteLine("Login Activity Clicked");
+            elementOps.ExistsXpath("//*[@id=\"activity_table\"]/tbody/tr[1]");
+            int val1 = elementOps.GetTableRowCount("//*[@id=\"activity_table\"]/tbody/tr");
+            Assert.True(0 < val1, "Success", "Success");
         }
 
         [Property("TestCaseId", "Security_SuspendUser_005")]
@@ -264,15 +261,10 @@ namespace UITests.TestCases.User.Security
             usr = new Users(driver);
             nu = new UserRelated(driver);
             lo = new UserLogOut(driver);
-            //UserLogin();
-            //browserOps.implicitWait(50);
-            usr.MenuButton.Click();
-            usr.ChooseSecurity.Click();
-            Console.WriteLine("Security");
-            usr.ChooseUsers.Click();
-            Console.WriteLine("Users");
+            CheckUsrLogin();
+            browserOps.Goto("https://uitesting.eb-test.cloud/Security/CommonList?type=Users");
 
-            browserOps.implicitWait(50);
+            elementOps.ExistsXpath("//*[@id=\"tblCommonList\"]/tbody/tr[10]/td[10]/i");
             nu.VieworEditIcon.Click();
             Console.WriteLine("View / Edit Clicked");
             browserOps.implicitWait(50);
@@ -290,25 +282,16 @@ namespace UITests.TestCases.User.Security
             lo.ProfileImageDropDown.Click();
             browserOps.implicitWait(50);
             lo.LogoutButton.Click();
-            browserOps.implicitWait(50);
-            driver.SwitchTo().Window(driver.WindowHandles.Last());
-
-            browserOps.Goto("https://ebdbsmwonmu3ky20200326103301.eb-test.cloud/");
+            browserOps.UrlToBe("https://uitesting.eb-test.cloud/");
+            
             string url = driver.Url;
             uln.UserName.SendKeys(emailid);
-            uln.Password.SendKeys("@Qwerty123");
+            uln.Password.SendKeys("Qwerty@123");
             uln.LoginButton.Click();
             driver.SwitchTo().Window(driver.WindowHandles.Last());
-            if (elementOps.IsWebElementPresent(nu.Message))
-                Console.WriteLine(nu.Message.GetAttribute("innerHTML"));
 
             UserLogin();
-            browserOps.implicitWait(50);
-            //usr.MenuButton.Click();
-            usr.ChooseSecurity.Click();
-            Console.WriteLine("Security");
-            usr.ChooseUsers.Click();
-            Console.WriteLine("Users");
+            browserOps.Goto("https://uitesting.eb-test.cloud/Security/CommonList?type=Users");
 
             browserOps.implicitWait(50);
             nu.VieworEditIcon.Click();
@@ -332,15 +315,10 @@ namespace UITests.TestCases.User.Security
             nu = new UserRelated(driver);
             lo = new UserLogOut(driver);
             driver.SwitchTo().Window(driver.WindowHandles.Last());
-            //UserLogin();
-            //browserOps.implicitWait(50);
-            usr.MenuButton.Click();
-            usr.ChooseSecurity.Click();
-            Console.WriteLine("Security");
-            usr.ChooseUsers.Click();
-            Console.WriteLine("Users");
+            CheckUsrLogin();
+            browserOps.Goto("https://uitesting.eb-test.cloud/Security/CommonList?type=Users");
 
-            browserOps.implicitWait(50);
+            elementOps.ExistsXpath("//*[@id=\"tblCommonList\"]/tbody/tr[10]/td[10]/i");
             nu.VieworEditIcon.Click();
             Console.WriteLine("View / Edit Clicked");
             browserOps.implicitWait(50);
@@ -360,22 +338,17 @@ namespace UITests.TestCases.User.Security
             lo.LogoutButton.Click();
             driver.SwitchTo().Window(driver.WindowHandles.Last());
 
-            browserOps.Goto("https://ebdbsmwonmu3ky20200326103301.eb-test.cloud/");
+            browserOps.Goto("https://uitesting.eb-test.cloud/");
             string url = driver.Url;
             uln.UserName.SendKeys(emailid);
-            uln.Password.SendKeys("@Qwerty123");
+            uln.Password.SendKeys("Qwerty@123");
             uln.LoginButton.Click();
             driver.SwitchTo().Window(driver.WindowHandles.Last());
             if (elementOps.IsWebElementPresent(nu.Message))
                 Console.WriteLine(nu.Message.GetAttribute("innerHTML"));
 
             UserLogin();
-            browserOps.implicitWait(50);
-            //usr.MenuButton.Click();
-            usr.ChooseSecurity.Click();
-            Console.WriteLine("Security");
-            usr.ChooseUsers.Click();
-            Console.WriteLine("Users");
+            browserOps.Goto("https://uitesting.eb-test.cloud/Security/CommonList?type=Users");
 
             browserOps.implicitWait(50);
             nu.VieworEditIcon.Click();

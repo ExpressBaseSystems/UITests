@@ -71,6 +71,14 @@ namespace UITests.ObjectRepository.User
             }
         }
 
+        public IWebElement FormNewMode
+        {
+            get
+            {
+                return this.driver.FindElement(By.Id("webformnew"));
+            }
+        }
+
         public IWebElement Message
         {
             get
@@ -872,6 +880,22 @@ namespace UITests.ObjectRepository.User
             }
         }
 
+        public IWebElement FileUploaderImgChangeCategory
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("/html/body/ul/li[1]"));
+            }
+        }
+
+        public IWebElement FileUploaderImgChangeCategory2
+        {
+            get
+            {
+                return this.driver.FindElement(By.XPath("/html/body/ul/li[1]/li[2]"));
+            }
+        }
+
         public IWebElement FileUploaderImgDelete
         {
             get
@@ -988,7 +1012,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"container_crp_cropy_container\"]/div[2]/input"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"FileUploader1_container_crp_cropy_container\"]/div[2]/input"));
             }
         }
 
@@ -996,7 +1020,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.Id("container_crp_crop"));
+                return this.driver.FindElement(By.Id("FileUploader1_container_crp_crop"));
             }
         }
         
@@ -1004,7 +1028,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.Id("container_crp_save"));
+                return this.driver.FindElement(By.Id("FileUploader1_container_crp_save"));
             }
         }
         

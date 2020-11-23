@@ -71,6 +71,7 @@ namespace UITests.TestCases.User.Forms.BasicControls
             t.TextBox1.SendKeys("Normal Test");
             t.TextBox2.SendKeys("IS LOWERCASE");
             t.TextBox3.SendKeys("is uppercase");
+            Console.WriteLine(t.TextBox1.GetAttribute("value").ToString()+"\n"+ t.TextBox2.GetAttribute("value").ToString()+ "\n" + t.TextBox3.GetAttribute("value").ToString());
             Assert.Multiple(() =>
             {
                 Assert.True(t.TextBox1.GetAttribute("value").ToString() == "Normal Test", "Success", "Success");
@@ -158,7 +159,7 @@ namespace UITests.TestCases.User.Forms.BasicControls
             Assert.True(elementOps.HasAttribute("TextBox15", "required"), "Success", "Success");
             t.TextBox15.SendKeys(Keys.Tab);
             Assert.True(elementOps.HasAttribute("TextBox15Wraper", "style"), "Success", "Success");
-            Assert.True(t.TextBox15Div.GetAttribute("style").ToString() == "box-shadow: rgba(238, 0, 0, 0.72) 0px 0px 3px 1px;", "Success", "Success");
+            Assert.True(t.TextBox15Div.GetAttribute("style").ToString() == "border: 1px solid rgb(255, 0, 0);", "Success", "Success");
         }
 
         [Property("TestCaseId", "TextBox_Unique_001")]
@@ -220,13 +221,6 @@ namespace UITests.TestCases.User.Forms.BasicControls
             AddCompleteValues();
 
             t.SaveButton.Click();
-            wait.Until(ExpectedConditions.AlertIsPresent());
-            var alert = driver.SwitchTo().Alert();
-            alert.Accept();
-            t.SaveButton.Click();
-            wait.Until(ExpectedConditions.AlertIsPresent());
-            var alert1 = driver.SwitchTo().Alert();
-            alert1.Accept();
             wait.Until(webDriver => (driver.PageSource.Contains("id=\"eb_messageBox_container\" style=\"background-color: rgb(0, 170, 0); color: rgb(255, 255, 255); display: none;\"")));
 
             Assert.AreEqual("View Mode", t.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
@@ -243,9 +237,8 @@ namespace UITests.TestCases.User.Forms.BasicControls
             browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
             elementOps.ExistsId("TextBox21");
             t.TextBox21.SendKeys("sss" + Keys.Tab);
-            Assert.True(elementOps.IsAlertPresent(), "Success", "Success");
-            var alert = driver.SwitchTo().Alert();
-            alert.Accept();
+            wait.Until(webDriver => (driver.PageSource.Contains("eb-hidden=\"false\" eb-readonly=\"true\" style=\"margin: 4px; display: none;\"")));
+            Assert.True(t.TextBox14Div.GetAttribute("style") == "margin: 4px; display: none;", "Success", "Success");
         }
 
         [Property("TestCaseId", "TextBox_HideExpression_001")]
@@ -282,13 +275,6 @@ namespace UITests.TestCases.User.Forms.BasicControls
             AddCompleteValues();
 
             t.SaveButton.Click();
-            wait.Until(ExpectedConditions.AlertIsPresent());
-            var alert = driver.SwitchTo().Alert();
-            alert.Accept();
-            t.SaveButton.Click();
-            wait.Until(ExpectedConditions.AlertIsPresent());
-            var alert1 = driver.SwitchTo().Alert();
-            alert1.Accept();
             wait.Until(webDriver => (driver.PageSource.Contains("id=\"eb_messageBox_container\" style=\"background-color: rgb(0, 170, 0); color: rgb(255, 255, 255); display: none;\"")));
 
             Assert.AreEqual("View Mode", t.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
@@ -329,13 +315,6 @@ namespace UITests.TestCases.User.Forms.BasicControls
             AddCompleteValues();
 
             t.SaveButton.Click();
-            wait.Until(ExpectedConditions.AlertIsPresent());
-            var alert = driver.SwitchTo().Alert();
-            alert.Accept();
-            t.SaveButton.Click();
-            wait.Until(ExpectedConditions.AlertIsPresent());
-            var alert1 = driver.SwitchTo().Alert();
-            alert1.Accept();
             wait.Until(webDriver => (driver.PageSource.Contains("id=\"eb_messageBox_container\" style=\"background-color: rgb(0, 170, 0); color: rgb(255, 255, 255); display: none;\"")));
 
             Assert.AreEqual("View Mode", t.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");

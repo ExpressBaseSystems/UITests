@@ -95,8 +95,6 @@ namespace UITests.TestCases.User
             Assert.AreEqual("New Mode", u.FormMode.GetAttribute("innerHTML"), "Success", "Success");
             driver.Close();
             driver.SwitchTo().Window(driver.WindowHandles.Last());
-            driver.Close();
-            driver.SwitchTo().Window(driver.WindowHandles.Last());
             Console.WriteLine("Link To WebForm Working");
         }
 
@@ -175,9 +173,6 @@ namespace UITests.TestCases.User
             Assert.AreEqual("https://uitesting.eb-test.cloud/DashBoard/DashBoardView?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-22-128-128-128-128", driver.Url, "Success", "Success");
             driver.Close();
             driver.SwitchTo().Window(driver.WindowHandles.Last());
-
-            driver.Close();
-            driver.SwitchTo().Window(driver.WindowHandles.Last());
         }
 
         [Property("TestCaseId", "UserDashBoard_LinkDashBoardHavingFD_001")]
@@ -201,9 +196,6 @@ namespace UITests.TestCases.User
             u.RunButton.Click();
             wait.Until(webDriver => (driver.PageSource.Contains("id=\"tb1tile0_processing\" class=\"dataTables_processing panel panel-default\" style=\"display: none;\"")));
             Assert.True(elementOps.GetTableRowCount("//*[@id=\"tb1tile0\"]/tbody/tr") > 0, "Success", "Success");
-
-            driver.Close();
-            driver.SwitchTo().Window(driver.WindowHandles.Last());
 
             driver.Close();
             driver.SwitchTo().Window(driver.WindowHandles.Last());

@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DotNetBrowser" Version="2.1.1" />
+    <PackageReference Include="DotNetBrowser" Version="2.2.0" />
     <PackageReference Include="JSErrorCollector" Version="0.6.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
     <PackageReference Include="NUnit" Version="3.12.0" />
@@ -16,7 +16,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Selenium.Chrome.WebDriver" Version="83.0.0" />
+    <PackageReference Include="Selenium.Chrome.WebDriver" Version="85.0.0" />
     <PackageReference Include="Selenium.Support" Version="3.141.0" />
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="85.0.4183.8700" />

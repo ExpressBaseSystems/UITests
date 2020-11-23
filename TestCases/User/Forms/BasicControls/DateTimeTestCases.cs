@@ -192,7 +192,7 @@ namespace UITests.TestCases.User.Forms.BasicControls
                 "const element = document.querySelector('#Date7');" +
                 "element.dispatchEvent(e); ");
             d.Date7.SendKeys(Keys.Tab);
-            wait.Until(webDriver => (driver.PageSource.Contains("box-shadow: rgba(238, 0, 0, 0.72) 0px 0px 3px 1px; pointer-events: inherit;\"")));
+            wait.Until(webDriver => (driver.PageSource.Contains("width: 100%; display: inline-block; padding: 7px 10px; background-color: rgb(255, 255, 255); color: rgb(51, 51, 51); pointer-events: inherit;\"")));
             Assert.True(d.Date7.GetAttribute("value").ToString() == "02-04-2020", "Success", "Success");
         }
 

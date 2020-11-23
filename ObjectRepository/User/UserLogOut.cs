@@ -34,7 +34,7 @@ namespace UITests.ObjectRepository.User
         {
             get
             {
-                return this.driver.FindElement(By.XPath("//*[@id=\"notificaionandprofile\"]/div[1]/div/ul/li[3]"));
+                return this.driver.FindElement(By.XPath("//*[@id=\"notificaionandprofile\"]/div/div/ul/li[4]/a"));
             }
         }
     }
