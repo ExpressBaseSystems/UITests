@@ -3,7 +3,7 @@
   <test name="test1">
     <username type ="String"> kurian@expressbase.com</username>
     <password type ="String"> @Kurian123</password>
-    <url type ="String">https://myaccount.eb-test.cloud/</url>
+    <url type ="String">https://myaccount.eb-test.site/</url>
   </test>
   <test name="test2">
     <username type ="String"> josevin@expressbase.com</username>

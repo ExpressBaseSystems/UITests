@@ -20,7 +20,7 @@ namespace UITests.Bot.TestCases.FormControls
             try
             {
                 b = new ChatBot(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/bots");
+                browserOps.Goto("https://uitesting.eb-test.site/bots");
                 driver.SwitchTo().Frame("ebbot_iframe7");
                 elementOps.ExistsId("anon_mail");
                 b.BotBodyMsgEmail.SendKeys("testuser@expressbase.com");
@@ -76,7 +76,7 @@ namespace UITests.Bot.TestCases.FormControls
             try
             {
                 b = new ChatBot(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/bots");
+                browserOps.Goto("https://uitesting.eb-test.site/bots");
                 driver.SwitchTo().Frame("ebbot_iframe7");
                 elementOps.ExistsId("anon_mail");
                 b.BotBodyMsgEmail.SendKeys("testuser@expressbase.com");
@@ -109,7 +109,7 @@ namespace UITests.Bot.TestCases.FormControls
             try
             {
                 b = new ChatBot(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/bots");
+                browserOps.Goto("https://uitesting.eb-test.site/bots");
                 driver.SwitchTo().Frame("ebbot_iframe7");
                 elementOps.ExistsId("anon_mail");
                 b.BotBodyMsgEmail.SendKeys("testuser@expressbase.com");

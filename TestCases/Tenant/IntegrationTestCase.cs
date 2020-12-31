@@ -31,7 +31,7 @@ namespace UITests.TestCases.Tenant
         [Test, Order(1)]
         public void UserLogin()
         {
-            browserOps.Goto("https://myaccount.eb-test.cloud/");
+            browserOps.Goto("https://myaccount.eb-test.site/");
             tl.UserName.SendKeys("kokic66909@mrisemail.com");
             tl.Password.SendKeys("@Qwerty123");
             tl.LoginButton.Click();

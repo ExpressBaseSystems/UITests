@@ -21,12 +21,12 @@ namespace UITests.TestCases.User
         public void UserLogin()
         {
             ulog = new UserLogin(driver);
-            browserOps.Goto("https://uitesting.eb-test.cloud/");
+            browserOps.Goto("https://uitesting.eb-test.site/");
             ulog.UserName.SendKeys("anoopa.baby@expressbase.com");
             ulog.Password.SendKeys("Qwerty@123");
             ulog.LoginButton.Click();
             Console.WriteLine("Login Success");
-            browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashBoard");
+            browserOps.UrlToBe("https://uitesting.eb-test.site/UserDashBoard");
         }
 
         public void UserLogOut()
@@ -56,7 +56,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-100-100-100-100");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-100-100-100-100");
                 elementOps.ExistsId("TextBox1");
                 int val = elementOps.GetTableRowCount("//*[@id=\"nf-container\"]/li");
                 f.ReviewFormTextBox.SendKeys("Test");
@@ -122,13 +122,13 @@ namespace UITests.TestCases.User
 
                 UserLogOut();
                 ulog = new UserLogin(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/");
+                browserOps.Goto("https://uitesting.eb-test.site/");
                 ulog.UserName.SendKeys("testuser1@gmail.com");
                 ulog.Password.SendKeys("Qwerty@123");
                 ulog.LoginButton.Click();
                 Console.WriteLine("Login Success");
-                browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashBoard");
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-100-100-100-100");
+                browserOps.UrlToBe("https://uitesting.eb-test.site/UserDashBoard");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-100-100-100-100");
                 elementOps.ExistsId("TextBox1");
                 f.ReviewFormTextBox.SendKeys("Test"+Keys.Control+"s");
                 
@@ -158,7 +158,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-100-100-100-100");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-100-100-100-100");
                 elementOps.ExistsId("TextBox1");
                 f.TextBox1.SendKeys("Test Img");
                 elementOps.ExistsId("FileUploader1_Upl_btn");
@@ -202,7 +202,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-100-100-100-100");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-100-100-100-100");
                 elementOps.ExistsId("TextBox1");
                 f.TextBox1.SendKeys("Test Img");
                 elementOps.ExistsId("FileUploader1_Upl_btn");
@@ -246,7 +246,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-100-100-100-100");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-100-100-100-100");
                 elementOps.ExistsId("TextBox1");
                 f.TextBox1.SendKeys("Test Img");
                 elementOps.ExistsId("FileUploader1_Upl_btn");
@@ -294,7 +294,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-104-104-104-104");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-104-104-104-104");
                 elementOps.ExistsId("TextBox1");
                 f.TextBox1.SendKeys("Test Img");
                 elementOps.ExistsId("FileUploader1_Upl_btn");
@@ -338,7 +338,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-104-104-104-104");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-104-104-104-104");
                 elementOps.ExistsId("TextBox1");
                 f.TextBox1.SendKeys("Test Img");
                 elementOps.ExistsId("FileUploader1_Upl_btn");
@@ -386,7 +386,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-104-104-104-104");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-104-104-104-104");
                 elementOps.ExistsId("TextBox1");
                 f.TextBox1.SendKeys("Test Img");
                 elementOps.ExistsId("FileUploader1_Upl_btn");
@@ -451,7 +451,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-104-104-104-104");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-104-104-104-104");
                 elementOps.ExistsId("TextBox1");
                 f.TextBox1.SendKeys("Test Img");
                 elementOps.ExistsId("FileUploader1_Upl_btn");
@@ -496,7 +496,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-121-121-121-121#");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-121-121-121-121#");
                 elementOps.ExistsId("cont_FileUploader2");
                 Assert.AreEqual("true", f.FileUploader2.GetAttribute("eb-hidden").ToString(), "Success", "Success");
                 Console.WriteLine("Success");
@@ -515,7 +515,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-121-121-121-121");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-121-121-121-121");
                 elementOps.ExistsId("cont_FileUploader3");
                 Assert.AreEqual("true", f.FileUploader3.GetAttribute("eb-readonly").ToString(), "Success", "Success");
                 Console.WriteLine("Success");
@@ -534,7 +534,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-121-121-121-121");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-121-121-121-121");
                 elementOps.ExistsId("TextBox1");
                 f.TextBox1.SendKeys("Test Img");
                 elementOps.ExistsId("cont_FileUploader1");
@@ -577,7 +577,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-121-121-121-121");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-121-121-121-121");
                 elementOps.ExistsId("TextBox1");
                 f.TextBox1.SendKeys("Test Img");
                 elementOps.ExistsId("cont_FileUploader1");
@@ -627,7 +627,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-121-121-121-121");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-121-121-121-121");
                 elementOps.ExistsId("TextBox1");
                 f.TextBox1.SendKeys("Test Img");
                 elementOps.ExistsId("cont_FileUploader1");
@@ -679,7 +679,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-121-121-121-121");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-121-121-121-121");
                 elementOps.ExistsId("cont_FileUploader1");
                 
                 Assert.AreEqual("display: none;", f.FileUploaderDisableUpload.GetAttribute("style").ToString(), "Success", "Success");
@@ -699,7 +699,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-104-104-104-104");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-104-104-104-104");
                 elementOps.ExistsId("TextBox1");
                 f.TextBox1.SendKeys("Test Img");
                 elementOps.ExistsId("FileUploader1_Upl_btn");
@@ -743,7 +743,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-121-121-121-121");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-121-121-121-121");
                 elementOps.ExistsId("cont_FileUploader1");
 
                 Assert.AreEqual("display: none;", f.FileUploaderHideEmptyCategory.GetAttribute("style").ToString(), "Success", "Success");
@@ -763,7 +763,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-123-123-123-123#");
+                browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-123-123-123-123#");
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1228095060_0_0\"]/tbody/tr[3]/td[9]/a");
                 f.FileUploaderActionButton.Click();
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
@@ -791,7 +791,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-123-123-123-123#");
+                browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-123-123-123-123#");
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1228095060_0_0\"]/tbody/tr[3]/td[9]/a");
                 f.FileUploaderActionButton.Click();
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
@@ -826,7 +826,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-123-123-123-123#");
+                browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-123-123-123-123#");
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1228095060_0_0\"]/tbody/tr[3]/td[9]/a");
                 f.FileUploaderActionButton.Click();
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
@@ -883,7 +883,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-114-114-114-114#");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-114-114-114-114#");
                 elementOps.ExistsId("TextBox1");
                 f.TextBox1.SendKeys("Test Img");
 
@@ -914,7 +914,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-114-114-114-114#");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-114-114-114-114#");
                 elementOps.ExistsId("TextBox1");
                 f.TextBox1.SendKeys("Test File");
 
@@ -945,7 +945,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-114-114-114-114#");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-114-114-114-114#");
                 elementOps.ExistsId("TextBox1");
                 f.TextBox1.SendKeys("Test Img");
 
@@ -971,7 +971,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-114-114-114-114#");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-114-114-114-114#");
                 elementOps.ExistsId("TextBox1");
                 f.TextBox1.SendKeys("Test Img");
 
@@ -994,7 +994,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-114-114-114-114#");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-114-114-114-114#");
                 elementOps.ExistsId("TextBox1");
                 f.TextBox1.SendKeys("Test Img");
 
@@ -1017,7 +1017,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-114-114-114-114#");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-114-114-114-114#");
                 elementOps.ExistsId("TextBox1");
                 f.TextBox1.SendKeys("Test Img");
 
@@ -1046,7 +1046,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-114-114-114-114#");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-114-114-114-114#");
                 elementOps.ExistsId("TextBox1");
                 f.TextBox1.SendKeys("Test Img");
 
@@ -1071,7 +1071,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-116-116-116-116");
+                browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-116-116-116-116");
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1228095208_0_0\"]/tbody/tr[3]/td[12]/a");
                 f.SimpleFileUploaderEditLink1.Click();
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
@@ -1107,7 +1107,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-116-116-116-116");
+                browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-116-116-116-116");
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1228095208_0_0\"]/tbody/tr[3]/td[12]/a");
                 f.SimpleFileUploaderEditLink1.Click();
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
@@ -1140,7 +1140,7 @@ namespace UITests.TestCases.User
             {
                 CheckUsrLogin();
                 f = new Form(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-116-116-116-116");
+                browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-116-116-116-116");
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1228095208_0_0\"]/tbody/tr[3]/td[12]/a");
                 f.SimpleFileUploaderEditLink1.Click();
                 driver.SwitchTo().Window(driver.WindowHandles.Last());

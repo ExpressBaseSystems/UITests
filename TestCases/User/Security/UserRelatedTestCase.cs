@@ -37,12 +37,12 @@ namespace UITests.TestCases.User.Security
         public void UserLogin()
         {
             uln = new UserLogin(driver);
-            browserOps.Goto("https://uitesting.eb-test.cloud/");
+            browserOps.Goto("https://uitesting.eb-test.site/");
             uln.UserName.SendKeys("anoopa.baby@expressbase.com");
             uln.Password.SendKeys("Qwerty@123");
             uln.LoginButton.Click();
             Console.WriteLine("Login Success");
-            browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashBoard");
+            browserOps.UrlToBe("https://uitesting.eb-test.site/UserDashBoard");
         }
         public void CheckUsrLogin()
         {
@@ -63,7 +63,7 @@ namespace UITests.TestCases.User.Security
             //GetTempMailId();
             username = data.emailid + id.GetId + "@test.com";
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/Security/CommonList?type=Users");
+            browserOps.Goto("https://uitesting.eb-test.site/Security/CommonList?type=Users");
 
             elementOps.ExistsId("btnNewCmnList");
             string url = driver.Url;
@@ -117,7 +117,7 @@ namespace UITests.TestCases.User.Security
                 browserOps.implicitWait(50);
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
 
-                browserOps.Goto("https://uitesting.eb-test.cloud/");
+                browserOps.Goto("https://uitesting.eb-test.site/");
                 uln.UserName.SendKeys(username);
                 uln.Password.SendKeys(password);
                 uln.LoginButton.Click();
@@ -138,7 +138,7 @@ namespace UITests.TestCases.User.Security
             usr = new Users(driver);
             nu = new UserRelated(driver);
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/Security/CommonList?type=Users");
+            browserOps.Goto("https://uitesting.eb-test.site/Security/CommonList?type=Users");
 
             elementOps.ExistsXpath("//*[@id=\"tblCommonList\"]/tbody/tr[10]/td[10]/i");
             nu.VieworEditIcon.Click();
@@ -243,7 +243,7 @@ namespace UITests.TestCases.User.Security
             nu = new UserRelated(driver);
             CheckUsrLogin();
             driver.SwitchTo().Window(driver.WindowHandles.Last());
-            browserOps.Goto("https://uitesting.eb-test.cloud/Security/CommonList?type=Users");
+            browserOps.Goto("https://uitesting.eb-test.site/Security/CommonList?type=Users");
 
             elementOps.ExistsXpath("//*[@id=\"tblCommonList\"]/tbody/tr[10]/td[10]/i");
             nu.VieworEditIcon.Click();
@@ -262,7 +262,7 @@ namespace UITests.TestCases.User.Security
             nu = new UserRelated(driver);
             lo = new UserLogOut(driver);
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/Security/CommonList?type=Users");
+            browserOps.Goto("https://uitesting.eb-test.site/Security/CommonList?type=Users");
 
             elementOps.ExistsXpath("//*[@id=\"tblCommonList\"]/tbody/tr[10]/td[10]/i");
             nu.VieworEditIcon.Click();
@@ -282,7 +282,7 @@ namespace UITests.TestCases.User.Security
             lo.ProfileImageDropDown.Click();
             browserOps.implicitWait(50);
             lo.LogoutButton.Click();
-            browserOps.UrlToBe("https://uitesting.eb-test.cloud/");
+            browserOps.UrlToBe("https://uitesting.eb-test.site/");
             
             string url = driver.Url;
             uln.UserName.SendKeys(emailid);
@@ -291,7 +291,7 @@ namespace UITests.TestCases.User.Security
             driver.SwitchTo().Window(driver.WindowHandles.Last());
 
             UserLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/Security/CommonList?type=Users");
+            browserOps.Goto("https://uitesting.eb-test.site/Security/CommonList?type=Users");
 
             browserOps.implicitWait(50);
             nu.VieworEditIcon.Click();
@@ -316,7 +316,7 @@ namespace UITests.TestCases.User.Security
             lo = new UserLogOut(driver);
             driver.SwitchTo().Window(driver.WindowHandles.Last());
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/Security/CommonList?type=Users");
+            browserOps.Goto("https://uitesting.eb-test.site/Security/CommonList?type=Users");
 
             elementOps.ExistsXpath("//*[@id=\"tblCommonList\"]/tbody/tr[10]/td[10]/i");
             nu.VieworEditIcon.Click();
@@ -338,7 +338,7 @@ namespace UITests.TestCases.User.Security
             lo.LogoutButton.Click();
             driver.SwitchTo().Window(driver.WindowHandles.Last());
 
-            browserOps.Goto("https://uitesting.eb-test.cloud/");
+            browserOps.Goto("https://uitesting.eb-test.site/");
             string url = driver.Url;
             uln.UserName.SendKeys(emailid);
             uln.Password.SendKeys("Qwerty@123");
@@ -348,7 +348,7 @@ namespace UITests.TestCases.User.Security
                 Console.WriteLine(nu.Message.GetAttribute("innerHTML"));
 
             UserLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/Security/CommonList?type=Users");
+            browserOps.Goto("https://uitesting.eb-test.site/Security/CommonList?type=Users");
 
             browserOps.implicitWait(50);
             nu.VieworEditIcon.Click();

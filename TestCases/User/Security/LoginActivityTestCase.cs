@@ -16,12 +16,12 @@ namespace UITests.TestCases.User.Security
         public void UserLogin()
         {
             uln = new UserLogin(driver);
-            browserOps.Goto("https://uitesting.eb-test.cloud/");
+            browserOps.Goto("https://uitesting.eb-test.site/");
             uln.UserName.SendKeys("anoopa.baby@expressbase.com");
             uln.Password.SendKeys("Qwerty@123");
             uln.LoginButton.Click();
             Console.WriteLine("Login Success");
-            browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashBoard");
+            browserOps.UrlToBe("https://uitesting.eb-test.site/UserDashBoard");
         }
 
         [Property("TestCaseId", "LoginActivity_CheckLoginActivity_001")]
@@ -30,7 +30,7 @@ namespace UITests.TestCases.User.Security
         {
             usr = new Users(driver);
             UserLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/Security/LoginActivity");
+            browserOps.Goto("https://uitesting.eb-test.site/Security/LoginActivity");
 
             elementOps.ExistsXpath("//*[@id=\"activity_table\"]/tbody/tr[1]");
             int val1 = elementOps.GetTableRowCount("//*[@id=\"activity_table\"]/tbody/tr");

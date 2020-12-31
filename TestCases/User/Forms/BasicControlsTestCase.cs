@@ -21,7 +21,7 @@ namespace UITests.TestCases.User.Forms
         {
             try
             {
-                browserOps.Goto("https://uitesting.eb-test.cloud/");
+                browserOps.Goto("https://uitesting.eb-test.site/");
                 ul.UserName.SendKeys("kurian@expressbase.com");
                 ul.Password.SendKeys("@Kurian123");
                 ul.LoginButton.Click();

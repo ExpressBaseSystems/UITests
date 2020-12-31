@@ -19,12 +19,12 @@ namespace UITests.TestCases.User
         public void UserLogin()
         {
             ulog = new UserLogin(driver);
-            browserOps.Goto("https://uitesting.eb-test.cloud/");
+            browserOps.Goto("https://uitesting.eb-test.site/");
             ulog.UserName.SendKeys("anoopa.baby@expressbase.com");
             ulog.Password.SendKeys("Qwerty@123");
             ulog.LoginButton.Click();
             Console.WriteLine("Login Success");
-            browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashBoard");
+            browserOps.UrlToBe("https://uitesting.eb-test.site/UserDashBoard");
             wait.Until(webDriver => (driver.PageSource.Contains("id=\"eb_common_loader\" style=\"background-color: transparent; display: none;\"")));
             u = new UserDashBoard(driver);
             elementOps.ExistsId("quik_menu");
@@ -91,7 +91,7 @@ namespace UITests.TestCases.User
             u.LinkToWebFormLink.Click();
             driver.SwitchTo().Window(driver.WindowHandles.Last());
             elementOps.ExistsClass("fmode");
-            Assert.AreEqual("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-14-14-14-14", driver.Url, "Success", "Success");
+            Assert.AreEqual("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-14-14-14-14", driver.Url, "Success", "Success");
             Assert.AreEqual("New Mode", u.FormMode.GetAttribute("innerHTML"), "Success", "Success");
             driver.Close();
             driver.SwitchTo().Window(driver.WindowHandles.Last());
@@ -115,7 +115,7 @@ namespace UITests.TestCases.User
             elementOps.ExistsId("undefined_link_tile0");
             u.TVBrowseLink.Click();
             driver.SwitchTo().Window(driver.WindowHandles.Last());
-            Assert.AreEqual("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17", driver.Url, "Success", "Success");
+            Assert.AreEqual("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17", driver.Url, "Success", "Success");
             driver.Close();
             driver.SwitchTo().Window(driver.WindowHandles.Last());
         }
@@ -143,7 +143,7 @@ namespace UITests.TestCases.User
             elementOps.ExistsId("undefined_link_tile1");
             u.ChartBrowseLink.Click();
             driver.SwitchTo().Window(driver.WindowHandles.Last());
-            Assert.AreEqual("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-17-37-37-37-37", driver.Url, "Success", "Success");
+            Assert.AreEqual("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-17-37-37-37-37", driver.Url, "Success", "Success");
             driver.Close();
             driver.SwitchTo().Window(driver.WindowHandles.Last());
         }
@@ -170,7 +170,7 @@ namespace UITests.TestCases.User
             actions.Perform();
             u.LinkToDashBoard.Click();
             driver.SwitchTo().Window(driver.WindowHandles.Last());
-            Assert.AreEqual("https://uitesting.eb-test.cloud/DashBoard/DashBoardView?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-22-128-128-128-128", driver.Url, "Success", "Success");
+            Assert.AreEqual("https://uitesting.eb-test.site/DashBoard/DashBoardView?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-22-128-128-128-128", driver.Url, "Success", "Success");
             driver.Close();
             driver.SwitchTo().Window(driver.WindowHandles.Last());
         }
@@ -186,7 +186,7 @@ namespace UITests.TestCases.User
             actions.Perform();
             u.LinkToDashBoardFD.Click();
             driver.SwitchTo().Window(driver.WindowHandles.Last());
-            Assert.AreEqual("https://uitesting.eb-test.cloud/DashBoard/DashBoardView?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-22-130-130-130-130", driver.Url, "Success", "Success");
+            Assert.AreEqual("https://uitesting.eb-test.site/DashBoard/DashBoardView?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-22-130-130-130-130", driver.Url, "Success", "Success");
             wait.Until(webDriver => (driver.PageSource.Contains("id=\"eb_common_loader\" style=\"background-color: transparent; display: none;\"")));
             elementOps.ExistsId("filter-dg");
             u.FDButton.Click();
@@ -219,7 +219,7 @@ namespace UITests.TestCases.User
             elementOps.ExistsId("undefined_link_tile6");
             u.GoogleMapBrowser.Click();
             driver.SwitchTo().Window(driver.WindowHandles.Last());
-            Assert.AreEqual("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-21-134-134-134-134", driver.Url, "Success", "Success");
+            Assert.AreEqual("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-21-134-134-134-134", driver.Url, "Success", "Success");
             driver.Close();
             driver.SwitchTo().Window(driver.WindowHandles.Last());
         }

@@ -22,7 +22,7 @@ namespace UITests.Bot.TestCases
             try
             {
                 b = new ChatBot(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/bots");
+                browserOps.Goto("https://uitesting.eb-test.site/bots");
                 elementOps.ExistsId("botno7");
                 b.UITestBot1.Click();
                 elementOps.ExistsId("ebbot_iframe7");
@@ -49,7 +49,7 @@ namespace UITests.Bot.TestCases
             try
             {
                 b = new ChatBot(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/bots");
+                browserOps.Goto("https://uitesting.eb-test.site/bots");
                 elementOps.ExistsId("botno10");
                 b.UITestBot2.Click();
                 wait.Until(webDriver => (driver.PageSource.Contains("id=\"eb_iframecont10\" appid=\"10\" class=\"eb_iframecont eb__-bot___-eb_iframecont10\" style=\"display: flex;\"")));
@@ -80,7 +80,7 @@ namespace UITests.Bot.TestCases
             try
             {
                 b = new ChatBot(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/bots");
+                browserOps.Goto("https://uitesting.eb-test.site/bots");
                 elementOps.ExistsId("botno12");
                 b.UITestBot4.Click();
                 elementOps.ExistsId("ebbot_iframe12");
@@ -113,7 +113,7 @@ namespace UITests.Bot.TestCases
             try
             {
                 b = new ChatBot(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/bots");
+                browserOps.Goto("https://uitesting.eb-test.site/bots");
                 elementOps.ExistsId("botno13");
                 b.UITestBot5.Click();
                 elementOps.ExistsId("ebbot_iframe13");
@@ -142,7 +142,7 @@ namespace UITests.Bot.TestCases
             try
             {
                 b = new ChatBot(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/bots");
+                browserOps.Goto("https://uitesting.eb-test.site/bots");
                 elementOps.ExistsId("botno14");
                 b.UITestBot6.Click();
                 elementOps.ExistsId("ebbot_iframe14");
@@ -196,7 +196,7 @@ namespace UITests.Bot.TestCases
             try
             {
                 b = new ChatBot(driver);
-                browserOps.Goto("https://demo.eb-test.cloud/bots");
+                browserOps.Goto("https://demo.eb-test.site/bots");
                 elementOps.ChangeStyle("eb_iframecont6", "style", "display: none; opacity: 0;");
                 elementOps.ExistsId("botno5");
                 b.UITestBot7.Click();

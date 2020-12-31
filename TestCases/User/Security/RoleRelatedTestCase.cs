@@ -20,18 +20,18 @@ namespace UITests.TestCases.User.Security
         RoleRelated r;
         public string role_name;
         string anon_role;
-        public string urlrols = "https://uitesting.eb-test.cloud/Security/CommonList?type=Roles";
+        public string urlrols = "https://uitesting.eb-test.site/Security/CommonList?type=Roles";
 
         public void UserLogin()
         {
             ulog = new UserLogin(driver);
-            browserOps.Goto("https://uitesting.eb-test.cloud/");
+            browserOps.Goto("https://uitesting.eb-test.site/");
             ulog.UserName.SendKeys("anoopa.baby@expressbase.com");
             ulog.Password.SendKeys("Qwerty@123");
             ulog.LoginButton.Click();
             Console.WriteLine("Login Success");
             r = new RoleRelated(driver);
-            browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashBoard");
+            browserOps.UrlToBe("https://uitesting.eb-test.site/UserDashBoard");
         }
 
         public void CheckUsrLogin()
@@ -40,7 +40,7 @@ namespace UITests.TestCases.User.Security
             {
                 UserLogin();
                 login_status = true;
-                browserOps.Goto("https://uitesting.eb-test.cloud/Security/CommonList?type=Roles");
+                browserOps.Goto("https://uitesting.eb-test.site/Security/CommonList?type=Roles");
             }
         }
 

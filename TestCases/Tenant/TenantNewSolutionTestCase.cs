@@ -22,7 +22,7 @@ namespace UITests.TestCases.Tenant
         public void TenantLogin(dynamic data)
         {
             tl = new TenantLogin(driver);
-            browserOps.Goto("https://myaccount.eb-test.cloud/");
+            browserOps.Goto("https://myaccount.eb-test.site/");
             tl.UserName.SendKeys(data.username);
             tl.Password.SendKeys(data.password);
             tl.LoginButton.Click();

@@ -21,12 +21,12 @@ namespace UITests.TestCases.User
         public void UserLogin()
         {
             ulog = new UserLogin(driver);
-            browserOps.Goto("https://uitesting.eb-test.cloud/");
+            browserOps.Goto("https://uitesting.eb-test.site/");
             ulog.UserName.SendKeys("anoopa.baby@expressbase.com");
             ulog.Password.SendKeys("Qwerty@123");
             ulog.LoginButton.Click();
             Console.WriteLine("Login Success");
-            browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashBoard");
+            browserOps.UrlToBe("https://uitesting.eb-test.site/UserDashBoard");
         }
 
         public void UserLogOut()
@@ -49,7 +49,7 @@ namespace UITests.TestCases.User
                 {
                     UserLogin();
                     login_status = true;
-                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
+                    browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
                 }
                 tv = new TableVisualization(driver);
                 elementOps.ExistsId("NewFormButtondvContainer_1586780535084_0_0");
@@ -78,7 +78,7 @@ namespace UITests.TestCases.User
                 {
                     UserLogin();
                     login_status = true;
-                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
+                    browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
                 }
                 tv = new TableVisualization(driver);
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[4]/td[3]/a");
@@ -107,7 +107,7 @@ namespace UITests.TestCases.User
                 {
                     UserLogin();
                     login_status = true;
-                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
+                    browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
                 }
                 tv = new TableVisualization(driver);
 
@@ -154,7 +154,7 @@ namespace UITests.TestCases.User
                 {
                     UserLogin();
                     login_status = true;
-                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
+                    browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
                 }
                 tv = new TableVisualization(driver);
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[3]/td[12]/div/button");
@@ -180,7 +180,7 @@ namespace UITests.TestCases.User
                 {
                     UserLogin();
                     login_status = true;
-                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
+                    browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
                 }
                 tv = new TableVisualization(driver);
                 elementOps.ExistsId("dvContainer_1586780535084_0_0_name_hdr_sel");
@@ -203,7 +203,7 @@ namespace UITests.TestCases.User
                 {
                     UserLogin();
                     login_status = true;
-                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
+                    browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
                 }
                 tv = new TableVisualization(driver);
                 elementOps.ExistsId("dvContainer_1586780535084_0_0_name_hdr_sel");
@@ -269,7 +269,7 @@ namespace UITests.TestCases.User
                 {
                     UserLogin();
                     login_status = true;
-                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
+                    browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
                 }
                 tv = new TableVisualization(driver);
                 elementOps.ExistsId("rowgroupDD_dvContainer_1586780535084_0_0");
@@ -295,7 +295,7 @@ namespace UITests.TestCases.User
                 {
                     UserLogin();
                     login_status = true;
-                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
+                    browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
                 }
                 tv = new TableVisualization(driver);
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[4]/td[4]/span");
@@ -317,7 +317,7 @@ namespace UITests.TestCases.User
                 {
                     UserLogin();
                     login_status = true;
-                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
+                    browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
                 }
                 tv = new TableVisualization(driver);
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[3]/td[4]/a/i");
@@ -342,7 +342,7 @@ namespace UITests.TestCases.User
                 {
                     UserLogin();
                     login_status = true;
-                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
+                    browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
                 }
                 tv = new TableVisualization(driver);
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[3]/td[3]/a");
@@ -367,7 +367,7 @@ namespace UITests.TestCases.User
                 {
                     UserLogin();
                     login_status = true;
-                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
+                    browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
                 }
                 tv = new TableVisualization(driver);
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0_wrapper\"]/div[3]/div[3]/div/table/tfoot/tr/th[8]/div");
@@ -389,7 +389,7 @@ namespace UITests.TestCases.User
                 {
                     UserLogin();
                     login_status = true;
-                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
+                    browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
                 }
                 tv = new TableVisualization(driver);
                 if (elementOps.IsWebElementPresent(tv.CustomColumnHeader))
@@ -418,7 +418,7 @@ namespace UITests.TestCases.User
                 {
                     UserLogin();
                     login_status = true;
-                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
+                    browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
                 }
                 tv = new TableVisualization(driver);
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[3]/td[3]/a");
@@ -448,7 +448,7 @@ namespace UITests.TestCases.User
                 {
                     UserLogin();
                     login_status = true;
-                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
+                    browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
                 }
                 tv = new TableVisualization(driver);
                 browserOps.implicitWait(100);
@@ -479,7 +479,7 @@ namespace UITests.TestCases.User
                 {
                     UserLogin();
                     login_status = true;
-                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
+                    browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
                 }
                 tv = new TableVisualization(driver);
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1586780535084_0_0\"]/tbody/tr[4]/td[5]");
@@ -502,7 +502,7 @@ namespace UITests.TestCases.User
                 {
                     UserLogin();
                     login_status = true;
-                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
+                    browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
                 }
                 tv = new TableVisualization(driver);
                 //--------Starts With
@@ -575,7 +575,7 @@ namespace UITests.TestCases.User
                 {
                     UserLogin();
                     login_status = true;
-                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
+                    browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
                 }
                 tv = new TableVisualization(driver);
                 //Equal
@@ -674,7 +674,7 @@ namespace UITests.TestCases.User
                 {
                     UserLogin();
                     login_status = true;
-                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
+                    browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-17-17-17-17#");
                 }
                 tv = new TableVisualization(driver);
 
@@ -778,7 +778,7 @@ namespace UITests.TestCases.User
                     login_status = true;
                 }
                 tv = new TableVisualization(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=hairocraft_stagging-ebdbjiwavi72zy20200413071346-16-24-24-302-384");
+                browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=hairocraft_stagging-ebdbjiwavi72zy20200413071346-16-24-24-302-384");
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1553959320177_0_0_filter\"]/div/input");
                 tv.SearchBar.SendKeys("m");
                 Assert.AreEqual("display: none;", tv.TVRowStyle.GetAttribute("style"), "Success", "Success");
@@ -800,7 +800,7 @@ namespace UITests.TestCases.User
                 UserLogin();
                 login_status = true;
             }
-            browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-110-110-110-110#");
+            browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-110-110-110-110#");
             tv = new TableVisualization(driver);
 
             elementOps.ExistsXpath("//*[@id=\"dvContainer_1227560092_0_0\"]/tbody/tr[3]/td[3]/a");
@@ -825,7 +825,7 @@ namespace UITests.TestCases.User
                 UserLogin();
                 login_status = true;
             }
-            browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-110-110-110-110#");
+            browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-110-110-110-110#");
             tv = new TableVisualization(driver);
             
             elementOps.ExistsId("rowgroupDD_dvContainer_1227560092_0_0");
@@ -844,7 +844,7 @@ namespace UITests.TestCases.User
                 UserLogin();
                 login_status = true;
             }
-            browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-110-110-110-110#");
+            browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-110-110-110-110#");
             tv = new TableVisualization(driver);
 
             elementOps.ExistsId("dvContainer_1227560092_0_0_course_name_hdr_txt1");
@@ -883,7 +883,7 @@ namespace UITests.TestCases.User
                 UserLogin();
                 login_status = true;
             }
-            browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-110-110-110-110#");
+            browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-110-110-110-110#");
             tv = new TableVisualization(driver);
 
             elementOps.ExistsXpath("//*[@id=\"dvContainer_1227560092_0_0\"]/tbody/tr[3]/td[10]/a");
@@ -905,7 +905,7 @@ namespace UITests.TestCases.User
                 {
                     UserLogin();
                     login_status = true;
-                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-110-110-110-110#");
+                    browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-110-110-110-110#");
                 }
                 tv = new TableVisualization(driver);
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1227560092_0_0_length\"]/label/select/option[1]");
@@ -933,7 +933,7 @@ namespace UITests.TestCases.User
                 {
                     UserLogin();
                     login_status = true;
-                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-110-110-110-110#");
+                    browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-110-110-110-110#");
                 }
                 tv = new TableVisualization(driver);
                 string id;
@@ -974,7 +974,7 @@ namespace UITests.TestCases.User
                 {
                     UserLogin();
                     login_status = true;
-                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-110-110-110-110#");
+                    browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-110-110-110-110#");
                 }
                 tv = new TableVisualization(driver);
                 string id;
@@ -1016,7 +1016,7 @@ namespace UITests.TestCases.User
                 {
                     UserLogin();
                     login_status = true;
-                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-110-110-110-110#");
+                    browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-110-110-110-110#");
                 }
                 tv = new TableVisualization(driver);
                 string id;
@@ -1057,7 +1057,7 @@ namespace UITests.TestCases.User
                 {
                     UserLogin();
                     login_status = true;
-                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-33-33-33-33");
+                    browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-33-33-33-33");
                 }
                 tv = new TableVisualization(driver);
                 string id;
@@ -1099,7 +1099,7 @@ namespace UITests.TestCases.User
                 {
                     UserLogin();
                     login_status = true;
-                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-110-110-110-110#");
+                    browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-110-110-110-110#");
                 }
                 tv = new TableVisualization(driver);
                 
@@ -1129,7 +1129,7 @@ namespace UITests.TestCases.User
                     login_status = true;
                 }
                 tv = new TableVisualization(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-36-36-36-36");
+                browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-36-36-36-36");
                 elementOps.ExistsClass("DTFC_LeftWrapper");
                 Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.FixedColumnClass).ToString(), "Success", "Success");
             }
@@ -1149,7 +1149,7 @@ namespace UITests.TestCases.User
                 {
                     UserLogin();
                     login_status = true;
-                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-36-36-36-36");
+                    browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-36-36-36-36");
                 }
                 tv = new TableVisualization(driver);
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1227524158_0_0_wrapper\"]/div[3]/div[2]/div[1]/div/table/thead/tr[1]/th[2]");
@@ -1176,7 +1176,7 @@ namespace UITests.TestCases.User
                 {
                     UserLogin();
                     login_status = true;
-                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-36-36-36-36");
+                    browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-36-36-36-36");
                 }
                 tv = new TableVisualization(driver);
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1227524158_0_0\"]/tbody/tr[1]/td[3]/span");
@@ -1199,7 +1199,7 @@ namespace UITests.TestCases.User
                 {
                     UserLogin();
                     login_status = true;
-                    browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-36-36-36-36");
+                    browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-36-36-36-36");
                 }
                 tv = new TableVisualization(driver);
                 elementOps.ExistsId("dvContainer_1227524158_0_0_eb_created_by_hdr_txt1");
@@ -1210,7 +1210,7 @@ namespace UITests.TestCases.User
                 elementOps.ExistsXpath("//*[@id=\"filterdisplayrowtd_dvContainer_1227524158_0_0\"]/div");
                 Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.SearchTagCourse2).ToString(), "Success!! Search  Compelte", "Success!! Search  Compelte");
 
-                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-99-99-99-99");
+                browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-99-99-99-99");
                 elementOps.ExistsId("dvContainer_1228026803_0_0_eb_created_by_hdr_txt1");
                 tv.CreatedBy2.SendKeys("Anoopa" + Keys.Enter);
                 browserOps.implicitWait(100);
@@ -1235,7 +1235,7 @@ namespace UITests.TestCases.User
                     login_status = true;
                 }
                 tv = new TableVisualization(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-64-64-64-64");
+                browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-64-64-64-64");
                 elementOps.ExistsId("name");
                 tv.PSName.Click();
                 tv.PSName.SendKeys("Anoopa Baby" + Keys.Enter);
@@ -1289,7 +1289,7 @@ namespace UITests.TestCases.User
                     login_status = true;
                 }
                 tv = new TableVisualization(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-72-72-72-72");
+                browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-72-72-72-72");
 
                 elementOps.ExistsTagName("table");
                 int val = int.Parse(elementOps.GetTableRowCountFromJSusingTag("tbody").ToString());
@@ -1313,7 +1313,7 @@ namespace UITests.TestCases.User
                     login_status = true;
                 }
                 tv = new TableVisualization(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-113-113-113-113");
+                browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-113-113-113-113");
 
                 elementOps.ExistsId("btnGo");
                 tv.RunButton.Click();
@@ -1340,7 +1340,7 @@ namespace UITests.TestCases.User
                     login_status = true;
                 }
                 tv = new TableVisualization(driver);
-                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-116-116-116-116");
+                browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-116-116-116-116");
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1228095208_0_0\"]/tbody/tr[3]/td[4]/img");
                 
                 Assert.AreEqual("True", elementOps.IsWebElementPresent(tv.RenderAsImg).ToString(), "Success", "Success");

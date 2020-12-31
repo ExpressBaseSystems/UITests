@@ -12,11 +12,11 @@ namespace UITests.TestCases.User
     public class SupportTicketTestCase : BaseClass
     {
         SupportTicket st;
-        string url = "https://uitesting.eb-test.cloud/UserDashBoard";
-        string sprt_url = "https://uitesting.eb-test.cloud/SupportTicket/BugSupport";
+        string url = "https://uitesting.eb-test.site/UserDashBoard";
+        string sprt_url = "https://uitesting.eb-test.site/SupportTicket/BugSupport";
         void UserLogin()
         {
-            browserOps.Goto("https://uitesting.eb-test.cloud");           
+            browserOps.Goto("https://uitesting.eb-test.site");           
             ul.UserName.SendKeys("josevin@expressbase.com");
             ul.Password.SendKeys("@Josevin123");
             ul.LoginButton.Click();

@@ -18,13 +18,13 @@ namespace UITests.TestCases.User.Forms.BasicControls
         public void UserLogin()
         {
             ulog = new UserLogin(driver);
-            browserOps.Goto("https://uitesting.eb-test.cloud/");
+            browserOps.Goto("https://uitesting.eb-test.site/");
             ulog.UserName.SendKeys("anoopa.baby@expressbase.com");
             ulog.Password.SendKeys("Qwerty@123");
             ulog.LoginButton.Click();
             Console.WriteLine("Login Success");
             t = new TextBox(driver);
-            browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashBoard");
+            browserOps.UrlToBe("https://uitesting.eb-test.site/UserDashBoard");
         }
 
         public void CheckUsrLogin()
@@ -66,7 +66,7 @@ namespace UITests.TestCases.User.Forms.BasicControls
         public void TextBox_Transform()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
+            browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
             elementOps.ExistsId("TextBox1");
             t.TextBox1.SendKeys("Normal Test");
             t.TextBox2.SendKeys("IS LOWERCASE");
@@ -86,7 +86,7 @@ namespace UITests.TestCases.User.Forms.BasicControls
         public void TextBox_Mode()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
+            browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
             elementOps.ExistsId("TextBox4");
             t.TextBox4.Clear();
             Assert.False(elementOps.HasAttribute("TextBox4", "rows"), "Success", "Success");
@@ -111,7 +111,7 @@ namespace UITests.TestCases.User.Forms.BasicControls
         public void TextBox_MaxLength()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
+            browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
             elementOps.ExistsId("TextBox10");
             t.TextBox10.SendKeys("aaaaaaa" + Keys.Tab);
             Assert.Multiple(() =>
@@ -127,7 +127,7 @@ namespace UITests.TestCases.User.Forms.BasicControls
         public void TextBox_AutoSuggestion()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
+            browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
             elementOps.ExistsId("TextBox11");
             t.TextBox11.SendKeys("aaaaaaa" + Keys.Tab);
             Assert.True(t.TextBox11.GetAttribute("class").ToString() == "ui-autocomplete-input", "Success", "Success");
@@ -138,7 +138,7 @@ namespace UITests.TestCases.User.Forms.BasicControls
         public void TextBox_Behaviour()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
+            browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
             elementOps.ExistsId("TextBox13");
             t.TextBox13.SendKeys("Auto Complete Off");
             Assert.Multiple(() =>
@@ -154,7 +154,7 @@ namespace UITests.TestCases.User.Forms.BasicControls
         public void TextBox_Required()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
+            browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
             elementOps.ExistsId("TextBox15");
             Assert.True(elementOps.HasAttribute("TextBox15", "required"), "Success", "Success");
             t.TextBox15.SendKeys(Keys.Tab);
@@ -167,7 +167,7 @@ namespace UITests.TestCases.User.Forms.BasicControls
         public void TextBox_Unique()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
+            browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
             elementOps.ExistsId("TextBox16");
             t.TextBox16.SendKeys("Testerr" + Keys.Tab);
             wait.Until(webDriver => (driver.PageSource.Contains("uniq-ok")));
@@ -180,7 +180,7 @@ namespace UITests.TestCases.User.Forms.BasicControls
         public void TextBox_Validation()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
+            browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
             elementOps.ExistsId("TextBox17");
             t.TextBox17.SendKeys("Nil" + Keys.Tab);
             wait.Until(webDriver => (driver.PageSource.Contains("style=\"width: 100%; display: inline-block; padding: 7px 10px; background-color: rgb(255, 255, 255); color: rgb(51, 51, 51); pointer-events: inherit;\"")));
@@ -192,7 +192,7 @@ namespace UITests.TestCases.User.Forms.BasicControls
         public void TextBox_DefaultValueExpression()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
+            browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
             elementOps.ExistsId("TextBox18");
             Assert.True(t.TextBox18.GetAttribute("value").ToString() == "Sample", "Success", "Success");
             t.TextBox18.SendKeys(" sss" + Keys.Tab);
@@ -204,7 +204,7 @@ namespace UITests.TestCases.User.Forms.BasicControls
         public void TextBox_ValueExpression()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
+            browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
             elementOps.ExistsId("TextBox19");
             Assert.True(t.TextBox19.GetAttribute("value").ToString() == "", "Success", "Success");
             t.TextBox19.SendKeys("sss" + Keys.Tab);
@@ -216,7 +216,7 @@ namespace UITests.TestCases.User.Forms.BasicControls
         public void TextBox_DoNotPersist()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
+            browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
             elementOps.ExistsId("TextBox1");
             AddCompleteValues();
 
@@ -234,7 +234,7 @@ namespace UITests.TestCases.User.Forms.BasicControls
         public void TextBox_OnChange()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
+            browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
             elementOps.ExistsId("TextBox21");
             t.TextBox21.SendKeys("sss" + Keys.Tab);
             wait.Until(webDriver => (driver.PageSource.Contains("eb-hidden=\"false\" eb-readonly=\"true\" style=\"margin: 4px; display: none;\"")));
@@ -246,7 +246,7 @@ namespace UITests.TestCases.User.Forms.BasicControls
         public void TextBox_HideExpression()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
+            browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
             elementOps.ExistsId("TextBox22");
             t.TextBox22.SendKeys("Hello" + Keys.Tab);
             wait.Until(webDriver => (driver.PageSource.Contains("eb-hidden=\"false\" eb-readonly=\"false\" style=\"margin: 4px; display: none;\"")));
@@ -258,7 +258,7 @@ namespace UITests.TestCases.User.Forms.BasicControls
         public void TextBox_ReadOnlyExpression()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
+            browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
             elementOps.ExistsId("TextBox23");
             t.TextBox23.SendKeys("Hello" + Keys.Tab);
             wait.Until(webDriver => (driver.PageSource.Contains("<div id=\"TextBox23Wraper\" class=\"ctrl-cover\" eb-readonly=\"false\" disabled=\"disabled\" style=\"pointer-events: inherit;\">")));
@@ -270,7 +270,7 @@ namespace UITests.TestCases.User.Forms.BasicControls
         public void TextBox_ViewMode()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
+            browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
             elementOps.ExistsId("TextBox1");
             AddCompleteValues();
 
@@ -310,7 +310,7 @@ namespace UITests.TestCases.User.Forms.BasicControls
         public void TextBox_EditMode()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
+            browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-169-169-169-169");
             elementOps.ExistsId("TextBox1");
             AddCompleteValues();
 

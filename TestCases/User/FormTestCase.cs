@@ -19,13 +19,13 @@ namespace UITests.TestCases.User
         public void UserLogin()
         {
             ulog = new UserLogin(driver);
-            browserOps.Goto("https://uitesting.eb-test.cloud/");
+            browserOps.Goto("https://uitesting.eb-test.site/");
             ulog.UserName.SendKeys("anoopa.baby@expressbase.com");
             ulog.Password.SendKeys("Qwerty@123");
             ulog.LoginButton.Click();
             Console.WriteLine("Login Success");
             f = new Form(driver);
-            browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashBoard");
+            browserOps.UrlToBe("https://uitesting.eb-test.site/UserDashBoard");
         }
         
         public void CheckUsrLogin()
@@ -44,12 +44,12 @@ namespace UITests.TestCases.User
             try
             {
                 CheckUsrLogin();
-                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-85-85-85-85");
+                browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-85-85-85-85");
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1228019724_0_0\"]/tbody/tr");
                 int val = elementOps.GetTableRowCount("//*[@id=\"dvContainer_1228019724_0_0\"]/tbody/tr");
                 Console.WriteLine(val);
 
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-86-86-86-86");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-86-86-86-86");
                 elementOps.ExistsId("TextBox1");
                 f.TextBox1.SendKeys("Test Book");
                 f.TextBox2.SendKeys("Test Book Desc");
@@ -67,7 +67,7 @@ namespace UITests.TestCases.User
                 elementOps.ExistsClass("eb_messageBox_container");
                 elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
 
-                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-85-85-85-85");
+                browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-85-85-85-85");
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1228019724_0_0\"]/tbody/tr");
                 int val1 = elementOps.GetTableRowCount("//*[@id=\"dvContainer_1228019724_0_0\"]/tbody/tr");
                 Console.WriteLine(val1);
@@ -86,12 +86,12 @@ namespace UITests.TestCases.User
             try
             {
                 CheckUsrLogin();
-                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-85-85-85-85");
+                browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-85-85-85-85");
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1228019724_0_0\"]/tbody/tr");
                 int val = elementOps.GetTableRowCount("//*[@id=\"dvContainer_1228019724_0_0\"]/tbody/tr");
                 Console.WriteLine(val);
 
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-86-86-86-86");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-86-86-86-86");
                 elementOps.ExistsId("TextBox1");
                 f.TextBox1.SendKeys("Test Book 1");
                 f.TextBox2.SendKeys("Test Book 1 Desc");
@@ -108,7 +108,7 @@ namespace UITests.TestCases.User
                 elementOps.ExistsClass("eb_messageBox_container");
                 elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
 
-                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-85-85-85-85");
+                browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-85-85-85-85");
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1228019724_0_0\"]/tbody/tr");
                 int val1 = elementOps.GetTableRowCount("//*[@id=\"dvContainer_1228019724_0_0\"]/tbody/tr");
                 Console.WriteLine(val1);
@@ -127,14 +127,14 @@ namespace UITests.TestCases.User
             try
             {
                 CheckUsrLogin();
-                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-88-88-88-88");
+                browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-88-88-88-88");
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1227503513_0_0\"]/tbody/tr[3]/td[11]/a");
                 f.ActionButton.Click();
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
                 elementOps.ExistsId("webformdelete");
                 Assert.AreEqual("False", f.DeleteButton.Enabled.ToString(), "Success", "Success");
 
-                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-85-85-85-85");
+                browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-85-85-85-85");
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1228019724_0_0\"]/tbody/tr[3]/td[11]/a");
                 f.ActionButton1.Click();
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
@@ -154,7 +154,7 @@ namespace UITests.TestCases.User
             try
             {
                 CheckUsrLogin();
-                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-88-88-88-88");
+                browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-88-88-88-88");
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1227503513_0_0\"]/tbody/tr[3]/td[11]/a");
                 f.ActionButton.Click();
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
@@ -163,7 +163,7 @@ namespace UITests.TestCases.User
                 Assert.AreEqual("False", f.CancelButton.Enabled.ToString(), "Success", "Success");
                 Console.WriteLine("Success 1");
 
-                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-85-85-85-85");
+                browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-85-85-85-85");
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1228019724_0_0\"]/tbody/tr[3]/td[11]/a");
                 f.ActionButton1.Click();
                 driver.SwitchTo().Window(driver.WindowHandles.Last());
@@ -183,7 +183,7 @@ namespace UITests.TestCases.User
             try
             {
                 CheckUsrLogin();
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-86-86-86-86");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-86-86-86-86");
                 elementOps.ExistsId("TextBox1");
                 f.TextBox1.SendKeys("Test Book 1");
                 f.TextBox2.SendKeys("Test Book 1 Desc");
@@ -211,12 +211,12 @@ namespace UITests.TestCases.User
             try
             {
                 CheckUsrLogin();
-                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-36-36-36-36");
+                browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-36-36-36-36");
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1227524158_0_0\"]/tbody/tr");
                 int val = elementOps.GetTableRowCount("//*[@id=\"dvContainer_1227524158_0_0\"]/tbody/tr");
                 Console.WriteLine(val);
 
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-86-86-86-86");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-86-86-86-86");
                 elementOps.ExistsId("TextBox1");
                 f.TextBox1.SendKeys("Form Test 1");
                 f.TextBox2.SendKeys("Form Test 1 Desc");
@@ -231,7 +231,7 @@ namespace UITests.TestCases.User
                 elementOps.ExistsClass("eb_messageBox_container");
                 elementOps.ChangeStyle("eb_messageBox_container", "style", "display: none");
 
-                browserOps.Goto("https://uitesting.eb-test.cloud/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-36-36-36-36");
+                browserOps.Goto("https://uitesting.eb-test.site/DV/dv?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-16-36-36-36-36");
                 elementOps.ExistsXpath("//*[@id=\"dvContainer_1227524158_0_0\"]/tbody/tr");
                 int val1 = elementOps.GetTableRowCount("//*[@id=\"dvContainer_1227524158_0_0\"]/tbody/tr");
                 Console.WriteLine(val1);
@@ -253,7 +253,7 @@ namespace UITests.TestCases.User
                 int val;
                 int val1;
                 CheckUsrLogin();
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-86-86-86-86");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-86-86-86-86");
                 elementOps.ExistsXpath("//*[@id=\"nf-container\"]/li");
                 val = elementOps.GetTableRowCount("//*[@id=\"nf-container\"]/li");
                 Console.WriteLine(val);
@@ -291,7 +291,7 @@ namespace UITests.TestCases.User
             try
             {
                 CheckUsrLogin();
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-14-14-14-14");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-14-14-14-14");
                 elementOps.ExistsId("Numeric2");
                 elementOps.SetValue("Numeric2", "15000");
                 elementOps.ExecuteScripts("const e = new Event('change');" +
@@ -321,7 +321,7 @@ namespace UITests.TestCases.User
                 Assert.AreEqual("View Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
                 Console.WriteLine("View Mode");
 
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-34-34-34-34");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-34-34-34-34");
                 elementOps.ExistsId("TextBox1");
                 f.JamTopic.SendKeys("Test Topic");
                 f.SaveButton.Click();
@@ -331,7 +331,7 @@ namespace UITests.TestCases.User
                 Assert.AreEqual("New Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
                 Console.WriteLine("New Mode");
 
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-30-30-30-30");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-30-30-30-30");
                 elementOps.ExistsId("TextBox1");
                 f.JamTopic.SendKeys("Test");
                 f.SaveButton.Click();
@@ -341,7 +341,7 @@ namespace UITests.TestCases.User
                 Assert.AreEqual("Edit Mode", f.FormMode.GetAttribute("innerHTML").ToString(), "Success", "Success");
                 Console.WriteLine("Edit Mode");
                 
-                browserOps.NewTab("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-83-83-83-83");
+                browserOps.NewTab("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-83-83-83-83");
                 elementOps.ExistsId("TextBox1");
                 f.TextBox1.SendKeys("Form Test 1");
                 f.TextBox2.SendKeys("Form Test 1 Desc");
@@ -351,9 +351,9 @@ namespace UITests.TestCases.User
                     "element.dispatchEvent(e); ");
                 browserOps.implicitWait(50);
                 f.SaveButton.Click();
-                browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashBoard");
+                browserOps.UrlToBe("https://uitesting.eb-test.site/UserDashBoard");
                 
-                Assert.AreEqual("https://uitesting.eb-test.cloud/UserDashBoard", driver.Url, "Success", "Success");
+                Assert.AreEqual("https://uitesting.eb-test.site/UserDashBoard", driver.Url, "Success", "Success");
                 Console.WriteLine("Close Mode");
                 //driver.Close();
                 //var alert = driver.SwitchTo().Alert();
@@ -373,7 +373,7 @@ namespace UITests.TestCases.User
             try
             {
                 CheckUsrLogin();
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-86-86-86-86");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-86-86-86-86");
                 elementOps.ExistsId("WebForm_kayu90ek");
                 string style = f.ParentForm.GetAttribute("style");
                 Assert.AreEqual(style, "padding: 8px;", "Success", "Success");
@@ -392,7 +392,7 @@ namespace UITests.TestCases.User
             try
             {
                 CheckUsrLogin();
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-86-86-86-86");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-86-86-86-86");
                 elementOps.ExistsId("TextBox1");
                 f.TextBox1.SendKeys("Form PDF Test 1");
                 f.TextBox2.SendKeys("Form PDF Test 1 Desc");
@@ -433,7 +433,7 @@ namespace UITests.TestCases.User
             try
             {
                 CheckUsrLogin();
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-86-86-86-86");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-86-86-86-86");
                 elementOps.ExistsId("TextBox1");
                 string title_before = driver.Title;
                 f.TextBox1.SendKeys("TitlExp ");
@@ -470,7 +470,7 @@ namespace UITests.TestCases.User
             try
             {
                 CheckUsrLogin();
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-86-86-86-86");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-86-86-86-86");
                 elementOps.ExistsId("TextBox1");
                 string title_before = driver.Title;
                 f.TextBox1.SendKeys("Form Test");
@@ -526,7 +526,7 @@ namespace UITests.TestCases.User
             try
             {
                 CheckUsrLogin();
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
                 elementOps.ExistsId("DataGrid1addrow");
                 f.GridAddRowButton.Click();
                 elementOps.ExistsXpath("//*[@id='tbl_DataGrid1']/tbody/tr/td[2]/div/input");
@@ -560,7 +560,7 @@ namespace UITests.TestCases.User
             try
             {
                 CheckUsrLogin();
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
                 elementOps.ExistsId("DataGrid2addrow");
                 f.GridAddRowButton1.Click();
                 elementOps.ExistsXpath("//*[@id='tbl_DataGrid2']/tbody/tr/td[2]/div/div/input");
@@ -595,7 +595,7 @@ namespace UITests.TestCases.User
             try
             {
                 CheckUsrLogin();
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
                 elementOps.ExistsId("DataGrid2addrow");
                 f.GridAddRowButton1.Click();
                 elementOps.ExistsXpath("//*[@id='tbl_DataGrid2']/tbody/tr/td[2]/div/div/input");
@@ -633,7 +633,7 @@ namespace UITests.TestCases.User
             try
             {
                 CheckUsrLogin();
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
                 elementOps.ExistsId("DataGrid2addrow");
                 f.GridAddRowButton1.Click();
                 elementOps.ExistsXpath("//*[@id='tbl_DataGrid2']/tbody/tr/td[2]/div/div/input");
@@ -670,7 +670,7 @@ namespace UITests.TestCases.User
             try
             {
                 CheckUsrLogin();
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
                 elementOps.ExistsId("DataGrid2addrow");
                 f.GridAddRowButton1.Click();
                 elementOps.ExistsXpath("//*[@id='tbl_DataGrid2']/tbody/tr/td[2]/div/div/input");
@@ -708,7 +708,7 @@ namespace UITests.TestCases.User
             try
             {
                 CheckUsrLogin();
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
                 elementOps.ExistsId("DataGrid2addrow");
                 f.GridAddRowButton1.Click();
                 elementOps.ExistsXpath("//*[@id='tbl_DataGrid2']/tbody/tr/td[2]/div/div/input");
@@ -751,7 +751,7 @@ namespace UITests.TestCases.User
             try
             {
                 CheckUsrLogin();
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
                 elementOps.ExistsId("DataGrid2addrow");
                 f.GridAddRowButton1.Click();
                 elementOps.ExistsXpath("//*[@id='tbl_DataGrid2']/tbody/tr/td[2]/div/div/input");
@@ -774,7 +774,7 @@ namespace UITests.TestCases.User
             try
             {
                 CheckUsrLogin();
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
                 elementOps.ExistsId("DataGrid2addrow");
                 f.GridAddRowButton1.Click();
                 elementOps.ExistsXpath("//*[@id='tbl_DataGrid2']/tbody/tr/td[2]/div/div/input");
@@ -795,7 +795,7 @@ namespace UITests.TestCases.User
             try
             {
                 CheckUsrLogin();
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
                 elementOps.ExistsId("DataGrid2addrow");
                 f.GridAddRowButton1.Click();
                 elementOps.ExistsXpath("//*[@id='tbl_DataGrid2']/tbody/tr/td[2]/div/div/input");
@@ -818,7 +818,7 @@ namespace UITests.TestCases.User
             try
             {
                 CheckUsrLogin();
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
                 elementOps.ExistsId("DataGrid2addrow");
                 f.GridAddRowButton1.Click();
                 elementOps.ExistsXpath("//*[@id='tbl_DataGrid2']/tbody/tr/td[2]/div/div/input");
@@ -839,7 +839,7 @@ namespace UITests.TestCases.User
             try
             {
                 CheckUsrLogin();
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-97-97-97-97");
                 elementOps.ExistsId("DataGrid2addrow");
                 f.GridAddRowButton1.Click();
                 elementOps.ExistsXpath("//*[@id='tbl_DataGrid2']/tbody/tr/td[2]/div/div/input");
@@ -880,7 +880,7 @@ namespace UITests.TestCases.User
             try
             {
                 CheckUsrLogin();
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-34-34-34-34");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-34-34-34-34");
                 elementOps.ExistsId("TextBox1");
                 f.JamTopic.SendKeys("Test Topic");
                 elementOps.ExecuteScripts("$('#webformsave-selbtn').children('div').children('button')[0].click()");
@@ -918,7 +918,7 @@ namespace UITests.TestCases.User
                 f.FormSaveClose.Click();
                 wait.Until(webDriver => (driver.PageSource.Contains("id=\"eb_common_loader\" style=\"background-color: transparent; display: none;\"")));
 
-                browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashBoard");
+                browserOps.UrlToBe("https://uitesting.eb-test.site/UserDashBoard");
                 Console.WriteLine("Close Mode");
             }
             catch (Exception e)

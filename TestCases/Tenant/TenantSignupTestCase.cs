@@ -16,7 +16,7 @@ namespace UITests.TestCases.Tenant
     public class TenantSignupTestCase : BaseClass
     {
         TenantSignUp l;
-        string url = "https://myaccount.eb-test.cloud/";
+        string url = "https://myaccount.eb-test.site/";
 
         [Property("TestCaseId", "TenantSignUp_TenantLogin_001")]
         [TestCaseSource("SignUpTestData")]

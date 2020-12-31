@@ -21,7 +21,7 @@ namespace UITests.TestCases.User
         {
             try
             {
-                browserOps.Goto("https://ss.eb-test.cloud/metadata");
+                browserOps.Goto("https://ss.eb-test.site/metadata");
                 string filenames = authfiles.files;
                 filenames.Replace("\n", "").Replace("\t", "").Replace("  ", "");
                 List<string> result = filenames.Split(',').ToList();

@@ -14,7 +14,7 @@ namespace UITests.TestCases.Tenant
     public class TenantLoginTestCase :BaseClass
     {
         TenantLogin l;
-        string url = "https://myaccount.eb-test.cloud/";
+        string url = "https://myaccount.eb-test.site/";
 
         [Property("TestCaseId", "Tenent_Login_001")]
         [TestCaseSource("LoginTestData")]

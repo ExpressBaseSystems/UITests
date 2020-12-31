@@ -16,13 +16,13 @@ namespace UITests.TestCases.User.Forms.BasicControls
         public void UserLogin()
         {
             ulog = new UserLogin(driver);
-            browserOps.Goto("https://uitesting.eb-test.cloud/");
+            browserOps.Goto("https://uitesting.eb-test.site/");
             ulog.UserName.SendKeys("anoopa.baby@expressbase.com");
             ulog.Password.SendKeys("Qwerty@123");
             ulog.LoginButton.Click();
             Console.WriteLine("Login Success");
             b = new Booleans(driver);
-            browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashBoard");
+            browserOps.UrlToBe("https://uitesting.eb-test.site/UserDashBoard");
         }
 
         public void CheckUsrLogin()
@@ -32,7 +32,7 @@ namespace UITests.TestCases.User.Forms.BasicControls
                 UserLogin();
                 login_status = true;
             }
-            browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-186-186-186-186");
+            browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=ebdbjiwavi72zy20200413071346-ebdbjiwavi72zy20200413071346-0-186-186-186-186");
         }
 
         [Property("TestCaseId", "Boolean_Behaviour_001")]

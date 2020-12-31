@@ -19,7 +19,7 @@ namespace UITests.TestCases.User
         public void UserLogin()
         {
             ulog = new UserLogin(driver);
-            browserOps.Goto("https://uitesting.eb-test.cloud/");
+            browserOps.Goto("https://uitesting.eb-test.site/");
             ulog.UserName.SendKeys("anoopa.baby@expressbase.com");
             ulog.Password.SendKeys("Qwerty@123");
             ulog.LoginButton.Click();
@@ -28,7 +28,7 @@ namespace UITests.TestCases.User
 
         public string Login()
         {
-            string url = "https://uitesting.eb-test.cloud/api/authenticate?username=anoopa.baby@expressbase.com&password=Qwerty@123";
+            string url = "https://uitesting.eb-test.site/api/authenticate?username=anoopa.baby@expressbase.com&password=Qwerty@123";
             HttpClient httpClient = new HttpClient();
             Task<HttpResponseMessage> httpResponse = httpClient.GetAsync(url);
             HttpResponseMessage hrm = httpResponse.Result;
@@ -75,7 +75,7 @@ namespace UITests.TestCases.User
         {
             try
             {
-                string url = "https://uitesting.eb-test.cloud/api/api_getusrsdetails/1.0.0/json";
+                string url = "https://uitesting.eb-test.site/api/api_getusrsdetails/1.0.0/json";
                 string datas = GetResponse(url, xmldata.statuscode);
                 dynamic jsondata = JObject.Parse(datas);
                 Console.WriteLine("Data : " + JsonConvert.SerializeObject(jsondata.message.description));
@@ -93,7 +93,7 @@ namespace UITests.TestCases.User
         {
             try
             {
-                string url = String.Format("https://uitesting.eb-test.cloud/api/apiaddcourses/1.0.0/json?name={0}&desc={1}", xmldata.name, xmldata.desc);
+                string url = String.Format("https://uitesting.eb-test.site/api/apiaddcourses/1.0.0/json?name={0}&desc={1}", xmldata.name, xmldata.desc);
                 string datas = GetResponse(url, xmldata.statuscode); ;
                 dynamic jsondata = JObject.Parse(datas);
                 Console.WriteLine("Data : " + JsonConvert.SerializeObject(jsondata.message.description));
@@ -112,7 +112,7 @@ namespace UITests.TestCases.User
         {
             try
             {
-                string url = String.Format("https://uitesting.eb-test.cloud/api/apisalarydetails/1.0.0/json?name={0}", xmldata.name);
+                string url = String.Format("https://uitesting.eb-test.site/api/apisalarydetails/1.0.0/json?name={0}", xmldata.name);
                 string datas = GetResponse(url, xmldata.statuscode); ;
                 dynamic jsondata = JObject.Parse(datas);
                 Console.WriteLine("Data : " + JsonConvert.SerializeObject(jsondata.result));
@@ -131,7 +131,7 @@ namespace UITests.TestCases.User
             try
             {
                 string c_name = xmldata.name + id.GetId;
-                string url = String.Format("https://uitesting.eb-test.cloud/api/apiaddnewcourses/1.0.0/json?name={0}&desc={1}", c_name, xmldata.desc);
+                string url = String.Format("https://uitesting.eb-test.site/api/apiaddnewcourses/1.0.0/json?name={0}&desc={1}", c_name, xmldata.desc);
                 string datas = GetResponse(url, xmldata.statuscode);
                 dynamic jsondata = JObject.Parse(datas);
                 Console.WriteLine("Data : " + JsonConvert.SerializeObject(jsondata.result));
@@ -150,7 +150,7 @@ namespace UITests.TestCases.User
         {
             try
             {
-                string url = String.Format("https://uitesting.eb-test.cloud/api/api_getuserreccount/1.0.0/json");
+                string url = String.Format("https://uitesting.eb-test.site/api/api_getuserreccount/1.0.0/json");
                 string datas = GetResponse(url, xmldata.statuscode);
                 dynamic jsondata = JObject.Parse(datas);
                 Console.WriteLine("Data : " + JsonConvert.SerializeObject(jsondata.message.status));
@@ -169,7 +169,7 @@ namespace UITests.TestCases.User
         {
             try
             {
-                string url = String.Format("https://uitesting.eb-test.cloud/api/apitestapi/1.0.0/json");
+                string url = String.Format("https://uitesting.eb-test.site/api/apitestapi/1.0.0/json");
                 string datas = GetResponse(url, xmldata.statuscode);
                 dynamic jsondata = JObject.Parse(datas);
                 Console.WriteLine("Data : " + JsonConvert.SerializeObject(jsondata.message.status));
@@ -188,7 +188,7 @@ namespace UITests.TestCases.User
         {
             try
             {
-                string url = String.Format("https://uitesting.eb-test.cloud/api/apitestapi/1.0.0/json");
+                string url = String.Format("https://uitesting.eb-test.site/api/apitestapi/1.0.0/json");
                 string datas = GetResponse(url, xmldata.statuscode);
                 dynamic jsondata = JObject.Parse(datas);
                 Console.WriteLine("Data : " + JsonConvert.SerializeObject(jsondata.message.status));

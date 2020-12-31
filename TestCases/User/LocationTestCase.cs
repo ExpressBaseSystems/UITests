@@ -23,13 +23,13 @@ namespace UITests.TestCases.User
         public void UserLogin()
         {
             ulog = new UserLogin(driver);
-            browserOps.Goto("https://uitesting.eb-test.cloud/");
+            browserOps.Goto("https://uitesting.eb-test.site/");
             ulog.UserName.SendKeys("anoopa.baby@expressbase.com");
             ulog.Password.SendKeys("Qwerty@123");
             ulog.LoginButton.Click();
             Console.WriteLine("Login Success");
             loc = new Location(driver);
-            browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashBoard");
+            browserOps.UrlToBe("https://uitesting.eb-test.site/UserDashBoard");
         }
 
         public void CheckUsrLogin()
@@ -38,7 +38,7 @@ namespace UITests.TestCases.User
             {
                 UserLogin();
                 login_status = true;
-                browserOps.Goto("https://uitesting.eb-test.cloud/TenantUser/EbLocations");
+                browserOps.Goto("https://uitesting.eb-test.site/TenantUser/EbLocations");
             }
         }
 
@@ -123,7 +123,7 @@ namespace UITests.TestCases.User
         public void MoveSubLocation()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/TenantUser/EbLocations");
+            browserOps.Goto("https://uitesting.eb-test.site/TenantUser/EbLocations");
             elementOps.ExistsXpath("//*[@id=\"tbl\"]/tbody/tr");
             int val = elementOps.GetTableRowCount("//*[@id=\"tbl\"]/tbody/tr");
             browserOps.ClickableWait(loc.LocField7);
@@ -154,7 +154,7 @@ namespace UITests.TestCases.User
         public void AddLocationType()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/TenantUser/EbLocations");
+            browserOps.Goto("https://uitesting.eb-test.site/TenantUser/EbLocations");
             elementOps.ExistsXpath("//*[@id=\"layout_div\"]/div[2]/div/div[2]/ul/li[2]/a");
             loc.LocationTypeTab.Click();
             elementOps.ExistsXpath("//*[@id=\"types-space\"]/table/tbody/tr");
@@ -176,7 +176,7 @@ namespace UITests.TestCases.User
         public void EditLocationType()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/TenantUser/EbLocations");
+            browserOps.Goto("https://uitesting.eb-test.site/TenantUser/EbLocations");
             elementOps.ExistsXpath("//*[@id=\"layout_div\"]/div[2]/div/div[2]/ul/li[2]/a");
             loc.LocationTypeTab.Click();
             elementOps.ExistsXpath("//*[@id=\"types-space\"]/table/tbody/tr[4]/td[4]/i");
@@ -197,7 +197,7 @@ namespace UITests.TestCases.User
         public void RemoveLocationType()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/TenantUser/EbLocations");
+            browserOps.Goto("https://uitesting.eb-test.site/TenantUser/EbLocations");
             elementOps.ExistsXpath("//*[@id=\"layout_div\"]/div[2]/div/div[2]/ul/li[2]/a");
             loc.LocationTypeTab.Click();
             elementOps.ExistsXpath("//*[@id=\"types-space\"]/table/tbody/tr");
@@ -213,7 +213,7 @@ namespace UITests.TestCases.User
         public void AddCustomField()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/TenantUser/EbLocations");
+            browserOps.Goto("https://uitesting.eb-test.site/TenantUser/EbLocations");
             elementOps.ExistsXpath("//*[@id=\"layout_div\"]/div[2]/div/div[2]/ul/li[3]/a");
             loc.CustomizeTab.Click();
             wait.Until(webDriver => (driver.PageSource.Contains("id=\"eb_common_loader\" style=\"background-color: transparent; display: none;\"")));
@@ -237,7 +237,7 @@ namespace UITests.TestCases.User
         public void CheckCustomField()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/TenantUser/EbLocations");
+            browserOps.Goto("https://uitesting.eb-test.site/TenantUser/EbLocations");
             elementOps.ExistsId("add_root_loc");
             loc.AddNewRootLocation.Click();
             elementOps.ExistsId("loc_type");
@@ -250,7 +250,7 @@ namespace UITests.TestCases.User
         public void CustomFieldRequired()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/TenantUser/EbLocations");
+            browserOps.Goto("https://uitesting.eb-test.site/TenantUser/EbLocations");
             elementOps.ExistsId("add_root_loc");
             loc.AddNewRootLocation.Click();
             elementOps.ExistsId("loc_type");
@@ -266,7 +266,7 @@ namespace UITests.TestCases.User
         public void RemoveCustomField()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/TenantUser/EbLocations");
+            browserOps.Goto("https://uitesting.eb-test.site/TenantUser/EbLocations");
             elementOps.ExistsXpath("//*[@id=\"layout_div\"]/div[2]/div/div[2]/ul/li[3]/a");
             loc.CustomizeTab.Click();
             elementOps.ExistsXpath("//*[@id=\"textspace\"]/table/tbody/tr");
@@ -280,7 +280,7 @@ namespace UITests.TestCases.User
         public void LocationSwitcher()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/TenantUser/EbLocations");
+            browserOps.Goto("https://uitesting.eb-test.site/TenantUser/EbLocations");
             elementOps.ExistsId("switch_loc");
             string loc1 = loc.CurrentLocationName.GetAttribute("innerHTML").ToString();
             loc.LocationSwitcherTab.Click();
@@ -300,7 +300,7 @@ namespace UITests.TestCases.User
         public void LocationSwitcherTree()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/TenantUser/EbLocations");
+            browserOps.Goto("https://uitesting.eb-test.site/TenantUser/EbLocations");
             elementOps.ExistsId("switch_loc");
             string loc1 = loc.CurrentLocationName.GetAttribute("innerHTML").ToString();
             loc.LocationSwitcherTab.Click();
@@ -322,7 +322,7 @@ namespace UITests.TestCases.User
         public void LocationSwitcherSearch()
         {
             CheckUsrLogin();
-            browserOps.Goto("https://uitesting.eb-test.cloud/TenantUser/EbLocations");
+            browserOps.Goto("https://uitesting.eb-test.site/TenantUser/EbLocations");
             elementOps.ExistsId("switch_loc");
             string loc1 = loc.CurrentLocationName.GetAttribute("innerHTML").ToString();
             loc.LocationSwitcherTab.Click();

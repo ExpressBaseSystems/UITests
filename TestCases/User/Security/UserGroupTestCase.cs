@@ -31,12 +31,12 @@ namespace UITests.TestCases.User.Security
             Desp = UID.GetId;
 
             uln = new UserLogin(driver);
-            browserOps.Goto("https://uitesting.eb-test.cloud/");
+            browserOps.Goto("https://uitesting.eb-test.site/");
             uln.UserName.SendKeys("anoopa.baby@expressbase.com");
             uln.Password.SendKeys("Qwerty@123");
             uln.LoginButton.Click();
             Console.WriteLine("Login Success");
-            browserOps.UrlToBe("https://uitesting.eb-test.cloud/UserDashBoard");
+            browserOps.UrlToBe("https://uitesting.eb-test.site/UserDashBoard");
         }
         public void CheckUsrLogin()
         {

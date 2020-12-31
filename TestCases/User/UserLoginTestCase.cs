@@ -17,7 +17,7 @@ namespace UITests.TestCases.User
         [TestCaseSource("UserLoginData"), Order(1)]
         public void ExecuteTest(dynamic Userdata)
         {
-            browserOps.Goto("https://uitesting.eb-test.cloud/");
+            browserOps.Goto("https://uitesting.eb-test.site/");
             ul.UserName.SendKeys(Userdata.username);
             Console.Write("username value is entered \n");
             ul.Password.SendKeys(Userdata.password);

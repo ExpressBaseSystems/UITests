@@ -22,7 +22,7 @@ namespace UITests.TestCases.User
         {
             try
             {
-                browserOps.Goto("https://uitesting.eb-test.cloud/");
+                browserOps.Goto("https://uitesting.eb-test.site/");
                 ul.UserName.SendKeys("kurian@expressbase.com");
                 ul.Password.SendKeys("@Kurian123");
                 ul.LoginButton.Click();
@@ -30,7 +30,7 @@ namespace UITests.TestCases.User
                 UID = new GetUniqueId();
 
                 wait.Until(webDriver => (Driver.PageSource.Contains("class=\"list-group-item inner_li Obj_link for_brd\"")));
-                browserOps.Goto("https://uitesting.eb-test.cloud/WebForm/Index?refid=hairocraft_stagging-ebdbjiwavi72zy20200413071346-0-13-13-1419-1594");
+                browserOps.Goto("https://uitesting.eb-test.site/WebForm/Index?refid=hairocraft_stagging-ebdbjiwavi72zy20200413071346-0-13-13-1419-1594");
                 Console.WriteLine("Login Succesfull");
                 fo = new FormObject(Driver);
             }
